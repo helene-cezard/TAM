@@ -1,0 +1,62 @@
+@use "variables";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100svh - 66px);
+  background: radial-gradient(circle, #f1d248, #FFF4C4);
+  color: #17175e;
+
+  &__content {
+    width: 90vw;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    z-index: 1;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      font-size: 1.25rem;
+      margin-top: 3rem;
+      width: 50vw;
+    }
+  }
+
+  &__title {
+    font-family: Cormorant Garamond, Georgia, serif;
+    font-weight: bold;
+    font-size: calc(2rem + 1.5vw);
+    padding-bottom: 1.25rem;
+  }
+
+  &__discover {
+    position: absolute;
+    width: 100%;
+    bottom: .6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: 1s linear 1s infinite alternate discoverArrow;
+    z-index: 1;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      bottom: 2rem;
+    }
+
+    & span {
+      margin: 0;
+      font-size: .75rem;
+      margin-bottom: .70rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+  }
+
+  @keyframes discoverArrow {
+    100% {
+      transform: translateY(15px);
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@use "variables";
+
+.carousel {
+  position: relative;
+  height: 30svh;
+  width: 100%;
+  z-index: 1;
+  box-sizing: content-box;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    height: 45svh;
+  }
+
+  &__btn {
+    position: absolute;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: calc(2rem + 1.5vw);
+    z-index: 2;
+    cursor: pointer;
+    color: rgb(240, 240, 240);
+    padding: 8px 12px;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+
+  #prev {
+    left: 1rem;
+  }
+  
+  #next {
+    right: 1rem;
+  }
+  
+  &__slides {
+    height: 100%;
+    // width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  &__slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+  
+    &.active {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+  
+    & img {
+      display: block;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

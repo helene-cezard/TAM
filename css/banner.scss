@@ -1,0 +1,60 @@
+@use "variables";
+
+.banner-container
+{
+  background-color: #f8f6f1;
+  display: grid;
+  flex-grow: 1;
+  
+  & > * {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  
+  @media screen and (min-width: variables.$breakpoint) {
+    grid-template-columns: 12% auto 12%;
+    grid-template-areas: 
+    "BannerLeft Pusher BannerRight";
+  }
+  
+  .banner {
+    width: 50%;
+    opacity: 0.6;
+    background-size: contain;
+    background-image: url('../images/banniere-droite.jpg');
+    
+    &--right {
+      display: none;
+    }
+    
+    &__pusher {
+      padding-bottom: 200px;
+      z-index: 1;
+      
+      & > * {
+        max-width: 60rem;
+        margin: auto;
+      }
+    }
+
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 100%;
+      
+      &--left {
+        grid-area: BannerLeft;
+      }
+
+      &--right {
+        display: block;
+        grid-area: BannerRight;
+        transform: rotate(180deg);
+      }
+
+      &__pusher {
+        grid-area: Pusher;
+      }
+    }
+
+  }
+
+}

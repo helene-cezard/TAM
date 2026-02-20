@@ -1,0 +1,42 @@
+@use "variables";
+
+%contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  margin: auto;
+  background: #f8f6f1e6;
+  color: #847062;
+}
+
+%section-title {
+  font-family: variables.$fancy-font;
+  font-size: calc(1rem + 1.5vw);
+  font-weight: bold;
+  color: #30251d;
+  padding-bottom: 1.25rem;
+  line-height: normal;
+}
+
+%quote {
+  background-color: #f8eee9;
+    border-radius: 1.5rem;
+    font-size: 1.5rem;
+    font-style: italic;
+    padding: 2rem;
+    font-family: variables.$fancy-font;
+    height: fit-content;
+
+    & svg {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+      color: #d76942;
+    }
+  }
+
+  %section-text {
+    line-height: 1.5rem;
+    // max-width: 60rem;
+  }

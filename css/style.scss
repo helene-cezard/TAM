@@ -1,0 +1,41 @@
+@use "variables";
+@use "header";
+@use "hero";
+@use "home";
+@use "history";
+@use "mission";
+@use "team";
+@use "actions";
+@use "banner";
+@use "carousel";
+
+body {
+  display: grid;
+  grid-template-rows: auto 200px;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  background-color: white;
+  margin-top: 66px;
+  min-height: calc(100vh - 266px);
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  position: relative;
+  text-align: center;
+  background-color: #E97132;
+  color: white;
+
+  &__image {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -150px;
+    width: 100%;
+    // height: 200px;
+  }
+}

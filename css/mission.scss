@@ -1,0 +1,34 @@
+@use "variables";
+@use "placeholders";
+
+.mission {
+  // height: 100vh;
+
+  &__content {
+    @extend %contents;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      flex-direction: row;
+      
+    }
+    
+    display: flex;
+    gap: 2rem;
+  }
+  
+  &__header {
+    
+    &__title {
+      @extend %section-title;
+    }
+    
+    &__text {
+      @extend %section-text;
+    }
+  }
+
+  &__quote {
+    @extend %quote;
+    // max-width: 30rem;
+  }
+}

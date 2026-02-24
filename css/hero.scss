@@ -6,8 +6,7 @@
   align-items: center;
   justify-content: space-around;
   height: calc(100svh - variables.$navbar-height-mobile);
-  background-color: #E97132;
-  background-image: url("../images/45-degree-fabric-light.png"); // https://www.transparenttextures.com/
+  background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
   color: #30251d;
 
   @media screen and (min-width: variables.$breakpoint) {
@@ -18,10 +17,8 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-color: #fff4c4;
-    background-image: url("../images/45-degree-fabric-light.png");
+    background-image: url("../images/45-degree-fabric-light.png"); // https://www.transparenttextures.com/
     pointer-events: none;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
   }
 
   &__content {

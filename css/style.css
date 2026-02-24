@@ -6,7 +6,6 @@
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100vw;
   display: grid;
   grid-template-columns: 1.5fr 3fr 1.5fr;
   grid-template-rows: 48px;
@@ -203,8 +202,7 @@
   align-items: center;
   justify-content: space-around;
   height: calc(100svh - 48px);
-  background-color: #E97132;
-  background-image: url("../images/45-degree-fabric-light.png");
+  background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
   color: #30251d;
 }
 @media screen and (min-width: 1130px) {
@@ -216,10 +214,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: #fff4c4;
   background-image: url("../images/45-degree-fabric-light.png");
   pointer-events: none;
-  mask-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 70%);
 }
 .hero__content {
   border-radius: 5px;

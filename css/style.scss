@@ -11,16 +11,21 @@
 
 body {
   display: grid;
-  grid-template-rows: auto 200px;
+  grid-template-rows: auto auto 200px;
   font-family: Arial, sans-serif;
 }
 
 main {
   background-color: white;
-  margin-top: 66px;
-  min-height: calc(100vh - 266px);
+  // margin-top: variables.$navbar-height-mobile;
+  min-height: calc(100vh - (200px + variables.$navbar-height-mobile));
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    // margin-top: variables.$navbar-height-desktop;
+    min-height: calc(100vh - (200px + variables.$navbar-height-desktop));
+  }
 }
 
 .footer {
@@ -36,6 +41,6 @@ main {
     transform: translateX(-50%);
     top: -150px;
     width: 100%;
-    // height: 200px;
+    height: 200px;
   }
 }

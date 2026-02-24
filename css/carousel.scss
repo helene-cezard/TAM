@@ -6,6 +6,7 @@
   width: 100%;
   z-index: 1;
   box-sizing: content-box;
+  // margin-top: 2rem;
 
   @media screen and (min-width: variables.$breakpoint) {
     height: 45svh;
@@ -33,17 +34,21 @@
     right: 1rem;
   }
   
-  &__slides {
-    height: 100%;
-    // width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
+  // &__slides {
+  //   height: 100%;
+  //   width: 100%;
+  //   position: relative;
+  //   overflow: hidden;
+  // }
   
   &__slide {
     position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-inline: auto; 
+    width: fit-content;
     height: 100%;
-    width: 100%;
+    // width: 100%;
     opacity: 0;
   
     &.active {
@@ -54,8 +59,18 @@
     & img {
       display: block;
       height: 100%;
-      width: 100%;
+      // width: 100%;
       object-fit: cover;
+      aspect-ratio: 11 / 7;
+      object-position: top center;
+      border-radius: 0.5rem;
+      border: solid 0.2rem white;
+      box-shadow: 6.2px 12.5px 12.5px #2e13054f;
+
+      @media screen and (min-width: 600px)
+      {
+        aspect-ratio: 16 / 7;
+      }
     }
   }
 }

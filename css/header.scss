@@ -2,28 +2,28 @@
 @use "variables";
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 66px;
   width: 100vw;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
-  grid-template-rows: 66px;
+  grid-template-columns: 1.5fr 3fr 1.5fr;
+  grid-template-rows: variables.$navbar-height-mobile;
   grid-template-areas: 
   "Logo . NavButton"
   "Menu Menu Menu";
 
   @media screen and (min-width: variables.$breakpoint) {
-    grid-template-columns: 0.5fr 5.5fr;
-    grid-template-areas: "Logo Menu";
+    // grid-template-columns: 0.5fr 5.5fr;
+    grid-template-rows: variables.$navbar-height-desktop;
+    grid-template-areas: "Logo Menu .";
   }
 
   &.active {
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: variables.$navbar-height-desktop 5fr;
     height: auto;
     grid-template-areas: 
     ". . NavButton"
@@ -34,9 +34,13 @@
     margin: .5rem auto 0 auto;
 
     & img {
-      height: 50px;
-      width: 50px;
-      color: #333;
+      height: 40px;
+      width: 40px;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        height: 50px;
+        width: 50px;
+      }
     }
   }
 
@@ -72,7 +76,7 @@
       margin: 1rem 0;
     }
     
-    & a {
+    & a, p {
       border-bottom: 3px solid;
       transition: box-shadow .20s ease-in-out;
       width: fit-content;
@@ -88,7 +92,7 @@
     }
 
     @mixin link-color($color) {
-      & a {
+      & a, p {
         border-color: $color;
   
         &:hover {
@@ -128,6 +132,51 @@
     }
   }
 
+  .actions-menu {
+    position: relative;
+
+    &:hover > .actions-submenu {
+      display: block;
+    }
+
+    &::after {
+      content: '';
+      position:absolute;
+      width:120px;
+      height:25px;
+      background:rgba(0,0,0,0.01);
+    }
+  }
+
+  .actions-submenu {
+    display: none;
+    position: absolute;
+    bottom: -130px;
+    left: -0.5rem;
+    width: max-content;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    // border-top: 3px solid #ff8255;
+    border-radius: 0.2rem;
+    padding: 0 1rem;
+
+    &::before {
+      display: inline-block;
+      content: "";
+      vertical-align: middle;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid rgba(255, 255, 255, 0.95);
+      border-left: 10px solid transparent;
+      position: absolute;
+      top: -10px;
+    }
+
+    & li {
+      padding-bottom: 1rem;
+    }
+  }
+
   &__buttons {
     grid-area: NavButton;
     display: flex;
@@ -142,10 +191,10 @@
       display: none;
     }
     
-    &::after {
-      content: 'Menu';
-      font-size: 1rem;
-    }
+    // &::after {
+    //   content: 'Menu';
+    //   font-size: 1rem;
+    // }
     
     &::before {
       content: '\2630';

@@ -4,37 +4,70 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: calc(100svh - 66px);
-  background: radial-gradient(circle, #f1d248, #FFF4C4);
-  color: #17175e;
+  justify-content: space-around;
+  height: calc(100svh - variables.$navbar-height-mobile);
+  background-color: #E97132;
+  background-image: url("../images/45-degree-fabric-light.png"); // https://www.transparenttextures.com/
+  color: #30251d;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    height: calc(100svh - variables.$navbar-height-desktop);
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff4c4;
+    background-image: url("../images/45-degree-fabric-light.png");
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%);
+  }
 
   &__content {
-    width: 90vw;
+    // width: 90vw;
     border-radius: 5px;
     text-align: center;
     font-size: 1rem;
-    margin-top: 1rem;
-    padding: 1.25rem;
+    // margin-top: 1rem;
+    // padding: 1.25rem;
     z-index: 1;
 
     @media screen and (min-width: variables.$breakpoint) {
       font-size: 1.25rem;
-      margin-top: 3rem;
-      width: 50vw;
+      // margin-top: 3rem;
+      // width: 50vw;
     }
   }
 
   &__title {
     font-family: Cormorant Garamond, Georgia, serif;
     font-weight: bold;
-    font-size: calc(2rem + 1.5vw);
-    padding-bottom: 1.25rem;
+    font-size: calc(1.5rem + 1.5vw);
+    padding-bottom: 2rem;
+
+    @media screen and (min-width: 700px) {
+      .line-break {
+        display: none;
+      }
+    }
+  }
+
+  &__text {
+    width: 85vw;
+    font-size: calc(0.85rem + 0.4vw);
+    line-height: 1.5rem;
+    color: #8C4820;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 50vw;
+    }
   }
 
   &__discover {
-    position: absolute;
+    // position: absolute;
     width: 100%;
-    bottom: .6rem;
+    // bottom: .6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,7 +80,7 @@
 
     & span {
       margin: 0;
-      font-size: .75rem;
+      font-size: calc(0.5rem + 0.4vw);
       margin-bottom: .70rem;
       letter-spacing: .05em;
       text-transform: uppercase;

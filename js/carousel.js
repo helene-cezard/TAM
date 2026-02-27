@@ -17,12 +17,22 @@ const slides = document.querySelectorAll('.carousel__slide');
 //   });
 // });
 
-setInterval(() => {
+// Source - https://stackoverflow.com/a/62635245
+// Posted by Leo
+// Retrieved 2026-02-25, License - CC BY-SA 4.0
+
+function start_carousel() {
   const slideActive = document.querySelector('.active');
   let newIndex = [...slides].indexOf(slideActive) + 1;
-
+  
   if (newIndex >= [...slides].length) newIndex = 0;
   slides[newIndex].classList.add('active');
-
+  
   slideActive.classList.remove('active');
-}, 5000);
+}
+
+let carousel = setTimeout(start_carousel, 5000);
+
+function pause_carousel() {
+  clearTimeout(carousel);
+}

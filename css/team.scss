@@ -13,7 +13,7 @@
   }
 
   &__presentation {
-    @extend %section-text;
+    // @extend %section-text;
 
     & p {
       padding-bottom: 1rem;
@@ -51,7 +51,7 @@
     }
 
     &__text {
-      @extend %section-text;
+      // @extend %section-text;
       padding: 1rem;
     }
 
@@ -61,7 +61,6 @@
       font-weight: bold;
       color: #30251d;
       padding-bottom: 1rem;
-      // line-height: normal;
     }
   }
 }

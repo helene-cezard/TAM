@@ -9,10 +9,12 @@
 @use "banner";
 @use "carousel";
 
+@import url('../fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf');
+
 body {
   display: grid;
   grid-template-rows: auto auto 200px;
-  font-family: Arial, sans-serif;
+  font-family: "Calibri", "Source Sans 3", Arial, Helvetica, sans-serif;
   font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
 }
 
@@ -43,5 +45,19 @@ main {
     top: -150px;
     width: 100%;
     height: 200px;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    position: relative;
+    z-index: 2;
+
+    &__icon {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }

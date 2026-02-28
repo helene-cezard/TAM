@@ -96,10 +96,10 @@
     }
     
     & a, p {
-      border-bottom: 3px solid;
-      transition: box-shadow .20s ease-in-out;
+      // border-bottom: 3px solid;
+      // transition: box-shadow .20s ease-in-out;
       width: fit-content;
-      padding: .3rem 0.5rem;
+      padding: 0.5rem;
       // margin: .6rem 0;
       text-align: center;
       display: block;
@@ -113,7 +113,7 @@
 
     @mixin link-color($color) {
       & a, p {
-        border-color: $color;
+        // border-color: $color;
   
         &:hover {
           color: white;
@@ -124,7 +124,7 @@
     }
 
     &--yellow {
-      @include link-color(hsl(49, 85%, 60%));
+      @include link-color(#f0d042);
     }
 
     &--blue {
@@ -147,8 +147,8 @@
       @include link-color(#fc1818);
     }
 
-    &--purple {
-      @include link-color(#cb6ce6);
+    &--light-blue {
+      @include link-color(#7db4ff);
     }
   }
 

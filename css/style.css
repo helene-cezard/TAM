@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("../fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf");
 .header {
   position: sticky;
   top: 0;
@@ -549,7 +548,7 @@
 body {
   display: grid;
   grid-template-rows: auto auto 200px;
-  font-family: "Calibri", "Source Sans 3", Arial, Helvetica, sans-serif;
+  font-family: "Calibri", "Source Sans 3", sans-serif;
   font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
 }
 

@@ -1,0 +1,57 @@
+@use "placeholders";
+@use "variables";
+
+.reports {
+
+  &__content {
+    @extend %contents;
+  }
+
+  &__title {
+    @extend %section-title;
+  }
+
+  &__list {
+    // @extend %contents;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+
+    & .line {
+      background:#d76942;
+      z-index:-1;
+      width:1px;
+      height:100%;
+      position:absolute;
+      left:15px;
+    }
+
+    .white-line {
+      background:#FFF;
+      z-index:-1;
+      bottom:0px;
+      width:1px;
+      height:5%;
+      position:absolute;
+      left:15px;
+    }
+
+    & li {
+      margin-bottom: 2rem;
+      & span {
+        float:left;
+        margin-right:20px;
+        background: #d76942;
+        height:30px;
+        width:30px;
+        line-height:30px;
+        border-radius:100px;
+        font-weight:700;
+        color:white;
+        text-align:center;
+      }
+    }
+  }
+}

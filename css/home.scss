@@ -61,15 +61,9 @@
     }
 
     &__card {
+      @extend %card;
       display: flex;
       flex-direction: column;
-      background-color: white;
-      // width: 30%;
-      height: fit-content;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      text-align: center;
       padding: 1rem;
 
       &:hover {
@@ -84,6 +78,52 @@
         margin: 0 auto 1.5rem auto;
         color: #d76942;
       }
+    }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-direction: column;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      flex-direction: row;
+      gap: 5rem;
+    }
+
+    &__item {
+      // @extend %card;
+      text-align: center;
+    }
+    
+    &__icon {
+      width: max-content;
+      background-color: #f8eee9;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 0 auto 1.5rem auto;
+      & svg {
+        color: #d76942;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    &__number {
+      font-family: variables.$fancy-font;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #30251d;
+      margin: 0 auto 1rem auto;
+      & span {
+        font-size: 3rem;
+        color: #d76942;
+      }
+    }
+
+    &__text {
+      font-size: 1rem;
     }
   }
 }

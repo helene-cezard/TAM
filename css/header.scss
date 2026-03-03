@@ -87,7 +87,7 @@
       margin-bottom: 0;
     }
  
-    & li {
+    & > li {
       margin: 1rem 0 1rem 3rem;
       
       @media screen and (min-width: variables.$breakpoint) {

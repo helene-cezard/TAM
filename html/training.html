@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Benevolat TAM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    <script src="../js/burger.js" defer></script>
-    <script src="../js/carousel.js" defer></script>
+    <script src="../js/app.js" defer></script>
     <header id="header" class="header">
         <div class="header__logo">
             <img src="../images/logo-transparent-bg.png" alt="Logo de l'association TAM">
@@ -22,66 +29,79 @@
                 </li>
                 <li class="header__nav-links--blue parent__menu">
                     <div class="shape spirale"></div>
-                    <p>Qui sommes-nous ?</p>
+                    <p class="submenu__text">Qui sommes-nous ?</p>
                     <ul class="submenu">
                         <li class="submenu__item">
-                            <a href="presentation.html">L'association</a>
+                            <a href="../html/presentation.html">L'association</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="presentation.html">L'équipe</a>
+                            <a href="../html/team.html">L'équipe</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="presentation.html">Rapports d'activité</a>
+                            <a href="../html/reports.html">Rapports d'activité</a>
                         </li>
                     </ul>
                 </li>
-                <li class="header__nav-links--green">
+                <li class="header__nav-links--green parent__menu">
                     <div class="shape spirale"></div>
-                    <a href="team.html">Équipe</a>
-                </li>
-                <li class="header__nav-links--orange parent__menu">
-                    <div class="shape spirale"></div>
-                    <p>Actions</p>
+                    <p class="submenu__text">Actions</p>
                     <ul class="submenu">
                         <li class="submenu__item">
-                            <a href="actions.html">En France</a>
+                            <a href="../html/actions.html">En France</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="actions.html">Au Bénin</a>
+                            <a href="../html/actions.html">Au Bénin</a>
                         </li>
                     </ul>
+                </li>
+                <li class="header__nav-links--orange">
+                    <div class="shape spirale"></div>
+                    <a href="../html/training.html">Formation</a>
                 </li>
                 <li class="header__nav-links--turquoise">
                     <div class="shape spirale"></div>
-                    <a href="projects.html">À la une</a>
+                    <a href="../html/research.html">Recherche</a>
                 </li>
                 <li class="header__nav-links--red">
                     <div class="shape spirale"></div>
-                    <a href="partners.html">Partenaires</a>
+                    <a href="../html/resources.html">Ressources</a>
                 </li>
                 <li class="header__nav-links--yellow">
                     <div class="shape spirale"></div>
-                    <a href="ethics.html">Éthique</a>
+                    <a href="../html/support.html">Nous soutenir</a>
                 </li>
                 <li class="header__nav-links--light-blue">
                     <div class="shape spirale"></div>
-                    <a href="contact.html">Contact</a>
+                    <a href="../html/contact.html">Contact</a>
                 </li>
             </ul>
         </nav>
         <div id="icons" class="header__buttons"></div>
     </header>
     <main>
-      <div class="banner-container">
-        <div class="banner"></div>
-        <div class="banner__pusher">
-
+        <div class="banner-container">
+            <div class="banner"></div>
+            <div class="banner__pusher">
+                
+            </div>
+            <div class="banner banner--right"></div>
         </div>
-        <div class="banner banner--right"></div>
-      </div>
     </main>
     <footer class="footer">
         <img class="footer__image" src="../images/footer.svg" alt="">
+        <div class="footer__socials">
+            <p>Blog</p>
+            <p>
+                <img src="../images/Facebook_icon.svg" alt="Logo Facebook" class="footer__socials__icon">
+                Facebook
+            </p>
+            <p>LinkedIn</p>
+        </div>
+        <div>
+            Découvrir notre projet – Soutenir nos actions – Nous contacter
+        </div>
+        <p> &copy; Tous droits réservés</p>
     </footer>
 </body>
+
 </html>

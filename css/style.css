@@ -73,11 +73,11 @@
     margin-bottom: 0;
   }
 }
-.header__nav-links li {
+.header__nav-links > li {
   margin: 1rem 0 1rem 3rem;
 }
 @media screen and (min-width: 1130px) {
-  .header__nav-links li {
+  .header__nav-links > li {
     margin: 1rem 0;
   }
 }
@@ -195,8 +195,14 @@
 
 .parent__menu {
   position: relative;
+  cursor: pointer;
 }
-.parent__menu:hover > .submenu {
+@media (hover: hover) {
+  .parent__menu:hover > .submenu {
+    display: block;
+  }
+}
+.parent__menu .active {
   display: block;
 }
 @media screen and (min-width: 1130px) {
@@ -235,13 +241,18 @@
     left: 1rem;
   }
 }
-.submenu li {
-  margin: 0;
+.submenu__item {
+  margin-left: 1rem;
   padding: 0.5rem;
   position: relative;
 }
+@media screen and (min-width: 1130px) {
+  .submenu__item {
+    margin: 0;
+  }
+}
 
-.actions, .team, .mission__content, .history__content, .home__content {
+.actions, .reports__content, .team, .history__content, .who__content, .mission__content, .values, .home__content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -254,13 +265,13 @@
   line-height: 1.5rem;
 }
 @media screen and (min-width: 1130px) {
-  .actions, .team, .mission__content, .history__content, .home__content {
+  .actions, .reports__content, .team, .history__content, .who__content, .mission__content, .values, .home__content {
     margin: auto;
     box-shadow: none;
   }
 }
 
-.home__pilars h3, .home__axis h3, .hero__title, .actions__title, .team__title, .mission__header__title, .history__content__title, .home__header h2 {
+.home__pilars h3, .home__axis h3, .hero__title, .actions__title, .reports__title, .team__title, .history__content__title, .who__content__title, .mission__header__title, .values__title, .home__header h2 {
   font-family: Cormorant Garamond, Georgia, serif;
   font-size: clamp(1.875rem, 1.8rem + 0.375vw, 2.25rem);
   font-weight: bold;
@@ -270,7 +281,7 @@
   text-align: center;
 }
 
-.actions__title, .team__title, .mission__header__title, .history__content__title, .home__header h2 {
+.actions__title, .reports__title, .team__title, .history__content__title, .who__content__title, .mission__header__title, .values__title, .home__header h2 {
   font-size: calc(1rem + 1.5vw);
 }
 
@@ -290,11 +301,21 @@
   color: #d76942;
 }
 
+.team__card, .home__pilars__card, .home__axis__card {
+  background-color: white;
+  height: fit-content;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: clamp(2rem, 1.4rem + 3vw, 5rem);
   height: calc(100svh - 48px);
   background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
 }
@@ -314,12 +335,12 @@
   border-radius: 5px;
   text-align: center;
   margin-top: 1rem;
+  z-index: 1;
 }
 .hero__title {
   position: relative;
   font-size: clamp(1.7rem, 1.38rem + 1.6vw, 3.3rem);
   padding-bottom: 2rem;
-  z-index: 1;
 }
 @media screen and (min-width: 700px) {
   .hero__title .line-break {
@@ -334,26 +355,6 @@
   .hero__text {
     width: 50vw;
   }
-}
-.hero__discover {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: 1s linear 1s infinite alternate discoverArrow;
-  z-index: 1;
-}
-@media screen and (min-width: 1130px) {
-  .hero__discover {
-    bottom: 2rem;
-  }
-}
-.hero__discover span {
-  margin: 0;
-  font-size: calc(0.6rem + 0.4vw);
-  margin-bottom: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 @keyframes discoverArrow {
   100% {
@@ -401,12 +402,6 @@
 .home__pilars__card, .home__axis__card {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  height: fit-content;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
   padding: 1rem;
 }
 .home__pilars__card:hover, .home__axis__card:hover {
@@ -420,6 +415,47 @@
   margin: 0 auto 1.5rem auto;
   color: #d76942;
 }
+.home__counter {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-direction: column;
+}
+@media screen and (min-width: 1130px) {
+  .home__counter {
+    flex-direction: row;
+    gap: 5rem;
+  }
+}
+.home__counter__item {
+  text-align: center;
+}
+.home__counter__icon {
+  width: max-content;
+  background-color: #f8eee9;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 0 auto 1.5rem auto;
+}
+.home__counter__icon svg {
+  color: #d76942;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.home__counter__number {
+  font-family: Cormorant Garamond, Georgia, serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #30251d;
+  margin: 0 auto 1rem auto;
+}
+.home__counter__number span {
+  font-size: 3rem;
+  color: #d76942;
+}
+.home__counter__text {
+  font-size: 1rem;
+}
 
 @media screen and (min-width: 1130px) {
   .mission__content {
@@ -430,6 +466,23 @@
   display: flex;
   gap: 2rem;
 }
+.values__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.history__content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.history__content__list-intro {
+  margin-top: 2rem;
+}
+
 .team {
   display: flex;
   flex-direction: column;
@@ -445,18 +498,7 @@
   width: 100%;
 }
 .team__card {
-  background-color: white;
-  height: fit-content;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
   margin: 0.5rem;
-}
-.team__card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
 }
 .team__card img {
   width: 100%;
@@ -473,6 +515,46 @@
   font-weight: bold;
   color: #30251d;
   padding-bottom: 1rem;
+}
+
+.reports__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  position: relative;
+}
+.reports__list .line {
+  background: #d76942;
+  z-index: -1;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 15px;
+}
+.reports__list .white-line {
+  background: #FFF;
+  z-index: -1;
+  bottom: 0px;
+  width: 1px;
+  height: 5%;
+  position: absolute;
+  left: 15px;
+}
+.reports__list li {
+  margin-bottom: 2rem;
+}
+.reports__list li span {
+  float: left;
+  margin-right: 20px;
+  background: #d76942;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  border-radius: 100px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
 }
 
 .actions {
@@ -502,7 +584,7 @@
 .banner-container .banner {
   width: 100%;
   opacity: 0.6;
-  background-size: cover;
+  background-size: contain;
   background-image: url("../images/banner/banniere-droite.jpg");
 }
 .banner-container .banner--right {
@@ -537,6 +619,7 @@
   width: 100%;
   z-index: 1;
   box-sizing: content-box;
+  margin-bottom: 2rem;
 }
 @media screen and (min-width: 1130px) {
   .carousel {
@@ -595,6 +678,7 @@ body {
   grid-template-rows: auto auto 200px;
   font-family: "Istok Web", "Calibri", "Source Sans 3", sans-serif;
   font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+  color: #806E61;
 }
 
 main {

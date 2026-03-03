@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - Benevolat TAM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <script src="../js/burger.js" defer></script>
-    <script src="../js/carousel.js" defer></script>
+    <script src="../js/app.js" defer></script>
     <header id="header" class="header">
         <div class="header__logo">
             <img src="../images/logo-transparent-bg.png" alt="Logo de l'association TAM">
@@ -72,16 +75,48 @@
         <div id="icons" class="header__buttons"></div>
     </header>
     <main>
-      <div class="banner-container">
-        <div class="banner"></div>
-        <div class="banner__pusher">
-            
+        <div class="banner-container">
+            <div class="banner"></div>
+            <div class="banner__pusher">
+                <section class="reports">
+                    <div class="reports__content">
+                        <h2 class="reports__title">Des temps forts…</h2>
+                        <p class="reports__text">Découvrez nos rapports d'activité annuels pour en savoir plus sur nos actions, nos réalisations et notre impact. Ces rapports détaillent les projets que nous avons menés, les résultats obtenus et les perspectives pour l'avenir. Ils sont une source précieuse d'informations pour nos partenaires, nos donateurs et tous ceux qui souhaitent suivre notre travail de près.</p>
+                    </div>
+                    <ul class="reports__list">
+                        <div class="line"></div>
+                        <li><span></span>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</li>
+                        <li><span></span>2015 … à Valenton anniversaire. Lies et Karine … Reprendre goût à la vie VIP à l’Opéra comique</li>
+                        <li><span></span>2017… à Créteil réhabilitation du Foyer… Retrouver sa dignité recueil Mémoires d’histoires</li>
+                        <li><span></span>2018… Au CADA de Choisy le Roi … Découvrir la cathédrale Notre Dame « East, West home is best »</li>
+                        <li><span></span>2019 … à La Hay les Roses CADA Philia… Retisser le lien parental </li>
+                        <li><span></span>2020</li>
+                        <li><span></span>2021 … 10 ans c’est grand… Fêter au musée !</li>
+                        <li><span></span>2022 … Réconforter … Le grand doudou de petit chat</li>
+                        <li><span></span>2023 … Au CADA Coallia… Vivre Libre</li>
+                        <li><span></span>2024 … Les quartiers d’été à Ivry sur Seine … Dépasser ses blocages</li>
+                        <li><span></span>2025 … Voyager … Recherche « Art et Résilience » … au Bénin</li>
+                        <div class="white-line"></div>
+                    </ul>
+                </section>
+            </div>
+            <div class="banner banner--right"></div>
         </div>
-        <div class="banner banner--right"></div>
-      </div>
     </main>
     <footer class="footer">
         <img class="footer__image" src="../images/footer.svg" alt="">
+        <div class="footer__socials">
+            <p>Blog</p>
+            <p>
+                <img src="../images/Facebook_icon.svg" alt="Logo Facebook" class="footer__socials__icon">
+                Facebook
+            </p>
+            <p>LinkedIn</p>
+        </div>
+        <div>
+            Découvrir notre projet – Soutenir nos actions – Nous contacter
+        </div>
+        <p>	&copy; Tous droits réservés</p>
     </footer>
 </body>
 </html>

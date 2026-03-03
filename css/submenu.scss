@@ -2,8 +2,15 @@
 
 .parent__menu {
   position: relative;
+  cursor: pointer;
 
-  &:hover > .submenu {
+  @media (hover: hover) {
+    &:hover > .submenu {
+      display: block;
+    }
+  }
+  
+  & .active {
     display: block;
   }
 
@@ -21,20 +28,15 @@
 
 .submenu {
   display: none;
-  // padding-top: 1rem;
   
   @media screen and (min-width: variables.$breakpoint) {
     position: absolute;
     top: 55px;
-    // bottom: -124px;
-    // left: -0.5rem;
     width: max-content;
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    // border-top: 3px solid #ff8255;
     border-radius: 0.2rem;
-    // padding: 0 1rem;
 
     &::before {
       display: inline-block;
@@ -49,10 +51,13 @@
     }
   }
 
-  & li {
-    // padding-bottom: 1rem;
-    margin: 0;
+  &__item {
+    margin-left: 1rem;
     padding: 0.5rem;
     position: relative;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      margin: 0;
+    }
   }
 }

@@ -58,6 +58,8 @@ const app = {
   },
     
   play: function(itv) {
+
+    if (!document.querySelector('.carousel__slide')) return;
     clearInterval(itv);
     itv = setInterval(app.startCarousel, 5000);
     return itv;

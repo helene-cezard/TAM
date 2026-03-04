@@ -259,7 +259,7 @@
   text-align: justify;
   padding: 1rem;
   margin: 1rem auto;
-  background: rgba(248, 246, 241, 0.9019607843);
+  background: rgba(251, 250, 248, 0.9019607843);
   color: #806E61;
   box-shadow: 3px 6px 12.5px rgba(46, 19, 5, 0.3098039216);
   line-height: 1.5rem;
@@ -317,7 +317,7 @@
   justify-content: center;
   gap: clamp(2rem, 1.4rem + 3vw, 5rem);
   height: calc(100svh - 48px);
-  background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
+  background: linear-gradient(to bottom, #fff7d3 0%, #f28c57 70%);
 }
 @media screen and (min-width: 1130px) {
   .hero {
@@ -537,7 +537,7 @@
   z-index: -1;
   bottom: 0px;
   width: 1px;
-  height: 5%;
+  height: 43.5px;
   position: absolute;
   left: 15px;
 }
@@ -550,11 +550,7 @@
   background: #d76942;
   height: 30px;
   width: 30px;
-  line-height: 30px;
   border-radius: 100px;
-  font-weight: 700;
-  color: white;
-  text-align: center;
 }
 
 .actions {
@@ -567,7 +563,7 @@
 }
 
 .banner-container {
-  background-color: #f8f6f1;
+  background-color: #fbfaf8;
   display: grid;
   flex-grow: 1;
 }

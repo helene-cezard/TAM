@@ -33,24 +33,21 @@
       z-index:-1;
       bottom:0px;
       width:1px;
-      height:5%;
+      height:43.5px;
       position:absolute;
       left:15px;
     }
 
     & li {
       margin-bottom: 2rem;
+      
       & span {
         float:left;
         margin-right:20px;
         background: #d76942;
         height:30px;
         width:30px;
-        line-height:30px;
         border-radius:100px;
-        font-weight:700;
-        color:white;
-        text-align:center;
       }
     }
   }

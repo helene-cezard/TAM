@@ -6,7 +6,7 @@
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-size: 1rem;
+  font-size: 1.1rem;
   display: grid;
   grid-template-columns: 1.5fr 3fr 1.5fr;
   grid-template-rows: 48px;
@@ -252,11 +252,10 @@
   }
 }
 
-.actions, .reports__content, .team, .history__content, .who__content, .mission__content, .values, .home__content {
+.home__content, .history, .who, .mission, .values, .team, .reports, .actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: justify;
+  text-align: center;
   padding: 1rem;
   margin: 1rem auto;
   background: rgba(251, 250, 248, 0.9019607843);
@@ -265,27 +264,34 @@
   line-height: 1.5rem;
 }
 @media screen and (min-width: 1130px) {
-  .actions, .reports__content, .team, .history__content, .who__content, .mission__content, .values, .home__content {
+  .home__content, .history, .who, .mission, .values, .team, .reports, .actions {
     margin: auto;
     box-shadow: none;
+    text-align: justify;
   }
 }
 
-.home__pilars h3, .home__axis h3, .hero__title, .actions__title, .reports__title, .team__title, .history__content__title, .who__content__title, .mission__header__title, .values__title, .home__header h2 {
+.hero__title, .home .home__pilars h3, .home .home__axes h3, .history .home__pilars h3, .history .home__axes h3, .who .home__pilars h3, .who .home__axes h3, .mission .home__pilars h3, .mission .home__axes h3, .values .home__pilars h3, .values .home__axes h3, .team .home__pilars h3, .team .home__axes h3, .reports .home__pilars h3, .reports .home__axes h3, .actions .home__pilars h3, .actions .home__axes h3, .home__title, .history__title, .who__title, .mission__title, .values__title, .team__title, .reports__title, .actions__title {
   font-family: Cormorant Garamond, Georgia, serif;
-  font-size: clamp(1.875rem, 1.8rem + 0.375vw, 2.25rem);
   font-weight: bold;
   color: #30251d;
-  padding-bottom: 1.25rem;
   line-height: normal;
   text-align: center;
 }
 
-.actions__title, .reports__title, .team__title, .history__content__title, .who__content__title, .mission__header__title, .values__title, .home__header h2 {
-  font-size: calc(1rem + 1.5vw);
+.home__title, .history__title, .who__title, .mission__title, .values__title, .team__title, .reports__title, .actions__title {
+  width: 60%;
+  margin: auto;
+  font-size: clamp(1.3rem, 1.11rem + 0.95vw, 2.25rem);
+  padding-bottom: 1.25rem;
 }
 
-.actions__quote, .mission__quote {
+.home .home__pilars h3, .home .home__axes h3, .history .home__pilars h3, .history .home__axes h3, .who .home__pilars h3, .who .home__axes h3, .mission .home__pilars h3, .mission .home__axes h3, .values .home__pilars h3, .values .home__axes h3, .team .home__pilars h3, .team .home__axes h3, .reports .home__pilars h3, .reports .home__axes h3, .actions .home__pilars h3, .actions .home__axes h3 {
+  font-size: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+  padding-bottom: 1rem;
+}
+
+.home__quote, .history__quote, .who__quote, .mission__quote, .values__quote, .team__quote, .reports__quote, .actions__quote {
   background-color: #f8eee9;
   border-radius: 1.5rem;
   font-size: 1.5rem;
@@ -294,14 +300,14 @@
   font-family: Cormorant Garamond, Georgia, serif;
   height: fit-content;
 }
-.actions__quote svg, .mission__quote svg {
+.home__quote svg, .history__quote svg, .who__quote svg, .mission__quote svg, .values__quote svg, .team__quote svg, .reports__quote svg, .actions__quote svg {
   width: 3rem;
   height: 3rem;
   margin-bottom: 1.5rem;
   color: #d76942;
 }
 
-.team__card, .home__pilars__card, .home__axis__card {
+.home .home__pilars__card, .home .home__axes__card, .history .home__pilars__card, .history .home__axes__card, .who .home__pilars__card, .who .home__axes__card, .mission .home__pilars__card, .mission .home__axes__card, .values .home__pilars__card, .values .home__axes__card, .team .home__pilars__card, .team .home__axes__card, .reports .home__pilars__card, .reports .home__axes__card, .actions .home__pilars__card, .actions .home__axes__card, .team__card {
   background-color: white;
   height: fit-content;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -339,7 +345,7 @@
 }
 .hero__title {
   position: relative;
-  font-size: clamp(1.7rem, 1.38rem + 1.6vw, 3.3rem);
+  font-size: clamp(2rem, 1.74rem + 1.3vw, 3.3rem);
   padding-bottom: 2rem;
 }
 @media screen and (min-width: 700px) {
@@ -365,17 +371,20 @@
 .home__content {
   gap: 3rem;
 }
-.home__header {
+.home, .history, .who, .mission, .values, .team, .reports, .actions {
+  gap: 3rem;
+}
+.home__header, .history__header, .who__header, .mission__header, .values__header, .team__header, .reports__header, .actions__header {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   border-radius: 0.5rem;
   padding: 1.25rem;
 }
-.home__presentation p {
+.home__presentation p, .history__presentation p, .who__presentation p, .mission__presentation p, .values__presentation p, .team__presentation p, .reports__presentation p, .actions__presentation p {
   padding-bottom: 1rem;
 }
-.home__link {
+.home__link, .history__link, .who__link, .mission__link, .values__link, .team__link, .reports__link, .actions__link {
   color: #d76942;
   text-decoration: none;
   font-weight: 500;
@@ -384,103 +393,86 @@
   width: 100%;
   text-align: center;
 }
-.home__link:hover {
+.home__link:hover, .history__link:hover, .who__link:hover, .mission__link:hover, .values__link:hover, .team__link:hover, .reports__link:hover, .actions__link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-.home__pilars__list, .home__axis__list {
+.home .home__pilars__list, .home .home__axes__list, .history .home__pilars__list, .history .home__axes__list, .who .home__pilars__list, .who .home__axes__list, .mission .home__pilars__list, .mission .home__axes__list, .values .home__pilars__list, .values .home__axes__list, .team .home__pilars__list, .team .home__axes__list, .reports .home__pilars__list, .reports .home__axes__list, .actions .home__pilars__list, .actions .home__axes__list {
   display: flex;
   gap: 2rem;
   justify-content: center;
   flex-direction: column;
 }
 @media screen and (min-width: 1130px) {
-  .home__pilars__list, .home__axis__list {
+  .home .home__pilars__list, .home .home__axes__list, .history .home__pilars__list, .history .home__axes__list, .who .home__pilars__list, .who .home__axes__list, .mission .home__pilars__list, .mission .home__axes__list, .values .home__pilars__list, .values .home__axes__list, .team .home__pilars__list, .team .home__axes__list, .reports .home__pilars__list, .reports .home__axes__list, .actions .home__pilars__list, .actions .home__axes__list {
     flex-direction: row;
   }
 }
-.home__pilars__card, .home__axis__card {
+.home .home__pilars__card, .home .home__axes__card, .history .home__pilars__card, .history .home__axes__card, .who .home__pilars__card, .who .home__axes__card, .mission .home__pilars__card, .mission .home__axes__card, .values .home__pilars__card, .values .home__axes__card, .team .home__pilars__card, .team .home__axes__card, .reports .home__pilars__card, .reports .home__axes__card, .actions .home__pilars__card, .actions .home__axes__card {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
-.home__pilars__card:hover, .home__axis__card:hover {
+.home .home__pilars__card:hover, .home .home__axes__card:hover, .history .home__pilars__card:hover, .history .home__axes__card:hover, .who .home__pilars__card:hover, .who .home__axes__card:hover, .mission .home__pilars__card:hover, .mission .home__axes__card:hover, .values .home__pilars__card:hover, .values .home__axes__card:hover, .team .home__pilars__card:hover, .team .home__axes__card:hover, .reports .home__pilars__card:hover, .reports .home__axes__card:hover, .actions .home__pilars__card:hover, .actions .home__axes__card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
-.home__pilars__card svg, .home__pilars__card .fi, .home__axis__card svg, .home__axis__card .fi {
+.home .home__pilars__card svg, .home .home__pilars__card .fi, .home .home__axes__card svg, .home .home__axes__card .fi, .history .home__pilars__card svg, .history .home__pilars__card .fi, .history .home__axes__card svg, .history .home__axes__card .fi, .who .home__pilars__card svg, .who .home__pilars__card .fi, .who .home__axes__card svg, .who .home__axes__card .fi, .mission .home__pilars__card svg, .mission .home__pilars__card .fi, .mission .home__axes__card svg, .mission .home__axes__card .fi, .values .home__pilars__card svg, .values .home__pilars__card .fi, .values .home__axes__card svg, .values .home__axes__card .fi, .team .home__pilars__card svg, .team .home__pilars__card .fi, .team .home__axes__card svg, .team .home__axes__card .fi, .reports .home__pilars__card svg, .reports .home__pilars__card .fi, .reports .home__axes__card svg, .reports .home__axes__card .fi, .actions .home__pilars__card svg, .actions .home__pilars__card .fi, .actions .home__axes__card svg, .actions .home__axes__card .fi {
   width: 3rem;
   height: 3rem;
   margin: 0 auto 1.5rem auto;
   color: #d76942;
 }
-.home__counter {
+.home .home__counter, .history .home__counter, .who .home__counter, .mission .home__counter, .values .home__counter, .team .home__counter, .reports .home__counter, .actions .home__counter {
   display: flex;
   gap: 2rem;
   justify-content: center;
   flex-direction: column;
 }
 @media screen and (min-width: 1130px) {
-  .home__counter {
+  .home .home__counter, .history .home__counter, .who .home__counter, .mission .home__counter, .values .home__counter, .team .home__counter, .reports .home__counter, .actions .home__counter {
     flex-direction: row;
     gap: 5rem;
   }
 }
-.home__counter__item {
+.home .home__counter__item, .history .home__counter__item, .who .home__counter__item, .mission .home__counter__item, .values .home__counter__item, .team .home__counter__item, .reports .home__counter__item, .actions .home__counter__item {
   text-align: center;
 }
-.home__counter__icon {
+.home .home__counter__icon, .history .home__counter__icon, .who .home__counter__icon, .mission .home__counter__icon, .values .home__counter__icon, .team .home__counter__icon, .reports .home__counter__icon, .actions .home__counter__icon {
   width: max-content;
   background-color: #f8eee9;
   padding: 1rem;
   border-radius: 1rem;
   margin: 0 auto 1.5rem auto;
 }
-.home__counter__icon svg {
+.home .home__counter__icon svg, .history .home__counter__icon svg, .who .home__counter__icon svg, .mission .home__counter__icon svg, .values .home__counter__icon svg, .team .home__counter__icon svg, .reports .home__counter__icon svg, .actions .home__counter__icon svg {
   color: #d76942;
   width: 2.5rem;
   height: 2.5rem;
 }
-.home__counter__number {
+.home .home__counter__number, .history .home__counter__number, .who .home__counter__number, .mission .home__counter__number, .values .home__counter__number, .team .home__counter__number, .reports .home__counter__number, .actions .home__counter__number {
   font-family: Cormorant Garamond, Georgia, serif;
-  font-size: 3rem;
+  font-size: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);
   font-weight: bold;
   color: #30251d;
   margin: 0 auto 1rem auto;
 }
-.home__counter__number span {
+.home .home__counter__number span, .history .home__counter__number span, .who .home__counter__number span, .mission .home__counter__number span, .values .home__counter__number span, .team .home__counter__number span, .reports .home__counter__number span, .actions .home__counter__number span {
   font-size: 3rem;
   color: #d76942;
 }
-.home__counter__text {
+.home .home__counter__text, .history .home__counter__text, .who .home__counter__text, .mission .home__counter__text, .values .home__counter__text, .team .home__counter__text, .reports .home__counter__text, .actions .home__counter__text {
   font-size: 1rem;
 }
 
+.mission__content {
+  display: flex;
+}
 @media screen and (min-width: 1130px) {
   .mission__content {
     flex-direction: row;
   }
-}
-.mission__content {
-  display: flex;
-  gap: 2rem;
-}
-.values__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.history__content__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.history__content__list-intro {
-  margin-top: 2rem;
 }
 
 .team {
@@ -518,48 +510,42 @@
 }
 
 .reports__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
   position: relative;
 }
-.reports__list .line {
-  background: #d76942;
-  z-index: -1;
-  width: 1px;
-  height: 100%;
-  position: absolute;
-  left: 15px;
-}
-.reports__list .white-line {
-  background: #FFF;
-  z-index: -1;
-  bottom: 0px;
-  width: 1px;
-  height: 43.5px;
-  position: absolute;
-  left: 15px;
-}
-.reports__list li {
+.reports__list-item {
   margin-bottom: 2rem;
+  position: relative;
 }
-.reports__list li span {
+.reports__list-bullet {
+  position: relative;
+  z-index: 1;
   float: left;
   margin-right: 20px;
   background: #d76942;
-  height: 30px;
-  width: 30px;
+  height: 14px;
+  width: 14px;
   border-radius: 100px;
 }
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+.reports__list-text {
+  display: table-row;
+  vertical-align: middle;
 }
-.actions__presentation p {
-  padding-bottom: 1rem;
+.reports .line {
+  background: #d76942;
+  z-index: 0;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 7px;
+}
+.reports .white-line {
+  background: #FFF;
+  z-index: 0;
+  bottom: 0px;
+  width: 1px;
+  height: 70px;
+  position: absolute;
+  left: 7px;
 }
 
 .banner-container {
@@ -669,26 +655,6 @@
   }
 }
 
-body {
-  display: grid;
-  grid-template-rows: auto auto 200px;
-  font-family: "Istok Web", "Calibri", "Source Sans 3", sans-serif;
-  font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
-  color: #806E61;
-}
-
-main {
-  background-color: white;
-  min-height: calc(100vh - 248px);
-  display: flex;
-  flex-direction: column;
-}
-@media screen and (min-width: 1130px) {
-  main {
-    min-height: calc(100vh - 255px);
-  }
-}
-
 .footer {
   position: relative;
   text-align: center;
@@ -715,6 +681,26 @@ main {
 .footer__socials__icon {
   width: 2rem;
   height: 2rem;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto auto 200px;
+  font-family: "Istok Web", "Calibri", "Source Sans 3", sans-serif;
+  font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+  color: #806E61;
+}
+
+main {
+  background-color: white;
+  min-height: calc(100vh - 248px);
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1130px) {
+  main {
+    min-height: calc(100vh - 255px);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

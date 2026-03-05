@@ -3,8 +3,8 @@
 %contents {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: justify;
+  // align-items: center;
+  text-align: center;
   padding: 1rem;
   margin: 1rem auto;
   // background: #f8f6f1e6;
@@ -16,22 +16,31 @@
   @media screen and (min-width: variables.$breakpoint) {
     margin: auto;
     box-shadow: none;
+    text-align: justify;
   }
 }
 
 %title {
   font-family: variables.$fancy-font;
-  font-size: clamp(1.875rem, 1.8rem + 0.375vw, 2.25rem);
   font-weight: bold;
   color: #30251d;
-  padding-bottom: 1.25rem;
+  // padding-bottom: 1.25rem;
   line-height: normal;
   text-align: center;
 }
 
 %section-title {
-  font-size: calc(1rem + 1.5vw);
   @extend %title;
+  width: 60%;
+  margin: auto;
+  font-size: clamp(1.3rem, 1.11rem + 0.95vw, 2.25rem);
+  padding-bottom: 1.25rem;
+}
+
+%small-title {
+  @extend %title;
+  font-size: clamp(1rem, 0.75rem + 1.25vw, 2rem);
+  padding-bottom: 1rem;
 }
 
 %quote {

@@ -1,0 +1,259 @@
+@use "placeholders";
+@use "variables";
+
+.home {
+  &__content {
+    @extend %contents;
+    gap: 3rem;
+  }
+
+  &__title {
+    @extend %section-title;
+  }
+}
+
+.history, .who, .mission, .values, .team, .reports, .actions {
+  @extend %contents;
+  
+}
+
+.home, .history, .who, .mission, .values, .team, .reports, .actions {
+  gap: 3rem;
+
+  &__title {
+    @extend %section-title;
+  }
+  
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    // margin-bottom: 3rem;
+    border-radius: .5rem;
+    padding: 1.25rem;
+  }
+  
+  &__presentation {
+
+    & p {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__quote {
+    @extend %quote;
+  }
+
+  &__link {
+    color: #d76942;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: .5rem;
+    padding: 1.25rem;
+    width: 100%;
+    text-align: center;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  .home {
+    &__pilars, &__axes {
+
+      & h3 {
+        @extend %small-title;
+      }
+      
+      &__list {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-direction: column;
+  
+        @media screen and (min-width: variables.$breakpoint) {
+          flex-direction: row;
+        }
+      }
+  
+      &__card {
+        @extend %card;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+  
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        }
+  
+        & svg, .fi {
+          width: 3rem;
+          height: 3rem;
+          margin: 0 auto 1.5rem auto;
+          color: #d76942;
+        }
+      }
+    }
+  
+    &__counter {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-direction: column;
+  
+      @media screen and (min-width: variables.$breakpoint) {
+        flex-direction: row;
+        gap: 5rem;
+      }
+  
+      &__item {
+        // @extend %card;
+        text-align: center;
+      }
+      
+      &__icon {
+        width: max-content;
+        background-color: #f8eee9;
+        padding: 1rem;
+        border-radius: 1rem;
+        margin: 0 auto 1.5rem auto;
+        & svg {
+          color: #d76942;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+  
+      &__number {
+        font-family: variables.$fancy-font;
+        font-size: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);;
+        font-weight: bold;
+        color: #30251d;
+        margin: 0 auto 1rem auto;
+        & span {
+          font-size: 3rem;
+          color: #d76942;
+        }
+      }
+  
+      &__text {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.mission__content {
+  display: flex;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    flex-direction: row;
+  }
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  &__presentation {
+    // @extend %section-text;
+
+    & p {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__container {
+    display: grid;
+    gap: 3rem;
+	  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    width: 100%;
+  }
+
+  &__card {
+    @extend %card;
+    margin: .5rem;
+
+    // &:hover {
+    //   transform: translateY(-10px);
+    //   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    //   transition: all 0.3s ease-in-out;
+    // }
+
+    & img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    &__text {
+      // @extend %section-text;
+      padding: 1rem;
+    }
+
+    &__name {
+      font-family: variables.$fancy-font;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #30251d;
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+.reports {
+  &__list {
+    // @extend %contents;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 1.5rem;
+    // margin-top: 2rem;
+    position: relative;
+  }
+
+  &__list-item {
+    margin-bottom: 2rem;
+    position: relative;
+    
+  }
+  
+  &__list-bullet {
+    position: relative;
+    z-index: 1;
+    float:left;
+    margin-right:20px;
+    background: #d76942;
+    height:14px;
+    width:14px;
+    border-radius:100px;
+  }
+
+  &__list-text {
+    display:table-row;
+    vertical-align:middle;
+  }
+  
+  & .line {
+    background:#d76942;
+    z-index: 0;
+    width:1px;
+    height:100%;
+    position:absolute;
+    left:7px;
+  }
+  
+  .white-line {
+    background:#FFF;
+    z-index: 0;
+    bottom:0px;
+    width:1px;
+    height:70px;
+    position:absolute;
+    left:7px;
+  }
+}

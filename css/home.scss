@@ -3,8 +3,13 @@
 
 .home {
   &__content {
+
     @extend %contents;
     gap: 3rem;
+  }
+
+  &__title {
+    @extend %section-title;
   }
   
   &__header {
@@ -14,11 +19,6 @@
     // margin-bottom: 3rem;
     border-radius: .5rem;
     padding: 1.25rem;
-    
-    & h2 {
-      @extend %section-title;
-    }
-
   }
   
   &__presentation {
@@ -43,10 +43,10 @@
     }
   }
 
-  &__pilars, &__axis {
+  &__pilars, &__axes {
 
     & h3 {
-      @extend %title;
+      @extend %small-title;
     }
     
     &__list {
@@ -112,7 +112,7 @@
 
     &__number {
       font-family: variables.$fancy-font;
-      font-size: 3rem;
+      font-size: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);;
       font-weight: bold;
       color: #30251d;
       margin: 0 auto 1rem auto;

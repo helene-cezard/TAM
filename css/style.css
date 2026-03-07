@@ -94,7 +94,7 @@
     align-items: center;
   }
 }
-.header__nav-links--yellow a:hover, .header__nav-links--yellow p:hover {
+.header__nav-links--yellow a:hover, .header__nav-links--yellow p:hover, .header__nav-links--yellow .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #f0d042;
   text-shadow: 0 0 10px hsl(48.9655172414, 100.2941176471%, 35%);
@@ -105,7 +105,7 @@
 .header__nav-links--yellow ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--blue a:hover, .header__nav-links--blue p:hover {
+.header__nav-links--blue a:hover, .header__nav-links--blue p:hover, .header__nav-links--blue .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #004aad;
   text-shadow: 0 0 10px hsl(214.3352601156, 115%, 8.9215686275%);
@@ -116,7 +116,7 @@
 .header__nav-links--blue ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--green a:hover, .header__nav-links--green p:hover {
+.header__nav-links--green a:hover, .header__nav-links--green p:hover, .header__nav-links--green .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #7ed957;
   text-shadow: 0 0 10px rgb(60.6783009709, 157.1792475728, 19.3207524272);
@@ -127,7 +127,7 @@
 .header__nav-links--green ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--orange a:hover, .header__nav-links--orange p:hover {
+.header__nav-links--orange a:hover, .header__nav-links--orange p:hover, .header__nav-links--orange .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #ff8255;
   text-shadow: 0 0 10px hsl(15.8823529412, 115%, 41.6666666667%);
@@ -138,7 +138,7 @@
 .header__nav-links--orange ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--turquoise a:hover, .header__nav-links--turquoise p:hover {
+.header__nav-links--turquoise a:hover, .header__nav-links--turquoise p:hover, .header__nav-links--turquoise .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #44ab8a;
   text-shadow: 0 0 10px rgb(23.3613493724, 88.1386506276, 67.3847579924);
@@ -149,7 +149,7 @@
 .header__nav-links--turquoise ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--red a:hover, .header__nav-links--red p:hover {
+.header__nav-links--red a:hover, .header__nav-links--red p:hover, .header__nav-links--red .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #fc1818;
   text-shadow: 0 0 10px hsl(0, 112.4358974359%, 29.1176470588%);
@@ -160,7 +160,7 @@
 .header__nav-links--red ul > li:last-child {
   border-bottom: none;
 }
-.header__nav-links--light-blue a:hover, .header__nav-links--light-blue p:hover {
+.header__nav-links--light-blue a:hover, .header__nav-links--light-blue p:hover, .header__nav-links--light-blue .active {
   color: white;
   box-shadow: inset 0 -40px 0 -1px #7db4ff;
   text-shadow: 0 0 10px hsl(214.6153846154, 115%, 49.5098039216%);
@@ -252,7 +252,19 @@
   }
 }
 
-.home, .history, .who, .mission, .values, .team, .reports, .actions, .training, .research, .resources, .support, .contact {
+.home,
+.history,
+.who,
+.mission,
+.values,
+.team,
+.reports,
+.actions,
+.training,
+.research,
+.resources,
+.support,
+.contact {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -264,37 +276,120 @@
   line-height: 1.5rem;
 }
 @media screen and (min-width: 1130px) {
-  .home, .history, .who, .mission, .values, .team, .reports, .actions, .training, .research, .resources, .support, .contact {
+  .home,
+  .history,
+  .who,
+  .mission,
+  .values,
+  .team,
+  .reports,
+  .actions,
+  .training,
+  .research,
+  .resources,
+  .support,
+  .contact {
     margin: auto;
     box-shadow: none;
     text-align: justify;
   }
 }
 
-.hero__title, .home h3, .history h3, .who h3, .mission h3, .values h3, .team h3, .reports h3, .actions h3, .training h3, .research h3, .resources h3, .support h3, .contact h3, .home .home__pilars h3, .home .home__axes h3, .history .home__pilars h3, .history .home__axes h3, .who .home__pilars h3, .who .home__axes h3, .mission .home__pilars h3, .mission .home__axes h3, .values .home__pilars h3, .values .home__axes h3, .team .home__pilars h3, .team .home__axes h3, .reports .home__pilars h3, .reports .home__axes h3, .actions .home__pilars h3, .actions .home__axes h3, .training .home__pilars h3, .training .home__axes h3, .research .home__pilars h3, .research .home__axes h3, .resources .home__pilars h3, .resources .home__axes h3, .support .home__pilars h3, .support .home__axes h3, .contact .home__pilars h3, .contact .home__axes h3, .home__title, .history__title, .who__title, .mission__title, .values__title, .team__title, .reports__title, .actions__title, .training__title, .research__title, .resources__title, .support__title, .contact__title {
+.hero__title, .home h3,
+.history h3,
+.who h3,
+.mission h3,
+.values h3,
+.team h3,
+.reports h3,
+.actions h3,
+.training h3,
+.research h3,
+.resources h3,
+.support h3,
+.contact h3, .home__pilars h3, .home__axes h3, .home__title,
+.history__title,
+.who__title,
+.mission__title,
+.values__title,
+.team__title,
+.reports__title,
+.actions__title,
+.training__title,
+.research__title,
+.resources__title,
+.support__title,
+.contact__title {
   font-family: Cormorant Garamond, Georgia, serif;
   font-weight: bold;
   color: #30251d;
   line-height: normal;
   text-align: center;
-  padding-bottom: 2rem;
+  margin: 0 auto 4rem auto;
 }
 
-.home__title, .history__title, .who__title, .mission__title, .values__title, .team__title, .reports__title, .actions__title, .training__title, .research__title, .resources__title, .support__title, .contact__title {
-  margin: auto;
+.home__title,
+.history__title,
+.who__title,
+.mission__title,
+.values__title,
+.team__title,
+.reports__title,
+.actions__title,
+.training__title,
+.research__title,
+.resources__title,
+.support__title,
+.contact__title {
   font-size: clamp(1.3rem, 1.06rem + 1.2vw, 2.5rem);
 }
 @media screen and (min-width: 1130px) {
-  .home__title, .history__title, .who__title, .mission__title, .values__title, .team__title, .reports__title, .actions__title, .training__title, .research__title, .resources__title, .support__title, .contact__title {
+  .home__title,
+  .history__title,
+  .who__title,
+  .mission__title,
+  .values__title,
+  .team__title,
+  .reports__title,
+  .actions__title,
+  .training__title,
+  .research__title,
+  .resources__title,
+  .support__title,
+  .contact__title {
     width: 60%;
   }
 }
 
-.home h3, .history h3, .who h3, .mission h3, .values h3, .team h3, .reports h3, .actions h3, .training h3, .research h3, .resources h3, .support h3, .contact h3, .home .home__pilars h3, .home .home__axes h3, .history .home__pilars h3, .history .home__axes h3, .who .home__pilars h3, .who .home__axes h3, .mission .home__pilars h3, .mission .home__axes h3, .values .home__pilars h3, .values .home__axes h3, .team .home__pilars h3, .team .home__axes h3, .reports .home__pilars h3, .reports .home__axes h3, .actions .home__pilars h3, .actions .home__axes h3, .training .home__pilars h3, .training .home__axes h3, .research .home__pilars h3, .research .home__axes h3, .resources .home__pilars h3, .resources .home__axes h3, .support .home__pilars h3, .support .home__axes h3, .contact .home__pilars h3, .contact .home__axes h3 {
+.home h3,
+.history h3,
+.who h3,
+.mission h3,
+.values h3,
+.team h3,
+.reports h3,
+.actions h3,
+.training h3,
+.research h3,
+.resources h3,
+.support h3,
+.contact h3, .home__pilars h3, .home__axes h3 {
   font-size: clamp(1rem, 0.84rem + 0.8vw, 1.8rem);
 }
 
-.home__quote, .history__quote, .who__quote, .mission__quote, .values__quote, .team__quote, .reports__quote, .actions__quote, .training__quote, .research__quote, .resources__quote, .support__quote, .contact__quote {
+.home__quote,
+.history__quote,
+.who__quote,
+.mission__quote,
+.values__quote,
+.team__quote,
+.reports__quote,
+.actions__quote,
+.training__quote,
+.research__quote,
+.resources__quote,
+.support__quote,
+.contact__quote {
   background-color: #f8eee9;
   border-radius: 1.5rem;
   font-size: clamp(1.5rem, 1.44rem + 0.3vw, 1.8rem);
@@ -306,20 +401,39 @@
   text-align: left;
   line-height: 2rem;
 }
-.home__quote svg, .history__quote svg, .who__quote svg, .mission__quote svg, .values__quote svg, .team__quote svg, .reports__quote svg, .actions__quote svg, .training__quote svg, .research__quote svg, .resources__quote svg, .support__quote svg, .contact__quote svg {
+.home__quote svg,
+.history__quote svg,
+.who__quote svg,
+.mission__quote svg,
+.values__quote svg,
+.team__quote svg,
+.reports__quote svg,
+.actions__quote svg,
+.training__quote svg,
+.research__quote svg,
+.resources__quote svg,
+.support__quote svg,
+.contact__quote svg {
   width: 3rem;
   height: 3rem;
   margin-bottom: 0.5rem;
   color: #d76942;
 }
 
-.home .home__pilars__card, .home .home__axes__card, .history .home__pilars__card, .history .home__axes__card, .who .home__pilars__card, .who .home__axes__card, .mission .home__pilars__card, .mission .home__axes__card, .values .home__pilars__card, .values .home__axes__card, .team .home__pilars__card, .team .home__axes__card, .reports .home__pilars__card, .reports .home__axes__card, .actions .home__pilars__card, .actions .home__axes__card, .training .home__pilars__card, .training .home__axes__card, .research .home__pilars__card, .research .home__axes__card, .resources .home__pilars__card, .resources .home__axes__card, .support .home__pilars__card, .support .home__axes__card, .contact .home__pilars__card, .contact .home__axes__card, .team__card {
+.home__pilars__card, .home__axes__card, .team__card {
   background-color: white;
   height: fit-content;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
+}
+
+.mission__list, .values__list,
+.history__list, .actions__speech__list, .actions__partners__list, .training__presentation__list, .training__audience__list, .training__goals__list, .training__axes__list {
+  list-style: disc;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .hero {
@@ -374,20 +488,69 @@
   }
 }
 
-.home, .history, .who, .mission, .values, .team, .reports, .actions, .training, .research, .resources, .support, .contact {
+.home,
+.history,
+.who,
+.mission,
+.values,
+.team,
+.reports,
+.actions,
+.training,
+.research,
+.resources,
+.support,
+.contact {
   gap: 4rem;
   padding: 2rem 1rem;
+  margin-top: 2rem;
 }
 @media screen and (min-width: 1130px) {
-  .home, .history, .who, .mission, .values, .team, .reports, .actions, .training, .research, .resources, .support, .contact {
-    padding: 3rem 0;
-    gap: 0;
+  .home,
+  .history,
+  .who,
+  .mission,
+  .values,
+  .team,
+  .reports,
+  .actions,
+  .training,
+  .research,
+  .resources,
+  .support,
+  .contact {
+    gap: 7rem;
+    padding: 0;
+  }
+  .home:not(:first-child),
+  .history:not(:first-child),
+  .who:not(:first-child),
+  .mission:not(:first-child),
+  .values:not(:first-child),
+  .team:not(:first-child),
+  .reports:not(:first-child),
+  .actions:not(:first-child),
+  .training:not(:first-child),
+  .research:not(:first-child),
+  .resources:not(:first-child),
+  .support:not(:first-child),
+  .contact:not(:first-child) {
+    margin-top: 10rem;
   }
 }
-.home__presentation p, .history__presentation p, .who__presentation p, .mission__presentation p, .values__presentation p, .team__presentation p, .reports__presentation p, .actions__presentation p, .training__presentation p, .research__presentation p, .resources__presentation p, .support__presentation p, .contact__presentation p {
-  padding-bottom: 1rem;
-}
-.home__link, .history__link, .who__link, .mission__link, .values__link, .team__link, .reports__link, .actions__link, .training__link, .research__link, .resources__link, .support__link, .contact__link {
+.home__link,
+.history__link,
+.who__link,
+.mission__link,
+.values__link,
+.team__link,
+.reports__link,
+.actions__link,
+.training__link,
+.research__link,
+.resources__link,
+.support__link,
+.contact__link {
   color: #d76942;
   text-decoration: none;
   font-weight: 500;
@@ -395,43 +558,73 @@
   width: 100%;
   text-align: center;
 }
-.home__link:hover, .history__link:hover, .who__link:hover, .mission__link:hover, .values__link:hover, .team__link:hover, .reports__link:hover, .actions__link:hover, .training__link:hover, .research__link:hover, .resources__link:hover, .support__link:hover, .contact__link:hover {
+.home__link::after,
+.history__link::after,
+.who__link::after,
+.mission__link::after,
+.values__link::after,
+.team__link::after,
+.reports__link::after,
+.actions__link::after,
+.training__link::after,
+.research__link::after,
+.resources__link::after,
+.support__link::after,
+.contact__link::after {
+  content: "   →";
+}
+.home__link:hover,
+.history__link:hover,
+.who__link:hover,
+.mission__link:hover,
+.values__link:hover,
+.team__link:hover,
+.reports__link:hover,
+.actions__link:hover,
+.training__link:hover,
+.research__link:hover,
+.resources__link:hover,
+.support__link:hover,
+.contact__link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-.home .home__pilars__list, .home .home__axes__list, .history .home__pilars__list, .history .home__axes__list, .who .home__pilars__list, .who .home__axes__list, .mission .home__pilars__list, .mission .home__axes__list, .values .home__pilars__list, .values .home__axes__list, .team .home__pilars__list, .team .home__axes__list, .reports .home__pilars__list, .reports .home__axes__list, .actions .home__pilars__list, .actions .home__axes__list, .training .home__pilars__list, .training .home__axes__list, .research .home__pilars__list, .research .home__axes__list, .resources .home__pilars__list, .resources .home__axes__list, .support .home__pilars__list, .support .home__axes__list, .contact .home__pilars__list, .contact .home__axes__list {
+
+.home__pilars__list, .home__axes__list {
   display: flex;
   gap: 2rem;
   justify-content: center;
   flex-direction: column;
 }
 @media screen and (min-width: 1130px) {
-  .home .home__pilars__list, .home .home__axes__list, .history .home__pilars__list, .history .home__axes__list, .who .home__pilars__list, .who .home__axes__list, .mission .home__pilars__list, .mission .home__axes__list, .values .home__pilars__list, .values .home__axes__list, .team .home__pilars__list, .team .home__axes__list, .reports .home__pilars__list, .reports .home__axes__list, .actions .home__pilars__list, .actions .home__axes__list, .training .home__pilars__list, .training .home__axes__list, .research .home__pilars__list, .research .home__axes__list, .resources .home__pilars__list, .resources .home__axes__list, .support .home__pilars__list, .support .home__axes__list, .contact .home__pilars__list, .contact .home__axes__list {
+  .home__pilars__list, .home__axes__list {
     flex-direction: row;
   }
 }
-.home .home__pilars__card, .home .home__axes__card, .history .home__pilars__card, .history .home__axes__card, .who .home__pilars__card, .who .home__axes__card, .mission .home__pilars__card, .mission .home__axes__card, .values .home__pilars__card, .values .home__axes__card, .team .home__pilars__card, .team .home__axes__card, .reports .home__pilars__card, .reports .home__axes__card, .actions .home__pilars__card, .actions .home__axes__card, .training .home__pilars__card, .training .home__axes__card, .research .home__pilars__card, .research .home__axes__card, .resources .home__pilars__card, .resources .home__axes__card, .support .home__pilars__card, .support .home__axes__card, .contact .home__pilars__card, .contact .home__axes__card {
+.home__pilars__card, .home__axes__card {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
 @media screen and (min-width: 1130px) {
-  .home .home__pilars__card, .home .home__axes__card, .history .home__pilars__card, .history .home__axes__card, .who .home__pilars__card, .who .home__axes__card, .mission .home__pilars__card, .mission .home__axes__card, .values .home__pilars__card, .values .home__axes__card, .team .home__pilars__card, .team .home__axes__card, .reports .home__pilars__card, .reports .home__axes__card, .actions .home__pilars__card, .actions .home__axes__card, .training .home__pilars__card, .training .home__axes__card, .research .home__pilars__card, .research .home__axes__card, .resources .home__pilars__card, .resources .home__axes__card, .support .home__pilars__card, .support .home__axes__card, .contact .home__pilars__card, .contact .home__axes__card {
+  .home__pilars__card, .home__axes__card {
     flex: 1 1 0;
   }
 }
-.home .home__pilars__card:hover, .home .home__axes__card:hover, .history .home__pilars__card:hover, .history .home__axes__card:hover, .who .home__pilars__card:hover, .who .home__axes__card:hover, .mission .home__pilars__card:hover, .mission .home__axes__card:hover, .values .home__pilars__card:hover, .values .home__axes__card:hover, .team .home__pilars__card:hover, .team .home__axes__card:hover, .reports .home__pilars__card:hover, .reports .home__axes__card:hover, .actions .home__pilars__card:hover, .actions .home__axes__card:hover, .training .home__pilars__card:hover, .training .home__axes__card:hover, .research .home__pilars__card:hover, .research .home__axes__card:hover, .resources .home__pilars__card:hover, .resources .home__axes__card:hover, .support .home__pilars__card:hover, .support .home__axes__card:hover, .contact .home__pilars__card:hover, .contact .home__axes__card:hover {
+.home__pilars__card:hover, .home__axes__card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 }
-.home .home__pilars__card svg, .home .home__pilars__card .fi, .home .home__axes__card svg, .home .home__axes__card .fi, .history .home__pilars__card svg, .history .home__pilars__card .fi, .history .home__axes__card svg, .history .home__axes__card .fi, .who .home__pilars__card svg, .who .home__pilars__card .fi, .who .home__axes__card svg, .who .home__axes__card .fi, .mission .home__pilars__card svg, .mission .home__pilars__card .fi, .mission .home__axes__card svg, .mission .home__axes__card .fi, .values .home__pilars__card svg, .values .home__pilars__card .fi, .values .home__axes__card svg, .values .home__axes__card .fi, .team .home__pilars__card svg, .team .home__pilars__card .fi, .team .home__axes__card svg, .team .home__axes__card .fi, .reports .home__pilars__card svg, .reports .home__pilars__card .fi, .reports .home__axes__card svg, .reports .home__axes__card .fi, .actions .home__pilars__card svg, .actions .home__pilars__card .fi, .actions .home__axes__card svg, .actions .home__axes__card .fi, .training .home__pilars__card svg, .training .home__pilars__card .fi, .training .home__axes__card svg, .training .home__axes__card .fi, .research .home__pilars__card svg, .research .home__pilars__card .fi, .research .home__axes__card svg, .research .home__axes__card .fi, .resources .home__pilars__card svg, .resources .home__pilars__card .fi, .resources .home__axes__card svg, .resources .home__axes__card .fi, .support .home__pilars__card svg, .support .home__pilars__card .fi, .support .home__axes__card svg, .support .home__axes__card .fi, .contact .home__pilars__card svg, .contact .home__pilars__card .fi, .contact .home__axes__card svg, .contact .home__axes__card .fi {
+.home__pilars__card svg,
+.home__pilars__card .fi, .home__axes__card svg,
+.home__axes__card .fi {
   width: 3rem;
   height: 3rem;
   margin: 0 auto 1.5rem auto;
   color: #d76942;
 }
-.home .home__counter, .history .home__counter, .who .home__counter, .mission .home__counter, .values .home__counter, .team .home__counter, .reports .home__counter, .actions .home__counter, .training .home__counter, .research .home__counter, .resources .home__counter, .support .home__counter, .contact .home__counter {
+.home__counter {
   display: flex;
   gap: 2rem;
   justify-content: center;
@@ -439,39 +632,39 @@
   margin: 2rem 0;
 }
 @media screen and (min-width: 1130px) {
-  .home .home__counter, .history .home__counter, .who .home__counter, .mission .home__counter, .values .home__counter, .team .home__counter, .reports .home__counter, .actions .home__counter, .training .home__counter, .research .home__counter, .resources .home__counter, .support .home__counter, .contact .home__counter {
+  .home__counter {
     flex-direction: row;
     gap: 5rem;
     margin: 5rem 0;
   }
 }
-.home .home__counter__item, .history .home__counter__item, .who .home__counter__item, .mission .home__counter__item, .values .home__counter__item, .team .home__counter__item, .reports .home__counter__item, .actions .home__counter__item, .training .home__counter__item, .research .home__counter__item, .resources .home__counter__item, .support .home__counter__item, .contact .home__counter__item {
+.home__counter__item {
   text-align: center;
 }
-.home .home__counter__icon, .history .home__counter__icon, .who .home__counter__icon, .mission .home__counter__icon, .values .home__counter__icon, .team .home__counter__icon, .reports .home__counter__icon, .actions .home__counter__icon, .training .home__counter__icon, .research .home__counter__icon, .resources .home__counter__icon, .support .home__counter__icon, .contact .home__counter__icon {
+.home__counter__icon {
   width: max-content;
   background-color: #f8eee9;
   padding: 1rem;
   border-radius: 1rem;
   margin: 0 auto 1.5rem auto;
 }
-.home .home__counter__icon svg, .history .home__counter__icon svg, .who .home__counter__icon svg, .mission .home__counter__icon svg, .values .home__counter__icon svg, .team .home__counter__icon svg, .reports .home__counter__icon svg, .actions .home__counter__icon svg, .training .home__counter__icon svg, .research .home__counter__icon svg, .resources .home__counter__icon svg, .support .home__counter__icon svg, .contact .home__counter__icon svg {
+.home__counter__icon svg {
   color: #d76942;
   width: 2.5rem;
   height: 2.5rem;
 }
-.home .home__counter__number, .history .home__counter__number, .who .home__counter__number, .mission .home__counter__number, .values .home__counter__number, .team .home__counter__number, .reports .home__counter__number, .actions .home__counter__number, .training .home__counter__number, .research .home__counter__number, .resources .home__counter__number, .support .home__counter__number, .contact .home__counter__number {
+.home__counter__number {
   font-family: Cormorant Garamond, Georgia, serif;
   font-size: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);
   font-weight: bold;
   color: #30251d;
   margin: 0 auto 1rem auto;
 }
-.home .home__counter__number span, .history .home__counter__number span, .who .home__counter__number span, .mission .home__counter__number span, .values .home__counter__number span, .team .home__counter__number span, .reports .home__counter__number span, .actions .home__counter__number span, .training .home__counter__number span, .research .home__counter__number span, .resources .home__counter__number span, .support .home__counter__number span, .contact .home__counter__number span {
+.home__counter__number span {
   font-size: 3rem;
   color: #d76942;
 }
-.home .home__counter__text, .history .home__counter__text, .who .home__counter__text, .mission .home__counter__text, .values .home__counter__text, .team .home__counter__text, .reports .home__counter__text, .actions .home__counter__text, .training .home__counter__text, .research .home__counter__text, .resources .home__counter__text, .support .home__counter__text, .contact .home__counter__text {
+.home__counter__text {
   font-size: 1rem;
 }
 
@@ -492,10 +685,8 @@
 @media screen and (min-width: 1130px) {
   .mission__quote {
     margin-left: 1.5rem;
-    width: 50%;
   }
 }
-
 .team {
   display: flex;
   flex-direction: column;
@@ -569,6 +760,24 @@
   left: 7px;
 }
 
+.actions__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.actions__partners__list > * {
+  margin-bottom: 1rem;
+}
+.actions__item h4 {
+  color: #d76942;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.actions__item p {
+  padding-bottom: 1rem;
+}
+
 .contact__info {
   display: flex;
   flex-direction: column;
@@ -579,6 +788,30 @@
   .contact__info {
     flex-direction: row;
   }
+}
+.contact__form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.contact__form form input, .contact__form form textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.contact__form form button {
+  background-color: #d76942;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.contact__form form button:hover {
+  background-color: #b85a33;
 }
 
 .banner-container {
@@ -608,12 +841,10 @@
 .banner-container .banner__pusher {
   padding-bottom: 200px;
   z-index: 1;
-  margin-top: 2rem;
 }
 .banner-container .banner__pusher > * {
   width: 90%;
-  max-width: 60rem;
-  margin: auto;
+  max-width: 75rem;
 }
 @media screen and (min-width: 1130px) {
   .banner-container .banner--left {

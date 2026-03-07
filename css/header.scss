@@ -112,7 +112,7 @@
     }
 
     @mixin link-color($color) {
-      & a:hover, p:hover {
+      & a:hover, p:hover, .active {
         color: white;
         box-shadow: inset 0 -40px 0 -1px $color;
         text-shadow: 0 0 10px color.adjust($color, $saturation: +15%, $lightness: -25%);

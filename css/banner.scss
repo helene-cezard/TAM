@@ -33,12 +33,12 @@
     &__pusher {
       padding-bottom: 200px;
       z-index: 1;
-      margin-top: 2rem;
+      // margin-top: 2rem;
       
       & > * {
         width: 90%;
-        max-width: 60rem;
-        margin: auto;
+        max-width: 75rem;
+        // margin: auto;
       }
     }
 

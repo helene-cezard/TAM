@@ -28,12 +28,13 @@
   // padding-bottom: 1.25rem;
   line-height: normal;
   text-align: center;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
+  margin: 0 auto 4rem auto;
 }
 
 %section-title {
   @extend %title;
-  margin: auto;
+  // margin: auto;
   font-size: clamp(1.3rem, 1.06rem + 1.2vw, 2.5rem);
   // padding-bottom: 1.25rem;
 
@@ -79,4 +80,10 @@
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
+  }
+
+  %list {
+    list-style: disc;
+    width: fit-content;
+    margin: 0 auto;
   }

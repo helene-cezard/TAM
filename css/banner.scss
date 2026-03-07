@@ -33,6 +33,7 @@
     &__pusher {
       padding-bottom: 200px;
       z-index: 1;
+      margin-top: 2rem;
       
       & > * {
         width: 90%;
@@ -56,6 +57,7 @@
 
       &__pusher {
         grid-area: Pusher;
+        margin-top : 0;
       }
     }
 

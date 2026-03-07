@@ -5,12 +5,13 @@
   flex-direction: column;
   // align-items: center;
   text-align: center;
-  padding: 1rem;
+  // padding: 1rem;
   margin: 1rem auto;
   // background: #f8f6f1e6;
-  background: #fbfaf8e6;
+  background: rgba(251, 250, 248, 0.95);
   color: #806E61;
   box-shadow: 3px 6px 12.5px #2e13054f;
+  border-radius: 0.5rem;
   line-height: 1.5rem;
 
   @media screen and (min-width: variables.$breakpoint) {
@@ -27,35 +28,46 @@
   // padding-bottom: 1.25rem;
   line-height: normal;
   text-align: center;
+  padding-bottom: 2rem;
 }
 
 %section-title {
   @extend %title;
-  width: 60%;
   margin: auto;
-  font-size: clamp(1.3rem, 1.11rem + 0.95vw, 2.25rem);
-  padding-bottom: 1.25rem;
+  font-size: clamp(1.3rem, 1.06rem + 1.2vw, 2.5rem);
+  // padding-bottom: 1.25rem;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    width: 60%;
+  }
 }
 
 %small-title {
   @extend %title;
-  font-size: clamp(1rem, 0.75rem + 1.25vw, 2rem);
-  padding-bottom: 1rem;
+  font-size: clamp(1rem, 0.84rem + 0.8vw, 1.8rem);
+
+  // @media screen and (min-width: variables.$breakpoint) {
+  //   padding-bottom: 1.25rem;
+  // }
 }
 
 %quote {
   background-color: #f8eee9;
-    border-radius: 1.5rem;
-    font-size: 1.5rem;
-    font-style: italic;
-    padding: 2rem;
-    font-family: variables.$fancy-font;
-    height: fit-content;
+  border-radius: 1.5rem;
+  // font-size: 1.5rem;
+  font-size: clamp(1.5rem, 1.44rem + 0.3vw, 1.8rem);
+  font-style: italic;
+  font-weight: normal;
+  padding: 1.7rem;
+  font-family: variables.$fancy-font;
+  height: fit-content;
+  text-align: left;
+  line-height: 2rem;
 
     & svg {
       width: 3rem;
       height: 3rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       color: #d76942;
     }
   }

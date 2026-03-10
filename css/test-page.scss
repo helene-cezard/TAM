@@ -1,0 +1,117 @@
+@use "placeholders";
+@use "variables";
+
+.section {
+  @extend %contents;
+  gap: 4rem;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    gap: 7rem;
+    padding: 0;
+    margin-top: 5rem;
+
+    &:not(:first-child) {
+      margin-top: 10rem;
+    }
+  }
+  
+  &__list {
+    @extend %list;
+    margin: auto;
+    padding-left: 1.5rem;
+    text-align: left;
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      padding-left: 0;
+    }
+
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  & strong {
+    font-weight: bold;
+  }
+
+  & em {
+    font-style: italic;
+  }
+  
+  &__link {
+    @extend %link;
+  }
+  
+  .subsection {
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      display: grid;
+      grid-template-columns: minmax(50%, 100%) auto;
+      grid-template-rows: repeat(2, auto);
+      
+      &:has(.left) {
+        grid-template-columns: auto minmax(50%, 100%);
+      }
+    }
+  }
+  
+  &__title {
+    @extend %section-title;
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  &__small-title {
+    @extend %small-title;
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  
+  // &__content {
+  //   grid-row: span 1;
+  //   grid-column-start: 1;
+  //   grid-row-start: 2;
+  // }
+
+  &__side {
+    margin-top: 2rem;
+
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 25vw;
+      margin-top: 0;
+      margin-left: 3rem;
+      grid-row: span 1;
+      grid-column-start: 2;
+      grid-row-start: 2;
+
+      &.left {
+        grid-column-start: 1;
+        margin-left: 0;
+        margin-right: 3rem;
+      }
+    }
+  }
+
+  &__quote {
+    @extend %quote;
+  }
+}
+
+.home__pilars__list {
+  width: fit-content;
+  margin: auto;
+}

@@ -9,7 +9,7 @@
   gap: clamp(2rem, 1.4rem + 3vw, 5rem);
   height: calc(100svh - variables.$navbar-height-mobile);
   // background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
-  background: linear-gradient(to bottom, #fff7d3 0%, #f28c57 70%);
+  background: linear-gradient(to bottom, #fff7d3 0%, #eb9b6a 70%); //#f28c57
 
 
   @media screen and (min-width: variables.$breakpoint) {
@@ -34,8 +34,12 @@
   &__title {
     @extend %title;
     position: relative;
-    font-size: clamp(2rem, 1.74rem + 1.3vw, 3.3rem);
-    padding-bottom: 2rem;
+    font-size: clamp(2rem, 1.2rem + 4vw, 6rem);
+    line-height: 1;
+
+    &--small {
+      font-size: clamp(1.5rem, 1.1rem + 2vw, 3.5rem);
+    }
 
     @media screen and (min-width: 700px) {
       .line-break {
@@ -46,10 +50,13 @@
 
   &__text {
     width: 85vw;
-    color: #8C4820;
+    text-align: center;
+    color: rgb(223, 113, 50);
+    font-size: clamp(1.4rem, 1.08rem + 1.6vw, 3rem);
+    margin: auto;
 
     @media screen and (min-width: variables.$breakpoint) {
-      width: 50vw;
+      // width: 50vw;
     }
   }
 

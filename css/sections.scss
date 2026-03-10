@@ -22,85 +22,85 @@
 
 // }
 
-.home,
-.history,
-.who,
-.mission,
-.values,
-.team,
-.reports,
-.actions,
-.training,
-.research,
-.resources,
-.support,
-.contact {
-  @extend %contents;
-  gap: 4rem;
-  padding: 2rem 1rem;
-  margin-top: 2rem;
+// .home,
+// .history,
+// .who,
+// .mission,
+// .values,
+// .team,
+// .reports,
+// .actions,
+// .training,
+// .research,
+// .resources,
+// .support,
+// .contact {
+//   @extend %contents;
+//   gap: 4rem;
+//   padding: 2rem 1rem;
+//   margin-top: 2rem;
 
 
-  @media screen and (min-width: variables.$breakpoint) {
-    gap: 7rem;
-    padding: 0;
+//   @media screen and (min-width: variables.$breakpoint) {
+//     gap: 7rem;
+//     padding: 0;
 
-    &:not(:first-child) {
-      margin-top: 10rem;
-    }
-  }
+//     &:not(:first-child) {
+//       margin-top: 10rem;
+//     }
+//   }
 
-  &__title {
-    @extend %section-title;
-  }
+//   &__title {
+//     @extend %section-title;
+//   }
 
-  h3 {
-    @extend %small-title;
-  }
+//   h3 {
+//     @extend %small-title;
+//   }
 
-  // &__presentation {
+//   // &__presentation {
 
-  //   & p {
-  //     padding-bottom: 1rem;
-  //   }
-  // }
+//   //   & p {
+//   //     padding-bottom: 1rem;
+//   //   }
+//   // }
 
-  &__quote {
-    @extend %quote;
-  }
+//   &__quote {
+//     @extend %quote;
+//   }
 
-  &__link {
-    color: #d76942;
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: .5rem;
-    width: 100%;
-    text-align: center;
+//   &__link {
+//     color: #d76942;
+//     text-decoration: none;
+//     font-weight: 500;
+//     border-radius: .5rem;
+//     width: 100%;
+//     text-align: center;
 
-    &::after {
-      content: "   →";
-    }
+//     &::after {
+//       content: "   →";
+//     }
 
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-  }
+//     &:hover {
+//       text-decoration: underline;
+//       text-underline-offset: 4px;
+//     }
+//   }
 
-}
+// }
 
 .home {
 
   &__pilars,
   &__axes {
 
-    & h3 {
-      @extend %small-title;
-    }
+    // & h3 {
+    //   @extend %small-title;
+    // }
 
     &__list {
       display: flex;
-      gap: 2rem;
+      gap: 5rem;
       justify-content: center;
       flex-direction: column;
 
@@ -113,6 +113,8 @@
       @extend %card;
       display: flex;
       flex-direction: column;
+      aspect-ratio: 1.1 / 1;
+      max-width: 22rem;
       padding: 1rem;
 
       @media screen and (min-width: variables.$breakpoint) {
@@ -238,15 +240,18 @@
 
 
 .team {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
 
-  &__presentation {
-    // @extend %section-text;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 
-    & p {
-      padding-bottom: 1rem;
+    &__presentation {
+      // @extend %section-text;
+
+      & p {
+        padding-bottom: 1rem;
+      }
     }
   }
 
@@ -255,23 +260,40 @@
     gap: 3rem;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     width: 100%;
+
+    &.president {
+      display: block;
+      margin: 0 auto;
+      // width: 20vw;
+
+      & .team__card {
+        display: block;
+        max-width: 25rem;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1.5;
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
   }
 
   &__card {
     @extend %card;
-    margin: .5rem;
+    width: 100%;
+    aspect-ratio: 1 / 1.8;
 
-    // &:hover {
-    //   transform: translateY(-10px);
-    //   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-    //   transition: all 0.3s ease-in-out;
-    // }
 
     & img {
+      aspect-ratio: 1 / 1.1;
       width: 100%;
-      height: 300px;
+      height: auto;
       object-fit: cover;
       object-position: top;
+      background-color: #cbb1b2;
     }
 
     &__text {
@@ -291,20 +313,19 @@
 
 .reports {
   &__list {
-    // @extend %contents;
-    // display: flex;
-    // flex-direction: column;
-    // gap: 1.5rem;
-    // margin-top: 2rem;
     position: relative;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 70%;
+      margin: auto;
+    }
   }
 
   &__list-item {
     margin-bottom: 2rem;
     position: relative;
-
   }
-
+  
   &__list-bullet {
     position: relative;
     z-index: 1;
@@ -315,27 +336,32 @@
     width: 14px;
     border-radius: 100px;
   }
-
+  
   &__list-text {
-    display: table-row;
+    display: flex;
+    flex-direction: column;
     vertical-align: middle;
+    
+    & img {
+      width: 7rem;
+    }
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      padding-left: 2rem;
+      flex-direction: row;
+      gap: 2rem;
+      
+      & img {
+        width: 10rem;
+      }
+    }
   }
 
   & .line {
-    background: #d76942;
+    background: #e7e0da;
     z-index: 0;
     width: 1px;
     height: 100%;
-    position: absolute;
-    left: 7px;
-  }
-
-  .white-line {
-    background: #FFF;
-    z-index: 0;
-    bottom: 0px;
-    width: 1px;
-    height: 70px;
     position: absolute;
     left: 7px;
   }

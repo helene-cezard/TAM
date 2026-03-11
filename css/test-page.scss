@@ -63,13 +63,13 @@
   
   &__title {
     @extend %section-title;
-    grid-column: span 2 / span 2;
-    grid-column-start: 1;
-    grid-row-start: 1;
   }
 
   &__small-title {
     @extend %small-title;
+  }
+
+  &__side-title {
     grid-column: span 2 / span 2;
     grid-column-start: 1;
     grid-row-start: 1;

@@ -1,30 +1,130 @@
+@use "variables";
+
 .footer {
-  position: relative;
-  text-align: center;
-  background-color: #E97132;
-  color: white;
-
-  &__image {
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    transform: translateX(-50%);
-    top: -150px;
-    width: 100%;
-    height: 200px;
-  }
-
-  &__socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem 0;
+    background-color: #E97132;
+    color: #fff; /* White text */
+    padding: 40px 20px;
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1.1rem);
     position: relative;
-    z-index: 2;
 
-    &__icon {
-      width: 2rem;
-      height: 2rem;
+    & a {
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #355399; /* Accent color on hover */
+      }
+    }
+    
+    &__image {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -150px;
+      width: 100%;
+      height: 200px;
+    }
+    
+    &__content {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    &__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      & img {
+        background-color: #fff; /* White background for logo */
+        border-radius: 8px;
+        height: 80px;
+        width: 80px;
+        padding: 10px;
+      }
+    }
+    
+    &__logo,
+    &__links,
+    &__contact,
+    &__social {
+        flex: 1;
+        min-width: 200px;
+
+        & h4 {
+          font-size: 16px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          color: #355399; /* Accent color */
+        }
+    }
+    
+    &__links,
+    &__social {
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        & li {
+          margin-bottom: 8px;
+        }
+      }
+    }
+    
+    &__contact {
+
+      & p {
+        margin: 5px 0;
+      }
+
+      a {
+        color: #355399;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    &__social-icons {
+        display: flex;
+        flex-direction: column;
+
+        & a {
+          display: flex;
+          align-items: center;
+
+          & svg {
+            display: block;
+            height: 2.5rem;
+            margin-right: 10px;
+            // margin-bottom: 10px;
+            // color: #355399; /* Accent color */
+            // transition: color 0.3s ease;
+          }
+           & span {
+            display: block;
+           }
+        }
+        
+    }
+    
+    &__bottom {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 10px;
     }
   }
-}
+  
+
+

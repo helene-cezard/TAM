@@ -10,7 +10,7 @@
 
 body {
   display: grid;
-  grid-template-rows: auto auto 200px;
+  grid-template-rows: auto auto auto;
   font-family: "Calibri", "Source Sans 3", sans-serif;
   font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
   // color: #806E61;
@@ -19,11 +19,11 @@ body {
 
 main {
   background-color: white;
-  min-height: calc(100vh - (200px + variables.$navbar-height-mobile));
+  min-height: calc(100vh - (235px + variables.$navbar-height-mobile));
   display: flex;
   flex-direction: column;
 
   @media screen and (min-width: variables.$breakpoint) {
-    min-height: calc(100vh - (200px + variables.$navbar-height-desktop));
+    min-height: calc(100vh - (235px + variables.$navbar-height-desktop));
   }
 }

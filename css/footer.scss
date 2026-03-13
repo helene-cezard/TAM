@@ -103,15 +103,14 @@
         & a {
           display: flex;
           align-items: center;
+          width: fit-content;
 
           & svg {
             display: block;
             height: 2.5rem;
             margin-right: 10px;
-            // margin-bottom: 10px;
-            // color: #355399; /* Accent color */
-            // transition: color 0.3s ease;
           }
+          
            & span {
             display: block;
            }

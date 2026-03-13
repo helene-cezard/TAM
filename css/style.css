@@ -704,7 +704,13 @@
 
 .support__links {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+}
+@media screen and (min-width: 1130px) {
+  .support__links {
+    justify-content: space-around;
+    flex-direction: row;
+  }
 }
 
 .contact__info {

@@ -56,6 +56,10 @@
     padding: 0.5rem;
     position: relative;
 
+    & a {
+      border-bottom: 2px solid transparent;
+    }
+
     @media screen and (min-width: variables.$breakpoint) {
       margin: 0;
     }

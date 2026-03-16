@@ -20,7 +20,6 @@
   }
   
   .banner {
-    // width: 50%;
     width: 100%;
     opacity: 0.6;
     background-size: contain;
@@ -33,17 +32,14 @@
     &__pusher {
       padding-bottom: 200px;
       z-index: 1;
-      // margin-top: 2rem;
       
       & > * {
         width: 90%;
         max-width: 75rem;
-        // margin: auto;
       }
     }
 
     @media screen and (min-width: variables.$breakpoint) {
-      // width: 100%;
       
       &--left {
         grid-area: BannerLeft;

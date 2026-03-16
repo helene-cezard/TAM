@@ -36,12 +36,14 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 20px;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        width: 75%;
+        margin: auto;
+      }
     }
 
     &__logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       
       & img {
         background-color: #fff; /* White background for logo */
@@ -56,8 +58,14 @@
     &__links,
     &__contact,
     &__social {
-        flex: 1;
-        min-width: 200px;
+      
+      flex: 1;
+      min-width: 200px;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        flex: none;
+        min-width: fit-content;
+      }
 
         & h4 {
           font-size: 16px;

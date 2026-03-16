@@ -864,10 +864,11 @@
   align-items: flex-start;
   gap: 20px;
 }
-.footer__logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (min-width: 1130px) {
+  .footer__container {
+    width: 75%;
+    margin: auto;
+  }
 }
 .footer__logo img {
   background-color: #fff; /* White background for logo */
@@ -879,6 +880,12 @@
 .footer__logo, .footer__links, .footer__contact, .footer__social {
   flex: 1;
   min-width: 200px;
+}
+@media screen and (min-width: 1130px) {
+  .footer__logo, .footer__links, .footer__contact, .footer__social {
+    flex: none;
+    min-width: fit-content;
+  }
 }
 .footer__logo h4, .footer__links h4, .footer__contact h4, .footer__social h4 {
   font-size: 16px;

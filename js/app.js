@@ -10,14 +10,14 @@ const app = {
   },
 
   burgerMenu: function() {
-    const header = document.querySelector(".header");
+    const header = document.querySelector('.header');
 
-    icons.addEventListener("click", () => {
-      header.classList.toggle("active");
-      nav.classList.toggle("active");
-      icons.classList.toggle("active");
+    icons.addEventListener('click', () => {
+      nav.classList.toggle('burger-active');
+      icons.classList.toggle('burger-active');
+      icons.ariaExpanded = icons.ariaExpanded  !== 'true';
 
-      if (icons.classList.contains("active")) {
+      if (icons.classList.contains('burger-active')) {
         app.pause(app.itv);
       }
       else {
@@ -26,35 +26,82 @@ const app = {
         
     });
 
+    function closeMenu() {
+      nav.classList.remove('burger-active');
+      icons.classList.remove('burger-active');
+      icons.ariaExpanded = 'false';
+      app.itv = app.play(app.itv);
+    }
+
     document.addEventListener('click', (e) => {
       if (!header.contains(e.target)) {
-        header.classList.remove("active");
-        nav.classList.remove("active");
-        icons.classList.remove("active");
-        app.itv = app.play(app.itv);
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
       }
     });
   },
 
   showSubmenu: function() {
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('submenu__text')) {
-        const submenu = e.target.nextElementSibling;
-        submenu.classList.toggle('active');
+
+    const buttons = document.querySelectorAll('.submenu__button');
+
+    for (const button of buttons) {
+      const submenu = button.nextElementSibling;
+      
+      button.addEventListener('click', () => {
+        button.ariaExpanded = button.ariaExpanded !== 'true';
+        
+        
+        submenu.classList.toggle('submenu-active');
+        
+        if (submenu.classList.contains('submenu-active')) {
+          app.pause(app.itv);
+        }
+        else {
+          app.itv = app.play(app.itv);
+        }
+      });
+
+      function closeSubmenu() {
+        button.ariaExpanded = 'false';
+        submenu.classList.remove('submenu-active');
+        app.itv = app.play(app.itv);
       }
-    });
+
+      const liElement = button.parentNode;
+
+      liElement.addEventListener('focusout', (e) => {
+        const focusedInElement = e.relatedTarget;
+        
+        if (!liElement.contains(focusedInElement)) {
+          closeSubmenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSubmenu();
+        }
+      });
+
+    }
   },
     
   startCarousel: function() {
     const slides = document.querySelectorAll('.carousel__slide');
 
-    const slideActive = document.querySelector('.active');
+    const slideActive = carousel.querySelector('.carousel-active');
     let newIndex = [...slides].indexOf(slideActive) + 1;
     
     if (newIndex >= [...slides].length) newIndex = 0;
-    slides[newIndex].classList.add('active');
+    slides[newIndex].classList.add('carousel-active');
     
-    slideActive.classList.remove('active');
+    slideActive.classList.remove('carousel-active');
   },
     
   play: function(itv) {

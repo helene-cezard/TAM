@@ -58,7 +58,7 @@
     }
   }
 
-  &__navbar.active {
+  &__navbar.burger-active {
     display: flex;
   }
 
@@ -95,11 +95,20 @@
       }
     }
     
-    & a, p {
+    & a, button {
       width: fit-content;
       padding: 0.7rem;
       text-align: center;
       display: inline-block;
+      border: none;
+      background: none;
+      font-size: inherit;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    & button {
+      padding: 0.468rem;
     }
     
     @media screen and (min-width: variables.$breakpoint) {
@@ -109,14 +118,13 @@
     }
 
     @mixin link-color($color) {
-      & > a:hover, & > p:hover {
+      & > a:hover, & > button:hover, .active {
         color: white;
         box-shadow: inset 0 -40px 0 -1px $color;
         text-shadow: 0 0 10px color.adjust($color, $saturation: +15%, $lightness: -25%);
-
       }
       
-      & p + ul a:hover {
+      & button + ul a:hover {
         border-bottom: 2px solid $color;
       }
     }
@@ -159,6 +167,9 @@
     height: 100%;
     font-size: 1.7rem;
     padding-right: 1rem;
+    border: none;
+    background: none;
+    color: inherit;
     
     @media screen and (min-width: variables.$breakpoint) {
       display: none;
@@ -168,7 +179,7 @@
       content: '\2630';
     }
     
-    &.active::before {
+    &.burger-active::before {
       content: '\2715';
     }
   }

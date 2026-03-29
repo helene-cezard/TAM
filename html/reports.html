@@ -12,66 +12,66 @@
 </head>
 <body>
     <script src="../js/app.js" defer></script>
-    <header id="header" class="header">
-        <div class="header__logo">
+    <header id="header" class="header" role="banner">
+        <div class="header__logo" id="toggleNavbar">
             <img src="../images/logo-transparent-bg.png" alt="Logo de l'association TAM">
         </div>
-        <nav id="nav" class="header__navbar">
-            <ul class="header__nav-links">
+        <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="nav" id="icons" class="header__buttons" aria-label="Ouvrir ou fermer le menu de navigation"></button>
+        <nav id="nav" role="navigation" class="header__navbar">
+            <ul role="menubar" class="header__nav-links">
                 <li class="header__nav-links--yellow">
                     <div class="shape lines"></div>
-                    <a href="../index.html">Accueil</a>
+                    <a role="menuitem" href="../index.html">Accueil</a>
                 </li>
                 <li class="header__nav-links--blue parent__menu">
                     <div class="shape spirale"></div>
-                    <p class="submenu__text active">Qui sommes-nous ?</p>
-                    <ul class="submenu">
+                    <button type="button" class="active" aria-current="page" aria-haspopup="true" aria-expanded="false" aria-controls="who_submenu" class="submenu__button">Qui sommes-nous ?</button>
+                    <ul role="menu" id="who_submenu" class="submenu">
                         <li class="submenu__item">
-                            <a href="../html/association.html">L'association</a>
+                            <a role="menuitem" href="association.html">L'association</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="../html/team.html">L'équipe</a>
+                            <a role="menuitem" href="team.html">L'équipe</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="../html/reports.html">Rapports d'activité</a>
+                            <a role="menuitem" href="reports.html">Rapports d'activité</a>
                         </li>
                     </ul>
                 </li>
                 <li class="header__nav-links--green parent__menu">
                     <div class="shape spirale"></div>
-                    <p class="submenu__text">Actions</p>
-                    <ul class="submenu">
+                    <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
+                    <ul role="menu" id="actions_submenu" class="submenu">
                         <li class="submenu__item">
-                            <a href="../html/actions.html">En France</a>
+                            <a role="menuitem" href="actions.html">En France</a>
                         </li>
                         <li class="submenu__item">
-                            <a href="../html/actions.html">Au Bénin</a>
+                            <a role="menuitem" href="actions.html">Au Bénin</a>
                         </li>
                     </ul>
                 </li>
                 <li class="header__nav-links--orange">
                     <div class="shape spirale"></div>
-                    <a href="../html/training.html">Formation</a>
+                    <a role="menuitem" href="training.html">Formation</a>
                 </li>
                 <li class="header__nav-links--turquoise">
                     <div class="shape spirale"></div>
-                    <a href="../html/research.html">Recherche</a>
+                    <a role="menuitem" href="research.html">Recherche</a>
                 </li>
                 <li class="header__nav-links--red">
                     <div class="shape spirale"></div>
-                    <a href="../html/resources.html">Ressources</a>
+                    <a role="menuitem" href="resources.html">Ressources</a>
                 </li>
                 <li class="header__nav-links--yellow">
                     <div class="shape spirale"></div>
-                    <a href="../html/support.html">Nous soutenir</a>
+                    <a role="menuitem" href="support.html">Nous soutenir</a>
                 </li>
                 <li class="header__nav-links--light-blue">
                     <div class="shape spirale"></div>
-                    <a href="../html/contact.html">Contact</a>
+                    <a role="menuitem" href="contact.html">Contact</a>
                 </li>
             </ul>
         </nav>
-        <div id="icons" class="header__buttons"></div>
     </header>
     <main>
         <div class="banner-container">

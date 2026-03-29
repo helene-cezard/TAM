@@ -3,6 +3,7 @@
 .footer {
     background-color: #E97132;
     color: #fff; /* White text */
+    text-shadow: 1px 1px 3px #9b3d0b;
     padding: 40px 20px;
     font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1.1rem);
     position: relative;
@@ -11,7 +12,8 @@
       transition: color 0.3s ease;
 
       &:hover {
-        color: #355399; /* Accent color on hover */
+        color: #082574; /* Accent color on hover */
+        text-shadow: none;
       }
     }
     
@@ -71,7 +73,8 @@
           font-size: 16px;
           margin-bottom: 10px;
           text-transform: uppercase;
-          color: #355399; /* Accent color */
+          color: #082574; /* Accent color */
+          text-shadow: none;
         }
     }
     
@@ -95,7 +98,8 @@
       }
 
       a {
-        color: #355399;
+        color: #082574;
+        text-shadow: none;
         text-decoration: none;
 
         &:hover {

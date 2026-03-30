@@ -1,0 +1,490 @@
+@use "placeholders";
+@use "variables";
+
+.section {
+  @extend %contents;
+  gap: 4rem;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    gap: 7rem;
+    padding: 0;
+    margin-top: 5rem;
+
+    &:not(:first-child) {
+      margin-top: 10rem;
+    }
+  }
+  
+  &__list {
+    @extend %list;
+    margin: auto;
+    padding-left: 1.5rem;
+    text-align: left;
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      padding-left: 0;
+    }
+
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  & strong {
+    font-weight: bold;
+  }
+
+  & em {
+    font-style: italic;
+  }
+
+  & iframe {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 1rem;
+    
+    //! Media querie inversée (max-width au lieu de min-width) pour s'assurer que la vidéo
+    //! prenne toute la largeur sur mobile, mais fasse la largeur du iframe sur desktop
+    @media screen and (max-width: variables.$breakpoint) {
+      width: 100%;
+      margin: 2rem 0;
+    }
+  }
+  
+  &__link {
+    @extend %link;
+  }
+  
+  .subsection {
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      display: grid;
+      grid-template-columns: minmax(50%, 100%) auto;
+      grid-template-rows: repeat(2, auto);
+      
+      &:has(.left) {
+        grid-template-columns: auto minmax(50%, 100%);
+      }
+    }
+  }
+  
+  &__title {
+    @extend %section-title;
+  }
+
+  &__small-title {
+    @extend %small-title;
+  }
+
+  &__side-title {
+    grid-column: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+
+  &__side {
+    margin-top: 2rem;
+
+    & img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 25vw;
+      margin-top: 0;
+      margin-left: 3rem;
+      grid-row: span 1;
+      grid-column-start: 2;
+      grid-row-start: 2;
+
+      &.left {
+        grid-column-start: 1;
+        margin-left: 0;
+        margin-right: 3rem;
+      }
+    }
+  }
+
+  &__quote {
+    @extend %quote;
+  }
+}
+
+.home {
+
+  &__pilars,
+  &__axes {
+
+    &__list {
+      display: flex;
+      gap: 5rem;
+      justify-content: center;
+      flex-direction: column;
+      width: fit-content;
+      margin: auto;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        flex-direction: row;
+      }
+    }
+
+    &__card {
+      @extend %card;
+      display: flex;
+      flex-direction: column;
+      aspect-ratio: 1.1 / 1;
+      max-width: 22rem;
+      padding: 1rem;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        flex: 1 1 0;
+      }
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+
+      & svg,
+      .fi {
+        width: 3rem;
+        height: 3rem;
+        margin: 0 auto 1.5rem auto;
+        color: #d76942;
+      }
+    }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2rem 0;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      flex-direction: row;
+      gap: 5rem;
+      margin: 5rem 0;
+    }
+
+    &__item {
+      text-align: center;
+    }
+
+    &__icon {
+      width: max-content;
+      background-color: #f8eee9;
+      padding: 1rem;
+      border-radius: 1rem;
+      margin: 0 auto 1.5rem auto;
+
+      & svg {
+        color: #d76942;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    &__number {
+      font-family: variables.$fancy-font;
+      font-size: clamp(2.25rem, 2.1rem + 0.75vw, 3rem);
+      ;
+      font-weight: bold;
+      color: #30251d;
+      margin: 0 auto 1rem auto;
+
+      & span {
+        font-size: 3rem;
+        color: #d76942;
+      }
+    }
+
+    // &__text {
+    //   font-size: 1rem;
+    // }
+  }
+}
+
+.mission {
+
+  &__header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      flex-direction: row;
+      align-items: center;
+
+      & * {
+        flex: 1;
+      }
+    }
+  }
+
+  &__quote {
+    @media screen and (min-width: variables.$breakpoint) {
+      // position: relative;
+      // float: none;
+      // top: 0;
+      margin-left: 1.5rem;
+      // width: 50%;
+    }
+  }
+
+  &__list {
+    @extend %list;
+  }
+}
+
+.values,
+.history {
+
+  &__list {
+    @extend %list;
+  }
+}
+
+
+.team {
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    &__presentation {
+
+      & p {
+        padding-bottom: 1rem;
+      }
+    }
+  }
+
+  &__container {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    width: 100%;
+
+    &.president {
+      display: block;
+      margin: 0 auto;
+
+      & .team__card {
+        display: block;
+        max-width: 25rem;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1.5;
+
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  &__card {
+    @extend %card;
+    width: 100%;
+    aspect-ratio: 1 / 1.8;
+
+
+    & img {
+      aspect-ratio: 1 / 1.1;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+      background-color: #cbb1b2;
+    }
+
+    &__text {
+      padding: 1rem;
+    }
+
+    &__name {
+      font-family: variables.$fancy-font;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #30251d;
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+.reports {
+  &__list {
+    position: relative;
+    margin: 0 2rem;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      width: 70%;
+      margin: auto;
+    }
+  }
+
+  &__list-item {
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  &__list-bullet {
+    position: relative;
+    z-index: 1;
+    float: left;
+    margin-right: 20px;
+    background: #d76942;
+    height: 14px;
+    width: 14px;
+    border-radius: 100px;
+  }
+  
+  &__list-text {
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    
+    & img {
+      width: 7rem;
+    }
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      padding-left: 2rem;
+      flex-direction: row;
+      gap: 2rem;
+      
+      & img {
+        width: 10rem;
+      }
+    }
+  }
+
+  & .line {
+    background: #e7e0da;
+    z-index: 0;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 7px;
+  }
+}
+
+.actions {
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__speech__list {
+    @extend %list;
+  }
+
+  &__partners__list {
+    @extend %list;
+
+    &>* {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__item {
+
+    & h4 {
+      color: #d76942;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+.training {
+
+  &__presentation,
+  &__audience,
+  &__goals,
+  &__axes {
+
+    &__list {
+      @extend %list;
+    }
+  }
+
+}
+
+.support {
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      justify-content: space-around;
+      flex-direction: row;
+    }
+  }
+}
+
+.contact {
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      flex-direction: row;
+    }
+  }
+
+  &__form {
+
+    & form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      & input,
+      & textarea {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+      }
+
+      & button {
+        background-color: #d76942;
+        color: white;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #b85a33;
+        }
+      }
+    }
+  }
+}

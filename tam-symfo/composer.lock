@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "101111fa4b6bcfc4bbb0faa3026fa89b",
+    "content-hash": "53d22fb96aa212ef9a01c7665d98fbf3",
     "packages": [
         {
             "name": "composer/semver",
@@ -1365,6 +1365,86 @@
                 }
             ],
             "time": "2026-01-02T08:56:05+00:00"
+        },
+        {
+            "name": "neuralglitch/google-fonts",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neuralglitch/google-fonts.git",
+                "reference": "78ec55f6f8c82a3a75eccfe269d4f185b7bd8937"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neuralglitch/google-fonts/zipball/78ec55f6f8c82a3a75eccfe269d4f185b7bd8937",
+                "reference": "78ec55f6f8c82a3a75eccfe269d4f185b7bd8937",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/config": "^6.4 || ^7.0 || ^8.0",
+                "symfony/console": "^6.4 || ^7.0 || ^8.0",
+                "symfony/dependency-injection": "^6.4 || ^7.0 || ^8.0",
+                "symfony/filesystem": "^6.4 || ^7.0 || ^8.0",
+                "symfony/finder": "^6.4 || ^7.0 || ^8.0",
+                "symfony/http-client": "^6.4 || ^7.0 || ^8.0",
+                "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+                "symfony/routing": "^6.4 || ^7.0 || ^8.0",
+                "symfony/twig-bundle": "^6.4 || ^7.0 || ^8.0",
+                "twig/twig": "^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.64",
+                "infection/infection": "^0.29",
+                "phpmetrics/phpmetrics": "^2.8",
+                "phpstan/phpstan": "^1.11",
+                "phpunit/phpunit": "^10.5 || ^11.0",
+                "rector/rector": "^1.0",
+                "symfony/asset-mapper": "^6.4 || ^7.0 || ^8.0",
+                "symfony/yaml": "^6.4 || ^7.0 || ^8.0",
+                "vimeo/psalm": "^6.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "require": "^6.4 || ^7.0 || ^8.0"
+                },
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NeuralGlitch\\GoogleFonts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "neuralglit.ch",
+                    "email": "dev@neuralglit.ch"
+                }
+            ],
+            "description": "Google Fonts integration for Symfony with development CDN and production font locking",
+            "homepage": "https://github.com/neuralglitch/google-fonts",
+            "keywords": [
+                "asset-mapper",
+                "fonts",
+                "google-fonts",
+                "symfony",
+                "symfony-bundle",
+                "twig",
+                "typography"
+            ],
+            "support": {
+                "docs": "https://github.com/neuralglitch/google-fonts/blob/main/README.md",
+                "issues": "https://github.com/neuralglitch/google-fonts/issues",
+                "source": "https://github.com/neuralglitch/google-fonts"
+            },
+            "time": "2025-11-05T20:13:28+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -7687,6 +7767,61 @@
                 }
             ],
             "time": "2026-02-09T09:33:46+00:00"
+        },
+        {
+            "name": "symfonycasts/sass-bundle",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SymfonyCasts/sass-bundle.git",
+                "reference": "3472f2018417b4f7258095089b327a7ba79018ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/3472f2018417b4f7258095089b327a7ba79018ad",
+                "reference": "3472f2018417b4f7258095089b327a7ba79018ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/asset-mapper": "^6.3|^7.0|^8.0",
+                "symfony/console": "^5.4|^6.3|^7.0|^8.0",
+                "symfony/filesystem": "^5.4|^6.3|^7.0|^8.0",
+                "symfony/http-client": "^5.4|^6.3|^7.0|^8.0",
+                "symfony/process": "^5.4|^6.3|^7.0|^8.0"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-config-test": "^5.0|^6.0",
+                "phpunit/phpunit": "^9.6",
+                "symfony/framework-bundle": "^6.3|^7.0|^8.0",
+                "symfony/phpunit-bridge": "^6.3.9|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfonycasts\\SassBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathéo Daninos",
+                    "homepage": "https://github.com/WebMamba"
+                }
+            ],
+            "description": "Delightful Sass Support for Symfony + AssetMapper",
+            "keywords": [
+                "asset-mapper",
+                "sass"
+            ],
+            "support": {
+                "issues": "https://github.com/SymfonyCasts/sass-bundle/issues",
+                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.9.0"
+            },
+            "time": "2025-11-29T13:44:16+00:00"
         },
         {
             "name": "twig/extra-bundle",

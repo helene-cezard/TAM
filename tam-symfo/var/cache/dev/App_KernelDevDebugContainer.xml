@@ -25,6 +25,8 @@
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
+      <parameter key="SymfonycastsSassBundle">Symfonycasts\SassBundle\SymfonycastsSassBundle</parameter>
+      <parameter key="GoogleFontsBundle">NeuralGlitch\GoogleFonts\GoogleFontsBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -75,6 +77,14 @@
         <parameter key="path">/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/maker-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
       </parameter>
+      <parameter key="SymfonycastsSassBundle" type="collection">
+        <parameter key="path">/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfonycasts/sass-bundle/src</parameter>
+        <parameter key="namespace">Symfonycasts\SassBundle</parameter>
+      </parameter>
+      <parameter key="GoogleFontsBundle" type="collection">
+        <parameter key="path">/var/www/html/Benevolat/TAM/tam-symfo/vendor/neuralglitch/google-fonts/src</parameter>
+        <parameter key="namespace">NeuralGlitch\GoogleFonts</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
@@ -122,6 +132,12 @@
       </parameter>
       <parameter key="Symfony\Bundle\MakerBundle\MakerBundle" type="collection">
         <parameter key="dev">true</parameter>
+      </parameter>
+      <parameter key="Symfonycasts\SassBundle\SymfonycastsSassBundle" type="collection">
+        <parameter key="all">true</parameter>
+      </parameter>
+      <parameter key="NeuralGlitch\GoogleFonts\GoogleFontsBundle" type="collection">
+        <parameter key="all">true</parameter>
       </parameter>
     </parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
@@ -252,6 +268,15 @@
         </parameter>
       </parameter>
     </parameter>
+    <parameter key="google_fonts.api_key">null</parameter>
+    <parameter key="google_fonts.cache_ttl">3600</parameter>
+    <parameter key="google_fonts.use_locked_fonts">false</parameter>
+    <parameter key="google_fonts.fonts_dir">/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts</parameter>
+    <parameter key="google_fonts.manifest_file">/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</parameter>
+    <parameter key="google_fonts.defaults" type="collection">
+      <parameter key="display">swap</parameter>
+      <parameter key="preconnect">true</parameter>
+    </parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -353,6 +378,102 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
+    </service>
+    <service id="App\Controller\ActionsBeninController" class="App\Controller\ActionsBeninController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ActionsBeninController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ActionsFranceController"/>
+      </call>
+    </service>
+    <service id="App\Controller\AssociationController" class="App\Controller\AssociationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\AssociationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ContactController" class="App\Controller\ContactController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ContactController"/>
+      </call>
+    </service>
+    <service id="App\Controller\EulogyController" class="App\Controller\EulogyController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\EulogyController"/>
+      </call>
+    </service>
+    <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\MainController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ReportsController" class="App\Controller\ReportsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ReportsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ResearchController" class="App\Controller\ResearchController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ResearchController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ResourcesController" class="App\Controller\ResourcesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ResourcesController"/>
+      </call>
+    </service>
+    <service id="App\Controller\SupportController" class="App\Controller\SupportController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\SupportController"/>
+      </call>
+    </service>
+    <service id="App\Controller\TeamController" class="App\Controller\TeamController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\TeamController"/>
+      </call>
+    </service>
+    <service id="App\Controller\TrainingController" class="App\Controller\TrainingController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\TrainingController"/>
+      </call>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
@@ -1772,12 +1893,10 @@
       <argument type="collection">
         <argument>#^(?=[^\.]).*\.d\.ts$#</argument>
         <argument>#^(?=[^\.]).*/(?=[^\.])controllers\.json$#</argument>
+        <argument>#^(?=[^\.]).*/(?=[^\.])assets/(?=[^\.])styles/(?=[^\.]).*.*/(?=[^\.])_.*\.scss$#</argument>
       </argument>
       <argument>true</argument>
       <argument>true</argument>
-    </service>
-    <service id="asset_mapper.public_assets_path_resolver" class="Symfony\Component\AssetMapper\Path\PublicAssetsPathResolver">
-      <argument>/assets/</argument>
     </service>
     <service id="asset_mapper.local_public_assets_filesystem" class="Symfony\Component\AssetMapper\Path\LocalPublicAssetsFilesystem">
       <argument>/var/www/html/Benevolat/TAM/tam-symfo/public</argument>
@@ -2462,6 +2581,8 @@
           <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/security-bundle/translations</argument>
           <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/monolog-bundle/src/translations</argument>
           <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/maker-bundle/translations</argument>
+          <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfonycasts/sass-bundle/src/translations</argument>
+          <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/neuralglitch/google-fonts/src/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2481,6 +2602,8 @@
             <argument>vendor/symfony/security-bundle/translations</argument>
             <argument>vendor/symfony/monolog-bundle/src/translations</argument>
             <argument>vendor/symfony/maker-bundle/translations</argument>
+            <argument>vendor/symfonycasts/sass-bundle/src/translations</argument>
+            <argument>vendor/neuralglitch/google-fonts/src/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -2882,6 +3005,14 @@
         <argument type="collection">
           <argument type="service_closure" id="security.context_listener.0"/>
           <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\AssetMapper\Event\PreAssetsCompileEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="sass.listener.pre_assets_compile"/>
+          <argument>__invoke</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3564,7 +3695,20 @@
     </service>
     <service id="routing.loader.attribute.services" class="Symfony\Component\Routing\Loader\AttributeServicesLoader">
       <tag name="routing.loader" priority="-10"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>App\Controller\ActionsBeninController</argument>
+        <argument>App\Controller\ActionsFranceController</argument>
+        <argument>App\Controller\AssociationController</argument>
+        <argument>App\Controller\ContactController</argument>
+        <argument>App\Controller\EulogyController</argument>
+        <argument>App\Controller\MainController</argument>
+        <argument>App\Controller\ReportsController</argument>
+        <argument>App\Controller\ResearchController</argument>
+        <argument>App\Controller\ResourcesController</argument>
+        <argument>App\Controller\SupportController</argument>
+        <argument>App\Controller\TeamController</argument>
+        <argument>App\Controller\TrainingController</argument>
+      </argument>
     </service>
     <service id="routing.loader.attribute.directory" class="Symfony\Component\Routing\Loader\AttributeDirectoryLoader">
       <tag name="routing.loader" priority="-10"/>
@@ -6163,6 +6307,9 @@
         <argument type="service" id="turbo.twig.extension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="stimulus.twig_extension"/>
       </call>
       <call method="addGlobal">
@@ -6373,7 +6520,7 @@
       <argument>,</argument>
     </service>
     <service id="twig.runtime_loader" class="Twig\RuntimeLoader\ContainerRuntimeLoader">
-      <argument type="service" id=".service_locator.R5M5UPr"/>
+      <argument type="service" id=".service_locator.aBBKVSN"/>
     </service>
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer">
       <argument type="service" id="twig"/>
@@ -7592,6 +7739,236 @@
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.generator"/>
     </service>
+    <service id="sass.builder" class="Symfonycasts\SassBundle\SassBuilder">
+      <argument type="collection">
+        <argument>assets/styles/app.scss</argument>
+      </argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/var/sass</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument key="style">expanded</argument>
+        <argument key="source_map">true</argument>
+        <argument key="embed_source_map">true</argument>
+        <argument key="load_path" type="collection"/>
+      </argument>
+    </service>
+    <service id="sass.command.build" class="Symfonycasts\SassBundle\Command\SassBuildCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="sass.builder"/>
+      <call method="setName">
+        <argument>sass:build</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Builds the Sass assets</argument>
+      </call>
+    </service>
+    <service id="sass.css_asset_compiler" class="Symfonycasts\SassBundle\AssetMapper\SassCssCompiler">
+      <tag name="asset_mapper.compiler" priority="10"/>
+      <argument type="collection">
+        <argument>assets/styles/app.scss</argument>
+      </argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/var/sass</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo</argument>
+      <argument type="service" id="sass.builder"/>
+    </service>
+    <service id="sass.public_asset_path_resolver" class="Symfonycasts\SassBundle\AssetMapper\SassPublicPathAssetPathResolver">
+      <tag name="container.decorator" id="asset_mapper.public_assets_path_resolver" inner="sass.public_asset_path_resolver.inner"/>
+      <argument type="service" id="sass.public_asset_path_resolver.inner"/>
+    </service>
+    <service id="sass.listener.pre_assets_compile" class="Symfonycasts\SassBundle\Listener\PreAssetsCompileEventListener">
+      <tag name="kernel.event_listener" event="Symfony\Component\AssetMapper\Event\PreAssetsCompileEvent" method="__invoke"/>
+      <argument type="service" id="sass.builder"/>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\DependencyInjection" class="NeuralGlitch\GoogleFonts\DependencyInjection" abstract="true">
+      <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:import" description="Import and download a Google Font for local use" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\FontDownloader"/>
+      <call method="setName">
+        <argument>gfonts:import</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Import and download a Google Font for local use</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" class="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:lock" description="Scan templates and lock all used fonts for production" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\FontLockManager"/>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo</argument>
+      <call method="setName">
+        <argument>gfonts:lock</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Scan templates and lock all used fonts for production</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" class="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:prune" description="Remove unused fonts from locked fonts" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</argument>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\FontLockManager"/>
+      <argument type="service" id="filesystem"/>
+      <call method="setName">
+        <argument>gfonts:prune</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Remove unused fonts from locked fonts</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" class="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:search" description="Search Google Fonts catalog" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\GoogleFontsApi"/>
+      <call method="setName">
+        <argument>gfonts:search</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Search Google Fonts catalog</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" class="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:status" description="Show Google Fonts configuration and status" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument>dev</argument>
+      <argument>false</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts</argument>
+      <argument type="service" id="filesystem"/>
+      <call method="setName">
+        <argument>gfonts:status</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Show Google Fonts configuration and status</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" class="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="gfonts:warm-cache" description="Pre-warm font cache from manifest file" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\FontDownloader"/>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</argument>
+      <argument type="service" id="filesystem"/>
+      <call method="setName">
+        <argument>gfonts:warm-cache</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Pre-warm font cache from manifest file</argument>
+      </call>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Exception\FontDownloadException" class="NeuralGlitch\GoogleFonts\Exception\FontDownloadException" autowire="true" autoconfigure="true"/>
+    <service id="NeuralGlitch\GoogleFonts\Exception\GoogleFontsException" class="NeuralGlitch\GoogleFonts\Exception\GoogleFontsException" autowire="true" autoconfigure="true"/>
+    <service id="NeuralGlitch\GoogleFonts\Exception\ManifestException" class="NeuralGlitch\GoogleFonts\Exception\ManifestException" autowire="true" autoconfigure="true"/>
+    <service id="NeuralGlitch\GoogleFonts\GoogleFontsBundle" class="NeuralGlitch\GoogleFonts\GoogleFontsBundle" autowire="true" autoconfigure="true"/>
+    <service id="NeuralGlitch\GoogleFonts\Service\FontDownloader" class="NeuralGlitch\GoogleFonts\Service\FontDownloader" autowire="true" autoconfigure="true">
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts</argument>
+      <argument type="service" id="http_client.uri_template"/>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\GoogleFontsApi"/>
+      <argument type="service" id="filesystem"/>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Service\FontLockManager" class="NeuralGlitch\GoogleFonts\Service\FontLockManager" autowire="true" autoconfigure="true">
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</argument>
+      <argument type="service" id="NeuralGlitch\GoogleFonts\Service\FontDownloader"/>
+      <argument type="service" id="filesystem"/>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Service\FontVariantHelper" class="NeuralGlitch\GoogleFonts\Service\FontVariantHelper" autowire="true" autoconfigure="true"/>
+    <service id="NeuralGlitch\GoogleFonts\Service\GoogleFontsApi" class="NeuralGlitch\GoogleFonts\Service\GoogleFontsApi" autowire="true" autoconfigure="true">
+      <argument type="service" id="http_client.uri_template"/>
+      <argument>null</argument>
+      <argument>3600</argument>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" autowire="true" autoconfigure="true">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" autowire="true" autoconfigure="true">
+      <tag name="twig.runtime"/>
+      <argument>false</argument>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/fonts.json</argument>
+      <argument>%google_fonts.defaults%</argument>
+      <argument type="service" id="asset_mapper"/>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ActionsBeninController" class="App\Controller\ActionsBeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ActionsBeninController" class="App\Controller\ActionsBeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ActionsBeninController.0.App\Controller\ActionsBeninController" class="App\Controller\ActionsBeninController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ActionsBeninController" class="App\Controller\ActionsBeninController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ActionsFranceController.0.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\AssociationController.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ContactController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\EulogyController.0.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\MainController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ReportsController.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ResearchController.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ResourcesController" class="App\Controller\ResourcesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ResourcesController" class="App\Controller\ResourcesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\ResourcesController.0.App\Controller\ResourcesController" class="App\Controller\ResourcesController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ResourcesController" class="App\Controller\ResourcesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\SupportController.0.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\TeamController.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\TrainingController.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsImportCommand.0.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsLockCommand" class="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsLockCommand.0.NeuralGlitch\GoogleFonts\Command\FontsLockCommand" class="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsLockCommand" class="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" class="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsPruneCommand.0.NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" class="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" class="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" class="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsSearchCommand.0.NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" class="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" class="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" class="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsStatusCommand.0.NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" class="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" class="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" class="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand.0.NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" class="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" class="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\ExtensionInterface.0.NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsExtension" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Twig\Extension\RuntimeExtensionInterface.0.NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" class="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.ryAvHi4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8725,6 +9102,78 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ActionsBeninController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ActionsBeninController"/>
+      <argument>App\Controller\ActionsBeninController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ActionsFranceController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ActionsFranceController"/>
+      <argument>App\Controller\ActionsFranceController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\AssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AssociationController"/>
+      <argument>App\Controller\AssociationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ContactController"/>
+      <argument>App\Controller\ContactController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\EulogyController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EulogyController"/>
+      <argument>App\Controller\EulogyController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MainController"/>
+      <argument>App\Controller\MainController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ReportsController"/>
+      <argument>App\Controller\ReportsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ResearchController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ResearchController"/>
+      <argument>App\Controller\ResearchController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\ResourcesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ResourcesController"/>
+      <argument>App\Controller\ResourcesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\SupportController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\SupportController"/>
+      <argument>App\Controller\SupportController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\TeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\TeamController"/>
+      <argument>App\Controller\TeamController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\TrainingController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\TrainingController"/>
+      <argument>App\Controller\TrainingController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.controller.helper" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="controller.helper"/>
       <argument>controller.helper</argument>
@@ -8898,7 +9347,7 @@
       <factory function="current"/>
     </service>
     <service id="asset_mapper.cached_mapped_asset_factory.inner" class="Symfony\Component\AssetMapper\Factory\MappedAssetFactory">
-      <argument type="service" id="asset_mapper.public_assets_path_resolver"/>
+      <argument type="service" id="sass.public_asset_path_resolver"/>
       <argument type="service" id="asset_mapper_compiler"/>
       <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/vendor</argument>
     </service>
@@ -8920,6 +9369,18 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\ActionsBeninController</argument>
+          <argument>App\Controller\ActionsFranceController</argument>
+          <argument>App\Controller\AssociationController</argument>
+          <argument>App\Controller\ContactController</argument>
+          <argument>App\Controller\EulogyController</argument>
+          <argument>App\Controller\MainController</argument>
+          <argument>App\Controller\ReportsController</argument>
+          <argument>App\Controller\ResearchController</argument>
+          <argument>App\Controller\ResourcesController</argument>
+          <argument>App\Controller\SupportController</argument>
+          <argument>App\Controller\TeamController</argument>
+          <argument>App\Controller\TrainingController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -9129,6 +9590,9 @@
     </service>
     <service id="debug.security.firewall.authenticator.main.inner" class="Symfony\Component\Security\Http\Firewall\AuthenticatorManagerListener">
       <argument type="service" id="security.authenticator.manager.main"/>
+    </service>
+    <service id="sass.public_asset_path_resolver.inner" class="Symfony\Component\AssetMapper\Path\PublicAssetsPathResolver">
+      <argument>/assets/</argument>
     </service>
     <service id="debug.security.event_dispatcher.main.inner" class="Symfony\Component\EventDispatcher\EventDispatcher"/>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
@@ -9670,6 +10134,55 @@
       <argument>false</argument>
       <argument type="service_closure" id="security.command.role_hierarchy_dump"/>
     </service>
+    <service id=".sass.command.build.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>sass:build</argument>
+      <argument type="collection"/>
+      <argument>Builds the Sass assets</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="sass.command.build"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsImportCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:import</argument>
+      <argument type="collection"/>
+      <argument>Import and download a Google Font for local use</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsImportCommand"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsLockCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:lock</argument>
+      <argument type="collection"/>
+      <argument>Scan templates and lock all used fonts for production</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsLockCommand"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsPruneCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:prune</argument>
+      <argument type="collection"/>
+      <argument>Remove unused fonts from locked fonts</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsSearchCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:search</argument>
+      <argument type="collection"/>
+      <argument>Search Google Fonts catalog</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsStatusCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:status</argument>
+      <argument type="collection"/>
+      <argument>Show Google Fonts configuration and status</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand"/>
+    </service>
+    <service id=".NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>gfonts:warm-cache</argument>
+      <argument type="collection"/>
+      <argument>Pre-warm font cache from manifest file</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand"/>
+    </service>
     <service id=".maker.auto_command.make_auth.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>make:auth</argument>
       <argument type="collection"/>
@@ -9866,7 +10379,7 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.qtNDmJa"/>
+      <argument type="service" id=".service_locator..0uiDIk"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -9960,6 +10473,13 @@
         <argument key="debug:firewall">security.command.debug_firewall</argument>
         <argument key="security:hash-password">security.command.user_password_hash</argument>
         <argument key="debug:security:role-hierarchy">security.command.role_hierarchy_dump</argument>
+        <argument key="sass:build">sass.command.build</argument>
+        <argument key="gfonts:import">NeuralGlitch\GoogleFonts\Command\FontsImportCommand</argument>
+        <argument key="gfonts:lock">NeuralGlitch\GoogleFonts\Command\FontsLockCommand</argument>
+        <argument key="gfonts:prune">NeuralGlitch\GoogleFonts\Command\FontsPruneCommand</argument>
+        <argument key="gfonts:search">NeuralGlitch\GoogleFonts\Command\FontsSearchCommand</argument>
+        <argument key="gfonts:status">NeuralGlitch\GoogleFonts\Command\FontsStatusCommand</argument>
+        <argument key="gfonts:warm-cache">NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:twig-component">maker.auto_command.make_twig_component</argument>
@@ -9992,7 +10512,7 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator.qtNDmJa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator..0uiDIk" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
@@ -10087,6 +10607,13 @@
         <argument key="security.command.debug_firewall" type="service_closure" id=".security.command.debug_firewall.lazy"/>
         <argument key="security.command.user_password_hash" type="service_closure" id=".security.command.user_password_hash.lazy"/>
         <argument key="security.command.role_hierarchy_dump" type="service_closure" id=".security.command.role_hierarchy_dump.lazy"/>
+        <argument key="sass.command.build" type="service_closure" id=".sass.command.build.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsImportCommand.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsLockCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsLockCommand.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsPruneCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsPruneCommand.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsSearchCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsSearchCommand.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsStatusCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsStatusCommand.lazy"/>
+        <argument key="NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand" type="service_closure" id=".NeuralGlitch\GoogleFonts\Command\FontsWarmCacheCommand.lazy"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id=".maker.auto_command.make_auth.lazy"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id=".maker.auto_command.make_command.lazy"/>
         <argument key="maker.auto_command.make_twig_component" type="service_closure" id=".maker.auto_command.make_twig_component.lazy"/>
@@ -10217,7 +10744,7 @@
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
-    <service id=".service_locator.R5M5UPr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.aBBKVSN" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Symfony\Bridge\Twig\Extension\CsrfRuntime" type="service_closure" id="twig.runtime.security_csrf"/>
@@ -10227,6 +10754,7 @@
         <argument key="Symfony\Bridge\Twig\Extension\ImportMapRuntime" type="service_closure" id="twig.runtime.importmap"/>
         <argument key="Symfony\UX\StimulusBundle\Twig\UxControllersTwigRuntime" type="service_closure" id="stimulus.ux_controllers_twig_runtime"/>
         <argument key="Symfony\UX\Turbo\Twig\TurboRuntime" type="service_closure" id="turbo.twig.runtime"/>
+        <argument key="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime" type="service_closure" id="NeuralGlitch\GoogleFonts\Twig\GoogleFontsRuntime"/>
       </argument>
     </service>
     <service id="App\Kernel" alias="kernel" public="true"/>
@@ -10432,6 +10960,7 @@
     <service id="turbo.broadcaster.imux" alias="turbo.broadcaster.action_renderer"/>
     <service id="security.access.decision_manager" alias="debug.security.access.decision_manager"/>
     <service id="security.firewall.authenticator.main" alias="debug.security.firewall.authenticator.main"/>
+    <service id="asset_mapper.public_assets_path_resolver" alias="sass.public_asset_path_resolver"/>
     <service id="security.event_dispatcher.main" alias="debug.security.event_dispatcher.main"/>
     <service id="messenger.bus.default" alias="debug.traced.messenger.bus.default"/>
     <service id=".signing.messenger.default_serializer.inner" alias="messenger.transport.native_php_serializer"/>

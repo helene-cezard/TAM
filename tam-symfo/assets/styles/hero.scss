@@ -1,0 +1,91 @@
+@use "variables";
+@use "placeholders";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 1.4rem + 3vw, 5rem);
+  height: calc(100svh - variables.$navbar-height-mobile);
+  // background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
+  background: linear-gradient(to bottom, #fff7d3 0%, #eb9b6a 70%); //#f28c57
+
+
+  @media screen and (min-width: variables.$breakpoint) {
+    height: calc(100svh - variables.$navbar-height-desktop);
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/45-degree-fabric-light.png"); // https://www.transparenttextures.com/
+    pointer-events: none;
+  }
+
+  &__content {
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1rem;
+    z-index: 1;
+  }
+
+  &__title {
+    @extend %title;
+    position: relative;
+    font-size: clamp(2rem, 1.2rem + 4vw, 6rem);
+    line-height: 1;
+
+    // &--small {
+    //   font-size: clamp(1.8rem, 1.16rem + 3.2vw, 5rem);
+    // }
+
+    @media screen and (min-width: 700px) {
+      .line-break {
+        display: none;
+      }
+    }
+  }
+
+  &__text {
+    width: 85vw;
+    text-align: center;
+    color: rgb(223, 113, 50);
+    font-size: clamp(1.4rem, 1.08rem + 1.6vw, 3rem);
+    margin: auto;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      // width: 50vw;
+    }
+  }
+
+  // &__discover {
+  //   // position: absolute;
+  //   width: 100%;
+  //   // bottom: .6rem;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   animation: 1s linear 1s infinite alternate discoverArrow;
+  //   z-index: 1;
+
+  //   @media screen and (min-width: variables.$breakpoint) {
+  //     bottom: 2rem;
+  //   }
+
+  //   & span {
+  //     margin: 0;
+  //     font-size: calc(0.6rem + 0.4vw);
+  //     margin-bottom: .70rem;
+  //     letter-spacing: .05em;
+  //     text-transform: uppercase;
+  //   }
+  // }
+
+  @keyframes discoverArrow {
+    100% {
+      transform: translateY(15px);
+    }
+  }
+}

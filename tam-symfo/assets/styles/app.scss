@@ -1,0 +1,40 @@
+@use "reset";
+@use "variables";
+@use "header";
+@use "submenu";
+@use "hero";
+@use "sections";
+@use "banner";
+@use "carousel";
+@use "footer";
+
+body {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  font-family: "Calibri", "Source Sans 3", sans-serif;
+  font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+  // color: #806E61;
+  color: rgb(64, 64, 72);
+}
+
+main {
+  background-color: white;
+  min-height: calc(100vh - (235px + variables.$navbar-height-mobile));
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: variables.$breakpoint) {
+    min-height: calc(100vh - (235px + variables.$navbar-height-desktop));
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}

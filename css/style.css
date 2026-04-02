@@ -1,305 +1,71 @@
-<<<<<<< HEAD
-/* Error: Can't find stylesheet to import.
- *   ,
- * 4 | @use "home";
- *   | ^^^^^^^^^^^
- *   '
- *   css/style.scss 4:1  root stylesheet */
-
-<<<<<<< HEAD
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: calc(100svh - 66px);
-  background: radial-gradient(circle, #f1d248, #FFF4C4);
-  color: #17175e;
-}
-.hero__content {
-  width: 90vw;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 1rem;
-  padding: 1.25rem;
-  z-index: 1;
-}
-@media screen and (min-width: 1130px) {
-  .hero__content {
-    font-size: 1.25rem;
-    margin-top: 3rem;
-    width: 50vw;
-  }
-}
-.hero__title {
-  font-family: Cormorant Garamond, Georgia, serif;
-  font-weight: bold;
-  font-size: calc(2rem + 1.5vw);
-  padding-bottom: 1.25rem;
-}
-.hero__discover {
-  position: absolute;
-  width: 100%;
-  bottom: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: 1s linear 1s infinite alternate discoverArrow;
-  z-index: 1;
-}
-@media screen and (min-width: 1130px) {
-  .hero__discover {
-    bottom: 2rem;
-  }
-}
-.hero__discover span {
-  margin: 0;
-  font-size: 0.75rem;
-  margin-bottom: 0.7rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-@keyframes discoverArrow {
-  100% {
-    transform: translateY(15px);
-  }
-}
-
-.actions, .team, .mission__content, .history__content, .home__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem;
-  margin: auto;
-  background: rgba(248, 246, 241, 0.9019607843);
-  color: #847062;
-}
-
-.actions__title, .team__title, .mission__header__title, .history__content__title, .home__header h2 {
-  font-family: Cormorant Garamond, Georgia, serif;
-  font-size: calc(1rem + 1.5vw);
-  font-weight: bold;
-  color: #30251d;
-  padding-bottom: 1.25rem;
-  line-height: normal;
-}
-
-.actions__quote, .mission__quote {
-  background-color: #f8eee9;
-  border-radius: 1.5rem;
-  font-size: 1.5rem;
-  font-style: italic;
-  padding: 2rem;
-  font-family: Cormorant Garamond, Georgia, serif;
-  height: fit-content;
-}
-.actions__quote svg, .mission__quote svg {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1.5rem;
-  color: #d76942;
-}
-
-.actions__presentation, .team__presentation, .team__card__text, .mission__header__text, .history__content__text {
-  line-height: 1.5rem;
-}
-
-.home__header {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-}
-.home__link {
-  color: #d76942;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  margin: 3rem;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  width: 100%;
-  text-align: center;
-}
-.home__link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-@media screen and (min-width: 1130px) {
-  .mission__content {
-    flex-direction: row;
-  }
-}
-.mission__content {
-  display: flex;
-  gap: 2rem;
-}
-.team {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-.team__presentation p {
-  padding-bottom: 1rem;
-}
-.team__container {
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  width: 100%;
-}
-.team__card {
-  background-color: white;
-  height: fit-content;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  margin: 0.5rem;
-}
-.team__card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-}
-.team__card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  object-position: top;
-}
-.team__card__text {
-  padding: 1rem;
-}
-.team__card__name {
-  font-family: Cormorant Garamond, Georgia, serif;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #30251d;
-  padding-bottom: 1rem;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-.actions__presentation p {
-  padding-bottom: 1rem;
-}
-
-.banner-container {
-  background-color: #f8f6f1;
-  display: grid;
-  flex-grow: 1;
-}
-.banner-container > * {
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-@media screen and (min-width: 1130px) {
-  .banner-container {
-    grid-template-columns: 12% auto 12%;
-    grid-template-areas: "BannerLeft Pusher BannerRight";
-  }
-}
-.banner-container .banner {
-  width: 50%;
-  opacity: 0.6;
-  background-size: contain;
-  background-image: url("../images/banner/banniere-droite.jpg");
-}
-.banner-container .banner--right {
-  display: none;
-}
-.banner-container .banner__pusher {
-  padding-bottom: 200px;
-  z-index: 1;
-}
-.banner-container .banner__pusher > * {
-  max-width: 60rem;
-  margin: auto;
-}
-@media screen and (min-width: 1130px) {
-  .banner-container .banner {
-    width: 100%;
-  }
-  .banner-container .banner--left {
-    grid-area: BannerLeft;
-  }
-  .banner-container .banner--right {
-    display: block;
-    grid-area: BannerRight;
-    transform: rotate(180deg);
-  }
-  .banner-container .banner__pusher {
-    grid-area: Pusher;
-  }
-}
-
-.carousel {
-  position: relative;
-  height: 30svh;
-  width: 100%;
-  z-index: 1;
-  box-sizing: content-box;
-}
-@media screen and (min-width: 1130px) {
-  .carousel {
-    height: 45svh;
-  }
-}
-.carousel__btn {
-  position: absolute;
-  background: none;
-  border: none;
-  outline: none;
-  font-size: calc(2rem + 1.5vw);
-  z-index: 2;
-  cursor: pointer;
-  color: rgb(240, 240, 240);
-  padding: 8px 12px;
-  transform: translateY(-50%);
-  top: 50%;
-}
-.carousel #prev {
-  left: 1rem;
-}
-.carousel #next {
-  right: 1rem;
-}
-.carousel__slides {
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-.carousel__slide {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-}
-.carousel__slide.active {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-.carousel__slide img {
-=======
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
->>>>>>> github-pages
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 4 \2502  @use \"home\";\a   \2502  ^^^^^^^^^^^\a   \2575 \a   css/style.scss 4:1  root stylesheet";
-=======
 @charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Reset perso */
+a, del, ins {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
 .header {
   position: sticky;
   top: 0;
@@ -312,7 +78,6 @@ body::before {
   grid-template-columns: 1.5fr 3fr 1.5fr;
   grid-template-rows: 48px;
   grid-template-areas: "Logo . NavButton" "Menu Menu Menu";
->>>>>>> github-pages
 }
 @media screen and (min-width: 1130px) {
   .header {

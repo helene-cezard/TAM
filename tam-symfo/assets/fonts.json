@@ -1,0 +1,24 @@
+{
+    "locked": true,
+    "generated_at": "2026-03-30T15:43:28+00:00",
+    "fonts": {
+        "Source Sans 3": {
+            "weights": [
+                400,
+                700
+            ],
+            "styles": [
+                "normal",
+                "italic"
+            ],
+            "files": [
+                "source-sans-3-400.ttf",
+                "source-sans-3-700-italic.ttf",
+                "source-sans-3-400-1.ttf",
+                "source-sans-3-700-italic-1.ttf"
+            ],
+            "css": "assets/fonts/source-sans-3.css",
+            "monospace": false
+        }
+    }
+}

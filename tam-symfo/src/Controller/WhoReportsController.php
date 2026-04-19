@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class ReportsController extends AbstractController
+final class WhoReportsController extends AbstractController
 {
-    #[Route('/rapports-d-activite', name: 'app_reports')]
+    #[Route('/rapports-d-activite', name: 'app_who_reports')]
     public function index(): Response
     {
-        return $this->render('reports/index.html.twig', [
-            'controller_name' => 'ReportsController',
+        return $this->render('who_reports/index.html.twig', [
+            'controller_name' => 'WhoReportsController',
         ]);
     }
 }

@@ -395,14 +395,6 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ActionsFranceController"/>
       </call>
     </service>
-    <service id="App\Controller\AssociationController" class="App\Controller\AssociationController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\AssociationController"/>
-      </call>
-    </service>
     <service id="App\Controller\ContactController" class="App\Controller\ContactController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -419,20 +411,20 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\EulogyController"/>
       </call>
     </service>
+    <service id="App\Controller\LegalController" class="App\Controller\LegalController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\LegalController"/>
+      </call>
+    </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\MainController"/>
-      </call>
-    </service>
-    <service id="App\Controller\ReportsController" class="App\Controller\ReportsController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\ReportsController"/>
       </call>
     </service>
     <service id="App\Controller\ResearchController" class="App\Controller\ResearchController" public="true" autowire="true" autoconfigure="true">
@@ -459,14 +451,6 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\SupportController"/>
       </call>
     </service>
-    <service id="App\Controller\TeamController" class="App\Controller\TeamController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\TeamController"/>
-      </call>
-    </service>
     <service id="App\Controller\TrainingController" class="App\Controller\TrainingController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -474,6 +458,38 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\TrainingController"/>
       </call>
+    </service>
+    <service id="App\Controller\WhoAssociationController" class="App\Controller\WhoAssociationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\WhoAssociationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\WhoReportsController" class="App\Controller\WhoReportsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\WhoReportsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\WhoTeamController" class="App\Controller\WhoTeamController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\WhoTeamController"/>
+      </call>
+    </service>
+    <service id="App\Entity\AssocSection" class="App\Entity\AssocSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Repository\AssocSectionRepository" class="App\Repository\AssocSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
     </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
@@ -503,7 +519,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.8JS6QTA"/>
+      <argument type="service" id=".service_locator.c920Mhk"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -3614,7 +3630,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.8JS6QTA"/>
+      <argument type="service" id=".service_locator.c920Mhk"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3698,16 +3714,17 @@
       <argument type="collection">
         <argument>App\Controller\ActionsBeninController</argument>
         <argument>App\Controller\ActionsFranceController</argument>
-        <argument>App\Controller\AssociationController</argument>
         <argument>App\Controller\ContactController</argument>
         <argument>App\Controller\EulogyController</argument>
+        <argument>App\Controller\LegalController</argument>
         <argument>App\Controller\MainController</argument>
-        <argument>App\Controller\ReportsController</argument>
         <argument>App\Controller\ResearchController</argument>
         <argument>App\Controller\ResourcesController</argument>
         <argument>App\Controller\SupportController</argument>
-        <argument>App\Controller\TeamController</argument>
         <argument>App\Controller\TrainingController</argument>
+        <argument>App\Controller\WhoAssociationController</argument>
+        <argument>App\Controller\WhoReportsController</argument>
+        <argument>App\Controller\WhoTeamController</argument>
       </argument>
     </service>
     <service id="routing.loader.attribute.directory" class="Symfony\Component\Routing\Loader\AttributeDirectoryLoader">
@@ -5602,7 +5619,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.dpiLQ5O"/>
+      <argument type="service" id=".service_locator.dUAV5yM"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -7907,10 +7924,6 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\ActionsFranceController.0.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ActionsFranceController" class="App\Controller\ActionsFranceController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\AssociationController.0.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AssociationController" class="App\Controller\AssociationController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\ContactController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
@@ -7919,14 +7932,14 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\EulogyController.0.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EulogyController" class="App\Controller\EulogyController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\LegalController.0.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LegalController" class="App\Controller\LegalController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\MainController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\ReportsController.0.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\ReportsController" class="App\Controller\ReportsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\ResearchController.0.App\Controller\ResearchController" class="App\Controller\ResearchController" autowire="true" abstract="true"/>
@@ -7939,14 +7952,26 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\SupportController.0.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SupportController" class="App\Controller\SupportController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\TeamController.0.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\TeamController" class="App\Controller\TeamController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\TrainingController.0.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TrainingController" class="App\Controller\TrainingController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\WhoAssociationController" class="App\Controller\WhoAssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\WhoAssociationController" class="App\Controller\WhoAssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\WhoAssociationController.0.App\Controller\WhoAssociationController" class="App\Controller\WhoAssociationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\WhoAssociationController" class="App\Controller\WhoAssociationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\WhoReportsController" class="App\Controller\WhoReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\WhoReportsController" class="App\Controller\WhoReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\WhoReportsController.0.App\Controller\WhoReportsController" class="App\Controller\WhoReportsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\WhoReportsController" class="App\Controller\WhoReportsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\WhoTeamController" class="App\Controller\WhoTeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\WhoTeamController" class="App\Controller\WhoTeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\WhoTeamController.0.App\Controller\WhoTeamController" class="App\Controller\WhoTeamController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\WhoTeamController" class="App\Controller\WhoTeamController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\AssocSection.0.App\Entity\AssocSection" class="App\Entity\AssocSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\AssocSection" class="App\Entity\AssocSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AssocSectionRepository" class="App\Repository\AssocSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AssocSectionRepository" class="App\Repository\AssocSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" abstract="true"/>
     <service id=".instanceof.NeuralGlitch\GoogleFonts\Command\FontsImportCommand.0.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" autoconfigure="true" abstract="true"/>
@@ -8487,15 +8512,29 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.1vYpZ1B" method="withContext"/>
     </service>
-    <service id=".service_locator.8JS6QTA" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uf0sjnT" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="assoSectionRepository" type="service_closure" id="App\Repository\AssocSectionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uf0sjnT.App\Controller\WhoAssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\WhoAssociationController::index()"/>
+      <argument>App\Controller\WhoAssociationController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.uf0sjnT" method="withContext"/>
+    </service>
+    <service id=".service_locator.c920Mhk" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
+        <argument key="App\Controller\WhoAssociationController::index" type="service_closure" id=".service_locator.uf0sjnT.App\Controller\WhoAssociationController::index()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
+        <argument key="App\Controller\WhoAssociationController:index" type="service_closure" id=".service_locator.uf0sjnT.App\Controller\WhoAssociationController::index()"/>
       </argument>
     </service>
     <service id=".service_locator.S9tnIXR" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8832,9 +8871,11 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.dpiLQ5O" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.dUAV5yM" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="App\Repository\AssocSectionRepository" type="service_closure" id="App\Repository\AssocSectionRepository"/>
+      </argument>
     </service>
     <service id=".service_locator.W55Po6X" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9114,12 +9155,6 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\AssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\AssociationController"/>
-      <argument>App\Controller\AssociationController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TJNRSaV" method="withContext"/>
-    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\ContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ContactController"/>
       <argument>App\Controller\ContactController</argument>
@@ -9132,15 +9167,15 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\MainController"/>
-      <argument>App\Controller\MainController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\LegalController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LegalController"/>
+      <argument>App\Controller\LegalController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\ReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\ReportsController"/>
-      <argument>App\Controller\ReportsController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MainController"/>
+      <argument>App\Controller\MainController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -9162,15 +9197,27 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\TeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\TeamController"/>
-      <argument>App\Controller\TeamController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TJNRSaV" method="withContext"/>
-    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\TrainingController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\TrainingController"/>
       <argument>App\Controller\TrainingController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\WhoAssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\WhoAssociationController"/>
+      <argument>App\Controller\WhoAssociationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\WhoReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\WhoReportsController"/>
+      <argument>App\Controller\WhoReportsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\WhoTeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\WhoTeamController"/>
+      <argument>App\Controller\WhoTeamController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -9252,6 +9299,10 @@
       <argument type="collection">
         <argument key="reverse_container" type="service_closure" id="reverse_container" on-invalid="ignore_uninitialized"/>
       </argument>
+    </service>
+    <service id=".service_locator.dpiLQ5O" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
     </service>
     <service id=".service_locator.6eloqTE" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9371,16 +9422,17 @@
           <argument>App\Kernel</argument>
           <argument>App\Controller\ActionsBeninController</argument>
           <argument>App\Controller\ActionsFranceController</argument>
-          <argument>App\Controller\AssociationController</argument>
           <argument>App\Controller\ContactController</argument>
           <argument>App\Controller\EulogyController</argument>
+          <argument>App\Controller\LegalController</argument>
           <argument>App\Controller\MainController</argument>
-          <argument>App\Controller\ReportsController</argument>
           <argument>App\Controller\ResearchController</argument>
           <argument>App\Controller\ResourcesController</argument>
           <argument>App\Controller\SupportController</argument>
-          <argument>App\Controller\TeamController</argument>
           <argument>App\Controller\TrainingController</argument>
+          <argument>App\Controller\WhoAssociationController</argument>
+          <argument>App\Controller\WhoReportsController</argument>
+          <argument>App\Controller\WhoTeamController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -10907,7 +10959,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.8JS6QTA"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.c920Mhk"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request.logger" alias="monolog.logger.request"/>
@@ -10966,6 +11018,7 @@
     <service id=".signing.messenger.default_serializer.inner" alias="messenger.transport.native_php_serializer"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.c0wzfI4" alias=".service_locator.1vYpZ1B"/>
+    <service id=".service_locator.IrZ_J0x" alias=".service_locator.uf0sjnT"/>
     <service id=".service_locator.D6tJ4Px" alias=".service_locator.TJNRSaV"/>
   </services>
 </container>

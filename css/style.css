@@ -367,7 +367,7 @@
 }
 .hero__title {
   position: relative;
-  font-size: clamp(2rem, 1.2rem + 4vw, 6rem);
+  font-size: clamp(2rem, 1.6rem + 2vw, 4rem);
   line-height: 1;
 }
 @media screen and (min-width: 700px) {
@@ -379,7 +379,7 @@
   width: 85vw;
   text-align: center;
   color: rgb(223, 113, 50);
-  font-size: clamp(1.4rem, 1.08rem + 1.6vw, 3rem);
+  font-size: clamp(1.4rem, 1.14rem + 1.3vw, 2.7rem);
   margin: auto;
 }
 @keyframes discoverArrow {
@@ -797,7 +797,7 @@
 }
 @media screen and (min-width: 1130px) {
   .carousel {
-    height: 45svh;
+    height: 55svh;
   }
 }
 .carousel__btn {

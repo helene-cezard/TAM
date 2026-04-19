@@ -34,12 +34,8 @@
   &__title {
     @extend %title;
     position: relative;
-    font-size: clamp(2rem, 1.2rem + 4vw, 6rem);
+    font-size: clamp(2rem, 1.6rem + 2vw, 4rem);
     line-height: 1;
-
-    // &--small {
-    //   font-size: clamp(1.8rem, 1.16rem + 3.2vw, 5rem);
-    // }
 
     @media screen and (min-width: 700px) {
       .line-break {
@@ -52,7 +48,7 @@
     width: 85vw;
     text-align: center;
     color: rgb(223, 113, 50);
-    font-size: clamp(1.4rem, 1.08rem + 1.6vw, 3rem);
+    font-size: clamp(1.4rem, 1.14rem + 1.3vw, 2.7rem);
     margin: auto;
 
     @media screen and (min-width: variables.$breakpoint) {

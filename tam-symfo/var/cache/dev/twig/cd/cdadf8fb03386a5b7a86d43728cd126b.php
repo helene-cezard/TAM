@@ -1,0 +1,318 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\CoreExtension;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+use Twig\TemplateWrapper;
+
+/* actions_benin/index.html.twig */
+class __TwigTemplate_762bc87545a5af36d5edffa105afb830 extends Template
+{
+    private Source $source;
+    /**
+     * @var array<string, Template>
+     */
+    private array $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->blocks = [
+            'title' => [$this, 'block_title'],
+            'body' => [$this, 'block_body'],
+        ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base.html.twig";
+    }
+
+    protected function doDisplay(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "actions_benin/index.html.twig"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "actions_benin/index.html.twig"));
+
+        $this->parent = $this->load("base.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 3
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_title(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
+
+        yield "Association TAM : Thérapies, Arts & Médiations - Actions au Bénin";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 5
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
+    public function block_body(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 6
+        yield "    <main>
+      <div class=\"banner-container\">
+        <div class=\"banner\"></div>
+        <div class=\"banner__pusher\">
+            <section class=\"actions section\">
+                <div class=\"actions__header subsection\">
+                    <h2 class=\"section__title section__side-title\">Accompagner autrement, au plus près des personnes</h2>
+                    <p>TAM développe des actions thérapeutiques ajustables, mobiles et adaptées aux réalités de terrain. Nos interventions ont lieu dans les quartiers, les lieux de vie collectifs, et à domicile.</p>
+                    <div class=\"section__image section__side\">
+                        <img src=\"../images/sections/paul peinture.JPG\" alt=\"Gros plan sur des mains en train de peindre\">
+                    </div>
+                </div>
+                <div class=\"actions__list\">
+                    <div class=\"actions__list__header\">
+                        <h3 class=\"section__small-title\">Nos principaux dispositifs :</h3>
+                        <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Médiation transculturelle</h4>
+                        <p>La médiation transculturelle rend possible la rencontre et s’offre comme une passerelle entre les mondes ici et ailleurs. Elle permet de mieux comprendre les blocages psychiques, relationnels et culturels, d’ouvrir des espaces de dialogue afin d’accompagner les personnes vers une prise en charge adaptée.</p>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Permanences d’écoute et groupes de parole</h4>
+                        <p>
+                            Dans les quartiers dits sensibles, notre équipe propose des espaces d’écoute et de parole inspirés de l’ethnopsychiatrie.
+                            <br>
+                            Ces dispositifs favorisent l’expression des souffrances, la mise en mots de l’histoire personnelle et la restauration du lien social.
+                        </p>
+                        <p>La parole :</p>
+                        <ul class=\"actions__speech__list\">
+                            <li>Individuelle</li>
+                            <li>En groupe</li>
+                        </ul>
+                    </div>
+                    <div class=\"actions__item subsection\">
+                        <h4 class=\"section__side-title\">Ateliers d’art-thérapie</h4>
+                        <div class=\"section__content\">
+                            <p>L’art-thérapie permet une expression non verbale à travers la création à l’aide de médiums artistiques : peinture, modelage, musique, danse, écriture, photographie, tissage etc…</p>
+                            <p>La création comme levier devient alors un espace de transformation, de réparation symbolique et de reconstruction singulière. L’art permet de renouer avec le plaisir, la créativité et renforce l’estime de soi.</p>
+                            <p>Le processus artistique représente un outil original et porteur, au service de la personne qu’il sollicite sur tous les plans physique, psychique et émotionnel.</p>
+                            <p><strong>Les ateliers d’art thérapie se déroulent lors de séances individuelles ou groupales.</strong></p>
+                        </div>
+                        <div class=\"section__quote section__side\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                            <blocquote>
+                            \"La création oblige un être à faire un retour sur lui-même, c’est un pouvoir initiatique, une ouverture au monde qui permet à chacun de d’exprimer « L’indicible »\".
+                            </blocquote>
+                        </div>
+                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1vJBUHIuNjQ?si=mAYivXzs8LW3wKBS\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Sorties culturelles et projets artistiques</h4>
+                        <p>Les visites de musées et la mise en place de restitution de projets collectifs, d’expositions, de spectacles favorisent l’ouverture culturelle, la valorisation personnelle et le renforcement du lien social. Initiés par l’association T.A.M aux côtés des équipes de terrain des structures d’accueil.</p>
+                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4Za_l8DzJ3U?si=jAnaefwiEfpGcQNp\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Participations aux colloques et aux journées à thèmes</h4>
+                        <p>Colloques de URACA et de la FFAT, journée santé mentale à Ville Evrard, Journées migrant hôpital Avicenne, service de psychiatrie des hôpitaux CHU Kremlin Bicêtre, Paul Brousse, Paul Guiraud, Ville Evrard, Réseaux DEPSUD et addictions, RAVMO Villejuif…</p>
+                    </div>
+                </div>
+                <div class=\"actions__places\">
+                    <h3 class=\"section__small-title\">Nos lieux d’intervention</h3>
+                    <p>Les foyers, résidences sociales, CADA (Centre d’Accueil pour demandeurs d’Asile), maisons de quartiers, centre sociaux, hôpitaux de jour, cliniques, EHPAD et associations.</p>
+                </div>
+                <div class=\"actions__partners\">
+                    <h3 class=\"section__small-title\">Nos partenaires</h3>
+                    <p>À retrouver dans <a class=\"section__link\" href=\"reports.html\">les rapports d’activités.</a></p>
+                    <ul class=\"actions__partners__list\">
+                        <li><strong>Les Institutions</strong> : ARS, L’ Agence Régionale de Santé, DDCS, Direction Départementale de la Cohésion Sociale. Département du Val de Marne Ile de France, Egalités de chances. Grand Orly.-Seine Bièvre.</li>
+                        <li><strong>Les villes</strong> : Antony, Bobigny, Choisy le Roi, Créteil, Ivry sur Seine, Valenton, Vitry sur Seine.</li>
+                        <li><stong>Les bailleurs sociaux</stong> : ADEF, Coallia, Philia.</li>
+                        <li><strong>Les hôpitaux</strong> : Avicenne- Bobigny, Paul Brousse et Paul Guiraud Villejuif, Kremlin Bicêtre, Henri Mondor et la PASS dentaire de Créteil Albert Chenevier Créteil, Charles Foix Ivry sur Seine.</li>
+                        <li><strong>Les associations</strong> : URACA/ Basilliade, France Alzheimer ADB, ABEJ Diaconie, l’AFSI d’Ivry sur Seine, Centre d’hébergement d’urgence de La Croix Rouge Française à Fontenay sous-bois, Créations omnivores, Les petits frères des pauvres, Maison Alfort, Solidarité internationale Vitry, La petite main tendue. Instruction et partage Choisy le Roi, Ne rougissez pas, Vie Libre,..</li>
+                        <li><strong>Les centres médicalisés et EHPAD</strong> : PMI des Francs-moisin à Saint Denis, EHPAD Amarilys d’Aulnay - sous- bois. La résidence Chanterelle à Choisy le Roi.</li>
+                        <li><strong>Accueil de jour GEM</strong> : Social Club Choisy le Roi.</li>
+                        <li><strong>Les CADA</strong> : Choisy le Roi et La Hay les Roses.</li>
+                        <li><strong>Les centres sociaux et maisons de quartier</strong> : Centre du Noyer doré à Antony, Centre social d’accueil de Bobigny, L’espace Langevin à Choisy le Roi, centre social et culturel des bleuets à Créteil, les Maisons de quartier Monmousseau et Pierre et Marie Curie à Ivry sur Seine</li>
+                        <li><strong>Et aussi</strong> : les médecins les assistantes sociales des villes, EDS et CMP de Villeneuve saint Georges, Créteil, Choisy le ROI CCAS de Valenton, CMS d’Ivry sur Seine, le Centre Henri Duchesne de Choisy le Roi, le centre Minkovska à Paris.</li>
+                        <li><strong>Les musées</strong> : l’Institut du monde Arabe, le Mac Val, Musées de l’Homme, d’Orsay, du quai Branly et Rodin. La cathédrale Notre Dame de Paris.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class=\"banner banner--right\"></div>
+      </div>
+    </main>
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getTemplateName(): string
+    {
+        return "actions_benin/index.html.twig";
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public function getDebugInfo(): array
+    {
+        return array (  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+    }
+
+    public function getSourceContext(): Source
+    {
+        return new Source("{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+
+{% block body %}
+    <main>
+      <div class=\"banner-container\">
+        <div class=\"banner\"></div>
+        <div class=\"banner__pusher\">
+            <section class=\"actions section\">
+                <div class=\"actions__header subsection\">
+                    <h2 class=\"section__title section__side-title\">Accompagner autrement, au plus près des personnes</h2>
+                    <p>TAM développe des actions thérapeutiques ajustables, mobiles et adaptées aux réalités de terrain. Nos interventions ont lieu dans les quartiers, les lieux de vie collectifs, et à domicile.</p>
+                    <div class=\"section__image section__side\">
+                        <img src=\"../images/sections/paul peinture.JPG\" alt=\"Gros plan sur des mains en train de peindre\">
+                    </div>
+                </div>
+                <div class=\"actions__list\">
+                    <div class=\"actions__list__header\">
+                        <h3 class=\"section__small-title\">Nos principaux dispositifs :</h3>
+                        <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Médiation transculturelle</h4>
+                        <p>La médiation transculturelle rend possible la rencontre et s’offre comme une passerelle entre les mondes ici et ailleurs. Elle permet de mieux comprendre les blocages psychiques, relationnels et culturels, d’ouvrir des espaces de dialogue afin d’accompagner les personnes vers une prise en charge adaptée.</p>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Permanences d’écoute et groupes de parole</h4>
+                        <p>
+                            Dans les quartiers dits sensibles, notre équipe propose des espaces d’écoute et de parole inspirés de l’ethnopsychiatrie.
+                            <br>
+                            Ces dispositifs favorisent l’expression des souffrances, la mise en mots de l’histoire personnelle et la restauration du lien social.
+                        </p>
+                        <p>La parole :</p>
+                        <ul class=\"actions__speech__list\">
+                            <li>Individuelle</li>
+                            <li>En groupe</li>
+                        </ul>
+                    </div>
+                    <div class=\"actions__item subsection\">
+                        <h4 class=\"section__side-title\">Ateliers d’art-thérapie</h4>
+                        <div class=\"section__content\">
+                            <p>L’art-thérapie permet une expression non verbale à travers la création à l’aide de médiums artistiques : peinture, modelage, musique, danse, écriture, photographie, tissage etc…</p>
+                            <p>La création comme levier devient alors un espace de transformation, de réparation symbolique et de reconstruction singulière. L’art permet de renouer avec le plaisir, la créativité et renforce l’estime de soi.</p>
+                            <p>Le processus artistique représente un outil original et porteur, au service de la personne qu’il sollicite sur tous les plans physique, psychique et émotionnel.</p>
+                            <p><strong>Les ateliers d’art thérapie se déroulent lors de séances individuelles ou groupales.</strong></p>
+                        </div>
+                        <div class=\"section__quote section__side\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                            <blocquote>
+                            \"La création oblige un être à faire un retour sur lui-même, c’est un pouvoir initiatique, une ouverture au monde qui permet à chacun de d’exprimer « L’indicible »\".
+                            </blocquote>
+                        </div>
+                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1vJBUHIuNjQ?si=mAYivXzs8LW3wKBS\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Sorties culturelles et projets artistiques</h4>
+                        <p>Les visites de musées et la mise en place de restitution de projets collectifs, d’expositions, de spectacles favorisent l’ouverture culturelle, la valorisation personnelle et le renforcement du lien social. Initiés par l’association T.A.M aux côtés des équipes de terrain des structures d’accueil.</p>
+                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4Za_l8DzJ3U?si=jAnaefwiEfpGcQNp\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+                    </div>
+                    <div class=\"actions__item\">
+                        <h4>Participations aux colloques et aux journées à thèmes</h4>
+                        <p>Colloques de URACA et de la FFAT, journée santé mentale à Ville Evrard, Journées migrant hôpital Avicenne, service de psychiatrie des hôpitaux CHU Kremlin Bicêtre, Paul Brousse, Paul Guiraud, Ville Evrard, Réseaux DEPSUD et addictions, RAVMO Villejuif…</p>
+                    </div>
+                </div>
+                <div class=\"actions__places\">
+                    <h3 class=\"section__small-title\">Nos lieux d’intervention</h3>
+                    <p>Les foyers, résidences sociales, CADA (Centre d’Accueil pour demandeurs d’Asile), maisons de quartiers, centre sociaux, hôpitaux de jour, cliniques, EHPAD et associations.</p>
+                </div>
+                <div class=\"actions__partners\">
+                    <h3 class=\"section__small-title\">Nos partenaires</h3>
+                    <p>À retrouver dans <a class=\"section__link\" href=\"reports.html\">les rapports d’activités.</a></p>
+                    <ul class=\"actions__partners__list\">
+                        <li><strong>Les Institutions</strong> : ARS, L’ Agence Régionale de Santé, DDCS, Direction Départementale de la Cohésion Sociale. Département du Val de Marne Ile de France, Egalités de chances. Grand Orly.-Seine Bièvre.</li>
+                        <li><strong>Les villes</strong> : Antony, Bobigny, Choisy le Roi, Créteil, Ivry sur Seine, Valenton, Vitry sur Seine.</li>
+                        <li><stong>Les bailleurs sociaux</stong> : ADEF, Coallia, Philia.</li>
+                        <li><strong>Les hôpitaux</strong> : Avicenne- Bobigny, Paul Brousse et Paul Guiraud Villejuif, Kremlin Bicêtre, Henri Mondor et la PASS dentaire de Créteil Albert Chenevier Créteil, Charles Foix Ivry sur Seine.</li>
+                        <li><strong>Les associations</strong> : URACA/ Basilliade, France Alzheimer ADB, ABEJ Diaconie, l’AFSI d’Ivry sur Seine, Centre d’hébergement d’urgence de La Croix Rouge Française à Fontenay sous-bois, Créations omnivores, Les petits frères des pauvres, Maison Alfort, Solidarité internationale Vitry, La petite main tendue. Instruction et partage Choisy le Roi, Ne rougissez pas, Vie Libre,..</li>
+                        <li><strong>Les centres médicalisés et EHPAD</strong> : PMI des Francs-moisin à Saint Denis, EHPAD Amarilys d’Aulnay - sous- bois. La résidence Chanterelle à Choisy le Roi.</li>
+                        <li><strong>Accueil de jour GEM</strong> : Social Club Choisy le Roi.</li>
+                        <li><strong>Les CADA</strong> : Choisy le Roi et La Hay les Roses.</li>
+                        <li><strong>Les centres sociaux et maisons de quartier</strong> : Centre du Noyer doré à Antony, Centre social d’accueil de Bobigny, L’espace Langevin à Choisy le Roi, centre social et culturel des bleuets à Créteil, les Maisons de quartier Monmousseau et Pierre et Marie Curie à Ivry sur Seine</li>
+                        <li><strong>Et aussi</strong> : les médecins les assistantes sociales des villes, EDS et CMP de Villeneuve saint Georges, Créteil, Choisy le ROI CCAS de Valenton, CMS d’Ivry sur Seine, le Centre Henri Duchesne de Choisy le Roi, le centre Minkovska à Paris.</li>
+                        <li><strong>Les musées</strong> : l’Institut du monde Arabe, le Mac Val, Musées de l’Homme, d’Orsay, du quai Branly et Rodin. La cathédrale Notre Dame de Paris.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class=\"banner banner--right\"></div>
+      </div>
+    </main>
+{% endblock %}
+", "actions_benin/index.html.twig", "/var/www/html/Benevolat/TAM/tam-symfo/templates/actions_benin/index.html.twig");
+    }
+}

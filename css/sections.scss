@@ -48,7 +48,7 @@
     height: auto;
     aspect-ratio: 16 / 9;
     border: none;
-    border-radius: 1rem;
+    border-radius: .5rem;
     
     //! Media querie inversée (max-width au lieu de min-width) pour s'assurer que la vidéo
     //! prenne toute la largeur sur mobile, mais fasse la largeur du iframe sur desktop
@@ -95,7 +95,7 @@
     & img {
       width: 100%;
       height: auto;
-      border-radius: 1rem;
+      border-radius: .5rem;
     }
     
     @media screen and (min-width: variables.$breakpoint) {
@@ -139,22 +139,17 @@
 
     &__card {
       @extend %card;
-      display: flex;
-      flex-direction: column;
-      aspect-ratio: 1.1 / 1;
-      max-width: 22rem;
-      padding: 1rem;
-
+      
       @media screen and (min-width: variables.$breakpoint) {
         flex: 1 1 0;
       }
-
+      
       &:hover {
         transform: translateY(-10px);
         box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease-in-out;
       }
-
+      
       & svg,
       .fi {
         width: 3rem;
@@ -162,6 +157,15 @@
         margin: 0 auto 1.5rem auto;
         color: #d76942;
       }
+    }
+    
+    &__link {
+      display: flex;
+      flex-direction: column;
+      max-width: 22rem;
+      aspect-ratio: 1.1 / 1;
+      padding: 1rem;
+      scroll-margin-top: 100px;
     }
   }
 
@@ -204,15 +208,12 @@
       color: #30251d;
       margin: 0 auto 1rem auto;
 
-      & span {
-        font-size: 3rem;
-        color: #d76942;
-      }
     }
-
-    // &__text {
-    //   font-size: 1rem;
-    // }
+    
+    &__plus {
+      font-size: 3rem;
+      color: #d76942;
+    }
   }
 }
 
@@ -402,8 +403,9 @@
       margin-bottom: 1rem;
     }
   }
-
+  
   &__item {
+    scroll-margin-top: 4rem;
 
     & h4 {
       color: #d76942;

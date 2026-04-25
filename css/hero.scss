@@ -8,8 +8,7 @@
   justify-content: center;
   gap: clamp(2rem, 1.4rem + 3vw, 5rem);
   height: calc(100svh - variables.$navbar-height-mobile);
-  // background: linear-gradient(to bottom, #fff4c4 0%, #E97132 70%);
-  background: linear-gradient(to bottom, #fff7d3 0%, #eb9b6a 70%); //#f28c57
+  background: linear-gradient(to bottom, #fff7d3 0%, #eb9b6a 70%);
 
 
   @media screen and (min-width: variables.$breakpoint) {
@@ -25,8 +24,6 @@
   }
 
   &__content {
-    border-radius: 5px;
-    text-align: center;
     margin-top: 1rem;
     z-index: 1;
   }

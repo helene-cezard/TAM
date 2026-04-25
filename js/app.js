@@ -7,6 +7,7 @@ const app = {
       app.burgerMenu();
       app.itv = app.play(app.itv);
       app.showSubmenu();
+      app.animateCounters();
   },
 
   burgerMenu: function() {
@@ -115,6 +116,36 @@ const app = {
   pause: function(itv) {
     clearInterval(itv);
   },
+
+  animateCounters: function() {
+    const numbers = document.querySelectorAll('.home__counter__number');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target;
+          const target = number.innerHTML;
+          let count = 0;
+          const increment = target / 50;
+
+          function updateCounter() {
+            count += increment;
+            if (count < target) {
+              number.textContent = Math.ceil(count);
+              requestAnimationFrame(updateCounter);
+            } else {
+              number.textContent = target;
+            }
+          }
+
+          updateCounter();
+        }
+      });
+    },
+     { threshold: 0.3 });
+
+      numbers.forEach(number => observer.observe(number));
+  }
 }
 
 

@@ -15,7 +15,7 @@
 @media screen and (min-width: 1130px) {
   .header {
     grid-template-rows: 55px;
-    grid-template-areas: "Logo Menu .";
+    grid-template-areas: "Logo . Menu";
   }
 }
 .header__logo {
@@ -284,7 +284,7 @@
 
 .section__quote {
   background-color: #f8eee9;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
   font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.8rem);
   font-style: italic;
   font-weight: normal;
@@ -310,7 +310,7 @@
   background-color: white;
   height: fit-content;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   text-align: center;
 }
@@ -360,8 +360,6 @@
   pointer-events: none;
 }
 .hero__content {
-  border-radius: 5px;
-  text-align: center;
   margin-top: 1rem;
   z-index: 1;
 }
@@ -429,7 +427,7 @@
   height: auto;
   aspect-ratio: 16/9;
   border: none;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 @media screen and (max-width: 1130px) {
   .section iframe {
@@ -458,7 +456,7 @@
 .section__side img {
   width: 100%;
   height: auto;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 @media screen and (min-width: 1130px) {
   .section__side {
@@ -488,13 +486,6 @@
     flex-direction: row;
   }
 }
-.home__pilars__card, .home__axes__card {
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 1.1/1;
-  max-width: 22rem;
-  padding: 1rem;
-}
 @media screen and (min-width: 1130px) {
   .home__pilars__card, .home__axes__card {
     flex: 1 1 0;
@@ -512,6 +503,14 @@
   height: 3rem;
   margin: 0 auto 1.5rem auto;
   color: #d76942;
+}
+.home__pilars__link, .home__axes__link {
+  display: flex;
+  flex-direction: column;
+  max-width: 22rem;
+  aspect-ratio: 1.1/1;
+  padding: 1rem;
+  scroll-margin-top: 100px;
 }
 .home__counter {
   display: flex;
@@ -549,7 +548,7 @@
   color: #30251d;
   margin: 0 auto 1rem auto;
 }
-.home__counter__number span {
+.home__counter__plus {
   font-size: 3rem;
   color: #d76942;
 }
@@ -683,6 +682,9 @@
 }
 .actions__partners__list > * {
   margin-bottom: 1rem;
+}
+.actions__item {
+  scroll-margin-top: 4rem;
 }
 .actions__item h4 {
   color: #d76942;

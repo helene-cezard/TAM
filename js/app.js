@@ -55,6 +55,7 @@ const app = {
       const submenu = button.nextElementSibling;
       
       button.addEventListener('click', () => {
+        console.log('Submenu button clicked');
         button.ariaExpanded = button.ariaExpanded !== 'true';
         
         
@@ -126,7 +127,7 @@ const app = {
           const number = entry.target;
           const target = number.innerHTML;
           let count = 0;
-          const increment = target / 50;
+          const increment = target / 150;
 
           function updateCounter() {
             count += increment;

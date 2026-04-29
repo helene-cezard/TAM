@@ -63,6 +63,10 @@
   }
   
   .subsection {
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
     
     @media screen and (min-width: variables.$breakpoint) {
 
@@ -74,14 +78,11 @@
           flex-direction: column;
         }
       }
-
-      .side {
-        width: 70%;
-        margin: auto;
-      }
     }
+
     
     &__image {
+      width: 150%;
       
       & img {
         width: 100%;
@@ -92,6 +93,10 @@
     
     &__quote {
       @extend %quote;
+    }
+
+    .top {
+      width: 100%;
     }
     
     .right {

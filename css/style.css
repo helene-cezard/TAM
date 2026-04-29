@@ -435,6 +435,11 @@
     margin: 2rem 0;
   }
 }
+.section .subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
 @media screen and (min-width: 1130px) {
   .section .subsection__content {
     display: flex;
@@ -443,15 +448,17 @@
   .section .subsection__content:has(.top) {
     flex-direction: column;
   }
-  .section .subsection .side {
-    width: 70%;
-    margin: auto;
-  }
+}
+.section .subsection__image {
+  width: 150%;
 }
 .section .subsection__image img {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
+}
+.section .subsection .top {
+  width: 100%;
 }
 .section .subsection .right {
   order: 2;

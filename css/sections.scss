@@ -65,15 +65,40 @@
   .subsection {
     
     @media screen and (min-width: variables.$breakpoint) {
-      display: grid;
-      grid-template-columns: minmax(50%, 100%) auto;
-      grid-template-rows: repeat(2, auto);
-      
-      &:has(.left) {
-        grid-template-columns: auto minmax(50%, 100%);
+
+      &__content {
+        display: flex;
+        gap: 2rem;
+    
+        &:has(.top) {
+          flex-direction: column;
+        }
+      }
+
+      .side {
+        width: 70%;
+        margin: auto;
       }
     }
+    
+    &__image {
+      
+      & img {
+        width: 100%;
+        height: auto;
+        border-radius: .5rem;
+      }
+    }
+    
+    &__quote {
+      @extend %quote;
+    }
+    
+    .right {
+      order: 2;
+    }
   }
+
   
   &__title {
     @extend %section-title;
@@ -83,40 +108,39 @@
     @extend %small-title;
   }
 
-  &__side-title {
-    grid-column: span 2 / span 2;
-    grid-column-start: 1;
-    grid-row-start: 1;
-  }
+  // &__side-title {
+  //   grid-column: span 2 / span 2;
+  //   grid-column-start: 1;
+  //   grid-row-start: 1;
+  // }
 
-  &__side {
-    margin-top: 2rem;
-
-    & img {
-      width: 100%;
-      height: auto;
-      border-radius: .5rem;
-    }
+  // &__side {
+  //   margin-top: 2rem;
     
-    @media screen and (min-width: variables.$breakpoint) {
-      width: 25vw;
-      margin-top: 0;
-      margin-left: 3rem;
-      grid-row: span 1;
-      grid-column-start: 2;
-      grid-row-start: 2;
+  //   @media screen and (min-width: variables.$breakpoint) {
+  //     width: 25vw;
+  //     margin-top: 0;
+  //     margin-left: 3rem;
+  //     grid-row: span 1;
+  //     grid-column-start: 2;
+  //     grid-row-start: 2;
+      
+  //     &.left {
+  //       grid-column-start: 1;
+  //       margin-left: 0;
+  //       margin-right: 3rem;
+  //     }
+  //   }
+  // }
+  
+  // &__image {
+  //   & img {
+  //     width: 100%;
+  //     height: auto;
+  //     border-radius: .5rem;
+  //   }
+  // }
 
-      &.left {
-        grid-column-start: 1;
-        margin-left: 0;
-        margin-right: 3rem;
-      }
-    }
-  }
-
-  &__quote {
-    @extend %quote;
-  }
 }
 
 .home {
@@ -406,17 +430,17 @@
   
   &__item {
     scroll-margin-top: 4rem;
-
-    & h4 {
-      color: #d76942;
-      font-weight: 500;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
+    
     p {
       padding-bottom: 1rem;
     }
+  }
+  
+  &__title {
+    color: #d76942;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
   }
 }
 

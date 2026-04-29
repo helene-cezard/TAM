@@ -282,7 +282,7 @@
   font-size: clamp(1rem, 0.84rem + 0.8vw, 1.8rem);
 }
 
-.section__quote {
+.section .subsection__quote {
   background-color: #f8eee9;
   border-radius: 0.5rem;
   font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.8rem);
@@ -295,11 +295,11 @@
   line-height: 2rem;
 }
 @media screen and (min-width: 1130px) {
-  .section__quote {
+  .section .subsection__quote {
     min-width: 40vh;
   }
 }
-.section__quote svg {
+.section .subsection__quote svg {
   width: 3rem;
   height: 3rem;
   margin-bottom: 0.5rem;
@@ -436,42 +436,25 @@
   }
 }
 @media screen and (min-width: 1130px) {
-  .section .subsection {
-    display: grid;
-    grid-template-columns: minmax(50%, 100%) auto;
-    grid-template-rows: repeat(2, auto);
+  .section .subsection__content {
+    display: flex;
+    gap: 2rem;
   }
-  .section .subsection:has(.left) {
-    grid-template-columns: auto minmax(50%, 100%);
+  .section .subsection__content:has(.top) {
+    flex-direction: column;
+  }
+  .section .subsection .side {
+    width: 70%;
+    margin: auto;
   }
 }
-.section__side-title {
-  grid-column: span 2/span 2;
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-.section__side {
-  margin-top: 2rem;
-}
-.section__side img {
+.section .subsection__image img {
   width: 100%;
   height: auto;
   border-radius: 0.5rem;
 }
-@media screen and (min-width: 1130px) {
-  .section__side {
-    width: 25vw;
-    margin-top: 0;
-    margin-left: 3rem;
-    grid-row: span 1;
-    grid-column-start: 2;
-    grid-row-start: 2;
-  }
-  .section__side.left {
-    grid-column-start: 1;
-    margin-left: 0;
-    margin-right: 3rem;
-  }
+.section .subsection .right {
+  order: 2;
 }
 .home__pilars__list, .home__axes__list {
   display: flex;
@@ -686,14 +669,14 @@
 .actions__item {
   scroll-margin-top: 4rem;
 }
-.actions__item h4 {
+.actions__item p {
+  padding-bottom: 1rem;
+}
+.actions__title {
   color: #d76942;
   font-weight: 500;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-}
-.actions__item p {
-  padding-bottom: 1rem;
 }
 
 .support__links {
@@ -953,6 +936,22 @@
   text-align: center;
   margin-top: 20px;
   padding-top: 10px;
+}
+
+.test-subsection__content {
+  display: flex;
+}
+.test-subsection__content:has(.top) {
+  flex-direction: column;
+}
+.test-subsection__image img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.right {
+  order: 2;
 }
 
 body {

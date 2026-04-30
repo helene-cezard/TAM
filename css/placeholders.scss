@@ -70,7 +70,8 @@
   %list {
     list-style: disc;
     width: fit-content;
-    margin: 0 auto;
+    // margin: 0 auto;
+    margin-left: 3rem;
   }
 
   %link {
@@ -81,9 +82,9 @@
     width: 100%;
     text-align: center;
 
-    &::after {
-      content: "   →";
-    }
+    // &::after {
+    //   content: "   →";
+    // }
 
     &:hover {
       text-decoration: underline;

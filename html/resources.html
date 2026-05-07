@@ -40,7 +40,7 @@
                 </li>
                 <li class="header__nav-links--green parent__menu">
                     <div class="shape spirale"></div>
-                    <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
+                    <button type="button" aria-current="page" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
                     <ul role="menu" id="actions_submenu" class="submenu">
                         <li class="submenu__item">
                             <a role="menuitem" href="actions-france.html">En France</a>
@@ -54,13 +54,13 @@
                     <div class="shape spirale"></div>
                     <a role="menuitem" href="training.html">Formation</a>
                 </li>
-                <li class="header__nav-links--turquoise">
+                <!-- <li class="header__nav-links--turquoise">
                     <div class="shape spirale"></div>
                     <a role="menuitem" href="research.html">Recherche</a>
-                </li>
-                <li class="header__nav-links--red">
+                </li> -->
+                <li class="header__nav-links--turquoise">
                     <div class="shape spirale"></div>
-                    <a role="menuitem" class="active" aria-current="page" href="resources.html">Ressources</a>
+                    <a role="menuitem" href="resources.html">Ressources</a>
                 </li>
                 <!-- <li class="header__nav-links--yellow">
                     <div class="shape spirale"></div>
@@ -79,17 +79,84 @@
         <div class="banner__pusher">
             <section class="resources section">
                 <section class="resources__header">
-                    <h2 class="section__title">Publications, vidéos et outils pédagogiques</h2>
-                </section>
-                <section class="resources__content">
+                    <h1 class="section__title">Publications, vidéos et outils pédagogiques</h1>
                     <p>Vous trouverez ici :</p>
+                </section>
+                <section class="subsection">
+                    <h2 class="subsection__title">Articles</h2>
+                    <ul class="section__list">
+                        <li>Art et soin AIEP 2010</li>
+                        <li>Colloque FFAT 2017 et 19</li>
+                        <li>Journal Ivry ma ville</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Vidéos</h2>
+                        <ul class="resources__videos">
+                            <li>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/1vJBUHIuNjQ?si=j8CNEf4QdAYPyNvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                            <li>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/4Za_l8DzJ3U?si=p7Sr8W9UOBZe-PX2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                        </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Podcasts</h2>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Galeries photos</h2>
+                    <div class="resources__gallery">
+                        <img src="../images/carousel/bande mains.JPG" alt="">
+                        <img src="../images/carousel/Bandeau mains 2.jpg" alt="">
+                        <img src="../images/carousel/fierté.JPG" alt="">
+                        <img src="../images/carousel/fshhf.jpeg" alt="">
+                        <img src="../images/carousel/mains-enfants.jpg" alt="">
+                        <img src="../images/carousel/sea.jpg" alt="">
+                        <img src="../images/carousel/sunset.jpg" alt="">
+                        <img src="../images/carousel/bande mains.JPG" alt="">
+                        <img src="../images/carousel/Bandeau mains 2.jpg" alt="">
+                        <img src="../images/carousel/fierté.JPG" alt="">
+                        <img src="../images/carousel/fshhf.jpeg" alt="">
+                        <img src="../images/carousel/mains-enfants.jpg" alt="">
+                        <img src="../images/carousel/sea.jpg" alt="">
+                        <img src="../images/carousel/sunset.jpg" alt="">
+                    </div>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Rapports d’activités</h2>
+                    <a class="section__link" href="reports.html">Voir nos rapports d'activité</a>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Supports visuels</h2>
+                    <ul>
+                        <li class="resources__visuals">
+                            Plaquette :
+                            <a href="../docs/PLAQUETTE_TAM 2023.pdf">
+                                <img src="../images/docs-thumbnails/PLAQUETTE_TAM 2023.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>Mémoires d’histoire</li>
+                        <li>Brochure les 10 ans</li>
+                        <li>La recherche à l’ONG racines de Cotonou</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Liens</h2>
+                    <ul>
+                        <li><a class="section__link" href="#">Facebook</a></li>
+                        <li><a class="section__link" href="#">LinkedIn</a></li>
+                    </ul>
+                </section>
+                <p>Ces ressources témoignent de notre travail de terrain, de notre démarche clinique et nos recherches.</p>
+                <!-- <section class="resources__content">
                     <ul>
                         <li>Articles :Art et soin AIEP 2010, Colloque FFAT 2017 et 19  et journal Ivry ma ville.</li>
                         <li>Vidéos : <br>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/1vJBUHIuNjQ?si=j8CNEf4QdAYPyNvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/4Za_l8DzJ3U?si=p7Sr8W9UOBZe-PX2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <!-- <a href="https://youtu.be/1vJBUHIuNjQ"><img src="https://i2.ytimg.com/vi/1vJBUHIuNjQ/mqdefault.jpg" alt="aperçu video youtube"></a>
-                            <a href="https://youtu.be/4Za_l8DzJ3U"><img src="https://i2.ytimg.com/vi/4Za_l8DzJ3U/mqdefault.jpg" alt="aperçu video youtube"></a> -->
+                            <a href="https://youtu.be/1vJBUHIuNjQ"><img src="https://i2.ytimg.com/vi/1vJBUHIuNjQ/mqdefault.jpg" alt="aperçu video youtube"></a>
+                            <a href="https://youtu.be/4Za_l8DzJ3U"><img src="https://i2.ytimg.com/vi/4Za_l8DzJ3U/mqdefault.jpg" alt="aperçu video youtube"></a>
                         </li>
                         <li>Podcasts</li>
                         <li>Galeries photos</li>
@@ -97,8 +164,7 @@
                         <li>Supports visuels : Plaquette, Mémoires d’histoire, Brochure les 10 ans… La recherche à l’ONG racines de Cotonou</li>
                         <li>Liens : <a href="#">Facebook</a> et <a href="#">LinkedIn</a></li>
                     </ul>
-                    <p>Ces ressources témoignent de notre travail de terrain, de notre démarche clinique et nos recherches.</p>
-                </section>
+                </section> -->
             </section>
         </div>
         <div class="banner banner--right"></div>

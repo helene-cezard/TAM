@@ -54,7 +54,6 @@
     //! prenne toute la largeur sur mobile, mais fasse la largeur du iframe sur desktop
     @media screen and (max-width: variables.$breakpoint) {
       width: 100%;
-      // margin: 1rem;
     }
   }
   
@@ -66,10 +65,6 @@
     width: 100%;
     border-radius: .5rem;
     margin: auto;
-    
-    // & img {
-    //   width: 100%;
-    // }
 
     &:not(:last-child) {
       margin-bottom: 1.5rem;
@@ -84,55 +79,17 @@
 
     display: grid;
 
-    // grid-template-areas: 
-    // "title title"
-    // ". side";
-
-    // display: flex;
-    // flex-direction: column;
-    // gap: 2rem;
-    
-    // @media screen and (min-width: variables.$breakpoint) {
-
-    //   &__content {
-    //     display: flex;
-    //     gap: 2rem;
-    
-    //     &:has(.top) {
-    //       flex-direction: column;
-    //     }
-    //   }
-    // }
-
-    
-    // &__image {
-    //   width: 150%;
-      
-    //   & img {
-    //     width: 100%;
-    //     height: auto;
-    //     border-radius: .5rem;
-    //   }
-    // }
-    
-    
-    // .top {
-      //   width: 100%;
-      // }
-    
-      // .right {
-        //   order: 2;
-        // }
         &__title {
           @extend %small-title;
-          // grid-area: title;
         }
         
-        &__title-grid {
-          grid-column: span 2 / span 2;
-          grid-column-start: 1;
-          grid-row-start: 1;
-          }
+        @media screen and (min-width: variables.$breakpoint) {
+          &__title-grid {
+            grid-column: span 2 / span 2;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            }
+        }
           
           &__quote {
             @extend %quote;
@@ -153,22 +110,8 @@
               }
             }
           }
-    // &__side {
-    //   // grid-area: side;
-    // }
     
   }
-
-  
-
-  // &__image {
-  //   & img {
-  //     width: 100%;
-  //     height: auto;
-  //     border-radius: .5rem;
-  //   }
-  // }
-
 }
 
 .home {
@@ -287,12 +230,9 @@
   }
 
   &__quote {
+
     @media screen and (min-width: variables.$breakpoint) {
-      // position: relative;
-      // float: none;
-      // top: 0;
       margin-left: 1.5rem;
-      // width: 50%;
     }
   }
 
@@ -316,13 +256,6 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
-
-    // &__presentation {
-
-    //   & p {
-    //     padding-bottom: 1rem;
-    //   }
-    // }
   }
 
   &__container {
@@ -503,10 +436,13 @@
   }
 
   &__gallery {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    width: 100%;
+
+    @media screen and (min-width: variables.$breakpoint) {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      width: 100%;
+    }
     
     & img {
       width: 100%;
@@ -520,25 +456,19 @@
   &__visuals {
 
     display: flex;
-    gap: 1.5rem;
+    flex-direction: column;
+    
     & img {
+      width: 100%;
+    }
+    
+    @media screen and (min-width: variables.$breakpoint) {
+      gap: 1.5rem;
+      flex-direction: row;
       width: 20rem;
     }
   }
 }
-
-// .support {
-
-//   &__links {
-//     display: flex;
-//     flex-direction: column;
-    
-//     @media screen and (min-width: variables.$breakpoint) {
-//       justify-content: space-around;
-//       flex-direction: row;
-//     }
-//   }
-// }
 
 .contact {
   &__info {

@@ -121,13 +121,13 @@ const app = {
   animateCounters: function() {
     const numbers = document.querySelectorAll('.home__counter__number');
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const number = entry.target;
           const target = number.innerHTML;
           let count = 0;
-          const increment = target / 150;
+          const increment = target / 70;
 
           function updateCounter() {
             count += increment;
@@ -140,6 +140,7 @@ const app = {
           }
 
           updateCounter();
+          observer.unobserve(entry.target);
         }
       });
     },

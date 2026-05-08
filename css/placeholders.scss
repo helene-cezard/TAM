@@ -70,8 +70,11 @@
   %list {
     list-style: disc;
     width: fit-content;
-    // margin: 0 auto;
     margin-left: 3rem;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        margin-left: 5rem;
+      }
   }
 
   %link {

@@ -321,6 +321,12 @@
   width: fit-content;
   margin-left: 3rem;
 }
+@media screen and (min-width: 1130px) {
+  .section__list, .mission__list, .values__list,
+  .history__list, .actions__speech__list, .actions__partners__list, .training__presentation__list, .training__audience__list, .training__goals__list, .training__axes__list {
+    margin-left: 5rem;
+  }
+}
 
 .section__link {
   color: #d76942;
@@ -396,21 +402,6 @@
   .section:not(:first-child) {
     margin-top: 10rem;
   }
-}
-.section__list {
-  padding-left: 1.5rem;
-  text-align: left;
-}
-@media screen and (min-width: 1130px) {
-  .section__list {
-    padding-left: 0;
-  }
-}
-.section__list:not(:first-child) {
-  margin-top: 1.5rem;
-}
-.section__list:not(:last-child) {
-  margin-bottom: 1.5rem;
 }
 .section strong {
   font-weight: bold;

@@ -340,7 +340,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(2rem, 1.4rem + 3vw, 5rem);
+  gap: clamp(2rem, 1.8rem + 1vw, 3rem);
+  padding-top: clamp(2rem, 1.8rem + 1vw, 3rem);
   height: calc(100svh - 48px);
   background: linear-gradient(to bottom, #fff7d3 0%, #eb9b6a 70%);
 }
@@ -356,14 +357,12 @@
   background-image: url("../images/45-degree-fabric-light.png");
   pointer-events: none;
 }
-.hero__content {
-  margin-top: 1rem;
-  z-index: 1;
-}
 .hero__title {
+  margin-bottom: 0;
   position: relative;
   font-size: clamp(2rem, 1.6rem + 2vw, 4rem);
   line-height: 1;
+  z-index: 1;
 }
 @media screen and (min-width: 700px) {
   .hero__title .line-break {
@@ -375,7 +374,7 @@
   text-align: center;
   color: rgb(223, 113, 50);
   font-size: clamp(1.4rem, 1.14rem + 1.3vw, 2.7rem);
-  margin: auto;
+  z-index: 1;
 }
 @keyframes discoverArrow {
   100% {
@@ -812,7 +811,7 @@
 }
 @media screen and (min-width: 1130px) {
   .carousel {
-    height: 55svh;
+    height: 60svh;
   }
 }
 .carousel__btn {

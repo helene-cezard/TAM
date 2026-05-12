@@ -36,7 +36,7 @@
 
 %quote {
   background-color: #f8eee9;
-  border-radius: 1.5rem;
+  border-radius: .5rem;
   font-size: clamp(1.2rem, 1.08rem + 0.6vw, 1.8rem);
   font-style: italic;
   font-weight: normal;
@@ -62,7 +62,7 @@
     background-color: white;
     height: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: .5rem;
     overflow: hidden;
     text-align: center;
   }
@@ -70,7 +70,11 @@
   %list {
     list-style: disc;
     width: fit-content;
-    margin: 0 auto;
+    margin-left: 3rem;
+
+      @media screen and (min-width: variables.$breakpoint) {
+        margin-left: 5rem;
+      }
   }
 
   %link {
@@ -81,9 +85,9 @@
     width: 100%;
     text-align: center;
 
-    &::after {
-      content: "   →";
-    }
+    // &::after {
+    //   content: "   →";
+    // }
 
     &:hover {
       text-decoration: underline;

@@ -7,6 +7,7 @@ const app = {
       app.burgerMenu();
       app.itv = app.play(app.itv);
       app.showSubmenu();
+      app.animateCounters();
   },
 
   burgerMenu: function() {
@@ -54,6 +55,7 @@ const app = {
       const submenu = button.nextElementSibling;
       
       button.addEventListener('click', () => {
+        console.log('Submenu button clicked');
         button.ariaExpanded = button.ariaExpanded !== 'true';
         
         
@@ -115,6 +117,37 @@ const app = {
   pause: function(itv) {
     clearInterval(itv);
   },
+
+  animateCounters: function() {
+    const numbers = document.querySelectorAll('.home__counter__number');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target;
+          const target = number.innerHTML;
+          let count = 0;
+          const increment = target / 70;
+
+          function updateCounter() {
+            count += increment;
+            if (count < target) {
+              number.textContent = Math.ceil(count);
+              requestAnimationFrame(updateCounter);
+            } else {
+              number.textContent = target;
+            }
+          }
+
+          updateCounter();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+     { threshold: 0.3 });
+
+      numbers.forEach(number => observer.observe(number));
+  }
 }
 
 

@@ -605,6 +605,26 @@
   padding-bottom: 1rem;
 }
 
+.eulogy__image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+@media screen and (min-width: 1130px) {
+  .eulogy__image {
+    width: 20vw;
+    margin-top: 0;
+    margin-left: 3rem;
+    grid-row: span 1;
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  .eulogy__image.left {
+    grid-column-start: 1;
+    margin-left: 0;
+    margin-right: 3rem;
+  }
+}
+
 .reports__list {
   position: relative;
   margin: 0 2rem;
@@ -911,6 +931,13 @@
   width: 80px;
   padding: 10px;
 }
+.footer__header {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #082574; /* Accent color */
+  text-shadow: none;
+}
 .footer__logo, .footer__links, .footer__contact, .footer__social {
   flex: 1;
   min-width: 200px;
@@ -920,13 +947,6 @@
     flex: none;
     min-width: fit-content;
   }
-}
-.footer__logo h4, .footer__links h4, .footer__contact h4, .footer__social h4 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  color: #082574; /* Accent color */
-  text-shadow: none;
 }
 .footer__links ul, .footer__social ul {
   list-style: none;

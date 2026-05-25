@@ -1,0 +1,3 @@
+<?php //f374370419f9477de7a696786579e719
+
+return [PHP_INT_MAX, 'images/team/default-user-picture.png'];

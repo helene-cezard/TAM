@@ -98,87 +98,89 @@ class __TwigTemplate_762bc87545a5af36d5edffa105afb830 extends Template
 
         // line 6
         yield "    <main>
-      <div class=\"banner-container\">
+        <div class=\"banner-container\">
         <div class=\"banner\"></div>
         <div class=\"banner__pusher\">
             <section class=\"actions section\">
-                <div class=\"actions__header subsection\">
-                    <h2 class=\"section__title section__side-title\">Accompagner autrement, au plus près des personnes</h2>
-                    <p>TAM développe des actions thérapeutiques ajustables, mobiles et adaptées aux réalités de terrain. Nos interventions ont lieu dans les quartiers, les lieux de vie collectifs, et à domicile.</p>
-                    <div class=\"section__image section__side\">
-                        <img src=\"../images/sections/paul peinture.JPG\" alt=\"Gros plan sur des mains en train de peindre\">
-                    </div>
-                </div>
-                <div class=\"actions__list\">
-                    <div class=\"actions__list__header\">
-                        <h3 class=\"section__small-title\">Nos principaux dispositifs :</h3>
-                        <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Médiation transculturelle</h4>
-                        <p>La médiation transculturelle rend possible la rencontre et s’offre comme une passerelle entre les mondes ici et ailleurs. Elle permet de mieux comprendre les blocages psychiques, relationnels et culturels, d’ouvrir des espaces de dialogue afin d’accompagner les personnes vers une prise en charge adaptée.</p>
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Permanences d’écoute et groupes de parole</h4>
-                        <p>
-                            Dans les quartiers dits sensibles, notre équipe propose des espaces d’écoute et de parole inspirés de l’ethnopsychiatrie.
-                            <br>
-                            Ces dispositifs favorisent l’expression des souffrances, la mise en mots de l’histoire personnelle et la restauration du lien social.
-                        </p>
-                        <p>La parole :</p>
-                        <ul class=\"actions__speech__list\">
-                            <li>Individuelle</li>
-                            <li>En groupe</li>
-                        </ul>
-                    </div>
-                    <div class=\"actions__item subsection\">
-                        <h4 class=\"section__side-title\">Ateliers d’art-thérapie</h4>
-                        <div class=\"section__content\">
-                            <p>L’art-thérapie permet une expression non verbale à travers la création à l’aide de médiums artistiques : peinture, modelage, musique, danse, écriture, photographie, tissage etc…</p>
-                            <p>La création comme levier devient alors un espace de transformation, de réparation symbolique et de reconstruction singulière. L’art permet de renouer avec le plaisir, la créativité et renforce l’estime de soi.</p>
-                            <p>Le processus artistique représente un outil original et porteur, au service de la personne qu’il sollicite sur tous les plans physique, psychique et émotionnel.</p>
-                            <p><strong>Les ateliers d’art thérapie se déroulent lors de séances individuelles ou groupales.</strong></p>
-                        </div>
-                        <div class=\"section__quote section__side\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
-                            <blocquote>
-                            \"La création oblige un être à faire un retour sur lui-même, c’est un pouvoir initiatique, une ouverture au monde qui permet à chacun de d’exprimer « L’indicible »\".
-                            </blocquote>
-                        </div>
-                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1vJBUHIuNjQ?si=mAYivXzs8LW3wKBS\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+                <section>
+                    <h1 class=\"section__title\">";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 12, $this->source); })()), "title", [], "any", false, false, false, 12), "html", null, true);
+        yield "</h1>
+                    ";
+        // line 13
+        if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 13, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 13))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 14
+            yield "                    <img  class=\"section__image\" src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "path", [], "any", false, false, false, 14)), "html", null, true);
+            yield "\" alt=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "alt", [], "any", false, false, false, 14), "html", null, true);
+            yield "\">
+                    ";
+        }
+        // line 16
+        yield "                    ";
+        yield CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 16, $this->source); })()), "text", [], "any", false, false, false, 16);
+        yield "
+                </section>
 
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Sorties culturelles et projets artistiques</h4>
-                        <p>Les visites de musées et la mise en place de restitution de projets collectifs, d’expositions, de spectacles favorisent l’ouverture culturelle, la valorisation personnelle et le renforcement du lien social. Initiés par l’association T.A.M aux côtés des équipes de terrain des structures d’accueil.</p>
-                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4Za_l8DzJ3U?si=jAnaefwiEfpGcQNp\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Participations aux colloques et aux journées à thèmes</h4>
-                        <p>Colloques de URACA et de la FFAT, journée santé mentale à Ville Evrard, Journées migrant hôpital Avicenne, service de psychiatrie des hôpitaux CHU Kremlin Bicêtre, Paul Brousse, Paul Guiraud, Ville Evrard, Réseaux DEPSUD et addictions, RAVMO Villejuif…</p>
-                    </div>
-                </div>
-                <div class=\"actions__places\">
-                    <h3 class=\"section__small-title\">Nos lieux d’intervention</h3>
-                    <p>Les foyers, résidences sociales, CADA (Centre d’Accueil pour demandeurs d’Asile), maisons de quartiers, centre sociaux, hôpitaux de jour, cliniques, EHPAD et associations.</p>
-                </div>
-                <div class=\"actions__partners\">
-                    <h3 class=\"section__small-title\">Nos partenaires</h3>
-                    <p>À retrouver dans <a class=\"section__link\" href=\"reports.html\">les rapports d’activités.</a></p>
-                    <ul class=\"actions__partners__list\">
-                        <li><strong>Les Institutions</strong> : ARS, L’ Agence Régionale de Santé, DDCS, Direction Départementale de la Cohésion Sociale. Département du Val de Marne Ile de France, Egalités de chances. Grand Orly.-Seine Bièvre.</li>
-                        <li><strong>Les villes</strong> : Antony, Bobigny, Choisy le Roi, Créteil, Ivry sur Seine, Valenton, Vitry sur Seine.</li>
-                        <li><stong>Les bailleurs sociaux</stong> : ADEF, Coallia, Philia.</li>
-                        <li><strong>Les hôpitaux</strong> : Avicenne- Bobigny, Paul Brousse et Paul Guiraud Villejuif, Kremlin Bicêtre, Henri Mondor et la PASS dentaire de Créteil Albert Chenevier Créteil, Charles Foix Ivry sur Seine.</li>
-                        <li><strong>Les associations</strong> : URACA/ Basilliade, France Alzheimer ADB, ABEJ Diaconie, l’AFSI d’Ivry sur Seine, Centre d’hébergement d’urgence de La Croix Rouge Française à Fontenay sous-bois, Créations omnivores, Les petits frères des pauvres, Maison Alfort, Solidarité internationale Vitry, La petite main tendue. Instruction et partage Choisy le Roi, Ne rougissez pas, Vie Libre,..</li>
-                        <li><strong>Les centres médicalisés et EHPAD</strong> : PMI des Francs-moisin à Saint Denis, EHPAD Amarilys d’Aulnay - sous- bois. La résidence Chanterelle à Choisy le Roi.</li>
-                        <li><strong>Accueil de jour GEM</strong> : Social Club Choisy le Roi.</li>
-                        <li><strong>Les CADA</strong> : Choisy le Roi et La Hay les Roses.</li>
-                        <li><strong>Les centres sociaux et maisons de quartier</strong> : Centre du Noyer doré à Antony, Centre social d’accueil de Bobigny, L’espace Langevin à Choisy le Roi, centre social et culturel des bleuets à Créteil, les Maisons de quartier Monmousseau et Pierre et Marie Curie à Ivry sur Seine</li>
-                        <li><strong>Et aussi</strong> : les médecins les assistantes sociales des villes, EDS et CMP de Villeneuve saint Georges, Créteil, Choisy le ROI CCAS de Valenton, CMS d’Ivry sur Seine, le Centre Henri Duchesne de Choisy le Roi, le centre Minkovska à Paris.</li>
-                        <li><strong>Les musées</strong> : l’Institut du monde Arabe, le Mac Val, Musées de l’Homme, d’Orsay, du quai Branly et Rodin. La cathédrale Notre Dame de Paris.</li>
-                    </ul>
-                </div>
+                    ";
+        // line 19
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["beninSections"]) || array_key_exists("beninSections", $context) ? $context["beninSections"] : (function () { throw new RuntimeError('Variable "beninSections" does not exist.', 19, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["beninSection"]) {
+            // line 20
+            yield "                    <section class=\"subsection\">
+                        ";
+            // line 21
+            if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "title", [], "any", false, false, false, 21))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 22
+                yield "                            <h2
+                                class=\"subsection__title ";
+                // line 23
+                yield (((($tmp = ((CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "aside", [], "any", true, true, false, 23)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "aside", [], "any", false, false, false, 23))) : (""))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("subsection__title-grid") : (""));
+                yield "\">
+                                ";
+                // line 24
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "title", [], "any", false, false, false, 24), "html", null, true);
+                yield "
+                            </h2>
+                        ";
+            }
+            // line 27
+            yield "                        <div>
+                        ";
+            // line 28
+            yield CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "text", [], "any", false, false, false, 28);
+            yield "
+                        </div>
+                        ";
+            // line 30
+            if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "aside", [], "any", false, false, false, 30))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 31
+                yield "                            <aside class=\"subsection__quote  ";
+                yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "left", [], "any", false, false, false, 31)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("left") : (""));
+                yield "\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                                <blockquote>\"";
+                // line 33
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["beninSection"], "aside", [], "any", false, false, false, 33), "html", null, true);
+                yield "\"</blockquote>
+                            </aside>
+                        ";
+            }
+            // line 36
+            yield "                    </section>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['beninSection'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 38
+        yield "
+                ";
+        // line 94
+        yield "                <!-- <p>En 2025 madame catherine Briand soutenue par le Pr Olivier Bouchaud a pu y démarrer la recherche « Art et résilience » grâce au financement de la FMSH et l’association TAM.</p> -->
             </section>
         </div>
         <div class=\"banner banner--right\"></div>
@@ -215,7 +217,7 @@ class __TwigTemplate_762bc87545a5af36d5edffa105afb830 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  183 => 94,  180 => 38,  173 => 36,  167 => 33,  161 => 31,  159 => 30,  154 => 28,  151 => 27,  145 => 24,  141 => 23,  138 => 22,  136 => 21,  133 => 20,  129 => 19,  122 => 16,  114 => 14,  112 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -226,87 +228,94 @@ class __TwigTemplate_762bc87545a5af36d5edffa105afb830 extends Template
 
 {% block body %}
     <main>
-      <div class=\"banner-container\">
+        <div class=\"banner-container\">
         <div class=\"banner\"></div>
         <div class=\"banner__pusher\">
             <section class=\"actions section\">
-                <div class=\"actions__header subsection\">
-                    <h2 class=\"section__title section__side-title\">Accompagner autrement, au plus près des personnes</h2>
-                    <p>TAM développe des actions thérapeutiques ajustables, mobiles et adaptées aux réalités de terrain. Nos interventions ont lieu dans les quartiers, les lieux de vie collectifs, et à domicile.</p>
-                    <div class=\"section__image section__side\">
-                        <img src=\"../images/sections/paul peinture.JPG\" alt=\"Gros plan sur des mains en train de peindre\">
-                    </div>
-                </div>
-                <div class=\"actions__list\">
-                    <div class=\"actions__list__header\">
-                        <h3 class=\"section__small-title\">Nos principaux dispositifs :</h3>
-                        <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Médiation transculturelle</h4>
-                        <p>La médiation transculturelle rend possible la rencontre et s’offre comme une passerelle entre les mondes ici et ailleurs. Elle permet de mieux comprendre les blocages psychiques, relationnels et culturels, d’ouvrir des espaces de dialogue afin d’accompagner les personnes vers une prise en charge adaptée.</p>
-                    </div>
-                    <div class=\"actions__item\">
-                        <h4>Permanences d’écoute et groupes de parole</h4>
-                        <p>
-                            Dans les quartiers dits sensibles, notre équipe propose des espaces d’écoute et de parole inspirés de l’ethnopsychiatrie.
-                            <br>
-                            Ces dispositifs favorisent l’expression des souffrances, la mise en mots de l’histoire personnelle et la restauration du lien social.
-                        </p>
-                        <p>La parole :</p>
-                        <ul class=\"actions__speech__list\">
-                            <li>Individuelle</li>
-                            <li>En groupe</li>
-                        </ul>
-                    </div>
-                    <div class=\"actions__item subsection\">
-                        <h4 class=\"section__side-title\">Ateliers d’art-thérapie</h4>
-                        <div class=\"section__content\">
-                            <p>L’art-thérapie permet une expression non verbale à travers la création à l’aide de médiums artistiques : peinture, modelage, musique, danse, écriture, photographie, tissage etc…</p>
-                            <p>La création comme levier devient alors un espace de transformation, de réparation symbolique et de reconstruction singulière. L’art permet de renouer avec le plaisir, la créativité et renforce l’estime de soi.</p>
-                            <p>Le processus artistique représente un outil original et porteur, au service de la personne qu’il sollicite sur tous les plans physique, psychique et émotionnel.</p>
-                            <p><strong>Les ateliers d’art thérapie se déroulent lors de séances individuelles ou groupales.</strong></p>
-                        </div>
-                        <div class=\"section__quote section__side\">
-                            <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
-                            <blocquote>
-                            \"La création oblige un être à faire un retour sur lui-même, c’est un pouvoir initiatique, une ouverture au monde qui permet à chacun de d’exprimer « L’indicible »\".
-                            </blocquote>
-                        </div>
-                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1vJBUHIuNjQ?si=mAYivXzs8LW3wKBS\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+                <section>
+                    <h1 class=\"section__title\">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class=\"section__image\" src=\"{{ asset(rubricInfo.getGalleryImage.path) }}\" alt=\"{{ rubricInfo.getGalleryImage.alt }}\">
+                    {% endif %}
+                    {{ rubricInfo.text|raw }}
+                </section>
 
+                    {% for beninSection in beninSections %}
+                    <section class=\"subsection\">
+                        {% if beninSection.title is not empty %}
+                            <h2
+                                class=\"subsection__title {{ beninSection.aside|default ? 'subsection__title-grid' : '' }}\">
+                                {{ beninSection.title }}
+                            </h2>
+                        {% endif %}
+                        <div>
+                        {{ beninSection.text|raw }}
+                        </div>
+                        {% if beninSection.aside is not empty %}
+                            <aside class=\"subsection__quote  {{ beninSection.left ? 'left' : '' }}\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                                <blockquote>\"{{ beninSection.aside }}\"</blockquote>
+                            </aside>
+                        {% endif %}
+                    </section>
+                    {% endfor %}
+
+                {# <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Pourquoi le Bénin ?</h2>
+                    <div>
+                        <p class=\"actions__description\">Le Bénin est un territoire riche de savoirs thérapeutiques ancestraux, de traditions artistiques et de spiritualités vivantes.</p>
+                        <p>Nos projets s’inscrivent dans la continuité de l’engagement à URACA   (2005- 2025) , association, cofondée par le Dr Moussa Maman Bello, médecin et thérapeute traditionnel. Ce dernier a profondément influencé la philosophie clinique de notre association TAM.</p>
                     </div>
-                    <div class=\"actions__item\">
-                        <h4>Sorties culturelles et projets artistiques</h4>
-                        <p>Les visites de musées et la mise en place de restitution de projets collectifs, d’expositions, de spectacles favorisent l’ouverture culturelle, la valorisation personnelle et le renforcement du lien social. Initiés par l’association T.A.M aux côtés des équipes de terrain des structures d’accueil.</p>
-                        <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4Za_l8DzJ3U?si=jAnaefwiEfpGcQNp\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>
+                </section>
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Un premier voyage au Bénin en 2013 :</h2>
+                    <div>
+                        <p>grâce à la collaboration entre différents partenaires de santé,  Association URACA, Hôpital Avicennes, le service du professeur Olivier Bouchaud, les consultations d’ethno psychiatrie du CMP Ordener et du docteur Moussa Maman Bello, un colloque s’est tenu à Karimama agglomération d'environ 74000 habitants située au Nord Bénin. Son titre <strong>« Stratégies de prise en charge des patients africains de l’Afrique à la France »</strong>. Pour l’équipe de co-thérapeutes de la consultation d’ethno psy, le séjour a permis d’assister aux rituels traditionnels de « couvade ».</p>
+                        <p>Ce séjour, a pu mettre en lumière certaines problématiques que l’on peut rencontrer en France lorsque l’on demande à un patient migrant d’être observant. Bien souvent, le fossé est grand, entre médication et compréhension même si la personne est en France depuis longtemps. L’origine du mal a besoin d’être identifié et de s’exprimer par l’intermédiaire de la culture, de se faire connaître au travers d’images qui « parlent » à la personne.</p>
+                        <p>Le groupe de co-thérapeute et de médiateurs qui officient lors de ces consultations est contenant et l’alliance thérapeutique se fait « mosso, mosso » ( Petit à petit).</p>
+                        <p>Dans ce dispositif les cothérapeutes s’immergent dans ce travail qui demande de lâcher pour un temps les croyances basées sur les savoirs  spécifiques ethno-centrés, de franchir cette frontière et de se laisser porter dans cet entre- deux. Entre la culture et la science, entre l’autre et soi, entre ici et là-bas. ( renvoie vers la consultation d’ethno psy)</p>
+                        <p>Ce voyage effectué en Janvier 2013 nous permet d’approfondir ces connaissances, de renforcer ce travail spécifique et d’accompagner les patients atteints de troubles psychiques. Par ailleurs ces personnes ont bien souvent difficilement accès aux soins psychiatriques ou se trouvent face à des soignants qui ne comprennent pas leur mal être et ne peuvent les traiter car ils se sentent démunis.</p>
+                        <p>Le second voyage de reconnaissance c’est déroulé au printemps 2024 afin de faire une première évaluation sur la mise en place de futures actions de santé mentale implantées cette fois -ci  à Cotonou.</p>
                     </div>
-                    <div class=\"actions__item\">
-                        <h4>Participations aux colloques et aux journées à thèmes</h4>
-                        <p>Colloques de URACA et de la FFAT, journée santé mentale à Ville Evrard, Journées migrant hôpital Avicenne, service de psychiatrie des hôpitaux CHU Kremlin Bicêtre, Paul Brousse, Paul Guiraud, Ville Evrard, Réseaux DEPSUD et addictions, RAVMO Villejuif…</p>
-                    </div>
-                </div>
-                <div class=\"actions__places\">
-                    <h3 class=\"section__small-title\">Nos lieux d’intervention</h3>
-                    <p>Les foyers, résidences sociales, CADA (Centre d’Accueil pour demandeurs d’Asile), maisons de quartiers, centre sociaux, hôpitaux de jour, cliniques, EHPAD et associations.</p>
-                </div>
-                <div class=\"actions__partners\">
-                    <h3 class=\"section__small-title\">Nos partenaires</h3>
-                    <p>À retrouver dans <a class=\"section__link\" href=\"reports.html\">les rapports d’activités.</a></p>
-                    <ul class=\"actions__partners__list\">
-                        <li><strong>Les Institutions</strong> : ARS, L’ Agence Régionale de Santé, DDCS, Direction Départementale de la Cohésion Sociale. Département du Val de Marne Ile de France, Egalités de chances. Grand Orly.-Seine Bièvre.</li>
-                        <li><strong>Les villes</strong> : Antony, Bobigny, Choisy le Roi, Créteil, Ivry sur Seine, Valenton, Vitry sur Seine.</li>
-                        <li><stong>Les bailleurs sociaux</stong> : ADEF, Coallia, Philia.</li>
-                        <li><strong>Les hôpitaux</strong> : Avicenne- Bobigny, Paul Brousse et Paul Guiraud Villejuif, Kremlin Bicêtre, Henri Mondor et la PASS dentaire de Créteil Albert Chenevier Créteil, Charles Foix Ivry sur Seine.</li>
-                        <li><strong>Les associations</strong> : URACA/ Basilliade, France Alzheimer ADB, ABEJ Diaconie, l’AFSI d’Ivry sur Seine, Centre d’hébergement d’urgence de La Croix Rouge Française à Fontenay sous-bois, Créations omnivores, Les petits frères des pauvres, Maison Alfort, Solidarité internationale Vitry, La petite main tendue. Instruction et partage Choisy le Roi, Ne rougissez pas, Vie Libre,..</li>
-                        <li><strong>Les centres médicalisés et EHPAD</strong> : PMI des Francs-moisin à Saint Denis, EHPAD Amarilys d’Aulnay - sous- bois. La résidence Chanterelle à Choisy le Roi.</li>
-                        <li><strong>Accueil de jour GEM</strong> : Social Club Choisy le Roi.</li>
-                        <li><strong>Les CADA</strong> : Choisy le Roi et La Hay les Roses.</li>
-                        <li><strong>Les centres sociaux et maisons de quartier</strong> : Centre du Noyer doré à Antony, Centre social d’accueil de Bobigny, L’espace Langevin à Choisy le Roi, centre social et culturel des bleuets à Créteil, les Maisons de quartier Monmousseau et Pierre et Marie Curie à Ivry sur Seine</li>
-                        <li><strong>Et aussi</strong> : les médecins les assistantes sociales des villes, EDS et CMP de Villeneuve saint Georges, Créteil, Choisy le ROI CCAS de Valenton, CMS d’Ivry sur Seine, le Centre Henri Duchesne de Choisy le Roi, le centre Minkovska à Paris.</li>
-                        <li><strong>Les musées</strong> : l’Institut du monde Arabe, le Mac Val, Musées de l’Homme, d’Orsay, du quai Branly et Rodin. La cathédrale Notre Dame de Paris.</li>
+                </section>
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Recherche « Art et Résilience » et projet universitaire :</h2>
+                    <p>Depuis janvier 2025, l’association TAM développe un <strong>axe fort au Bénin</strong>, grâce à la recherche</p>
+                    <p><strong>« Art et Résilience », », l'Art au service de l'accompagnement des personnes atteintes du VIH au Bénin, Une démarche holistique et humaniste,</strong> en partenariat avec une artist , un chercheur, une équipe de thérapeutes sur place.</p>
+                    <p>Cette recherche est menée par madame Catherine Briand artiste ethno thérapeute avec le soutien du Pr Olivier Bouchaud de l’hôpital Avicenne de Bobigny ( France) et est réalisée en partenariat avec des institutions universitaires, hospitalières et culturelles Béninoises.</p>
+                    <p>C’est grâce au financement de la FMSH ( Fondation Maison et Sciences de l’Homme) que ce  projet a vu le jour.</p>
+                    <p>D’une durée de deux années, elle accompagne des personnes atteintes du VIH.</p>
+                </section>
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Objectifs de la recherche action</h2>
+                    <ul>
+                        <li>Explorer les liens entre création artistique, soin psychique et résilience.</li>
+                        <li>Développer des outils thérapeutiques artistiques transculturels innovants.</li>
+                        <li>Favoriser la coopération institutionnelle universitaire et hospitalière.</li>
                     </ul>
-                </div>
+                </section>
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Nos lieux d’intervention :</h2>
+                    <p>Clinique médicale de l’ONG Racines de Godomey à Cotonou.</p>
+                </section>
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title\">Partenariats</h2>
+                    <ul>
+                        <li>La Fondation Maison et sciences de l’Homme FMSH.</li>
+                        <li>Partenariats universitaires Paris 13 France et Abomey Calavi Bénin.</li>
+                        <li>Collaborations hospitalières Hôpital Avicenne France et CNHU- HKM Cotonou- Bénin.</li>
+                        <li>L’ONG Racines sans les quartiers de Fidjrossé et Godomey à Cotonou.</li>
+                        <li>Des Institutions culturelles- La fondation Zinssou et l’institut Français de Cotonou.</li>
+                        <li>Réseaux artistiques et thérapeutiques.</li>
+                    </ul>
+                </section>
+                <section>
+                    <a class=\"section__link\" href=\"https://www.fmsh.fr/projet/art-et-resilience\">https://www.fmsh.fr/projet/art-et-resilience</a>
+                    <br>
+                    <a class=\"section__link\" href=\"https://www.canal-u.tv/chaines/fmsh/voix-laureates/art-et-resilience\">https://www.canal-u.tv/chaines/fmsh/voix-laureates/art-et-resilience</a>
+                    <p>Références bibliographiques : Renaître en pays Dendi, Couvade et possession. 2017, éditions Grandevaux. Image de couverture</p>
+                </section> #}
+                <!-- <p>En 2025 madame catherine Briand soutenue par le Pr Olivier Bouchaud a pu y démarrer la recherche « Art et résilience » grâce au financement de la FMSH et l’association TAM.</p> -->
             </section>
         </div>
         <div class=\"banner banner--right\"></div>

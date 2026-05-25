@@ -59,21 +59,26 @@ class __TwigTemplate_b0cc5a34725206ef17670bff037ef944 extends Template
         yield "\" alt=\"Logo de l'association TAM\">
                 </div>
                 <div class=\"footer__links\" aria-labelledby=\"footer_links\">
-                    <h4 id=\"footer_links\">Liens rapides</h4>
+                    <h4 class=\"footer__header\" id=\"footer_links\">Liens rapides</h4>
                     <ul>
-                        <li><a href=\"html/association.html\">Découvrir notre projet</a></li>
-                        <li><a href=\"html/support.html\">Soutenir nos actions</a></li>
-                        <li><a href=\"html/contact.html\">Nous contacter</a></li>
+                        <li><a href=\"";
+        // line 11
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_who_association");
+        yield "\">Découvrir notre projet</a></li>
+                        <li><a href=\"";
+        // line 12
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_contact");
+        yield "\">Nous contacter</a></li>
                     </ul>
                 </div>
                 <div class=\"footer__contact\" aria-labelledby=\"footer__contact\">
-                    <h4 id=\"footer__contact\">Contact</h4>
+                    <h4 class=\"footer__header\" id=\"footer__contact\">Contact</h4>
                     <p>Email : <a href=\"mailto:contact@tam.org\">contact@tam.org</a></p>
                     <p>Téléphone : <a href=\"tel:+33123456789\">+33 1 23 45 67 89</a></p>
                     <p>Adresse : 123 Rue de l'Art, 75000 Paris, France</p>
                 </div>
                 <div class=\"footer__social\" aria-labelledby=\"footer__social\">
-                    <h4 id=\"footer__social\">Suivez-nous</h4>
+                    <h4 class=\"footer__header\" id=\"footer__social\">Suivez-nous</h4>
                     <ul class=\"footer__social-icons\">
                         <li>
                             <a href=\"https://association-therapies-arts-mediations.blogspot.com/\">
@@ -99,7 +104,7 @@ class __TwigTemplate_b0cc5a34725206ef17670bff037ef944 extends Template
             <div class=\"footer__bottom\">
                 <p>&copy; 2026 T.A.M – Thérapies, Arts & Médiations. Tous droits réservés.</p>
                 <a href=\"";
-        // line 48
+        // line 47
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_legal");
         yield "\">Mentions légales</a>
             </div>
@@ -135,7 +140,7 @@ class __TwigTemplate_b0cc5a34725206ef17670bff037ef944 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  103 => 48,  58 => 6,  51 => 2,  48 => 1,);
+        return array (  108 => 47,  70 => 12,  66 => 11,  58 => 6,  51 => 2,  48 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -148,21 +153,20 @@ class __TwigTemplate_b0cc5a34725206ef17670bff037ef944 extends Template
                     <img src=\"{{ asset('images/logo-transparent-bg.png') }}\" alt=\"Logo de l'association TAM\">
                 </div>
                 <div class=\"footer__links\" aria-labelledby=\"footer_links\">
-                    <h4 id=\"footer_links\">Liens rapides</h4>
+                    <h4 class=\"footer__header\" id=\"footer_links\">Liens rapides</h4>
                     <ul>
-                        <li><a href=\"html/association.html\">Découvrir notre projet</a></li>
-                        <li><a href=\"html/support.html\">Soutenir nos actions</a></li>
-                        <li><a href=\"html/contact.html\">Nous contacter</a></li>
+                        <li><a href=\"{{ path('app_who_association') }}\">Découvrir notre projet</a></li>
+                        <li><a href=\"{{ path('app_contact') }}\">Nous contacter</a></li>
                     </ul>
                 </div>
                 <div class=\"footer__contact\" aria-labelledby=\"footer__contact\">
-                    <h4 id=\"footer__contact\">Contact</h4>
+                    <h4 class=\"footer__header\" id=\"footer__contact\">Contact</h4>
                     <p>Email : <a href=\"mailto:contact@tam.org\">contact@tam.org</a></p>
                     <p>Téléphone : <a href=\"tel:+33123456789\">+33 1 23 45 67 89</a></p>
                     <p>Adresse : 123 Rue de l'Art, 75000 Paris, France</p>
                 </div>
                 <div class=\"footer__social\" aria-labelledby=\"footer__social\">
-                    <h4 id=\"footer__social\">Suivez-nous</h4>
+                    <h4 class=\"footer__header\" id=\"footer__social\">Suivez-nous</h4>
                     <ul class=\"footer__social-icons\">
                         <li>
                             <a href=\"https://association-therapies-arts-mediations.blogspot.com/\">

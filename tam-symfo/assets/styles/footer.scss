@@ -55,6 +55,14 @@
         padding: 10px;
       }
     }
+
+    &__header {
+      font-size: 16px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #082574; /* Accent color */
+      text-shadow: none;
+    }
     
     &__logo,
     &__links,
@@ -68,14 +76,6 @@
         flex: none;
         min-width: fit-content;
       }
-
-        & h4 {
-          font-size: 16px;
-          margin-bottom: 10px;
-          text-transform: uppercase;
-          color: #082574; /* Accent color */
-          text-shadow: none;
-        }
     }
     
     &__links,

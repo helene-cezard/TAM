@@ -373,7 +373,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Form configuration
-     * @default {"enabled":false,"csrf_protection":{"enabled":null,"token_id":null,"field_name":"_token","field_attr":{"data-controller":"csrf-protection"}}}
+     * @default {"enabled":true,"csrf_protection":{"enabled":null,"token_id":null,"field_name":"_token","field_attr":{"data-controller":"csrf-protection"}}}
      * @return \Symfony\Config\Framework\FormConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\FormConfig : static)
      * @deprecated since Symfony 7.4
@@ -662,7 +662,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Assets configuration
-     * @default {"enabled":false,"strict_mode":false,"version_strategy":null,"version":null,"version_format":"%%s?%%s","json_manifest_path":null,"base_path":"","base_urls":[],"packages":[]}
+     * @default {"enabled":true,"strict_mode":false,"version_strategy":null,"version":null,"version_format":"%%s?%%s","json_manifest_path":null,"base_path":"","base_urls":[],"packages":[]}
      * @return \Symfony\Config\Framework\AssetsConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\AssetsConfig : static)
      * @deprecated since Symfony 7.4
@@ -691,7 +691,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Asset Mapper configuration
-     * @default {"enabled":false,"paths":[],"excluded_patterns":[],"exclude_dotfiles":true,"server":true,"public_prefix":"\/assets\/","missing_import_mode":"warn","extensions":[],"importmap_path":"%kernel.project_dir%\/importmap.php","importmap_polyfill":"es-module-shims","importmap_script_attributes":[],"vendor_dir":"%kernel.project_dir%\/assets\/vendor","precompress":{"enabled":false,"formats":[],"extensions":[]}}
+     * @default {"enabled":true,"paths":[],"excluded_patterns":[],"exclude_dotfiles":true,"server":true,"public_prefix":"\/assets\/","missing_import_mode":"warn","extensions":[],"importmap_path":"%kernel.project_dir%\/importmap.php","importmap_polyfill":"es-module-shims","importmap_script_attributes":[],"vendor_dir":"%kernel.project_dir%\/assets\/vendor","precompress":{"enabled":false,"formats":[],"extensions":["css","cur","eot","html","js","json","md","otc","otf","proto","rss","rtf","svg","ttc","ttf","txt","wasm","xml"]}}
      * @return \Symfony\Config\Framework\AssetMapperConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\AssetMapperConfig : static)
      * @deprecated since Symfony 7.4
@@ -720,7 +720,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Translator configuration
-     * @default {"enabled":false,"fallbacks":[],"logging":false,"formatter":"translator.formatter.default","cache_dir":"%kernel.cache_dir%\/translations","default_path":"%kernel.project_dir%\/translations","paths":[],"pseudo_localization":{"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]},"providers":[],"globals":[]}
+     * @default {"enabled":true,"fallbacks":[],"logging":false,"formatter":"translator.formatter.default","cache_dir":"%kernel.cache_dir%\/translations","default_path":"%kernel.project_dir%\/translations","paths":[],"pseudo_localization":{"enabled":false,"accents":true,"expansion_factor":1,"brackets":true,"parse_html":false,"localizable_html_attributes":[]},"providers":[],"globals":[]}
      * @return \Symfony\Config\Framework\TranslatorConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\TranslatorConfig : static)
      * @deprecated since Symfony 7.4
@@ -749,7 +749,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Validation configuration
-     * @default {"enabled":false,"enable_attributes":true,"static_method":["loadValidatorMetadata"],"translation_domain":"validators","email_validation_mode":"html5","mapping":{"paths":[]},"not_compromised_password":{"enabled":true,"endpoint":null},"disable_translation":false,"auto_mapping":[]}
+     * @default {"enabled":true,"enable_attributes":true,"static_method":["loadValidatorMetadata"],"translation_domain":"validators","email_validation_mode":"html5","mapping":{"paths":[]},"not_compromised_password":{"enabled":true,"endpoint":null},"disable_translation":false,"auto_mapping":[]}
      * @return \Symfony\Config\Framework\ValidationConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\ValidationConfig : static)
      * @deprecated since Symfony 7.4
@@ -806,7 +806,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Serializer configuration
-     * @default {"enabled":false,"enable_attributes":true,"mapping":{"paths":[]},"default_context":[],"named_serializers":[]}
+     * @default {"enabled":true,"enable_attributes":true,"mapping":{"paths":[]},"default_context":[],"named_serializers":[]}
      * @return \Symfony\Config\Framework\SerializerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\SerializerConfig : static)
      * @deprecated since Symfony 7.4
@@ -835,7 +835,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Property access configuration
-     * @default {"enabled":false,"magic_call":false,"magic_get":true,"magic_set":true,"throw_exception_on_invalid_index":false,"throw_exception_on_invalid_property_path":true}
+     * @default {"enabled":true,"magic_call":false,"magic_get":true,"magic_set":true,"throw_exception_on_invalid_index":false,"throw_exception_on_invalid_property_path":true}
      * @return \Symfony\Config\Framework\PropertyAccessConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\PropertyAccessConfig : static)
      * @deprecated since Symfony 7.4
@@ -864,7 +864,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Type info configuration
-     * @default {"enabled":false,"aliases":[]}
+     * @default {"enabled":true,"aliases":[]}
      * @return \Symfony\Config\Framework\TypeInfoConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\TypeInfoConfig : static)
      * @deprecated since Symfony 7.4
@@ -893,7 +893,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Property info configuration
-     * @default {"enabled":false}
+     * @default {"enabled":true}
      * @return \Symfony\Config\Framework\PropertyInfoConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\PropertyInfoConfig : static)
      * @deprecated since Symfony 7.4
@@ -975,7 +975,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Web links configuration
-     * @default {"enabled":false}
+     * @default {"enabled":true}
      * @return \Symfony\Config\Framework\WebLinkConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\WebLinkConfig : static)
      * @deprecated since Symfony 7.4
@@ -1062,7 +1062,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Messenger configuration
-     * @default {"enabled":false,"routing":[],"serializer":{"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}},"transports":[],"failure_transport":null,"stop_worker_on_signals":[],"default_bus":null,"buses":{"messenger.bus.default":{"default_middleware":{"enabled":true,"allow_no_handlers":false,"allow_no_senders":true},"middleware":[]}}}
+     * @default {"enabled":true,"routing":[],"serializer":{"default_serializer":"messenger.transport.native_php_serializer","symfony_serializer":{"format":"json","context":[]}},"transports":[],"failure_transport":null,"stop_worker_on_signals":[],"default_bus":null,"buses":{"messenger.bus.default":{"default_middleware":{"enabled":true,"allow_no_handlers":false,"allow_no_senders":true},"middleware":[]}}}
      * @return \Symfony\Config\Framework\MessengerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\MessengerConfig : static)
      * @deprecated since Symfony 7.4
@@ -1136,7 +1136,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * HTTP Client configuration
-     * @default {"enabled":false,"scoped_clients":[]}
+     * @default {"enabled":true,"scoped_clients":[]}
      * @return \Symfony\Config\Framework\HttpClientConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\HttpClientConfig : static)
      * @deprecated since Symfony 7.4
@@ -1165,7 +1165,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Mailer configuration
-     * @default {"enabled":false,"message_bus":null,"dsn":null,"transports":[],"headers":[],"dkim_signer":{"enabled":false,"key":"","domain":"","select":"","passphrase":"","options":[]},"smime_signer":{"enabled":false,"key":"","certificate":"","passphrase":null,"extra_certificates":null,"sign_options":null},"smime_encrypter":{"enabled":false,"repository":"","cipher":null}}
+     * @default {"enabled":true,"message_bus":null,"dsn":null,"transports":[],"headers":[],"dkim_signer":{"enabled":false,"key":"","domain":"","select":"","passphrase":"","options":[]},"smime_signer":{"enabled":false,"key":"","certificate":"","passphrase":null,"extra_certificates":null,"sign_options":null},"smime_encrypter":{"enabled":false,"repository":"","cipher":null}}
      * @return \Symfony\Config\Framework\MailerConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\MailerConfig : static)
      * @deprecated since Symfony 7.4
@@ -1222,7 +1222,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
      * @template TValue of array|bool
      * @param TValue $value
      * Notifier configuration
-     * @default {"enabled":false,"message_bus":null,"chatter_transports":[],"texter_transports":[],"notification_on_failed_messages":false,"channel_policy":[],"admin_recipients":[]}
+     * @default {"enabled":true,"message_bus":null,"chatter_transports":[],"texter_transports":[],"notification_on_failed_messages":false,"channel_policy":[],"admin_recipients":[]}
      * @return \Symfony\Config\Framework\NotifierConfig|$this
      * @psalm-return (TValue is array ? \Symfony\Config\Framework\NotifierConfig : static)
      * @deprecated since Symfony 7.4

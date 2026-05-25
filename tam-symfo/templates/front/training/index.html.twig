@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - Formation{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="banner-container">
+            <div class="banner"></div>
+            <div class="banner__pusher">
+                <section class="section">
+                    <section>
+                        <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                        {% if rubricInfo.getGalleryImage is not empty %}
+                        <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                        {% endif %}
+                        {{ rubricInfo.text|raw }}
+                    </section>
+
+                    {% for trainingSection in trainingSections %}
+                    <section class="subsection">
+                        {% if trainingSection.title is not empty %}
+                            <h2
+                                class="subsection__title {{ trainingSection.aside|default ? 'subsection__title-grid' : '' }}">
+                                {{ trainingSection.title }}
+                            </h2>
+                        {% endif %}
+                        <div>
+                        {{ trainingSection.text|raw }}
+                        </div>
+                        {% if trainingSection.aside is not empty %}
+                            <aside class="subsection__quote {{ trainingSection.left ? 'left' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
+                                <blockquote>"{{ trainingSection.aside }}"</blockquote>
+                            </aside>
+                        {% endif %}
+                    </section>
+
+                    {% endfor %}
+
+                    {# <section class="subsection">
+                        <h2 class="subsection__title">Une formation innovante, scientifique et humaniste</h2>
+                        <div class="subsection__content">
+                            <p>Dans le prolongement de son travail clinique en s’appuyant sur la recherche <strong>« art & résilience »</strong>, L'Art au service de l'accompagnement des personnes atteintes du VIH au Bénin, TAM Internationale développe un programme de formation universitaire en thérapie par les arts, à destination des professionnels de la santé mentale au Bénin.</p>
+                            <a class="training__link" href="https://www.fmsh.fr/parutions/lart-au-service-de-laccompagnement-des-personnes-atteintes-du-vih-au-benin">L’Art au service de l’accompagnement des personnes atteintes du VIH au Bénin</a>
+                            <ul class="section__list">
+                                <li>Des partenariats universitaires Paris 13 France et Abomey Calavi Bénin.</li>
+                                <li>Des collaborations hospitalières Hôpital Avicenne France et CNHU- HKM Cotonou- Bénin.</li>
+                                <li>Des réseaux cliniques et artistiques, en lien avec le SFAT et l’école Puzzle, d’art-thérapie pluriexpressionnelle de Lille, le MAC VAL de Vitry sur Seine France et la Fondation Zinsou Cotonou et Ouidah Bénin.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="subsection">
+                        <h2 class="subsection__title">Nos Formateurs EXPERTS :</h2>
+                        <p>Des liens avec des Thérapeutes et artistes internationaux –Geneviève Bartoli, Catherine Briand, Irina Katz Mazilu, Jolanta Wilczek Pauwels, Francis Debrabandère, Etienne Kouadio et  Louis Oké Agbo.</p>
+                    </section>
+                    <section class="subsection">
+                        <h2 class="subsection__title">Public concerné</h2>
+                        <ul class="section__list">
+                            <li>Psychiatres</li>
+                            <li>Psychologues</li>
+                            <li>Psychothérapeutes</li>
+                            <li>Art-thérapeutes</li>
+                            <li>Universitaires</li>
+                            <li>Chefs de service hospitaliers</li>
+                        </ul>
+                    </section>
+                    <section class="subsection">
+                        <h2 class="subsection__title">Objectifs pédagogiques</h2>
+                        <div>
+                            <p>Former des praticiens Béninois, experts capables de :</p>
+                            <ul class="section__list">
+                                <li>Utiliser l’art comme médiation thérapeutique.</li>
+                                <li>Intégrer les dimensions culturelles et transculturelles.</li>
+                                <li>Développer une posture clinique éthique.</li>
+                                <li>Transmettre ces savoirs à leur tour dans un cadre universitaire.</li>
+                                <li>Construire des ponts entre clinique occidentale et connaissances traditionnelles africaines.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="subsection">
+                        <h2 class="subsection__title">Axes de formation</h2>
+                        <ul class="section__list">
+                            <li>Art-thérapie clinique</li>
+                            <li>Psychiatrie transculturelle</li>
+                            <li>Ethnopsychiatrie</li>
+                            <li>Médiations artistiques</li>
+                            <li>Savoirs thérapeutiques traditionnels</li>
+                            <li>Dispositifs communautaires</li>
+                        </ul>
+                    </section> #}
+                </section>
+            </div>
+            <div class="banner banner--right"></div>
+        </div>
+    </main>
+{% endblock %}

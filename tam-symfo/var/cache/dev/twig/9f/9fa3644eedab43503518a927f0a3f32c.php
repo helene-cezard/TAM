@@ -102,80 +102,85 @@ class __TwigTemplate_1c15c5db56c46ede9aab15e339e63e8b extends Template
         <div class=\"banner\"></div>
         <div class=\"banner__pusher\">
             <section class=\"who section\">
+                <section>
+                    <h1 class=\"section__title\">";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 12, $this->source); })()), "title", [], "any", false, false, false, 12), "html", null, true);
+        yield "</h1>
+                    ";
+        // line 13
+        if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 13, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 13))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 14
+            yield "                    <img  class=\"section__image\" src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "path", [], "any", false, false, false, 14)), "html", null, true);
+            yield "\" alt=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "alt", [], "any", false, false, false, 14), "html", null, true);
+            yield "\">
+                    ";
+        }
+        // line 16
+        yield "                    ";
+        yield CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 16, $this->source); })()), "text", [], "any", false, false, false, 16);
+        yield "
+                </section>
                 ";
-        // line 19
-        yield "                ";
-        // line 29
-        yield "                ";
+        // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["sections"]) || array_key_exists("sections", $context) ? $context["sections"] : (function () { throw new RuntimeError('Variable "sections" does not exist.', 29, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["section"]) {
-            // line 30
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["associationSections"]) || array_key_exists("associationSections", $context) ? $context["associationSections"] : (function () { throw new RuntimeError('Variable "associationSections" does not exist.', 18, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["associationSection"]) {
+            // line 19
             yield "                <section class=\"subsection\">
-                    ";
-            // line 31
-            yield CoreExtension::getAttribute($this->env, $this->source, $context["section"], "title", [], "any", false, false, false, 31);
+                        ";
+            // line 20
+            if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "title", [], "any", false, false, false, 20))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 21
+                yield "                            <h2
+                                class=\"section__title ";
+                // line 22
+                yield (((($tmp = ((CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "aside", [], "any", true, true, false, 22)) ? (Twig\Extension\CoreExtension::default(CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "aside", [], "any", false, false, false, 22))) : (""))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("subsection__title-grid") : (""));
+                yield "\">
+                                ";
+                // line 23
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "title", [], "any", false, false, false, 23), "html", null, true);
+                yield "
+                            </h2>
+                        ";
+            }
+            // line 26
+            yield "                        <div>
+                        ";
+            // line 27
+            yield CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "text", [], "any", false, false, false, 27);
             yield "
-                    ";
-            // line 32
-            yield CoreExtension::getAttribute($this->env, $this->source, $context["section"], "text", [], "any", false, false, false, 32);
-            yield "
-                    <div class=\"section__quote section__side\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
-                        <blockquote>\"";
+                        </div>
+                        ";
+            // line 29
+            if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "aside", [], "any", false, false, false, 29))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 30
+                yield "                            <aside class=\"subsection__quote ";
+                yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "left", [], "any", false, false, false, 30)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("left") : (""));
+                yield "\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                                <blockquote>\"";
+                // line 32
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["associationSection"], "aside", [], "any", false, false, false, 32), "html", null, true);
+                yield "\"</blockquote>
+                            </aside>
+                        ";
+            }
             // line 35
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "aside", [], "any", false, false, false, 35), "html", null, true);
-            yield "\"</blockquote>
-                    </div>
+            yield "                    </section>
+
                     ";
-            // line 40
-            yield "                </section>
-                ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_key'], $context['section'], $context['_parent']);
+        unset($context['_seq'], $context['_key'], $context['associationSection'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 42
-        yield "                <section class=\"subsection\">
-                    <h3 class=\"section__small-title section__side-title\">L’association TAM œuvre pour</h3>
-                    <div class=\"section__content\">
-                        <ul class=\"section__list\">
-                            <li>accompagner les personnes en souffrance psychique</li>
-                            <li>déployer des pratiques thérapeutiques innovantes par l’art</li>
-                            <li>favoriser l’accès au soin des publics vulnérables</li>
-                            <li>former les professionnels de santé mentale</li>
-                            <li>valoriser les savoirs culturels et thérapeutiques traditionnels</li>
-                            <li>développer la recherche et la coopération internationale</li>
-                        </ul>
-                    </div>
-                </section>
-                <section class=\"values subsection\">
-                    <h3 class=\"section__small-title section__side-title\">Nos valeurs</h3>
-                    <section class=\"section__content\">
-                        <ul class=\"section__list\">
-                            <li><strong>Création</strong> : l’art comme levier de restauration et de transformation</li>
-                            <li><strong>Éthique</strong> : respect, confidentialité, bienveillance, dignité</li>
-                            <li><strong>Humanisme</strong> : chaque personne est unique et précieuse</li>
-                            <li><strong>Humilité</strong> : écouter, agir</li>
-                            <li><strong>Transculturalité</strong> : relier les cultures, favoriser la compréhension mutuelle</li>
-                            <li>Refuser toute instrumentalisation</li>
-                        </ul>
-                    </section>
-                </section>
-                <section class=\"history subsection\">
-                    <h3 class=\"section__small-title section__side-title\">Notre histoire</h3>
-                    <section class=\"section__header\">
-                        <p>Fondée en 2010, TAM intervient dans les quartiers prioritaires, auprès de personnes en situation d’exclusion, de précarité, d’isolement et de souffrance psychique.</p>
-                        <p>Au fil des années, l’association a développé une expertise reconnue dans les domaines de :</p>
-                        <ul class=\"section__list\">
-                            <li>l’art-thérapie clinique</li>
-                            <li>l’ethnopsychiatrie et la médiation transculturelle</li>
-                            <li>l’accompagnement psychologique social et communautaire</li>
-                        </ul>
-                        <p>Depuis 2025, TAM développe un axe international structurant au Bénin, en soutenant la recherche « Art & Résilience » et propose un ambitieux projet de formation de thérapie par les arts qui s’adresse à des thérapeutes et des universitaires.</p>
-                    </section>
-                </section>
-            </section>
+        // line 38
+        yield "
+                ";
+        // line 82
+        yield "            </section>
         </div>
         <div class=\"banner banner--right\"></div>
       </div>
@@ -211,7 +216,7 @@ class __TwigTemplate_1c15c5db56c46ede9aab15e339e63e8b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  139 => 42,  132 => 40,  127 => 35,  121 => 32,  117 => 31,  114 => 30,  109 => 29,  107 => 19,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  183 => 82,  180 => 38,  172 => 35,  166 => 32,  160 => 30,  158 => 29,  153 => 27,  150 => 26,  144 => 23,  140 => 22,  137 => 21,  135 => 20,  132 => 19,  128 => 18,  122 => 16,  114 => 14,  112 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -226,66 +231,67 @@ class __TwigTemplate_1c15c5db56c46ede9aab15e339e63e8b extends Template
         <div class=\"banner\"></div>
         <div class=\"banner__pusher\">
             <section class=\"who section\">
-                {# <section class=\"section__header subsection\">
-                    <h2 class=\"section__title section__side-title\">Qui sommes-nous ?</h2>
-                    <p>TAM – Thérapies, Arts & Médiations est une association loi 1901 fondée en 2010. Elle est née de la rencontre entre des professionnels du soin, de l’art et du champ social, désireux de proposer des approches thérapeutiques innovantes, sensibles et profondément humaines. Alors que des besoins importants se faisaient sentir afin d’accompagner des migrants qui habitaient des foyers et des résidences sociales, situés dans des quartiers Politiques de la Ville du Val de Marne.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, amet.</p>
-                    <div class=\"section__image section__side left\">
-                        <img src=\"{{asset('images/sections/who.JPG')}}\" alt=\"Enfants qui peignent en extérieur sous la surveillance d'un adulte\">
-                    </div>
-                </section> #}
-                {# <section class=\"mission subsection\">
-                    <h3 class=\"section__small-title section__side-title\">Notre mission</h3>
-                    <div class=\"section__content\">
-                        <p class=\"mission__text\">Inspirée par la rencontre avec Dr Moussa Maman Bello et l’association URACA, TAM s’inscrit dans une démarche ethnopsychiatrique et transculturelle, respectueuse et attentive aux parcours migratoires singuliers, aux héritages culturels, aux histoires familiales et aux systèmes de représentation du monde.</p>
-                    </div>
-                    <div class=\"section__quote section__side\">
+                <section>
+                    <h1 class=\"section__title\">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class=\"section__image\" src=\"{{ asset(rubricInfo.getGalleryImage.path) }}\" alt=\"{{ rubricInfo.getGalleryImage.alt }}\">
+                    {% endif %}
+                    {{ rubricInfo.text|raw }}
+                </section>
+                {% for associationSection in associationSections %}
+                <section class=\"subsection\">
+                        {% if associationSection.title is not empty %}
+                            <h2
+                                class=\"section__title {{ associationSection.aside|default ? 'subsection__title-grid' : '' }}\">
+                                {{ associationSection.title }}
+                            </h2>
+                        {% endif %}
+                        <div>
+                        {{ associationSection.text|raw }}
+                        </div>
+                        {% if associationSection.aside is not empty %}
+                            <aside class=\"subsection__quote {{ associationSection.left ? 'left' : '' }}\">
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
+                                <blockquote>\"{{ associationSection.aside }}\"</blockquote>
+                            </aside>
+                        {% endif %}
+                    </section>
+
+                    {% endfor %}
+
+                {# <section class=\"subsection\">
+                    <h2 class=\"subsection__title subsection__title-grid\">Notre mission</h2>
+                    <div class=\"subsection__quote\">
                         <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
                         <blockquote>\"La création est un acte de résistance et de résilience. Elle permet de transformer la douleur en beauté.\"</blockquote>
                     </div>
-                </section> #}
-                {% for section in sections %}
+                    <p>Inspirée par la rencontre avec Dr Moussa Maman Bello et l’association URACA, TAM s’inscrit dans une démarche ethnopsychiatrique et transculturelle, respectueuse et attentive aux parcours migratoires singuliers, aux héritages culturels, aux histoires familiales et aux systèmes de représentation du monde.</p>
+                </section>
                 <section class=\"subsection\">
-                    {{ section.title | raw }}
-                    {{ section.text | raw }}
-                    <div class=\"section__quote section__side\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewbox=\"0 -960 960 960\" width=\"24px\" fill=\"currentColor\"><path d=\"m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z\"/></svg>
-                        <blockquote>\"{{section.aside}}\"</blockquote>
-                    </div>
-                    {# <div class=\"section__image section__side\">
-                        <img src=\"{{ asset(section.aside) }}\" alt=\"Enfants qui peignent en extérieur sous la surveillance d'un adulte\">
-                    </div> #}
+                    <h2 class=\"subsection__title subsection__title-grid\">L’association TAM œuvre pour</h2>
+                    <ul class=\"section__list\">
+                        <li>accompagner les personnes en souffrance psychique</li>
+                        <li>déployer des pratiques thérapeutiques innovantes par l’art</li>
+                        <li>favoriser l’accès au soin des publics vulnérables</li>
+                        <li>former les professionnels de santé mentale</li>
+                        <li>valoriser les savoirs culturels et thérapeutiques traditionnels</li>
+                        <li>développer la recherche et la coopération internationale</li>
+                    </ul>
                 </section>
-                {% endfor %}
                 <section class=\"subsection\">
-                    <h3 class=\"section__small-title section__side-title\">L’association TAM œuvre pour</h3>
-                    <div class=\"section__content\">
-                        <ul class=\"section__list\">
-                            <li>accompagner les personnes en souffrance psychique</li>
-                            <li>déployer des pratiques thérapeutiques innovantes par l’art</li>
-                            <li>favoriser l’accès au soin des publics vulnérables</li>
-                            <li>former les professionnels de santé mentale</li>
-                            <li>valoriser les savoirs culturels et thérapeutiques traditionnels</li>
-                            <li>développer la recherche et la coopération internationale</li>
-                        </ul>
-                    </div>
+                    <h2 class=\"subsection__title subsection__title-grid\">Nos valeurs</h2>
+                    <ul class=\"section__list\">
+                        <li><strong>Création</strong> : l’art comme levier de restauration et de transformation</li>
+                        <li><strong>Éthique</strong> : respect, confidentialité, bienveillance, dignité</li>
+                        <li><strong>Humanisme</strong> : chaque personne est unique et précieuse</li>
+                        <li><strong>Humilité</strong> : écouter, agir</li>
+                        <li><strong>Transculturalité</strong> : relier les cultures, favoriser la compréhension mutuelle</li>
+                        <li>Refuser toute instrumentalisation</li>
+                    </ul>
                 </section>
-                <section class=\"values subsection\">
-                    <h3 class=\"section__small-title section__side-title\">Nos valeurs</h3>
-                    <section class=\"section__content\">
-                        <ul class=\"section__list\">
-                            <li><strong>Création</strong> : l’art comme levier de restauration et de transformation</li>
-                            <li><strong>Éthique</strong> : respect, confidentialité, bienveillance, dignité</li>
-                            <li><strong>Humanisme</strong> : chaque personne est unique et précieuse</li>
-                            <li><strong>Humilité</strong> : écouter, agir</li>
-                            <li><strong>Transculturalité</strong> : relier les cultures, favoriser la compréhension mutuelle</li>
-                            <li>Refuser toute instrumentalisation</li>
-                        </ul>
-                    </section>
-                </section>
-                <section class=\"history subsection\">
-                    <h3 class=\"section__small-title section__side-title\">Notre histoire</h3>
-                    <section class=\"section__header\">
+                <section class=\"subsection\">
+                    <h2 class=\"subsection__title subsection__title-grid\">Notre histoire</h2>
+                    <div>
                         <p>Fondée en 2010, TAM intervient dans les quartiers prioritaires, auprès de personnes en situation d’exclusion, de précarité, d’isolement et de souffrance psychique.</p>
                         <p>Au fil des années, l’association a développé une expertise reconnue dans les domaines de :</p>
                         <ul class=\"section__list\">
@@ -294,8 +300,8 @@ class __TwigTemplate_1c15c5db56c46ede9aab15e339e63e8b extends Template
                             <li>l’accompagnement psychologique social et communautaire</li>
                         </ul>
                         <p>Depuis 2025, TAM développe un axe international structurant au Bénin, en soutenant la recherche « Art & Résilience » et propose un ambitieux projet de formation de thérapie par les arts qui s’adresse à des thérapeutes et des universitaires.</p>
-                    </section>
-                </section>
+                    </div>
+                </section> #}
             </section>
         </div>
         <div class=\"banner banner--right\"></div>

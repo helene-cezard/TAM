@@ -1,4 +1,5 @@
 @use "variables";
+@use "placeholders";
 
 .carousel {
   position: relative;
@@ -9,7 +10,7 @@
   margin-bottom: 2rem;
 
   @media screen and (min-width: variables.$breakpoint) {
-    height: 45svh;
+    height: 60svh;
   }
 
   &__btn {
@@ -34,13 +35,6 @@
     right: 1rem;
   }
 
-  // &__slides {
-  //   height: 100%;
-  //   width: 100%;
-  //   position: relative;
-  //   overflow: hidden;
-  // }
-
   &__slide {
     position: absolute;
     left: 0;
@@ -48,7 +42,6 @@
     margin-inline: auto;
     width: fit-content;
     height: 100%;
-    // width: 100%;
     opacity: 0;
 
     &.carousel-active {
@@ -59,18 +52,47 @@
     & img {
       display: block;
       height: 100%;
-      // width: 100%;
       object-fit: cover;
       aspect-ratio: 11 / 7;
       object-position: top center;
       border-radius: 0.5rem;
-      // border: solid 0.2rem white;
       box-shadow: 6.2px 12.5px 12.5px #2e13054f;
 
       @media screen and (min-width: 600px)
       {
         aspect-ratio: 16 / 7;
       }
+    }
+  }
+
+  &__gallery {
+
+    & li {
+        list-style: none;
+    }
+
+    @media screen and (min-width: variables.$breakpoint) {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      width: 90%;
+      margin: 0 auto 1rem auto;
+    }
+
+    &__card {
+        @extend %card;
+
+        & img {
+          width: 100%;
+          height: auto;
+          border-radius: .2rem;
+          object-fit: cover;
+          object-position: top;
+        }
+    }
+
+    &__text {
+        padding: .5rem;
     }
   }
 }

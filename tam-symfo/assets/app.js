@@ -1,12 +1,18 @@
 const app = {
 
   itv: null,
+  slides: document.querySelectorAll('.carousel__slide'),
 
   init: function() {
       console.log('App initialized');
       app.burgerMenu();
+      app.movePosition();
+
+      app.slides[0].classList.add('carousel-active');
+
       app.itv = app.play(app.itv);
       app.showSubmenu();
+      app.animateCounters();
   },
 
   burgerMenu: function() {
@@ -54,6 +60,7 @@ const app = {
       const submenu = button.nextElementSibling;
 
       button.addEventListener('click', () => {
+        console.log('Submenu button clicked');
         button.ariaExpanded = button.ariaExpanded !== 'true';
 
 
@@ -93,13 +100,11 @@ const app = {
   },
 
   startCarousel: function() {
-    const slides = document.querySelectorAll('.carousel__slide');
-
     const slideActive = carousel.querySelector('.carousel-active');
-    let newIndex = [...slides].indexOf(slideActive) + 1;
+    let newIndex = [...app.slides].indexOf(slideActive) + 1;
 
-    if (newIndex >= [...slides].length) newIndex = 0;
-    slides[newIndex].classList.add('carousel-active');
+    if (newIndex >= [...app.slides].length) newIndex = 0;
+    app.slides[newIndex].classList.add('carousel-active');
 
     slideActive.classList.remove('carousel-active');
   },
@@ -115,6 +120,53 @@ const app = {
   pause: function(itv) {
     clearInterval(itv);
   },
+
+  animateCounters: function() {
+    const numbers = document.querySelectorAll('.home__counter__number');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target;
+          const target = number.innerHTML;
+          let count = 0;
+          const increment = target / 70;
+
+          function updateCounter() {
+            count += increment;
+            if (count < target) {
+              number.textContent = Math.ceil(count);
+              requestAnimationFrame(updateCounter);
+            } else {
+              number.textContent = target;
+            }
+          }
+
+          updateCounter();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+     { threshold: 0.3 });
+
+      numbers.forEach(number => observer.observe(number));
+  },
+
+  movePosition: function() {
+    const buttons = document.querySelectorAll('.position-button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('up')) {
+            console.log('Up button clicked');
+
+        }
+        else if (button.classList.contains('down')) {
+            console.log('Down button clicked');
+        }
+      });
+    });
+  }
 }
 
 

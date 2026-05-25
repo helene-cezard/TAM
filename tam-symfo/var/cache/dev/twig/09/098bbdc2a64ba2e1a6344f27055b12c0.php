@@ -102,74 +102,93 @@ class __TwigTemplate_e349812d8a8dc828fbe5de5283163063 extends Template
             <div class=\"banner\"></div>
             <div class=\"banner__pusher\">
                 <section class=\"reports section\">
-                    <div class=\"reports__header\">
-                        <h2 class=\"section__title\">Des temps forts…</h2>
-                        <p>Découvrez nos rapports d'activité annuels pour en savoir plus sur nos actions, nos réalisations et notre impact. Ces rapports détaillent les projets que nous avons menés, les résultats obtenus et les perspectives pour l'avenir. Ils sont une source précieuse d'informations pour nos partenaires, nos donateurs et tous ceux qui souhaitent suivre notre travail de près.</p>
-                    </div>
-                    <ul class=\"reports__list\">
-                        <div class=\"line\"></div>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <div class=\"white-line\"></div>
-                    </ul>
-                    <div>
-                        <h3 class=\"section__small-title\">De petits chiffres de grandes actions…</h3>
+                    <section>
+                        <h1 class=\"section__title\">";
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 12, $this->source); })()), "title", [], "any", false, false, false, 12), "html", null, true);
+        yield "</h1>
+                        ";
+        // line 13
+        if ((($tmp =  !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 13, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 13))) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 14
+            yield "                        <img  class=\"section__image\" src=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "path", [], "any", false, false, false, 14)), "html", null, true);
+            yield "\" alt=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 14, $this->source); })()), "getGalleryImage", [], "any", false, false, false, 14), "alt", [], "any", false, false, false, 14), "html", null, true);
+            yield "\">
+                        ";
+        }
+        // line 16
+        yield "                        ";
+        yield CoreExtension::getAttribute($this->env, $this->source, (isset($context["rubricInfo"]) || array_key_exists("rubricInfo", $context) ? $context["rubricInfo"] : (function () { throw new RuntimeError('Variable "rubricInfo" does not exist.', 16, $this->source); })()), "text", [], "any", false, false, false, 16);
+        yield "
+                    </section>
+                    <section>
+                        <ul class=\"reports__list\">
+                            <div class=\"line\"></div>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <div class=\"white-line\"></div>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class=\"section__small-title\">De petits chiffres de grandes actions…</h2>
                         <p>Si les chiffres ne sont pas spectaculaires ils sont toutefois éloquents. Ce sont autant de fils de vie renforcés d’espoir et de joie retrouvé de liens consolidés. </p>
-                    </div>
+                    </section>
                 </section>
             </div>
             <div class=\"banner banner--right\"></div>
@@ -206,7 +225,7 @@ class __TwigTemplate_e349812d8a8dc828fbe5de5283163063 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  122 => 16,  114 => 14,  112 => 13,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -221,74 +240,79 @@ class __TwigTemplate_e349812d8a8dc828fbe5de5283163063 extends Template
             <div class=\"banner\"></div>
             <div class=\"banner__pusher\">
                 <section class=\"reports section\">
-                    <div class=\"reports__header\">
-                        <h2 class=\"section__title\">Des temps forts…</h2>
-                        <p>Découvrez nos rapports d'activité annuels pour en savoir plus sur nos actions, nos réalisations et notre impact. Ces rapports détaillent les projets que nous avons menés, les résultats obtenus et les perspectives pour l'avenir. Ils sont une source précieuse d'informations pour nos partenaires, nos donateurs et tous ceux qui souhaitent suivre notre travail de près.</p>
-                    </div>
-                    <ul class=\"reports__list\">
-                        <div class=\"line\"></div>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <li class=\"reports__list-item\">
-                            <div class=\"reports__list-bullet\"></div>
-                            <div class=\"reports__list-text\">
-                                <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
-                                <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                            </div>
-                        </li>
-                        <div class=\"white-line\"></div>
-                    </ul>
-                    <div>
-                        <h3 class=\"section__small-title\">De petits chiffres de grandes actions…</h3>
+                    <section>
+                        <h1 class=\"section__title\">{{ rubricInfo.title }}</h1>
+                        {% if rubricInfo.getGalleryImage is not empty %}
+                        <img  class=\"section__image\" src=\"{{ asset(rubricInfo.getGalleryImage.path) }}\" alt=\"{{ rubricInfo.getGalleryImage.alt }}\">
+                        {% endif %}
+                        {{ rubricInfo.text|raw }}
+                    </section>
+                    <section>
+                        <ul class=\"reports__list\">
+                            <div class=\"line\"></div>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <li class=\"reports__list-item\">
+                                <div class=\"reports__list-bullet\"></div>
+                                <div class=\"reports__list-text\">
+                                    <a href=\"../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf\"><img src=\"../images/Reports-thumbnails/thumbnail.jpg\" alt=\"\"></a>
+                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
+                                </div>
+                            </li>
+                            <div class=\"white-line\"></div>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2 class=\"section__small-title\">De petits chiffres de grandes actions…</h2>
                         <p>Si les chiffres ne sont pas spectaculaires ils sont toutefois éloquents. Ce sont autant de fils de vie renforcés d’espoir et de joie retrouvé de liens consolidés. </p>
-                    </div>
+                    </section>
                 </section>
             </div>
             <div class=\"banner banner--right\"></div>

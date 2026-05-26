@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - Ressources{% endblock %}
+
+{% block body %}
+    <main>
+      <div class="banner-container">
+        <div class="banner"></div>
+        <div class="banner__pusher">
+            <section class="resources section">
+                <section>
+                    <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                    {% endif %}
+                    {{ rubricInfo.text|raw }}
+                </section>
+                <section class="subsection">
+                    <h2 class="subsection__title">Articles</h2>
+                    <ul class="section__list">
+                        <li>Art et soin AIEP 2010</li>
+                        <li>Colloque FFAT 2017 et 19</li>
+                        <li>Journal Ivry ma ville</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Vidéos</h2>
+                        <ul class="resources__videos">
+                            <li>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/1vJBUHIuNjQ?si=j8CNEf4QdAYPyNvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                            <li>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/4Za_l8DzJ3U?si=p7Sr8W9UOBZe-PX2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </li>
+                        </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Podcasts</h2>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Galeries photos</h2>
+                    <div class="resources__gallery">
+
+                    {% for galleryImage in galleryImages %}
+
+                        <img src="{{ asset(galleryImage.path) }}" alt="{{ galleryImage.alt }}">
+
+                    {% endfor %}
+
+                    </div>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Rapports d’activités</h2>
+                    <a class="section__link" href="reports.html">Voir nos rapports d'activité</a>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Supports visuels</h2>
+                    <ul>
+                        <li class="resources__visuals">
+                            Plaquette :
+                            <a href="../docs/PLAQUETTE_TAM 2023.pdf">
+                                <img src="../images/docs-thumbnails/PLAQUETTE_TAM 2023.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>Mémoires d’histoire</li>
+                        <li>Brochure les 10 ans</li>
+                        <li>La recherche à l’ONG racines de Cotonou</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="subsection__title">Liens</h2>
+                    <ul>
+                        <li><a class="section__link" href="#">Facebook</a></li>
+                        <li><a class="section__link" href="#">LinkedIn</a></li>
+                    </ul>
+                </section>
+                <p>Ces ressources témoignent de notre travail de terrain, de notre démarche clinique et nos recherches.</p>
+            </section>
+        </div>
+        <div class="banner banner--right"></div>
+      </div>
+    </main>
+{% endblock %}

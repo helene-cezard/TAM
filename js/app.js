@@ -5,6 +5,7 @@ const app = {
   init: function() {
       console.log('App initialized');
       app.burgerMenu();
+      app.openGallery();
       app.itv = app.play(app.itv);
       app.showSubmenu();
       app.animateCounters();
@@ -147,6 +148,35 @@ const app = {
      { threshold: 0.3 });
 
       numbers.forEach(number => observer.observe(number));
+  },
+
+  openGallery: function() {
+    // Sélectionne toutes les galeries
+    const galleries = document.querySelectorAll(".resources__gallery");
+  
+    galleries.forEach((gallery) => {
+      // Ajoute la classe "collapsed" par défaut
+      gallery.classList.add("collapsed");
+  
+      // Crée le bouton "Étendre"
+      const toggleButton = document.createElement("button");
+      toggleButton.classList.add("resources__gallery__toggle");
+      toggleButton.textContent = "Étendre";
+  
+      // Ajoute le bouton à la galerie
+      gallery.appendChild(toggleButton);
+  
+      // Ajoute un gestionnaire d'événement pour le bouton
+      toggleButton.addEventListener("click", () => {
+        if (gallery.classList.contains("collapsed")) {
+          gallery.classList.remove("collapsed");
+          toggleButton.textContent = "Réduire";
+        } else {
+          gallery.classList.add("collapsed");
+          toggleButton.textContent = "Étendre";
+        }
+      });
+    });
   }
 }
 

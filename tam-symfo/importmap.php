@@ -32,4 +32,86 @@ return [
         'version' => '5.3.8',
         'type' => 'css',
     ],
+    'quill2-emoji' => [
+        'version' => '0.1.2',
+    ],
+    'quill' => [
+        'version' => '2.0.3',
+    ],
+    'quill2-emoji/dist/style.css' => [
+        'version' => '0.1.2',
+        'type' => 'css',
+    ],
+    'lodash-es' => [
+        'version' => '4.18.1',
+    ],
+    'parchment' => [
+        'version' => '3.0.0',
+    ],
+    'quill-delta' => [
+        'version' => '5.1.0',
+    ],
+    'eventemitter3' => [
+        'version' => '5.0.4',
+    ],
+    'fast-diff' => [
+        'version' => '1.3.0',
+    ],
+    'lodash.clonedeep' => [
+        'version' => '4.5.0',
+    ],
+    'lodash.isequal' => [
+        'version' => '4.5.0',
+    ],
+    'quill-resize-image' => [
+        'version' => '1.0.11',
+    ],
+    'quill/dist/quill.snow.css' => [
+        'version' => '2.0.3',
+        'type' => 'css',
+    ],
+    'quill/dist/quill.snow.css.map' => [
+        'version' => '2.0.3',
+    ],
+    'quill/dist/quill.bubble.css' => [
+        'version' => '2.0.3',
+        'type' => 'css',
+    ],
+    'quill/dist/quill.bubble.css.map' => [
+        'version' => '2.0.3',
+    ],
+    'axios' => [
+        'version' => '1.16.1',
+    ],
+    'quill-table-better' => [
+        'version' => '1.2.3',
+    ],
+    'quill-table-better/dist/quill-table-better.css' => [
+        'version' => '1.2.3',
+        'type' => 'css',
+    ],
+    'quill-toggle-fullscreen-button' => [
+        'version' => '0.1.4',
+    ],
+    'quill-html-edit-button' => [
+        'version' => '3.0.0',
+    ],
+    'quill-html-edit-button/src/styles.css' => [
+        'version' => '3.0.0',
+        'type' => 'css',
+    ],
+    'highlight.js' => [
+        'version' => '11.11.1',
+    ],
+    'highlight.js/styles/atom-one-dark.css' => [
+        'version' => '11.11.1',
+        'type' => 'css',
+    ],
+    'katex' => [
+        'version' => '0.16.47',
+    ],
+    'katex/dist/katex.min.css' => [
+        'version' => '0.16.47',
+        'type' => 'css',
+    ],
 ];

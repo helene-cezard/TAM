@@ -5,14 +5,22 @@ const app = {
 
   init: function() {
       console.log('App initialized');
-      app.burgerMenu();
-      app.movePosition();
 
-      app.slides[0].classList.add('carousel-active');
+      const jsData = document.getElementById('js-data');
+      const currentRoute = jsData.dataset.currentRoute;
+      if (currentRoute === 'app_main') {
+          app.slides[0].classList.add('carousel-active');
+        app.itv = app.play(app.itv);
+      }
 
-      app.itv = app.play(app.itv);
-      app.showSubmenu();
       app.animateCounters();
+      app.burgerMenu();
+      app.movePosition('home');
+
+
+      app.showSubmenu();
+
+      reorderSections.addEventListener('click', app.updatePositions);
   },
 
   burgerMenu: function() {
@@ -152,20 +160,69 @@ const app = {
       numbers.forEach(number => observer.observe(number));
   },
 
-  movePosition: function() {
-    const buttons = document.querySelectorAll('.position-button');
+  movePosition: function(element) {
+    const container = document.getElementById(element + 'Sections');
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (button.classList.contains('up')) {
-            console.log('Up button clicked');
+    container.addEventListener('click', (event) => {
 
+        const section = event.target.closest('.' + element + '__section');
+
+        if (!section) {
+            return;
         }
-        else if (button.classList.contains('down')) {
-            console.log('Down button clicked');
+
+        if (event.target.classList.contains('up') || event.target.classList.contains('left')) {
+
+            const previous = section.previousElementSibling;
+
+            if (previous) {
+                container.insertBefore(section, previous);
+                app.createMessage('error', 'Vous avez modifié l\'ordre des sections, n\'oubliez pas d\'enregistrer pour valider les changements');
+            }
         }
-      });
+
+        if (event.target.classList.contains('down') || event.target.classList.contains('right')) {
+
+            const next = section.nextElementSibling;
+
+            if (next) {
+                container.insertBefore(next, section);
+                app.createMessage('error', 'Vous avez modifié l\'ordre des sections, n\'oubliez pas d\'enregistrer pour valider les changements');
+            }
+        }
     });
+  },
+
+  updatePositions: function() {
+    console.log('Updating positions...');
+    const ids = [...document.querySelectorAll('.home__section')]
+    .map(section => section.dataset.id);
+
+    console.log('IDs:', ids);
+
+    fetch('/admin/sections/reorder', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(ids)
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.location.href = data.redirect;
+    });
+  },
+
+  createMessage: function(type, text) {
+    const message = document.createElement('div');
+    message.classList.add(`message__${type}`);
+    message.textContent = text;
+
+    document.body.insertBefore(message, document.body.lastChild);
+
+    setTimeout(() => {
+        message.remove();
+    }, 5000);
   }
 }
 

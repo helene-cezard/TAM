@@ -16,6 +16,7 @@ return [
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin_main', '_controller' => 'App\\Controller\\Back\\BackMainController::index'], null, null, null, false, false, null]],
+        '/admin/sections/reorder' => [[['_route' => 'sections_reorder', '_controller' => 'App\\Controller\\Back\\BackMainController::reorder'], null, ['POST' => 0], null, false, false, null]],
         '/actions/benin' => [[['_route' => 'app_actions_benin', '_controller' => 'App\\Controller\\Front\\ActionsBeninController::index'], null, null, null, false, false, null]],
         '/actions/france' => [[['_route' => 'app_actions_france', '_controller' => 'App\\Controller\\Front\\ActionsFranceController::index'], null, null, null, false, false, null]],
         '/contact' => [[['_route' => 'app_contact', '_controller' => 'App\\Controller\\Front\\ContactController::index'], null, null, null, false, false, null]],
@@ -50,6 +51,7 @@ return [
                         .')'
                     .')'
                 .')'
+                .'|/admin/section/delete/([^/]++)(*:232)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -60,8 +62,9 @@ return [
         148 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        191 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        232 => [
+            [['_route' => 'admin_section_delete', '_controller' => 'App\\Controller\\Back\\BackMainController::deleteSection'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

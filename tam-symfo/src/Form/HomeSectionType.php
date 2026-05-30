@@ -18,7 +18,7 @@ class HomeSectionType extends AbstractType
                 'required' => false,
             ])
             ->add('text', null, [
-                'label' => 'Contenu de la section',
+                'label' => 'Texte de la section',
                 'required' => false,
             ])
             ->add('aside', null, [

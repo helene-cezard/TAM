@@ -30,9 +30,9 @@
         <div class="banner-container">
             <div class="banner"></div>
             <div class="banner__pusher">
-                <section class="home section">
+                <section id="homeSections" class="home section">
                     {% for homeSection in homeSections %}
-                    <section class="subsection subsection-border">
+                    <section class="subsection subsection-border home__section" data-id="{{ homeSection.id }}">
                         <button class="position-button up">&uarr;</button>
                         <button class="position-button down">&darr;</button>
                         {% if homeSection.title is not empty %}
@@ -50,11 +50,21 @@
                                 <blockquote>"{{ homeSection.aside }}"</blockquote>
                             </aside>
                         {% endif %}
+                        <a href="{{ path('admin_section_delete', {id:homeSection.id}) }}" class="delete__button">Supprimer</a>
                     </section>
 
                     {% endfor %}
 
+                    <button id="reorderSections">Enregistrer l'ordre des sections</button>
+
                     <section class="form">{{ form(sectionForm) }}</section>
+                    {# <section class="form">
+                        {{ form_start(sectionForm) }}
+                        <div class="ql-editor">
+                            {{ sectionForm.text|raw }}
+                        </div>
+                        {{ form_end(sectionForm) }}
+                    </section> #}
                     <section class="home__pilars">
                         <h2 class="section__title">Trois piliers</h2>
                         <ul class="home__pilars__list">

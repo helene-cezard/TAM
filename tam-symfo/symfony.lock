@@ -35,6 +35,9 @@
             "migrations/.gitignore"
         ]
     },
+    "ehyiah/ux-quill": {
+        "version": "3.7.0"
+    },
     "neuralglitch/google-fonts": {
         "version": "0.2.0"
     },
@@ -283,6 +286,18 @@
         },
         "files": [
             "config/packages/ux_turbo.yaml"
+        ]
+    },
+    "symfony/ux-twig-component": {
+        "version": "3.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.13",
+            "ref": "f367ae2a1faf01c503de2171f1ec22567febeead"
+        },
+        "files": [
+            "config/packages/twig_component.yaml"
         ]
     },
     "symfony/validator": {

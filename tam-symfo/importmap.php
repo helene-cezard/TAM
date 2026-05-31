@@ -32,6 +32,41 @@ return [
         'version' => '5.3.8',
         'type' => 'css',
     ],
+    'lodash-es' => [
+        'version' => '4.17.21',
+    ],
+    'parchment' => [
+        'version' => '3.0.0',
+    ],
+    'eventemitter3' => [
+        'version' => '5.0.1',
+    ],
+    'fast-diff' => [
+        'version' => '1.3.0',
+    ],
+    'lodash.clonedeep' => [
+        'version' => '4.5.0',
+    ],
+    'lodash.isequal' => [
+        'version' => '4.5.0',
+    ],
+    'axios' => [
+        'version' => '1.16.1',
+    ],
+    'highlight.js' => [
+        'version' => '11.11.1',
+    ],
+    'highlight.js/styles/atom-one-dark.css' => [
+        'version' => '11.11.1',
+        'type' => 'css',
+    ],
+    'katex' => [
+        'version' => '0.16.47',
+    ],
+    'katex/dist/katex.min.css' => [
+        'version' => '0.16.47',
+        'type' => 'css',
+    ],
     'quill2-emoji' => [
         'version' => '0.1.2',
     ],
@@ -42,26 +77,8 @@ return [
         'version' => '0.1.2',
         'type' => 'css',
     ],
-    'lodash-es' => [
-        'version' => '4.18.1',
-    ],
-    'parchment' => [
-        'version' => '3.0.0',
-    ],
     'quill-delta' => [
         'version' => '5.1.0',
-    ],
-    'eventemitter3' => [
-        'version' => '5.0.4',
-    ],
-    'fast-diff' => [
-        'version' => '1.3.0',
-    ],
-    'lodash.clonedeep' => [
-        'version' => '4.5.0',
-    ],
-    'lodash.isequal' => [
-        'version' => '4.5.0',
     ],
     'quill-resize-image' => [
         'version' => '1.0.11',
@@ -80,9 +97,6 @@ return [
     'quill/dist/quill.bubble.css.map' => [
         'version' => '2.0.3',
     ],
-    'axios' => [
-        'version' => '1.16.1',
-    ],
     'quill-table-better' => [
         'version' => '1.2.3',
     ],
@@ -98,20 +112,6 @@ return [
     ],
     'quill-html-edit-button/src/styles.css' => [
         'version' => '3.0.0',
-        'type' => 'css',
-    ],
-    'highlight.js' => [
-        'version' => '11.11.1',
-    ],
-    'highlight.js/styles/atom-one-dark.css' => [
-        'version' => '11.11.1',
-        'type' => 'css',
-    ],
-    'katex' => [
-        'version' => '0.16.47',
-    ],
-    'katex/dist/katex.min.css' => [
-        'version' => '0.16.47',
         'type' => 'css',
     ],
 ];

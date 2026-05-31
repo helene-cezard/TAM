@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\HomeSection;
+use Ehyiah\QuillJsBundle\Form\QuillType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,6 +18,7 @@ class HomeSectionType extends AbstractType
                 'label' => 'Titre de la section',
                 'required' => false,
             ])
+            ->add('myField', QuillType::class)
             ->add('text', null, [
                 'label' => 'Texte de la section',
                 'required' => false,

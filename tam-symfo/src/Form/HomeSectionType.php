@@ -3,6 +3,11 @@
 namespace App\Form;
 
 use App\Entity\HomeSection;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\BoldField;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\ItalicField;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\LinkField;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\UnderlineField;
+use Ehyiah\QuillJsBundle\DTO\QuillGroup;
 use Ehyiah\QuillJsBundle\Form\QuillType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,10 +23,17 @@ class HomeSectionType extends AbstractType
                 'label' => 'Titre de la section',
                 'required' => false,
             ])
-            ->add('myField', QuillType::class)
-            ->add('text', null, [
+            ->add('text', QuillType::class, [
                 'label' => 'Texte de la section',
                 'required' => false,
+                'quill_options' => [
+                QuillGroup::build(
+                    new BoldField(),
+                    new ItalicField(),
+                    new LinkField(),
+                    new UnderlineField(),
+                ),
+                ],
             ])
             ->add('aside', null, [
                 'label' => 'Ajouter un bloc de citation',

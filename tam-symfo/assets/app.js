@@ -1,3 +1,5 @@
+import './stimulus_bootstrap.js';
+
 const app = {
 
   itv: null,

@@ -23,7 +23,11 @@
         {% endif %}
     </head>
     <body>
-        {% include "partials/_header.html.twig" %}
+        {% if app.request.get('_route') starts with 'admin_' %}
+            {% include "back/partials/_header.html.twig" %}
+        {% else %}
+             {% include "partials/_header.html.twig" %}
+        {% endif %}
         {% block body %}{% endblock %}
         {% include "partials/_messages.html.twig" %}
         {% include "partials/_footer.html.twig" %}

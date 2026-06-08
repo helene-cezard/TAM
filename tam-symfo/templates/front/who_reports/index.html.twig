@@ -4,99 +4,37 @@
 
 {% block body %}
     <main>
-        <div class="banner-container">
-            <div class="banner"></div>
-            <div class="banner__pusher">
-                <section class="reports section">
-                    <section>
-                        <h1 class="section__title">{{ rubricInfo.title }}</h1>
-                        {% if rubricInfo.getGalleryImage is not empty %}
-                        <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
-                        {% endif %}
-                        {{ rubricInfo.text|raw }}
-                    </section>
-                    <section>
-                        <ul class="reports__list">
-                            <div class="line"></div>
-                            {% for report in reports %}
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="{{ asset(report.path) }}">
-                                        <img src="{{ asset(report.image) }}" alt="">
-                                        </a>
-                                    <p>{{ report.description }}</p>
-                                </div>
-                            </li>
-                            {% endfor %}
-                            {# <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="{{ asset('reports/RA_AssociationTAM2022.pdf') }}">
-                                        <img src="{{ asset('images/Reports-thumbnails/thumbnail.jpg') }}" alt="">
-                                        </a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li>
-                            <li class="reports__list-item">
-                                <div class="reports__list-bullet"></div>
-                                <div class="reports__list-text">
-                                    <a href="../reports/Rapport d'activité _Association TAM 2022 FINAL signé AH SVC.pdf"><img src="../images/Reports-thumbnails/thumbnail.jpg" alt=""></a>
-                                    <p>2011 … première année d’activité… nos actions dans les oyers de Créteil vert de maison et résidence ADEF de Choisy le Roi... Vivre en « marge »  des villes</p>
-                                </div>
-                            </li> #}
-                            <div class="white-line"></div>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2 class="section__small-title">De petits chiffres de grandes actions…</h2>
-                        <p>Si les chiffres ne sont pas spectaculaires ils sont toutefois éloquents. Ce sont autant de fils de vie renforcés d’espoir et de joie retrouvé de liens consolidés. </p>
-                    </section>
+        {% include "partials/_left_banner.html.twig" %}
+            <section class="reports section">
+                <section>
+                    <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                    {% endif %}
+                    {{ rubricInfo.text|raw }}
                 </section>
-            </div>
-            <div class="banner banner--right"></div>
-        </div>
+                <section>
+                    <ul class="reports__list">
+                        <div class="line"></div>
+                        {% for report in reports %}
+                        <li class="reports__list-item">
+                            <div class="reports__list-bullet"></div>
+                            <div class="reports__list-text">
+                                <a href="{{ asset(report.path) }}">
+                                    <img src="{{ asset(report.image) }}" alt="">
+                                    </a>
+                                <p>{{ report.description }}</p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                        <div class="white-line"></div>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="section__small-title">De petits chiffres de grandes actions…</h2>
+                    <p>Si les chiffres ne sont pas spectaculaires ils sont toutefois éloquents. Ce sont autant de fils de vie renforcés d’espoir et de joie retrouvé de liens consolidés. </p>
+                </section>
+            </section>
+        {% include "partials/_right_banner.html.twig" %}
     </main>
 {% endblock %}

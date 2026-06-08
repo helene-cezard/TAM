@@ -4,31 +4,27 @@
 
 {% block body %}
     <main>
-        <div class="banner-container">
-            <div class="banner"></div>
-            <div class="banner__pusher">
-                <section class="support section">
-                    <div class="support__header">
-                        <h2 class="section__title">Nous soutenir</h2>
-                    </div>
-                    <div class="support__content">
-                        <h3 class="section__small-title">Soutenir TAM, c’est agir concrètement pour la santé mentale.</h3>
-                        <p>Votre soutien permet :</p>
-                        <ul class="section__list">
-                            <li>La prise en charge thérapeutique de personnes vulnérables</li>
-                            <li>La formation de professionnels</li>
-                            <li>Le développement et le soutien de projets locaux</li>
-                            <li>La recherche et la coopération internationale</li>
-                        </ul>
-                    </div>
-                    <div class="support__links">
-                        <a class="section__link" href="">Faire un don</a>
-                        <a class="section__link" href="">Devenir partenaire</a>
-                        <a class="section__link" href="">Soutenir nos projets</a>
-                    </div>
-                </section>
-            </div>
-            <div class="banner banner--right"></div>
-        </div>
+        {% include "partials/_left_banner.html.twig" %}
+            <section class="support section">
+                <div class="support__header">
+                    <h2 class="section__title">Nous soutenir</h2>
+                </div>
+                <div class="support__content">
+                    <h3 class="section__small-title">Soutenir TAM, c’est agir concrètement pour la santé mentale.</h3>
+                    <p>Votre soutien permet :</p>
+                    <ul class="section__list">
+                        <li>La prise en charge thérapeutique de personnes vulnérables</li>
+                        <li>La formation de professionnels</li>
+                        <li>Le développement et le soutien de projets locaux</li>
+                        <li>La recherche et la coopération internationale</li>
+                    </ul>
+                </div>
+                <div class="support__links">
+                    <a class="section__link" href="">Faire un don</a>
+                    <a class="section__link" href="">Devenir partenaire</a>
+                    <a class="section__link" href="">Soutenir nos projets</a>
+                </div>
+            </section>
+        {% include "partials/_right_banner.html.twig" %}
     </main>
 {% endblock %}

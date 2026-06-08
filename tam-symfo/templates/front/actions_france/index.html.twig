@@ -4,9 +4,7 @@
 
 {% block body %}
     <main>
-      <div class="banner-container">
-        <div class="banner"></div>
-        <div class="banner__pusher">
+        {% include "partials/_left_banner.html.twig" %}
             <section class="actions section">
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
@@ -129,8 +127,6 @@
                     </ul>
                 </section> #}
             </section>
-        </div>
-        <div class="banner banner--right"></div>
-      </div>
+        {% include "partials/_right_banner.html.twig" %}
     </main>
 {% endblock %}

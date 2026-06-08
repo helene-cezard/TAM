@@ -1,0 +1,23 @@
+<section class="hero">
+    <h1 class="hero__title">
+        Thérapies, Arts
+        <br class="line-break">
+        & Médiations
+        <br>
+        <span class="hero__title--small">T.A.M.</span>
+    </h1>
+    <p class="hero__text">
+        Accompagner par l’art, restaurer le lien, tisser les cultures
+    </p>
+    <div id="carousel" class="carousel" role="group" aria-label="Carrousel décoratif" aria-roledescription="carrousel" >
+        <ul class="carousel__slides" aria-atomic="false" aria-live="off">
+
+        {% for carouselImage in carouselImages %}
+            <li class="carousel__slide" role="group" aria-label="1 of 6" aria-roledescription="slide">
+                <img src="{{ carouselImage.getGalleryId.path }}" alt="{{ carouselImage.getGalleryId.alt }}">
+            </li>
+        {% endfor %}
+
+        </ul>
+    </div>
+</section>

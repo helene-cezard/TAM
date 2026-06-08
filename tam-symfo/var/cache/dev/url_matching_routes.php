@@ -15,21 +15,36 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/admin' => [[['_route' => 'admin_main', '_controller' => 'App\\Controller\\Back\\BackMainController::index'], null, null, null, false, false, null]],
-        '/admin/sections/reorder' => [[['_route' => 'sections_reorder', '_controller' => 'App\\Controller\\Back\\BackMainController::reorder'], null, ['POST' => 0], null, false, false, null]],
-        '/actions/benin' => [[['_route' => 'app_actions_benin', '_controller' => 'App\\Controller\\Front\\ActionsBeninController::index'], null, null, null, false, false, null]],
-        '/actions/france' => [[['_route' => 'app_actions_france', '_controller' => 'App\\Controller\\Front\\ActionsFranceController::index'], null, null, null, false, false, null]],
+        '/admin/association' => [[['_route' => 'admin_association', '_controller' => 'App\\Controller\\Back\\BackAssociationController::index'], null, null, null, false, false, null]],
+        '/admin/association/rubric' => [[['_route' => 'admin_association_rubric', '_controller' => 'App\\Controller\\Back\\BackAssociationController::handleRubricForm'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/association/section' => [[['_route' => 'admin_association_section', '_controller' => 'App\\Controller\\Back\\BackAssociationController::handleSectionForm'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/association/section_reorder' => [[['_route' => 'admin_association_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackAssociationController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/benin' => [[['_route' => 'admin_benin', '_controller' => 'App\\Controller\\Back\\BackBeninController::index'], null, null, null, false, false, null]],
+        '/admin/benin/section_reorder' => [[['_route' => 'benin_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackBeninController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/contact' => [[['_route' => 'admin_contact', '_controller' => 'App\\Controller\\Back\\BackContactController::index'], null, null, null, false, false, null]],
+        '/admin/contact/section_reorder' => [[['_route' => 'contact_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackContactController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/france' => [[['_route' => 'admin_france', '_controller' => 'App\\Controller\\Back\\BackFranceController::index'], null, null, null, false, false, null]],
+        '/admin/france/section_reorder' => [[['_route' => 'france_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackFranceController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin' => [[['_route' => 'admin_home', '_controller' => 'App\\Controller\\Back\\BackHomeController::index'], null, null, null, false, false, null]],
+        '/admin/home/section_reorder' => [[['_route' => 'home_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackHomeController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/reports' => [[['_route' => 'admin_reports', '_controller' => 'App\\Controller\\Back\\BackReportsController::index'], null, null, null, false, false, null]],
+        '/admin/resources' => [[['_route' => 'admin_resources', '_controller' => 'App\\Controller\\Back\\BackResourcesController::index'], null, null, null, false, false, null]],
+        '/admin/equipe' => [[['_route' => 'admin_team', '_controller' => 'App\\Controller\\Back\\BackTeamController::index'], null, null, null, false, false, null]],
+        '/admin/training' => [[['_route' => 'admin_training', '_controller' => 'App\\Controller\\Back\\BackTrainingController::index'], null, null, null, false, false, null]],
+        '/admin/training/section_reorder' => [[['_route' => 'training_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackTrainingController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/association' => [[['_route' => 'app_who_association', '_controller' => 'App\\Controller\\Front\\AssociationController::index'], null, null, null, false, false, null]],
+        '/actions/benin' => [[['_route' => 'app_actions_benin', '_controller' => 'App\\Controller\\Front\\BeninController::index'], null, null, null, false, false, null]],
         '/contact' => [[['_route' => 'app_contact', '_controller' => 'App\\Controller\\Front\\ContactController::index'], null, null, null, false, false, null]],
         '/hommage' => [[['_route' => 'app_eulogy', '_controller' => 'App\\Controller\\Front\\EulogyController::index'], null, null, null, false, false, null]],
+        '/actions/france' => [[['_route' => 'app_actions_france', '_controller' => 'App\\Controller\\Front\\FranceController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'app_home', '_controller' => 'App\\Controller\\Front\\HomeController::index'], null, null, null, false, false, null]],
         '/mentions-legales' => [[['_route' => 'app_legal', '_controller' => 'App\\Controller\\Front\\LegalController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\Front\\MainController::index'], null, null, null, false, false, null]],
+        '/rapports-d-activite' => [[['_route' => 'app_who_reports', '_controller' => 'App\\Controller\\Front\\ReportsController::index'], null, null, null, false, false, null]],
         '/recherche' => [[['_route' => 'app_research', '_controller' => 'App\\Controller\\Front\\ResearchController::index'], null, null, null, false, false, null]],
         '/ressources' => [[['_route' => 'app_resources', '_controller' => 'App\\Controller\\Front\\ResourcesController::index'], null, null, null, false, false, null]],
         '/soutenir' => [[['_route' => 'app_support', '_controller' => 'App\\Controller\\Front\\SupportController::index'], null, null, null, false, false, null]],
+        '/equipe' => [[['_route' => 'app_who_team', '_controller' => 'App\\Controller\\Front\\TeamController::index'], null, null, null, false, false, null]],
         '/formation' => [[['_route' => 'app_training', '_controller' => 'App\\Controller\\Front\\TrainingController::index'], null, null, null, false, false, null]],
-        '/association' => [[['_route' => 'app_who_association', '_controller' => 'App\\Controller\\Front\\WhoAssociationController::index'], null, null, null, false, false, null]],
-        '/rapports-d-activite' => [[['_route' => 'app_who_reports', '_controller' => 'App\\Controller\\Front\\WhoReportsController::index'], null, null, null, false, false, null]],
-        '/equipe' => [[['_route' => 'app_who_team', '_controller' => 'App\\Controller\\Front\\WhoTeamController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -51,7 +66,14 @@ return [
                         .')'
                     .')'
                 .')'
-                .'|/admin/section/delete/([^/]++)(*:232)'
+                .'|/admin/(?'
+                    .'|association/section_delete/([^/]++)(*:247)'
+                    .'|benin/section_delete/([^/]++)(*:284)'
+                    .'|contact/section_delete/([^/]++)(*:323)'
+                    .'|france/section_delete/([^/]++)(*:361)'
+                    .'|home/section_delete/([^/]++)(*:397)'
+                    .'|training/section_delete/([^/]++)(*:437)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -63,8 +85,13 @@ return [
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        232 => [
-            [['_route' => 'admin_section_delete', '_controller' => 'App\\Controller\\Back\\BackMainController::deleteSection'], ['id'], null, null, false, true, null],
+        247 => [[['_route' => 'admin_association_section_delete', '_controller' => 'App\\Controller\\Back\\BackAssociationController::deleteSection'], ['id'], null, null, false, true, null]],
+        284 => [[['_route' => 'benin_section_delete', '_controller' => 'App\\Controller\\Back\\BackBeninController::deleteSection'], ['id'], null, null, false, true, null]],
+        323 => [[['_route' => 'contact_section_delete', '_controller' => 'App\\Controller\\Back\\BackContactController::deleteSection'], ['id'], null, null, false, true, null]],
+        361 => [[['_route' => 'france_section_delete', '_controller' => 'App\\Controller\\Back\\BackFranceController::deleteSection'], ['id'], null, null, false, true, null]],
+        397 => [[['_route' => 'admin_home_section_delete', '_controller' => 'App\\Controller\\Back\\BackHomeController::deleteSection'], ['id'], null, null, false, true, null]],
+        437 => [
+            [['_route' => 'training_section_delete', '_controller' => 'App\\Controller\\Back\\BackTrainingController::deleteSection'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

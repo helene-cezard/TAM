@@ -1,0 +1,20 @@
+.quill-container {
+    margin-bottom: 1rem;
+}
+
+.ql-toolbar, .ql-container {
+    background-color: white;
+}
+
+.ql-toolbar {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.ql-editor {
+    font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+
+}
+
+.ql-container {
+    border-radius: 0 0 0.5rem 0.5rem;
+}

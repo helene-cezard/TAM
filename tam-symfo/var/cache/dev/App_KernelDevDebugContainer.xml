@@ -400,28 +400,92 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\Back\BackMainController" class="App\Controller\Back\BackMainController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Back\BackAssociationController" class="App\Controller\Back\BackAssociationController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackMainController"/>
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackAssociationController"/>
       </call>
     </service>
-    <service id="App\Controller\Front\ActionsBeninController" class="App\Controller\Front\ActionsBeninController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Back\BackBeninController" class="App\Controller\Back\BackBeninController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\ActionsBeninController"/>
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackBeninController"/>
       </call>
     </service>
-    <service id="App\Controller\Front\ActionsFranceController" class="App\Controller\Front\ActionsFranceController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Back\BackContactController" class="App\Controller\Back\BackContactController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\ActionsFranceController"/>
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackContactController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackFranceController" class="App\Controller\Back\BackFranceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackFranceController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackHomeController" class="App\Controller\Back\BackHomeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackHomeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackReportsController" class="App\Controller\Back\BackReportsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackReportsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackResourcesController" class="App\Controller\Back\BackResourcesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackResourcesController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackTeamController" class="App\Controller\Back\BackTeamController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackTeamController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Back\BackTrainingController" class="App\Controller\Back\BackTrainingController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Back\BackTrainingController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Front\AssociationController" class="App\Controller\Front\AssociationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\AssociationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Front\BeninController" class="App\Controller\Front\BeninController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\BeninController"/>
       </call>
     </service>
     <service id="App\Controller\Front\ContactController" class="App\Controller\Front\ContactController" public="true" autowire="true" autoconfigure="true">
@@ -440,6 +504,22 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\EulogyController"/>
       </call>
     </service>
+    <service id="App\Controller\Front\FranceController" class="App\Controller\Front\FranceController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\FranceController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Front\HomeController" class="App\Controller\Front\HomeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\HomeController"/>
+      </call>
+    </service>
     <service id="App\Controller\Front\LegalController" class="App\Controller\Front\LegalController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -448,12 +528,12 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\LegalController"/>
       </call>
     </service>
-    <service id="App\Controller\Front\MainController" class="App\Controller\Front\MainController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Front\ReportsController" class="App\Controller\Front\ReportsController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\MainController"/>
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\ReportsController"/>
       </call>
     </service>
     <service id="App\Controller\Front\ResearchController" class="App\Controller\Front\ResearchController" public="true" autowire="true" autoconfigure="true">
@@ -480,36 +560,20 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\SupportController"/>
       </call>
     </service>
+    <service id="App\Controller\Front\TeamController" class="App\Controller\Front\TeamController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\TeamController"/>
+      </call>
+    </service>
     <service id="App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\TrainingController"/>
-      </call>
-    </service>
-    <service id="App\Controller\Front\WhoAssociationController" class="App\Controller\Front\WhoAssociationController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\WhoAssociationController"/>
-      </call>
-    </service>
-    <service id="App\Controller\Front\WhoReportsController" class="App\Controller\Front\WhoReportsController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\WhoReportsController"/>
-      </call>
-    </service>
-    <service id="App\Controller\Front\WhoTeamController" class="App\Controller\Front\WhoTeamController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="routing.controller"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\WhoTeamController"/>
       </call>
     </service>
     <service id="App\Entity\Action" class="App\Entity\Action" autowire="true" autoconfigure="true">
@@ -577,10 +641,49 @@
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
+    <service id="App\Form\ActionType" class="App\Form\ActionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
     <service id="App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionType" class="App\Form\SectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true">
@@ -679,7 +782,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.1NmsuoQ"/>
+      <argument type="service" id=".service_locator.2jJihj3"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -1694,8 +1797,21 @@
         <argument>Ehyiah\QuillJsBundle\Form</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ActionType</argument>
+        <argument>App\Form\AssociationSectionType</argument>
+        <argument>App\Form\BeninSectionType</argument>
+        <argument>App\Form\ContactInfoType</argument>
+        <argument>App\Form\ContactSectionType</argument>
+        <argument>App\Form\EulogySectionType</argument>
+        <argument>App\Form\FranceSectionType</argument>
         <argument>App\Form\HomeSectionPositionType</argument>
         <argument>App\Form\HomeSectionType</argument>
+        <argument>App\Form\ReportsType</argument>
+        <argument>App\Form\RubricInfoType</argument>
+        <argument>App\Form\SectionType</argument>
+        <argument>App\Form\TeamSectionType</argument>
+        <argument>App\Form\TeamType</argument>
+        <argument>App\Form\TrainingSectionType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -3835,7 +3951,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.1NmsuoQ"/>
+      <argument type="service" id=".service_locator.2jJihj3"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3917,20 +4033,28 @@
     <service id="routing.loader.attribute.services" class="Symfony\Component\Routing\Loader\AttributeServicesLoader">
       <tag name="routing.loader" priority="-10"/>
       <argument type="collection">
-        <argument>App\Controller\Back\BackMainController</argument>
-        <argument>App\Controller\Front\ActionsBeninController</argument>
-        <argument>App\Controller\Front\ActionsFranceController</argument>
+        <argument>App\Controller\Back\BackAssociationController</argument>
+        <argument>App\Controller\Back\BackBeninController</argument>
+        <argument>App\Controller\Back\BackContactController</argument>
+        <argument>App\Controller\Back\BackFranceController</argument>
+        <argument>App\Controller\Back\BackHomeController</argument>
+        <argument>App\Controller\Back\BackReportsController</argument>
+        <argument>App\Controller\Back\BackResourcesController</argument>
+        <argument>App\Controller\Back\BackTeamController</argument>
+        <argument>App\Controller\Back\BackTrainingController</argument>
+        <argument>App\Controller\Front\AssociationController</argument>
+        <argument>App\Controller\Front\BeninController</argument>
         <argument>App\Controller\Front\ContactController</argument>
         <argument>App\Controller\Front\EulogyController</argument>
+        <argument>App\Controller\Front\FranceController</argument>
+        <argument>App\Controller\Front\HomeController</argument>
         <argument>App\Controller\Front\LegalController</argument>
-        <argument>App\Controller\Front\MainController</argument>
+        <argument>App\Controller\Front\ReportsController</argument>
         <argument>App\Controller\Front\ResearchController</argument>
         <argument>App\Controller\Front\ResourcesController</argument>
         <argument>App\Controller\Front\SupportController</argument>
+        <argument>App\Controller\Front\TeamController</argument>
         <argument>App\Controller\Front\TrainingController</argument>
-        <argument>App\Controller\Front\WhoAssociationController</argument>
-        <argument>App\Controller\Front\WhoReportsController</argument>
-        <argument>App\Controller\Front\WhoTeamController</argument>
       </argument>
     </service>
     <service id="routing.loader.attribute.directory" class="Symfony\Component\Routing\Loader\AttributeDirectoryLoader">
@@ -4468,7 +4592,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.7oHm8_M"/>
+      <argument type="service" id=".service_locator.EYYrhyJ"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4577,8 +4701,21 @@
       <argument type="service" id="form.server_params"/>
       <argument>%form.type_extension.csrf.field_attr%</argument>
       <argument type="collection">
+        <argument key="App\Form\ActionType">submit</argument>
+        <argument key="App\Form\AssociationSectionType">submit</argument>
+        <argument key="App\Form\BeninSectionType">submit</argument>
+        <argument key="App\Form\ContactInfoType">submit</argument>
+        <argument key="App\Form\ContactSectionType">submit</argument>
+        <argument key="App\Form\EulogySectionType">submit</argument>
+        <argument key="App\Form\FranceSectionType">submit</argument>
         <argument key="App\Form\HomeSectionPositionType">submit</argument>
         <argument key="App\Form\HomeSectionType">submit</argument>
+        <argument key="App\Form\ReportsType">submit</argument>
+        <argument key="App\Form\RubricInfoType">submit</argument>
+        <argument key="App\Form\SectionType">submit</argument>
+        <argument key="App\Form\TeamSectionType">submit</argument>
+        <argument key="App\Form\TeamType">submit</argument>
+        <argument key="App\Form\TrainingSectionType">submit</argument>
       </argument>
     </service>
     <service id="validator.builder" class="Symfony\Component\Validator\ValidatorBuilder">
@@ -8263,18 +8400,50 @@
       <tag name="twig.extension"/>
       <argument type="service" id="asset_mapper" on-invalid="ignore"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackMainController" class="App\Controller\Back\BackMainController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackMainController" class="App\Controller\Back\BackMainController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Back\BackMainController.0.App\Controller\Back\BackMainController" class="App\Controller\Back\BackMainController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Back\BackMainController" class="App\Controller\Back\BackMainController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\ActionsBeninController" class="App\Controller\Front\ActionsBeninController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\ActionsBeninController" class="App\Controller\Front\ActionsBeninController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\ActionsBeninController.0.App\Controller\Front\ActionsBeninController" class="App\Controller\Front\ActionsBeninController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\ActionsBeninController" class="App\Controller\Front\ActionsBeninController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\ActionsFranceController" class="App\Controller\Front\ActionsFranceController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\ActionsFranceController" class="App\Controller\Front\ActionsFranceController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\ActionsFranceController.0.App\Controller\Front\ActionsFranceController" class="App\Controller\Front\ActionsFranceController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\ActionsFranceController" class="App\Controller\Front\ActionsFranceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackAssociationController" class="App\Controller\Back\BackAssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackAssociationController" class="App\Controller\Back\BackAssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackAssociationController.0.App\Controller\Back\BackAssociationController" class="App\Controller\Back\BackAssociationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackAssociationController" class="App\Controller\Back\BackAssociationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackBeninController" class="App\Controller\Back\BackBeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackBeninController" class="App\Controller\Back\BackBeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackBeninController.0.App\Controller\Back\BackBeninController" class="App\Controller\Back\BackBeninController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackBeninController" class="App\Controller\Back\BackBeninController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackContactController" class="App\Controller\Back\BackContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackContactController" class="App\Controller\Back\BackContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackContactController.0.App\Controller\Back\BackContactController" class="App\Controller\Back\BackContactController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackContactController" class="App\Controller\Back\BackContactController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackFranceController" class="App\Controller\Back\BackFranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackFranceController" class="App\Controller\Back\BackFranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackFranceController.0.App\Controller\Back\BackFranceController" class="App\Controller\Back\BackFranceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackFranceController" class="App\Controller\Back\BackFranceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackHomeController" class="App\Controller\Back\BackHomeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackHomeController" class="App\Controller\Back\BackHomeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackHomeController.0.App\Controller\Back\BackHomeController" class="App\Controller\Back\BackHomeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackHomeController" class="App\Controller\Back\BackHomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackReportsController" class="App\Controller\Back\BackReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackReportsController" class="App\Controller\Back\BackReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackReportsController.0.App\Controller\Back\BackReportsController" class="App\Controller\Back\BackReportsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackReportsController" class="App\Controller\Back\BackReportsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackResourcesController" class="App\Controller\Back\BackResourcesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackResourcesController" class="App\Controller\Back\BackResourcesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackResourcesController.0.App\Controller\Back\BackResourcesController" class="App\Controller\Back\BackResourcesController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackResourcesController" class="App\Controller\Back\BackResourcesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackTeamController" class="App\Controller\Back\BackTeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackTeamController" class="App\Controller\Back\BackTeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackTeamController.0.App\Controller\Back\BackTeamController" class="App\Controller\Back\BackTeamController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackTeamController" class="App\Controller\Back\BackTeamController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\BackTrainingController" class="App\Controller\Back\BackTrainingController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\BackTrainingController" class="App\Controller\Back\BackTrainingController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Back\BackTrainingController.0.App\Controller\Back\BackTrainingController" class="App\Controller\Back\BackTrainingController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\BackTrainingController" class="App\Controller\Back\BackTrainingController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\AssociationController" class="App\Controller\Front\AssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\AssociationController" class="App\Controller\Front\AssociationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\AssociationController.0.App\Controller\Front\AssociationController" class="App\Controller\Front\AssociationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\AssociationController" class="App\Controller\Front\AssociationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\BeninController" class="App\Controller\Front\BeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\BeninController" class="App\Controller\Front\BeninController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\BeninController.0.App\Controller\Front\BeninController" class="App\Controller\Front\BeninController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\BeninController" class="App\Controller\Front\BeninController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\ContactController" class="App\Controller\Front\ContactController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\ContactController" class="App\Controller\Front\ContactController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\ContactController.0.App\Controller\Front\ContactController" class="App\Controller\Front\ContactController" autowire="true" abstract="true"/>
@@ -8283,14 +8452,22 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\EulogyController" class="App\Controller\Front\EulogyController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\EulogyController.0.App\Controller\Front\EulogyController" class="App\Controller\Front\EulogyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Front\EulogyController" class="App\Controller\Front\EulogyController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\FranceController" class="App\Controller\Front\FranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\FranceController" class="App\Controller\Front\FranceController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\FranceController.0.App\Controller\Front\FranceController" class="App\Controller\Front\FranceController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\FranceController" class="App\Controller\Front\FranceController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\HomeController" class="App\Controller\Front\HomeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\HomeController" class="App\Controller\Front\HomeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\HomeController.0.App\Controller\Front\HomeController" class="App\Controller\Front\HomeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\HomeController" class="App\Controller\Front\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\LegalController" class="App\Controller\Front\LegalController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\LegalController" class="App\Controller\Front\LegalController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\LegalController.0.App\Controller\Front\LegalController" class="App\Controller\Front\LegalController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Front\LegalController" class="App\Controller\Front\LegalController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\MainController" class="App\Controller\Front\MainController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\MainController" class="App\Controller\Front\MainController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\MainController.0.App\Controller\Front\MainController" class="App\Controller\Front\MainController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\MainController" class="App\Controller\Front\MainController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\ReportsController" class="App\Controller\Front\ReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\ReportsController" class="App\Controller\Front\ReportsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\ReportsController.0.App\Controller\Front\ReportsController" class="App\Controller\Front\ReportsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\ReportsController" class="App\Controller\Front\ReportsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\ResearchController" class="App\Controller\Front\ResearchController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\ResearchController" class="App\Controller\Front\ResearchController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\ResearchController.0.App\Controller\Front\ResearchController" class="App\Controller\Front\ResearchController" autowire="true" abstract="true"/>
@@ -8303,22 +8480,14 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\SupportController" class="App\Controller\Front\SupportController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\SupportController.0.App\Controller\Front\SupportController" class="App\Controller\Front\SupportController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Front\SupportController" class="App\Controller\Front\SupportController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\TeamController" class="App\Controller\Front\TeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\TeamController" class="App\Controller\Front\TeamController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\Front\TeamController.0.App\Controller\Front\TeamController" class="App\Controller\Front\TeamController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\TeamController" class="App\Controller\Front\TeamController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\TrainingController.0.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\WhoAssociationController" class="App\Controller\Front\WhoAssociationController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\WhoAssociationController" class="App\Controller\Front\WhoAssociationController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\WhoAssociationController.0.App\Controller\Front\WhoAssociationController" class="App\Controller\Front\WhoAssociationController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\WhoAssociationController" class="App\Controller\Front\WhoAssociationController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\WhoReportsController" class="App\Controller\Front\WhoReportsController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\WhoReportsController" class="App\Controller\Front\WhoReportsController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\WhoReportsController.0.App\Controller\Front\WhoReportsController" class="App\Controller\Front\WhoReportsController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\WhoReportsController" class="App\Controller\Front\WhoReportsController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\WhoTeamController" class="App\Controller\Front\WhoTeamController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\WhoTeamController" class="App\Controller\Front\WhoTeamController" autowire="true" abstract="true"/>
-    <service id=".instanceof.App\Controller\Front\WhoTeamController.0.App\Controller\Front\WhoTeamController" class="App\Controller\Front\WhoTeamController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\Front\WhoTeamController" class="App\Controller\Front\WhoTeamController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Action.0.App\Entity\Action" class="App\Entity\Action" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Action" class="App\Entity\Action" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\AssociationSection.0.App\Entity\AssociationSection" class="App\Entity\AssociationSection" autowire="true" abstract="true"/>
@@ -8351,10 +8520,36 @@
     <service id=".abstract.instanceof.App\Entity\TeamSection" class="App\Entity\TeamSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\TrainingSection.0.App\Entity\TrainingSection" class="App\Entity\TrainingSection" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\TrainingSection" class="App\Entity\TrainingSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ActionType" class="App\Form\ActionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ActionType" class="App\Form\ActionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionType" class="App\Form\SectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionType" class="App\Form\SectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TeamType" class="App\Form\TeamType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AssociationSectionRepository" class="App\Repository\AssociationSectionRepository" autowire="true" abstract="true"/>
@@ -8929,6 +9124,193 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.1vYpZ1B" method="withContext"/>
     </service>
+    <service id=".service_locator.11sYaYh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::index()"/>
+      <argument>App\Controller\Back\BackAssociationController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.11sYaYh" method="withContext"/>
+    </service>
+    <service id=".value.lRo.PXe" class="mixed">
+      <argument type="collection">
+        <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/images/uploadedImages</argument>
+      </argument>
+      <factory function="current"/>
+    </service>
+    <service id=".service_locator.b1ZyAoQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+        <argument key="imagesDirectory" type="service_closure" id=".value.lRo.PXe"/>
+      </argument>
+    </service>
+    <service id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::handleRubricForm()"/>
+      <argument>App\Controller\Back\BackAssociationController::handleRubricForm()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.b1ZyAoQ" method="withContext"/>
+    </service>
+    <service id=".service_locator.rSL8OJU" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::handleSectionForm()"/>
+      <argument>App\Controller\Back\BackAssociationController::handleSectionForm()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.rSL8OJU" method="withContext"/>
+    </service>
+    <service id=".service_locator.whyDmFb" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::reorder()"/>
+      <argument>App\Controller\Back\BackAssociationController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.whyDmFb" method="withContext"/>
+    </service>
+    <service id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::deleteSection()"/>
+      <argument>App\Controller\Back\BackAssociationController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.whyDmFb" method="withContext"/>
+    </service>
+    <service id=".service_locator.NCf3AGv" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::index()"/>
+      <argument>App\Controller\Back\BackBeninController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.NCf3AGv" method="withContext"/>
+    </service>
+    <service id=".service_locator.6vnwkNC" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::reorder()"/>
+      <argument>App\Controller\Back\BackBeninController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.6vnwkNC" method="withContext"/>
+    </service>
+    <service id=".service_locator.qGyHLd4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::deleteSection()"/>
+      <argument>App\Controller\Back\BackBeninController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.qGyHLd4" method="withContext"/>
+    </service>
+    <service id=".service_locator.1Bu5FyK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::index()"/>
+      <argument>App\Controller\Back\BackContactController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.1Bu5FyK" method="withContext"/>
+    </service>
+    <service id=".service_locator.aUL2ydZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::reorder()"/>
+      <argument>App\Controller\Back\BackContactController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.aUL2ydZ" method="withContext"/>
+    </service>
+    <service id=".service_locator.TuprJmk" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::deleteSection()"/>
+      <argument>App\Controller\Back\BackContactController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TuprJmk" method="withContext"/>
+    </service>
+    <service id=".service_locator.R2kNMZw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::index()"/>
+      <argument>App\Controller\Back\BackFranceController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.R2kNMZw" method="withContext"/>
+    </service>
+    <service id=".service_locator.Vqj5Gh2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::reorder()"/>
+      <argument>App\Controller\Back\BackFranceController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.Vqj5Gh2" method="withContext"/>
+    </service>
+    <service id=".service_locator.55uwPaS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::deleteSection()"/>
+      <argument>App\Controller\Back\BackFranceController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.55uwPaS" method="withContext"/>
+    </service>
     <service id=".service_locator.wjUIYeS" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -8937,9 +9319,9 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.wjUIYeS.App\Controller\Back\BackMainController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackMainController::index()"/>
-      <argument>App\Controller\Back\BackMainController::index()</argument>
+    <service id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::index()"/>
+      <argument>App\Controller\Back\BackHomeController::index()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.wjUIYeS" method="withContext"/>
     </service>
@@ -8950,9 +9332,9 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.xev.s3F.App\Controller\Back\BackMainController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackMainController::reorder()"/>
-      <argument>App\Controller\Back\BackMainController::reorder()</argument>
+    <service id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::reorder()"/>
+      <argument>App\Controller\Back\BackHomeController::reorder()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.xev.s3F" method="withContext"/>
     </service>
@@ -8963,11 +9345,95 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.muIksVi.App\Controller\Back\BackMainController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackMainController::deleteSection()"/>
-      <argument>App\Controller\Back\BackMainController::deleteSection()</argument>
+    <service id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::deleteSection()"/>
+      <argument>App\Controller\Back\BackHomeController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.muIksVi" method="withContext"/>
+    </service>
+    <service id=".service_locator.VZOaOeK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::index()"/>
+      <argument>App\Controller\Back\BackReportsController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.VZOaOeK" method="withContext"/>
+    </service>
+    <service id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController::index()"/>
+      <argument>App\Controller\Back\BackResourcesController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.VZOaOeK" method="withContext"/>
+    </service>
+    <service id=".service_locator.aTuUyIw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController::index()"/>
+      <argument>App\Controller\Back\BackTeamController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.aTuUyIw" method="withContext"/>
+    </service>
+    <service id=".service_locator.fbKuneD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::index()"/>
+      <argument>App\Controller\Back\BackTrainingController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.fbKuneD" method="withContext"/>
+    </service>
+    <service id=".service_locator.g0Filo0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::reorder()"/>
+      <argument>App\Controller\Back\BackTrainingController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g0Filo0" method="withContext"/>
+    </service>
+    <service id=".service_locator.319A.rk" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::deleteSection()"/>
+      <argument>App\Controller\Back\BackTrainingController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.319A.rk" method="withContext"/>
+    </service>
+    <service id=".service_locator.TEfXQB1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\AssociationController::index()"/>
+      <argument>App\Controller\Front\AssociationController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TEfXQB1" method="withContext"/>
     </service>
     <service id=".service_locator.YKtU2F0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -8976,25 +9442,11 @@
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.YKtU2F0.App\Controller\Front\ActionsBeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\ActionsBeninController::index()"/>
-      <argument>App\Controller\Front\ActionsBeninController::index()</argument>
+    <service id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\BeninController::index()"/>
+      <argument>App\Controller\Front\BeninController::index()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.YKtU2F0" method="withContext"/>
-    </service>
-    <service id=".service_locator.YwLLdgS" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="actionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.YwLLdgS.App\Controller\Front\ActionsFranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\ActionsFranceController::index()"/>
-      <argument>App\Controller\Front\ActionsFranceController::index()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.YwLLdgS" method="withContext"/>
     </service>
     <service id=".service_locator.8vsY0c0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9022,6 +9474,20 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.6nm.BDv" method="withContext"/>
     </service>
+    <service id=".service_locator.YwLLdgS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="actionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\FranceController::index()"/>
+      <argument>App\Controller\Front\FranceController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.YwLLdgS" method="withContext"/>
+    </service>
     <service id=".service_locator.im4p1JQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9029,11 +9495,24 @@
         <argument key="homeSectionRepository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.im4p1JQ.App\Controller\Front\MainController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\MainController::index()"/>
-      <argument>App\Controller\Front\MainController::index()</argument>
+    <service id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\HomeController::index()"/>
+      <argument>App\Controller\Front\HomeController::index()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.im4p1JQ" method="withContext"/>
+    </service>
+    <service id=".service_locator.8qDVmy4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="reportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\ReportsController::index()"/>
+      <argument>App\Controller\Front\ReportsController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.8qDVmy4" method="withContext"/>
     </service>
     <service id=".service_locator.2jP_vBB" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9048,6 +9527,20 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.2jP_vBB" method="withContext"/>
     </service>
+    <service id=".service_locator.Oq5L5Qp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="teamRepository" type="service_closure" id="App\Repository\TeamRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\TeamController::index()"/>
+      <argument>App\Controller\Front\TeamController::index()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.Oq5L5Qp" method="withContext"/>
+    </service>
     <service id=".service_locator.oFZcE36" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -9061,81 +9554,81 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.oFZcE36" method="withContext"/>
     </service>
-    <service id=".service_locator.TEfXQB1" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.TEfXQB1.App\Controller\Front\WhoAssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoAssociationController::index()"/>
-      <argument>App\Controller\Front\WhoAssociationController::index()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TEfXQB1" method="withContext"/>
-    </service>
-    <service id=".service_locator.8qDVmy4" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="reportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.8qDVmy4.App\Controller\Front\WhoReportsController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoReportsController::index()"/>
-      <argument>App\Controller\Front\WhoReportsController::index()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.8qDVmy4" method="withContext"/>
-    </service>
-    <service id=".service_locator.Oq5L5Qp" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="teamRepository" type="service_closure" id="App\Repository\TeamRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.Oq5L5Qp.App\Controller\Front\WhoTeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoTeamController::index()"/>
-      <argument>App\Controller\Front\WhoTeamController::index()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.Oq5L5Qp" method="withContext"/>
-    </service>
-    <service id=".service_locator.1NmsuoQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.2jJihj3" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
-        <argument key="App\Controller\Back\BackMainController::index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackMainController::index()"/>
-        <argument key="App\Controller\Back\BackMainController::reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackMainController::reorder()"/>
-        <argument key="App\Controller\Back\BackMainController::deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackMainController::deleteSection()"/>
-        <argument key="App\Controller\Front\ActionsBeninController::index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\ActionsBeninController::index()"/>
-        <argument key="App\Controller\Front\ActionsFranceController::index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\ActionsFranceController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController::index" type="service_closure" id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController::handleRubricForm" type="service_closure" id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()"/>
+        <argument key="App\Controller\Back\BackAssociationController::handleSectionForm" type="service_closure" id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()"/>
+        <argument key="App\Controller\Back\BackAssociationController::reorder" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()"/>
+        <argument key="App\Controller\Back\BackAssociationController::deleteSection" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackBeninController::index" type="service_closure" id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()"/>
+        <argument key="App\Controller\Back\BackBeninController::reorder" type="service_closure" id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()"/>
+        <argument key="App\Controller\Back\BackBeninController::deleteSection" type="service_closure" id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackContactController::index" type="service_closure" id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()"/>
+        <argument key="App\Controller\Back\BackContactController::reorder" type="service_closure" id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()"/>
+        <argument key="App\Controller\Back\BackContactController::deleteSection" type="service_closure" id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackFranceController::index" type="service_closure" id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()"/>
+        <argument key="App\Controller\Back\BackFranceController::reorder" type="service_closure" id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()"/>
+        <argument key="App\Controller\Back\BackFranceController::deleteSection" type="service_closure" id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackHomeController::index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()"/>
+        <argument key="App\Controller\Back\BackHomeController::reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()"/>
+        <argument key="App\Controller\Back\BackHomeController::deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackReportsController::index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()"/>
+        <argument key="App\Controller\Back\BackResourcesController::index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()"/>
+        <argument key="App\Controller\Back\BackTeamController::index" type="service_closure" id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController::index" type="service_closure" id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController::reorder" type="service_closure" id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()"/>
+        <argument key="App\Controller\Back\BackTrainingController::deleteSection" type="service_closure" id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()"/>
+        <argument key="App\Controller\Front\AssociationController::index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()"/>
+        <argument key="App\Controller\Front\BeninController::index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()"/>
         <argument key="App\Controller\Front\ContactController::index" type="service_closure" id=".service_locator.8vsY0c0.App\Controller\Front\ContactController::index()"/>
         <argument key="App\Controller\Front\EulogyController::index" type="service_closure" id=".service_locator.6nm.BDv.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\MainController::index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\MainController::index()"/>
+        <argument key="App\Controller\Front\FranceController::index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\HomeController::index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()"/>
+        <argument key="App\Controller\Front\ReportsController::index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController::index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
+        <argument key="App\Controller\Front\TeamController::index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()"/>
         <argument key="App\Controller\Front\TrainingController::index" type="service_closure" id=".service_locator.oFZcE36.App\Controller\Front\TrainingController::index()"/>
-        <argument key="App\Controller\Front\WhoAssociationController::index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\WhoAssociationController::index()"/>
-        <argument key="App\Controller\Front\WhoReportsController::index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\WhoReportsController::index()"/>
-        <argument key="App\Controller\Front\WhoTeamController::index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\WhoTeamController::index()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
-        <argument key="App\Controller\Back\BackMainController:index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackMainController::index()"/>
-        <argument key="App\Controller\Back\BackMainController:reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackMainController::reorder()"/>
-        <argument key="App\Controller\Back\BackMainController:deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackMainController::deleteSection()"/>
-        <argument key="App\Controller\Front\ActionsBeninController:index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\ActionsBeninController::index()"/>
-        <argument key="App\Controller\Front\ActionsFranceController:index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\ActionsFranceController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController:index" type="service_closure" id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController:handleRubricForm" type="service_closure" id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()"/>
+        <argument key="App\Controller\Back\BackAssociationController:handleSectionForm" type="service_closure" id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()"/>
+        <argument key="App\Controller\Back\BackAssociationController:reorder" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()"/>
+        <argument key="App\Controller\Back\BackAssociationController:deleteSection" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackBeninController:index" type="service_closure" id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()"/>
+        <argument key="App\Controller\Back\BackBeninController:reorder" type="service_closure" id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()"/>
+        <argument key="App\Controller\Back\BackBeninController:deleteSection" type="service_closure" id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackContactController:index" type="service_closure" id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()"/>
+        <argument key="App\Controller\Back\BackContactController:reorder" type="service_closure" id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()"/>
+        <argument key="App\Controller\Back\BackContactController:deleteSection" type="service_closure" id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackFranceController:index" type="service_closure" id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()"/>
+        <argument key="App\Controller\Back\BackFranceController:reorder" type="service_closure" id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()"/>
+        <argument key="App\Controller\Back\BackFranceController:deleteSection" type="service_closure" id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackHomeController:index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()"/>
+        <argument key="App\Controller\Back\BackHomeController:reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()"/>
+        <argument key="App\Controller\Back\BackHomeController:deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackReportsController:index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()"/>
+        <argument key="App\Controller\Back\BackResourcesController:index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()"/>
+        <argument key="App\Controller\Back\BackTeamController:index" type="service_closure" id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController:index" type="service_closure" id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController:reorder" type="service_closure" id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()"/>
+        <argument key="App\Controller\Back\BackTrainingController:deleteSection" type="service_closure" id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()"/>
+        <argument key="App\Controller\Front\AssociationController:index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()"/>
+        <argument key="App\Controller\Front\BeninController:index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()"/>
         <argument key="App\Controller\Front\ContactController:index" type="service_closure" id=".service_locator.8vsY0c0.App\Controller\Front\ContactController::index()"/>
         <argument key="App\Controller\Front\EulogyController:index" type="service_closure" id=".service_locator.6nm.BDv.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\MainController:index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\MainController::index()"/>
+        <argument key="App\Controller\Front\FranceController:index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\HomeController:index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()"/>
+        <argument key="App\Controller\Front\ReportsController:index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController:index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
+        <argument key="App\Controller\Front\TeamController:index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()"/>
         <argument key="App\Controller\Front\TrainingController:index" type="service_closure" id=".service_locator.oFZcE36.App\Controller\Front\TrainingController::index()"/>
-        <argument key="App\Controller\Front\WhoAssociationController:index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\WhoAssociationController::index()"/>
-        <argument key="App\Controller\Front\WhoReportsController:index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\WhoReportsController::index()"/>
-        <argument key="App\Controller\Front\WhoTeamController:index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\WhoTeamController::index()"/>
       </argument>
     </service>
     <service id=".service_locator.S9tnIXR" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -9321,11 +9814,24 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.7oHm8_M" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EYYrhyJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ActionType" type="service_closure" id="App\Form\ActionType"/>
+        <argument key="App\Form\AssociationSectionType" type="service_closure" id="App\Form\AssociationSectionType"/>
+        <argument key="App\Form\BeninSectionType" type="service_closure" id="App\Form\BeninSectionType"/>
+        <argument key="App\Form\ContactInfoType" type="service_closure" id="App\Form\ContactInfoType"/>
+        <argument key="App\Form\ContactSectionType" type="service_closure" id="App\Form\ContactSectionType"/>
+        <argument key="App\Form\EulogySectionType" type="service_closure" id="App\Form\EulogySectionType"/>
+        <argument key="App\Form\FranceSectionType" type="service_closure" id="App\Form\FranceSectionType"/>
         <argument key="App\Form\HomeSectionPositionType" type="service_closure" id="App\Form\HomeSectionPositionType"/>
         <argument key="App\Form\HomeSectionType" type="service_closure" id="App\Form\HomeSectionType"/>
+        <argument key="App\Form\ReportsType" type="service_closure" id="App\Form\ReportsType"/>
+        <argument key="App\Form\RubricInfoType" type="service_closure" id="App\Form\RubricInfoType"/>
+        <argument key="App\Form\SectionType" type="service_closure" id="App\Form\SectionType"/>
+        <argument key="App\Form\TeamSectionType" type="service_closure" id="App\Form\TeamSectionType"/>
+        <argument key="App\Form\TeamType" type="service_closure" id="App\Form\TeamType"/>
+        <argument key="App\Form\TrainingSectionType" type="service_closure" id="App\Form\TrainingSectionType"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service_closure" id="form.type.form"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -9768,21 +10274,69 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackMainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackMainController"/>
-      <argument>App\Controller\Back\BackMainController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackAssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController"/>
+      <argument>App\Controller\Back\BackAssociationController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\ActionsBeninController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\ActionsBeninController"/>
-      <argument>App\Controller\Front\ActionsBeninController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackBeninController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController"/>
+      <argument>App\Controller\Back\BackBeninController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\ActionsFranceController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\ActionsFranceController"/>
-      <argument>App\Controller\Front\ActionsFranceController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController"/>
+      <argument>App\Controller\Back\BackContactController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackFranceController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController"/>
+      <argument>App\Controller\Back\BackFranceController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackHomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController"/>
+      <argument>App\Controller\Back\BackHomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController"/>
+      <argument>App\Controller\Back\BackReportsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackResourcesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController"/>
+      <argument>App\Controller\Back\BackResourcesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackTeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController"/>
+      <argument>App\Controller\Back\BackTeamController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Back\BackTrainingController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController"/>
+      <argument>App\Controller\Back\BackTrainingController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\AssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\AssociationController"/>
+      <argument>App\Controller\Front\AssociationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\BeninController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\BeninController"/>
+      <argument>App\Controller\Front\BeninController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -9798,15 +10352,27 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\FranceController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\FranceController"/>
+      <argument>App\Controller\Front\FranceController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\HomeController"/>
+      <argument>App\Controller\Front\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\Front\LegalController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\LegalController"/>
       <argument>App\Controller\Front\LegalController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\MainController"/>
-      <argument>App\Controller\Front\MainController</argument>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\ReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\ReportsController"/>
+      <argument>App\Controller\Front\ReportsController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -9828,27 +10394,15 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\Front\TeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Front\TeamController"/>
+      <argument>App\Controller\Front\TeamController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\Front\TrainingController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\TrainingController"/>
       <argument>App\Controller\Front\TrainingController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TJNRSaV" method="withContext"/>
-    </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\WhoAssociationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoAssociationController"/>
-      <argument>App\Controller\Front\WhoAssociationController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TJNRSaV" method="withContext"/>
-    </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\WhoReportsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoReportsController"/>
-      <argument>App\Controller\Front\WhoReportsController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TJNRSaV" method="withContext"/>
-    </service>
-    <service id=".service_locator.TJNRSaV.App\Controller\Front\WhoTeamController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Front\WhoTeamController"/>
-      <argument>App\Controller\Front\WhoTeamController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -10063,20 +10617,28 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
-          <argument>App\Controller\Back\BackMainController</argument>
-          <argument>App\Controller\Front\ActionsBeninController</argument>
-          <argument>App\Controller\Front\ActionsFranceController</argument>
+          <argument>App\Controller\Back\BackAssociationController</argument>
+          <argument>App\Controller\Back\BackBeninController</argument>
+          <argument>App\Controller\Back\BackContactController</argument>
+          <argument>App\Controller\Back\BackFranceController</argument>
+          <argument>App\Controller\Back\BackHomeController</argument>
+          <argument>App\Controller\Back\BackReportsController</argument>
+          <argument>App\Controller\Back\BackResourcesController</argument>
+          <argument>App\Controller\Back\BackTeamController</argument>
+          <argument>App\Controller\Back\BackTrainingController</argument>
+          <argument>App\Controller\Front\AssociationController</argument>
+          <argument>App\Controller\Front\BeninController</argument>
           <argument>App\Controller\Front\ContactController</argument>
           <argument>App\Controller\Front\EulogyController</argument>
+          <argument>App\Controller\Front\FranceController</argument>
+          <argument>App\Controller\Front\HomeController</argument>
           <argument>App\Controller\Front\LegalController</argument>
-          <argument>App\Controller\Front\MainController</argument>
+          <argument>App\Controller\Front\ReportsController</argument>
           <argument>App\Controller\Front\ResearchController</argument>
           <argument>App\Controller\Front\ResourcesController</argument>
           <argument>App\Controller\Front\SupportController</argument>
+          <argument>App\Controller\Front\TeamController</argument>
           <argument>App\Controller\Front\TrainingController</argument>
-          <argument>App\Controller\Front\WhoAssociationController</argument>
-          <argument>App\Controller\Front\WhoReportsController</argument>
-          <argument>App\Controller\Front\WhoTeamController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -11630,7 +12192,7 @@
     <service id="Symfony\UX\TwigComponent\ComponentRendererInterface" alias="ux.twig_component.component_renderer"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.1NmsuoQ"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.2jJihj3"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request.logger" alias="monolog.logger.request"/>
@@ -11690,19 +12252,37 @@
     <service id=".signing.messenger.default_serializer.inner" alias="messenger.transport.native_php_serializer"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.c0wzfI4" alias=".service_locator.1vYpZ1B"/>
+    <service id=".service_locator.WgdH5aC" alias=".service_locator.11sYaYh"/>
+    <service id=".service_locator.OmqTGrz" alias=".service_locator.b1ZyAoQ"/>
+    <service id=".service_locator.0hFmbPX" alias=".service_locator.rSL8OJU"/>
+    <service id=".service_locator.Yr45Vyn" alias=".service_locator.whyDmFb"/>
+    <service id=".service_locator.vBOQZzR" alias=".service_locator.NCf3AGv"/>
+    <service id=".service_locator.F3UiVlV" alias=".service_locator.6vnwkNC"/>
+    <service id=".service_locator.JCdY6SZ" alias=".service_locator.qGyHLd4"/>
+    <service id=".service_locator.gRuAPBE" alias=".service_locator.1Bu5FyK"/>
+    <service id=".service_locator.fHIoEO7" alias=".service_locator.aUL2ydZ"/>
+    <service id=".service_locator.Xw7Mq_C" alias=".service_locator.TuprJmk"/>
+    <service id=".service_locator.mVLteHc" alias=".service_locator.R2kNMZw"/>
+    <service id=".service_locator.169xr4Q" alias=".service_locator.Vqj5Gh2"/>
+    <service id=".service_locator.5noV6xF" alias=".service_locator.55uwPaS"/>
     <service id=".service_locator.DP0v.69" alias=".service_locator.wjUIYeS"/>
     <service id=".service_locator.H15i4hC" alias=".service_locator.xev.s3F"/>
     <service id=".service_locator.dmKnHob" alias=".service_locator.muIksVi"/>
+    <service id=".service_locator.R8mjXpG" alias=".service_locator.VZOaOeK"/>
+    <service id=".service_locator.6NgXwz_" alias=".service_locator.aTuUyIw"/>
+    <service id=".service_locator.77m9IBT" alias=".service_locator.fbKuneD"/>
+    <service id=".service_locator.tEV46zB" alias=".service_locator.g0Filo0"/>
+    <service id=".service_locator.FOJuJDR" alias=".service_locator.319A.rk"/>
+    <service id=".service_locator.CGqN9ZF" alias=".service_locator.TEfXQB1"/>
     <service id=".service_locator.06MnT8K" alias=".service_locator.YKtU2F0"/>
-    <service id=".service_locator.9TPHj78" alias=".service_locator.YwLLdgS"/>
     <service id=".service_locator.VeUUDFT" alias=".service_locator.8vsY0c0"/>
     <service id=".service_locator.KcgBAt6" alias=".service_locator.6nm.BDv"/>
+    <service id=".service_locator.9TPHj78" alias=".service_locator.YwLLdgS"/>
     <service id=".service_locator.85V_EkA" alias=".service_locator.im4p1JQ"/>
-    <service id=".service_locator.8cc4KA." alias=".service_locator.2jP_vBB"/>
-    <service id=".service_locator.dM3.bR1" alias=".service_locator.oFZcE36"/>
-    <service id=".service_locator.CGqN9ZF" alias=".service_locator.TEfXQB1"/>
     <service id=".service_locator.NMeYi2k" alias=".service_locator.8qDVmy4"/>
+    <service id=".service_locator.8cc4KA." alias=".service_locator.2jP_vBB"/>
     <service id=".service_locator.A0vZGnq" alias=".service_locator.Oq5L5Qp"/>
+    <service id=".service_locator.dM3.bR1" alias=".service_locator.oFZcE36"/>
     <service id=".service_locator.D6tJ4Px" alias=".service_locator.TJNRSaV"/>
   </services>
 </container>

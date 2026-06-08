@@ -17,7 +17,7 @@
         padding: 0.75rem;
         border: 1px solid #ccc;
         border-radius: 0.5rem;
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
         margin-bottom: 1rem;
         width: 100%;
 
@@ -27,7 +27,7 @@
         }
       }
 
-      & button {
+      & button[type='submit'] {
         padding: 0.75rem;
 
         @extend %button;
@@ -43,7 +43,7 @@
     padding-right: 5rem;
     position: relative;
 
-    &:first-child {
+    &:nth-child(1 of .subsection-border) {
 
         & .up {
             display: none;
@@ -88,4 +88,30 @@
     padding: 0.75rem;
     width: fit-content;
     margin: auto;
+}
+
+#rubric_info_GalleryImage {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    & input[type="radio"] {
+        display: none; /* Masque les boutons radio */
+    }
+
+    & label img {
+        cursor: pointer; /* Ajoute un curseur pour indiquer que l'image est cliquable */
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease;
+    }
+
+    & label img:hover {
+        border: 3px solid #d76942; /* Ajoute un effet au survol */
+        padding: 2px;
+    }
+
+    & input[type="radio"]:checked + label img {
+        border: 3px solid #d76942; /* Ajoute une bordure pour l'image sélectionnée */
+        padding: 2px;
+    }
 }

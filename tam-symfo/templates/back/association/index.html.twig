@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - L'association{% endblock %}
+
+{% block body %}
+<main>
+    {% include "partials/_left_banner.html.twig" %}
+        <section id="associationSections" class="who section">
+            <section>
+                <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                {% if rubricInfo.getGalleryImage is not empty %}
+                <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                {% endif %}
+                {{ rubricInfo.text|raw }}
+            </section>
+            <section class="form">
+            <h2 class="subsection__title">Modifier l'en-tête</h2>
+            {% for image in galleryImages  %}
+            {# <img class="get_asset_url" src="{{ asset(image.getPath) }}" alt=""> #}
+            {% endfor %}
+            {{ form(rubricInfoForm) }}
+            </section>
+            {% include "back/partials/_sections.html.twig" %}
+        </section>
+    {% include "partials/_right_banner.html.twig" %}
+</main>
+{% endblock %}

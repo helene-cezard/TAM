@@ -4,9 +4,7 @@
 
 {% block body %}
     <main>
-      <div class="banner-container">
-        <div class="banner"></div>
-        <div class="banner__pusher">
+        {% include "partials/_left_banner.html.twig" %}
             <section class="team section">
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
@@ -43,28 +41,6 @@
                         </div>
                     {% endif %}
                     {% endfor %}
-
-                        {# <div class="team__card">
-                            <img src="../images/team/EXPERT Jean Marc NB F.jpg" alt="">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Jean Marc Leblanc</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/EXPERT Elisabeth NB F.jpg" alt="Elisabeth Collin">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Elisabeth Collin</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/Psychologue Sonia NB F.jpg" alt="Sonia Ould Ami">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Sonia Ould Ami</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div> #}
                     </div>
                 </section>
                 <section class="subsection">
@@ -85,34 +61,6 @@
                         </div>
                     {% endif %}
                     {% endfor %}
-                        {# <div class="team__card">
-                            <img src="../images/team/Chargée de mission Catherine NB F.jpg" alt="Catherine Briand">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Catherine Briand</h2>
-                                <p>Art-thérapeutes<br>Artiste ethno-psy</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/default-user-picture.png" alt="">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Nom Prénom</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/EXPERT Elisabeth NB F.jpg" alt="Elisabeth Collin">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Elisabeth Collin</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/Psychologue Sonia NB F.jpg" alt="Sonia Ould Ami">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Sonia Ould Ami</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div> #}
                     </div>
                 </section>
                 <section class="subsection">
@@ -133,27 +81,6 @@
                         </div>
                     {% endif %}
                     {% endfor %}
-                        {# <div class="team__card">
-                            <img src="../images/team/EXPERT Jean Marc NB F.jpg" alt="">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Jean Marc Leblanc</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/EXPERT Elisabeth NB F.jpg" alt="Elisabeth Collin">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Elisabeth Collin</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div>
-                        <div class="team__card">
-                            <img src="../images/team/Psychologue Sonia NB F.jpg" alt="Sonia Ould Ami">
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">Sonia Ould Ami</h2>
-                                <p class="team__card__bio">Lorem ipsum dolor sit amet consectetur</p>
-                            </div>
-                        </div> #}
                     </div>
                 </section>
                 {% for teamSection in teamSections %}
@@ -177,37 +104,7 @@
                 </section>
 
                 {% endfor %}
-                {# <section class="team__volunteers">
-                    <h2 class="section__small-title">À retrouver à nos côtés dans nos rapports d’activité :</h2>
-                    <ul class="section__list">
-                        <li><strong>Les stagiaires :</strong> , Anouk, Christine, Danielle, Karine, Léane. Marie, Mélanie.</li>
-                        <li><strong>Les jeunes Services civiques :</strong> Romane</li>
-                        <li><strong>Les bénévoles :</strong> Anaïs, Arthur, Christine, Diaty, Fatima, Hélène, Marilo, Marie, France, Mathilde, Safi, Youssouf.</li>
-                    </ul>
-                </section>
-                <section class="team__parters">
-                    <h2 class="section__small-title">Nos partenariats :</h2>
-                    <ul>
-                        <li>
-                            <strong>Les Institutions :</strong> ARS, Agence Régionale de Santé, DDCS, Direction Départementale de la Cohésion Sociale. Département du Val de Marne Ile de France, Egalités des chances, EPT Grand Orly.-Seine Bièvre.
-                        </li>
-                        <li>
-                            <strong>Les villes :</strong> Antony, Bobigny, Choisy le Roi, Créteil, Ivry sur Seine, Valenton
-                        </li>
-                        <li>
-                            <strong>Les bailleurs sociaux :</strong> ADEF, Coallia, Philia.
-                        </li>
-                        <li>
-                            <strong>Les fondations :</strong> FMS, Fondation Maison et Sciences de l’Homme.
-                        </li>
-                        <li>
-                            <strong>Les associations :</strong> France Alzheimer.
-                        </li>
-                    </ul>
-                </section> #}
             </section>
-        </div>
-        <div class="banner banner--right"></div>
-      </div>
+        {# {% include "partials/_left_banner.html.twig" %} #}
     </main>
 {% endblock %}

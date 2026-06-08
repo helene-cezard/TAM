@@ -1,4 +1,4 @@
-O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:60:"/var/www/html/Benevolat/TAM/tam-symfo/assets/styles/app.scss";s:10:"publicPath";s:30:"/assets/styles/app-DyRk3Uj.css";s:23:"publicPathWithoutDigest";s:22:"/assets/styles/app.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:30049:"@charset "UTF-8";
+O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:60:"/var/www/html/Benevolat/TAM/tam-symfo/assets/styles/app.scss";s:10:"publicPath";s:30:"/assets/styles/app-bH2ADoD.css";s:23:"publicPathWithoutDigest";s:22:"/assets/styles/app.css";s:15:"publicExtension";s:3:"css";s:7:"content";s:31347:"@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -395,7 +395,7 @@ a {
   }
 }
 
-.section__link {
+.section__link, .section .subsection__text a {
   color: #d76942;
   text-decoration: none;
   font-weight: 500;
@@ -403,12 +403,12 @@ a {
   width: 100%;
   text-align: center;
 }
-.section__link:hover {
+.section__link:hover, .section .subsection__text a:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.form form button, .position-button, .delete__button, #reorderSections {
+.form form button[type=submit], .position-button, .delete__button, #reorderSections {
   background-color: #d76942;
   color: white;
   border: none;
@@ -416,7 +416,7 @@ a {
   font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
   cursor: pointer;
 }
-.form form button:hover, .position-button:hover, .delete__button:hover, #reorderSections:hover {
+.form form button[type=submit]:hover, .position-button:hover, .delete__button:hover, #reorderSections:hover {
   background-color: #b85a33;
 }
 
@@ -537,7 +537,6 @@ a {
     margin-right: 3rem;
   }
 }
-
 .home__pilars__list, .home__axes__list {
   display: flex;
   gap: 5rem;
@@ -975,7 +974,7 @@ a {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
   margin-bottom: 1rem;
   width: 100%;
 }
@@ -983,7 +982,7 @@ a {
   width: auto;
   margin-bottom: 2rem;
 }
-.form form button {
+.form form button[type=submit] {
   padding: 0.75rem;
 }
 
@@ -995,7 +994,7 @@ a {
   padding-right: 5rem;
   position: relative;
 }
-.subsection-border:first-child .up {
+.subsection-border:nth-child(1 of .subsection-border) .up {
   display: none;
 }
 .subsection-border:nth-last-child(1 of .subsection-border) .down {
@@ -1030,6 +1029,28 @@ a {
   margin: auto;
 }
 
+#rubric_info_GalleryImage {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#rubric_info_GalleryImage input[type=radio] {
+  display: none; /* Masque les boutons radio */
+}
+#rubric_info_GalleryImage label img {
+  cursor: pointer; /* Ajoute un curseur pour indiquer que l'image est cliquable */
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+#rubric_info_GalleryImage label img:hover {
+  border: 3px solid #d76942; /* Ajoute un effet au survol */
+  padding: 2px;
+}
+#rubric_info_GalleryImage input[type=radio]:checked + label img {
+  border: 3px solid #d76942; /* Ajoute une bordure pour l'image sélectionnée */
+  padding: 2px;
+}
+
 .message__success {
   background-color: #d4edda;
   color: #155724;
@@ -1050,6 +1071,26 @@ a {
   bottom: 0;
   z-index: 1;
   text-align: center;
+}
+
+.quill-container {
+  margin-bottom: 1rem;
+}
+
+.ql-toolbar, .ql-container {
+  background-color: white;
+}
+
+.ql-toolbar {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.ql-editor {
+  font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+}
+
+.ql-container {
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .footer {
@@ -1189,5 +1230,5 @@ main {
   width: 1px;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../assets/styles/reset.scss%22,%22../../assets/styles/header.scss%22,%22../../assets/styles/variables.scss%22,%22../../assets/styles/submenu.scss%22,%22../../assets/styles/placeholders.scss%22,%22../../assets/styles/hero.scss%22,%22../../assets/styles/sections.scss%22,%22../../assets/styles/banner.scss%22,%22../../assets/styles/carousel.scss%22,%22../../assets/styles/form.scss%22,%22../../assets/styles/messages.scss%22,%22../../assets/styles/footer.scss%22,%22../../assets/styles/app.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22;AAAA;AAAA;AAAA;AAAA;AAKA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;EAaC;EACA;EACA;EACA;EACA;EACA;;;AAED;AACA;AAAA;EAEC;;;AAED;EACC;;;AAED;EACC;;;AAED;EACC;;;AAED;AAAA;EAEC;EACA;;;AAED;EACC;EACA;;;AAGD;AACA;EACC;;;AAED;EACE;;;AAEF;EACC;;;ACtDD;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,oBCXqB;EDYrB,qBACA;;AAGA;EAfF;IAgBI,oBChBoB;IDiBpB;;;AAGF;EACE;;AAEA;EACE;EACA;;AAEA;EAJF;IAKI;IACA;;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EARF;IASI;IACA;;;AAIJ;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAdF;IAeI;IACA;IACA;IACA;IACA;IACA;IACA;;;AAGF;EACE;;AAEA;EAHF;IAII;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAGF;EAhDF;IAiDI;IACA;IACA;;;AAIA;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAiCN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAbF;IAcI;;;AAGF;EACE;;AAGF;EACE;;;AE1KN;EACE;;AAEA;EACE;IACE;;;AAIJ;EACE;;AAGF;EACE;;AAGF;EACE;IACE;IACA;IACA;IACA;IACA;IACA;;;;AAKN;EACE;;AAEA;EACE;;AAGF;EAPF;IAQI;IACA;IACA;IACA;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;;AAIJ;EACE;EACA;EACA;;AAEA;EACE;;AAGF;EATF;IAUI;;;;ACpEN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EATF;IAUI;IACA;;;;AAIJ;EACE;EACA;EACA;EACA;;;AAGF;EAEE;EACA;;;AAGF;EAGE;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA,aF1CW;EE2CX;EACA;EACA;;AAEA;EAZF;IAaI;;;AAGA;EACE;EACA;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;AAAA;EACE;EACA;EACA;;AAEE;EALJ;AAAA;IAMM;;;;AAIN;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;;ACnGR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAEA;EAHJ;IAIQ;;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAIR;EAEE;EACA;EACA;EACA;EACA;;AAEA;EACE;IACE;;;AAKN;EACE;EACA;EACA;EACA;EAEA;;AA8BF;EACE;IACE;;;;AC9EN;EAEE;EACA;EACA;;AAEA;EANF;IAOI;IACA;IACA;;EAEA;IACE;;;AAgBJ;EACE;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;;AAIA;EARF;IASI;;;AAQJ;EACE;EACA;EACA;;AAEA;EACE;;AAQJ;EAEE;;AAMI;EACE;IACE;IACA;IACA;;;AAIF;EAEE;;AAEA;EAJF;IAKI;IACA;IACA;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;;;;AAaZ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EARF;IASI;;;AAOF;EAHF;IAII;;;AAGF;EACE;EACA;EACA;;AAGF;AAAA;AAAA;EAEE;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EAPF;IAQI;IACA;IACA;;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAIJ;EACE,aJ9LO;EI+LP;EAEA;EACA;EACA;;AAIF;EACE;EACA;;;AAOJ;EACE;EACA;EACA;;AAEA;EALF;IAMI;IACA;;EAEA;IACE;;;AAOJ;EAFF;IAGI;;;AAoBJ;EACE;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAMR;EAEE;EACA;;AAGA;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAGF;EACE,aJzSO;EI0SP;EACA;EACA;EACA;;;AAKN;EACE;EACA;;AAEA;EAJF;IAKI;IACA;IACA;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;;;;AAMJ;EACE;EACA;;AAEA;EAJF;IAKI;IACA;;;AAIJ;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAGF;EATF;IAUI;IACA;IACA;;EAEA;IACE;;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;;;AAMF;EACE;EACA;EACA;;AAUA;EACE;;AAIJ;EACE;;AAEA;EACE;;AAGF;EACE;;AAIJ;EACE;EACA;EACA;EACA;;;AAoBF;EACE;EACA;EACA;;AAEA;EALF;IAMI;;;AAMF;EAFF;IAGI;IACA;IACA;IACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAIJ;EAEE;EACA;;AAEA;EACE;;AAGF;EATF;IAUI;IACA;IACA;;;;AAMJ;EACE;EACA;EACA;;AAEA;EALF;IAMI;IACA;;;;AC3eN;EAGE;EAEA;EACA;;AAEA;EACE;EACA;;AAGF;EAbF;IAcI;IACA,qBACA;;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;;AAEA;EACE;EACA;;AAIJ;EAEE;IACE;;EAGF;IACE;IACA;IACA;;EAGF;IACE;IACA;;;;ACpDR;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EARF;IASI;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EATF;IAWI;;;AAOJ;EACI;;AAGJ;EANF;IAOI;IACA;IACA;IACA;IACA;;;AAME;EACE;EACA;EACA;EACA;EACA;;AAIN;EACI;;;AC1FJ;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EAEE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;;;AAOR;EACI;EACA;EACA;EACA;EACA;EACA;;AAII;EACI;;AAMJ;EACI;;;AAKZ;EACI;EACA;EACA;EACA;EACA;;;AAKJ;EACI;;;AAGJ;EACI;;;AAGJ;EAEI;EACA;EACA;;;AAGJ;EAEI;EACA;EACA;;;ACzFJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;ACjBJ;EACI;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EAPF;IAQI;IACA;;;AAMF;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EAKE;EACA;;AAEA;EARF;IASI;IACA;;;AAOF;EACE;EACA;;AAEA;EACE;;AAOJ;EACE;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAKN;EACI;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGD;EACC;;AAMR;EACI;EACA;EACA;;;AC3HR;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EANF;IAOI;;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA%22,%22file%22:%22app.output.css%22%7D */
-";s:6:"digest";s:32:"0f2464dd48e25986b386b74434bb6ae7";s:13:"isPredigested";b:0;s:11:"logicalPath";s:15:"styles/app.scss";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:2:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:78:"/var/www/html/Benevolat/TAM/tam-symfo/assets/images/45-degree-fabric-light.png";s:10:"publicPath";s:49:"/assets/images/45-degree-fabric-light-FITJuH0.png";s:23:"publicPathWithoutDigest";s:41:"/assets/images/45-degree-fabric-light.png";s:15:"publicExtension";s:3:"png";s:7:"content";N;s:6:"digest";s:32:"1484c9b87d1145d64b66f9751bfd7331";s:13:"isPredigested";b:0;s:11:"logicalPath";s:33:"images/45-degree-fabric-light.png";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:78:"/var/www/html/Benevolat/TAM/tam-symfo/assets/images/banner/banniere-droite.jpg";s:10:"publicPath";s:49:"/assets/images/banner/banniere-droite-dmDpTww.jpg";s:23:"publicPathWithoutDigest";s:41:"/assets/images/banner/banniere-droite.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"7660e94f0c36eca6a1b3b7d5ba89e90d";s:13:"isPredigested";b:0;s:11:"logicalPath";s:33:"images/banner/banniere-droite.jpg";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:1:{i:0;s:61:"/var/www/html/Benevolat/TAM/tam-symfo/var/sass/app.output.css";}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../assets/styles/reset.scss%22,%22../../assets/styles/header.scss%22,%22../../assets/styles/variables.scss%22,%22../../assets/styles/submenu.scss%22,%22../../assets/styles/placeholders.scss%22,%22../../assets/styles/hero.scss%22,%22../../assets/styles/sections.scss%22,%22../../assets/styles/banner.scss%22,%22../../assets/styles/carousel.scss%22,%22../../assets/styles/form.scss%22,%22../../assets/styles/messages.scss%22,%22../../assets/styles/quill.scss%22,%22../../assets/styles/footer.scss%22,%22../../assets/styles/app.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22;AAAA;AAAA;AAAA;AAAA;AAKA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;EAaC;EACA;EACA;EACA;EACA;EACA;;;AAED;AACA;AAAA;EAEC;;;AAED;EACC;;;AAED;EACC;;;AAED;EACC;;;AAED;AAAA;EAEC;EACA;;;AAED;EACC;EACA;;;AAGD;AACA;EACC;;;AAED;EACE;;;AAEF;EACC;;;ACtDD;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,oBCXqB;EDYrB,qBACA;;AAGA;EAfF;IAgBI,oBChBoB;IDiBpB;;;AAGF;EACE;;AAEA;EACE;EACA;;AAEA;EAJF;IAKI;IACA;;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EARF;IASI;IACA;;;AAIJ;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAdF;IAeI;IACA;IACA;IACA;IACA;IACA;IACA;;;AAGF;EACE;;AAEA;EAHF;IAII;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAGF;EAhDF;IAiDI;IACA;IACA;;;AAIA;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAPF;EACE;EACA;EACA;;AAGF;EACE;;AAiCN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAbF;IAcI;;;AAGF;EACE;;AAGF;EACE;;;AE1KN;EACE;;AAEA;EACE;IACE;;;AAIJ;EACE;;AAGF;EACE;;AAGF;EACE;IACE;IACA;IACA;IACA;IACA;IACA;;;;AAKN;EACE;;AAEA;EACE;;AAGF;EAPF;IAQI;IACA;IACA;IACA;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;;AAIJ;EACE;EACA;EACA;;AAEA;EACE;;AAGF;EATF;IAUI;;;;ACpEN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EATF;IAUI;IACA;;;;AAIJ;EACE;EACA;EACA;EACA;;;AAGF;EAEE;EACA;;;AAGF;EAGE;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA,aF1CW;EE2CX;EACA;EACA;;AAEA;EAZF;IAaI;;;AAGA;EACE;EACA;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;AAAA;EACE;EACA;EACA;;AAEE;EALJ;AAAA;IAMM;;;;AAIN;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;;ACnGR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAEA;EAHJ;IAIQ;;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAIR;EAEE;EACA;EACA;EACA;EACA;;AAEA;EACE;IACE;;;AAKN;EACE;EACA;EACA;EACA;EAEA;;AA8BF;EACE;IACE;;;;AC9EN;EAEI;EACA;EACA;;AAEA;EANJ;IAOQ;IACA;IACA;;EAEA;IACI;;;AAgBR;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAIA;EARJ;IASQ;;;AAQR;EACI;EACA;EACA;;AAEA;EACI;;AAQR;EAEI;;AAMA;EACI;IACI;IACA;IACA;;;AAIR;EAEI;;AAEA;EAJJ;IAKQ;IACA;IACA;IACA;IACA;IACA;;EAEA;IACI;IACA;IACA;;;AAkBZ;EACI;EACA;EACA;EACA;EACA;EACA;;AAEA;EARJ;IASQ;;;AAOJ;EAHJ;IAIQ;;;AAGJ;EACI;EACA;EACA;;AAGJ;AAAA;AAAA;EAEI;EACA;EACA;EACA;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;;AAIR;EACI;EACA;EACA;EACA;EACA;;AAEA;EAPJ;IAQQ;IACA;IACA;;;AAGJ;EACI;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAIR;EACI,aJnMC;EIoMD;EAEA;EACA;EACA;;AAIJ;EACI;EACA;;;AAOR;EACI;EACA;EACA;;AAEA;EALJ;IAMQ;IACA;;EAEA;IACI;;;AAOR;EAFJ;IAGQ;;;AAoBR;EACI;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAEA;EACI;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAMhB;EAEI;EACA;;AAGA;EACI;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI,aJ9SC;EI+SD;EACA;EACA;EACA;;;AAKZ;EACI;EACA;;AAEA;EAJJ;IAKQ;IACA;IACA;IACA;IACA;IACA;;EAEA;IACI;IACA;IACA;;;;AAMR;EACI;EACA;;AAEA;EAJJ;IAKQ;IACA;;;AAIR;EACI;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EATJ;IAUQ;IACA;IACA;;EAEA;IACI;;;AAKZ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAMJ;EACI;EACA;EACA;;AAUA;EACI;;AAIR;EACI;;AAEA;EACI;;AAGJ;EACI;;AAIR;EACI;EACA;EACA;EACA;;;AAoBJ;EACI;EACA;EACA;;AAEA;EALJ;IAMQ;;;AAMJ;EAFJ;IAGQ;IACA;IACA;IACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAIR;EAEI;EACA;;AAEA;EACI;;AAGJ;EATJ;IAUQ;IACA;IACA;;;;AAMR;EACI;EACA;EACA;;AAEA;EALJ;IAMQ;IACA;;;;AChfZ;EAGE;EAEA;EACA;;AAEA;EACE;EACA;;AAGF;EAbF;IAcI;IACA,qBACA;;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;;AAEA;EACE;EACA;;AAIJ;EAEE;IACE;;EAGF;IACE;IACA;IACA;;EAGF;IACE;IACA;;;;ACpDR;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EARF;IASI;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAGF;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EATF;IAWI;;;AAOJ;EACI;;AAGJ;EANF;IAOI;IACA;IACA;IACA;IACA;;;AAME;EACE;EACA;EACA;EACA;EACA;;AAIN;EACI;;;AC1FJ;EACE;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EAEE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE;;;AAOR;EACI;EACA;EACA;EACA;EACA;EACA;;AAII;EACI;;AAMJ;EACI;;;AAKZ;EACI;EACA;EACA;EACA;EACA;;;AAKJ;EACI;;;AAGJ;EACI;;;AAGJ;EAEI;EACA;EACA;;;AAGJ;EAEI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;EACA;;AAGJ;EACI;EACA;;AAGJ;EACI;EACA;;;AClHR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;ACnBJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAIJ;EACI;;;AChBJ;EACI;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAEA;EACE;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EAPF;IAQI;IACA;;;AAMF;EACE;EACA;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EAKE;EACA;;AAEA;EARF;IASI;IACA;;;AAOF;EACE;EACA;;AAEA;EACE;;AAOJ;EACE;;AAGF;EACE;EACA;EACA;;AAEA;EACE;;AAKN;EACI;EACA;;AAEA;EACE;EACA;EACA;;AAEA;EACE;EACA;EACA;;AAGD;EACC;;AAMR;EACI;EACA;EACA;;;AC1HR;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;;AAEA;EANF;IAOI;;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA%22,%22file%22:%22app.output.css%22%7D */
+";s:6:"digest";s:32:"6c7d800e80e27e5c32151e1750f74d85";s:13:"isPredigested";b:0;s:11:"logicalPath";s:15:"styles/app.scss";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:2:{i:0;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:78:"/var/www/html/Benevolat/TAM/tam-symfo/assets/images/45-degree-fabric-light.png";s:10:"publicPath";s:49:"/assets/images/45-degree-fabric-light-FITJuH0.png";s:23:"publicPathWithoutDigest";s:41:"/assets/images/45-degree-fabric-light.png";s:15:"publicExtension";s:3:"png";s:7:"content";N;s:6:"digest";s:32:"1484c9b87d1145d64b66f9751bfd7331";s:13:"isPredigested";b:0;s:11:"logicalPath";s:33:"images/45-degree-fabric-light.png";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}i:1;O:41:"Symfony\Component\AssetMapper\MappedAsset":12:{s:10:"sourcePath";s:78:"/var/www/html/Benevolat/TAM/tam-symfo/assets/images/banner/banniere-droite.jpg";s:10:"publicPath";s:49:"/assets/images/banner/banniere-droite-dmDpTww.jpg";s:23:"publicPathWithoutDigest";s:41:"/assets/images/banner/banniere-droite.jpg";s:15:"publicExtension";s:3:"jpg";s:7:"content";N;s:6:"digest";s:32:"7660e94f0c36eca6a1b3b7d5ba89e90d";s:13:"isPredigested";b:0;s:11:"logicalPath";s:33:"images/banner/banniere-droite.jpg";s:8:"isVendor";b:0;s:55:" Symfony\Component\AssetMapper\MappedAsset dependencies";a:0:{}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:0:{}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}}s:59:" Symfony\Component\AssetMapper\MappedAsset fileDependencies";a:1:{i:0;s:61:"/var/www/html/Benevolat/TAM/tam-symfo/var/sass/app.output.css";}s:60:" Symfony\Component\AssetMapper\MappedAsset javaScriptImports";a:0:{}}

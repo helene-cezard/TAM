@@ -4,15 +4,11 @@
 
 {% block body %}
     <main>
-      <div class="banner-container">
-        <div class="banner"></div>
-        <div class="banner__pusher">
+        {% include "partials/_left_banner.html.twig" %}
             <section class="section">
               <h2 class="section__title">Mentions légales</h2>
               <p>Des trucs juridiques</p>
             </section>
-        </div>
-        <div class="banner banner--right"></div>
-      </div>
+        {% include "partials/_right_banner.html.twig" %}
     </main>
 {% endblock %}

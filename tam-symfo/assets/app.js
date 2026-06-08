@@ -4,25 +4,27 @@ const app = {
 
   itv: null,
   slides: document.querySelectorAll('.carousel__slide'),
+  pages: ['home', 'association', 'team', 'benin', 'france', 'training', 'contact'],
 
   init: function() {
       console.log('App initialized');
 
       const jsData = document.getElementById('js-data');
       const currentRoute = jsData.dataset.currentRoute;
-      if (currentRoute === 'app_main') {
+      if (currentRoute === 'app_home') {
           app.slides[0].classList.add('carousel-active');
         app.itv = app.play(app.itv);
       }
 
       app.animateCounters();
       app.burgerMenu();
-      app.movePosition('home');
-
-
       app.showSubmenu();
+      app.showGalleryImages();
 
-      reorderSections.addEventListener('click', app.updatePositions);
+      app.pages.forEach(element => {
+        app.movePosition(element);
+        reorderSections.addEventListener('click', function (){app.updatePositions(element, currentRoute)});
+      });
   },
 
   burgerMenu: function() {
@@ -164,10 +166,15 @@ const app = {
 
   movePosition: function(element) {
     const container = document.getElementById(element + 'Sections');
+    console.log('Container for ' + element + ':', container);
+
+    if (container === null) {
+        return;
+    }
 
     container.addEventListener('click', (event) => {
 
-        const section = event.target.closest('.' + element + '__section');
+        const section = event.target.closest('.admin_' + element);
 
         if (!section) {
             return;
@@ -195,14 +202,16 @@ const app = {
     });
   },
 
-  updatePositions: function() {
-    console.log('Updating positions...');
-    const ids = [...document.querySelectorAll('.home__section')]
+  updatePositions: function(element, currentRoute) {
+
+    if (!currentRoute.includes(element)) {
+        return;
+    }
+
+    const ids = [...document.querySelectorAll('.admin_' + element)]
     .map(section => section.dataset.id);
 
-    console.log('IDs:', ids);
-
-    fetch('/admin/sections/reorder', {
+    fetch('/admin/' + element + '/section_reorder', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -225,6 +234,25 @@ const app = {
     setTimeout(() => {
         message.remove();
     }, 5000);
+  },
+
+  showGalleryImages: function() {
+    const galleryOptions = document.querySelectorAll('[data-image]');
+
+    galleryOptions.forEach(option => {
+        const imageUrl = option.getAttribute('data-image');
+        const label = option.nextSibling; // Trouve le label associé à l'option
+
+        if (label && imageUrl) {
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'Image de la galerie';
+            img.style.maxWidth = '200px'; // Ajustez la taille de l'image
+            img.style.marginLeft = '10px';
+
+            label.appendChild(img); // Ajoute l'image à côté du label
+        }
+    });
   }
 }
 

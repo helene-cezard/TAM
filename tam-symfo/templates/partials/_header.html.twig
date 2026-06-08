@@ -11,7 +11,7 @@
         <ul role="menubar" class="header__nav-links">
             <li class="header__nav-links--yellow">
                 <div class="shape lines"></div>
-                <a {{ currentRoute == 'app_main' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path('app_main') }}">Accueil</a>
+                <a {{ currentRoute == 'app_home' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path('app_home') }}">Accueil</a>
             </li>
             <li class="header__nav-links--blue parent__menu">
                 <div class="shape spirale"></div>
@@ -54,8 +54,5 @@
             </li>
         </ul>
     </nav>
-    <div id="js-data"
-        data-current-route="{{ app.current_route }}"
-    >
-    </div>
+    <div id="js-data" data-current-route="{{ app.current_route }}"></div>
 </header>

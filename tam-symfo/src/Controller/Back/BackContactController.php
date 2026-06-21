@@ -2,9 +2,14 @@
 
 namespace App\Controller\Back;
 
-use App\Form\ContactSectionType;
-use App\Repository\ContactSectionRepository;
+use App\Entity\Section\ContactSection;
+use App\Form\SectionForms\ContactSectionType;
+use App\Form\RubricInfoType;
+use App\Repository\Section\ContactSectionRepository;
+use App\Repository\GalleryImageRepository;
 use App\Repository\RubricInfoRepository;
+use App\Service\SubmitRubricInfo;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,39 +23,44 @@ final class BackContactController extends AbstractController
     public function index(
         ContactSectionRepository $contactSectionRepository,
         RubricInfoRepository $rubricInfoRepository,
+        GalleryImageRepository $galleryImageRepository,
         Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-        $sectionForm = $this->createForm(ContactSectionType::class);
-        $sectionForm->handleRequest($request);
+        SubmitSections $submitSections,
+        SubmitRubricInfo $submitRubricInfo
+        ): Response {
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'contact']);
+        $galleryImages = $galleryImageRepository->findAll();
+        $contactSections = $contactSectionRepository->findBy([], ['position' => 'ASC']);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $contactSection = $sectionForm->getData();
-            $contactSection->setPosition(count($contactSectionRepository->findAll()) + 1); // Positionner la nouvelle section à la fin
-
-            $entityManager->persist($contactSection);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Section ajoutée avec succès !');
-
+        // Gestion du formulaire de mise à jour de la rubrique
+        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        if ($rubricIsSubmitted) {
+            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
             return $this->redirectToRoute('admin_contact');
         }
 
-        $contactSections = $contactSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_contact']);
+        // Gestion du formulaire d'ajout de section
+        $sectionForm = $this->createForm(ContactSectionType::class);
+        $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $contactSectionRepository);
+        if ($sectionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
+            return $this->redirectToRoute('admin_contact');
+        }
+
         return $this->render('back/contact/index.html.twig', [
-            'controller_name' => 'BackBeninController',
-            'contactSections' => $contactSections,
+            'sections' => $contactSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm->createView(),
+            'sectionForm' => $sectionForm,
+            'rubricInfoForm' => $rubricInfoForm,
+            'galleryImages' => $galleryImages,
         ]);
     }
 
-    #[Route('/admin/contact/section_reorder', name: 'contact_sections_reorder', methods: ['POST'])]
+    #[Route('/admin/contact/section_reorder', name: 'admin_contact_sections_reorder', methods: ['POST'])]
     public function reorder(
         Request $request,
-        ContactSectionRepository $contactSectionRepository,
+        ContactSectionRepository $repository,
         EntityManagerInterface $entityManager
     ): JsonResponse {
 
@@ -58,7 +68,7 @@ final class BackContactController extends AbstractController
 
         foreach ($ids as $position => $id) {
 
-            $section = $contactSectionRepository->find($id);
+            $section = $repository->find($id);
 
             if ($section) {
                 $section->setPosition($position + 1);
@@ -74,7 +84,7 @@ final class BackContactController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/contact/section_delete/{id}', name: 'contact_section_delete')]
+    #[Route('/admin/contact/section_delete/{id}', name: 'admin_contact_section_delete')]
     public function deleteSection(
         ContactSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -92,5 +102,28 @@ final class BackContactController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_contact');
+    }
+
+    #[Route('/admin/contact/section_update/{id}', name: 'admin_contact_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        ContactSection $contactSection
+    )
+    {
+        $sectionForm = $this->createForm(ContactSectionType::class, $contactSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_contact');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

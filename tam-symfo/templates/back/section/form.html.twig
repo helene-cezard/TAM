@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+
+{% block body %}
+    <main>
+        {% include "partials/_left_banner.html.twig" %}
+             <h2 class="section__title">Modifier la section</h2>
+            <section class="form">{{ form(sectionForm) }}</section>
+        {% include "partials/_right_banner.html.twig" %}
+    </main>
+{% endblock %}

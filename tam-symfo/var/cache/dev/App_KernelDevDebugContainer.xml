@@ -156,6 +156,8 @@
         <parameter key="all">true</parameter>
       </parameter>
     </parameter>
+    <parameter key="uploaded_images_directory">/var/www/html/Benevolat/TAM/tam-symfo/assets/images/uploadedImages</parameter>
+    <parameter key="uploaded_reports_directory">/var/www/html/Benevolat/TAM/tam-symfo/assets/reports</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -577,16 +579,7 @@
       </call>
     </service>
     <service id="App\Entity\Action" class="App\Entity\Action" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\AssociationSection" class="App\Entity\AssociationSection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\BeninSection" class="App\Entity\BeninSection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+      <tag name="container.error" message="Class &quot;App\Entity\Section&quot; not found while loading &quot;App\Entity\Action&quot;."/>
     </service>
     <service id="App\Entity\CarouselImage" class="App\Entity\CarouselImage" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
@@ -596,23 +589,7 @@
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
-    <service id="App\Entity\ContactSection" class="App\Entity\ContactSection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\EulogySection" class="App\Entity\EulogySection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\FranceSection" class="App\Entity\FranceSection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
     <service id="App\Entity\GalleryImage" class="App\Entity\GalleryImage" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\HomeSection" class="App\Entity\HomeSection" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
@@ -624,48 +601,65 @@
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
-    <service id=".abstract.App\Entity\Section" class="App\Entity\Section" autowire="true" autoconfigure="true" abstract="true">
+    <service id="App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\BeninSection" class="App\Entity\Section\BeninSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\ContactSection" class="App\Entity\Section\ContactSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\EulogySection" class="App\Entity\Section\EulogySection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\FranceSection" class="App\Entity\Section\FranceSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\HomeSection" class="App\Entity\Section\HomeSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\ReportsSection" class="App\Entity\Section\ReportsSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\ResourcesSection" class="App\Entity\Section\ResourcesSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id=".abstract.App\Entity\Section\Section" class="App\Entity\Section\Section" autowire="true" autoconfigure="true" abstract="true">
       <tag name="container.excluded" source="because the class is abstract"/>
       <tag name="container.excluded" source="because it's a Doctrine mapped superclass"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\MappedSuperclass] attribute"/>
     </service>
+    <service id="App\Entity\Section\TeamSection" class="App\Entity\Section\TeamSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\TrainingSection" class="App\Entity\Section\TrainingSection" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
     <service id="App\Entity\Team" class="App\Entity\Team" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\TeamSection" class="App\Entity\TeamSection" autowire="true" autoconfigure="true">
-      <tag name="container.excluded" source="because it's a Doctrine entity"/>
-      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
-    </service>
-    <service id="App\Entity\TrainingSection" class="App\Entity\TrainingSection" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
     <service id="App\Form\ActionType" class="App\Form\ActionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
-    <service id="App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
     <service id="App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
-    <service id="App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
-    <service id="App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" autoconfigure="true">
+    <service id="App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
-    <service id="App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" autoconfigure="true">
@@ -674,27 +668,43 @@
     <service id="App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Form\SectionType" class="App\Form\SectionType" autowire="true" autoconfigure="true">
+    <service id="App\Form\SectionForms\AssociationSectionType" class="App\Form\SectionForms\AssociationSectionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" autoconfigure="true">
+    <service id="App\Form\SectionForms\BeninSectionType" class="App\Form\SectionForms\BeninSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\ContactSectionType" class="App\Form\SectionForms\ContactSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\EulogySectionType" class="App\Form\SectionForms\EulogySectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\FranceSectionType" class="App\Form\SectionForms\FranceSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\HomeSectionType" class="App\Form\SectionForms\HomeSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\ReportsSectionType" class="App\Form\SectionForms\ReportsSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\ResourcesSectionType" class="App\Form\SectionForms\ResourcesSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\SectionType" class="App\Form\SectionForms\SectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\TeamSectionType" class="App\Form\SectionForms\TeamSectionType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
+    </service>
+    <service id="App\Form\SectionForms\TrainingSectionType" class="App\Form\SectionForms\TrainingSectionType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" autoconfigure="true">
-      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
-    </service>
     <service id="App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\AssociationSectionRepository" class="App\Repository\AssociationSectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\BeninSectionRepository" class="App\Repository\BeninSectionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -706,23 +716,7 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Repository\ContactSectionRepository" class="App\Repository\ContactSectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\EulogySectionRepository" class="App\Repository\EulogySectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\FranceSectionRepository" class="App\Repository\FranceSectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
     <service id="App\Repository\GalleryImageRepository" class="App\Repository\GalleryImageRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Repository\HomeSectionRepository" class="App\Repository\HomeSectionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -734,7 +728,47 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Repository\SectionRepository" class="App\Repository\SectionRepository" autowire="true" autoconfigure="true">
+    <service id="App\Repository\Section\AssociationSectionRepository" class="App\Repository\Section\AssociationSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\BeninSectionRepository" class="App\Repository\Section\BeninSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\ContactSectionRepository" class="App\Repository\Section\ContactSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\EulogySectionRepository" class="App\Repository\Section\EulogySectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\FranceSectionRepository" class="App\Repository\Section\FranceSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\HomeSectionRepository" class="App\Repository\Section\HomeSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\ReportsSectionRepository" class="App\Repository\Section\ReportsSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\ResourcesSectionRepository" class="App\Repository\Section\ResourcesSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\SectionRepository" class="App\Repository\Section\SectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\TeamSectionRepository" class="App\Repository\Section\TeamSectionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\TrainingSectionRepository" class="App\Repository\Section\TrainingSectionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -742,13 +776,24 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Repository\TeamSectionRepository" class="App\Repository\TeamSectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
+    <service id="App\Service\ImageUploader" class="App\Service\ImageUploader" autowire="true" autoconfigure="true">
+      <argument type="service" id="slugger"/>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/images/uploadedImages</argument>
     </service>
-    <service id="App\Repository\TrainingSectionRepository" class="App\Repository\TrainingSectionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
+    <service id="App\Service\ReportUploader" class="App\Service\ReportUploader" autowire="true" autoconfigure="true">
+      <argument type="service" id="slugger"/>
+      <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/reports</argument>
+    </service>
+    <service id="App\Service\SubmitReport" class="App\Service\SubmitReport" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="App\Service\ReportUploader"/>
+    </service>
+    <service id="App\Service\SubmitRubricInfo" class="App\Service\SubmitRubricInfo" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="App\Service\ImageUploader"/>
+    </service>
+    <service id="App\Service\SubmitSections" class="App\Service\SubmitSections" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
     <service id="App\Twig\AppGlobalExtension" class="App\Twig\AppGlobalExtension" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
@@ -782,7 +827,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.2jJihj3"/>
+      <argument type="service" id=".service_locator.5t30sgv"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -1793,25 +1838,29 @@
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>App\Form</argument>
+        <argument>App\Form\SectionForms</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument>Ehyiah\QuillJsBundle\Form</argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\ActionType</argument>
-        <argument>App\Form\AssociationSectionType</argument>
-        <argument>App\Form\BeninSectionType</argument>
         <argument>App\Form\ContactInfoType</argument>
-        <argument>App\Form\ContactSectionType</argument>
-        <argument>App\Form\EulogySectionType</argument>
-        <argument>App\Form\FranceSectionType</argument>
+        <argument>App\Form\ContactType</argument>
         <argument>App\Form\HomeSectionPositionType</argument>
-        <argument>App\Form\HomeSectionType</argument>
         <argument>App\Form\ReportsType</argument>
         <argument>App\Form\RubricInfoType</argument>
-        <argument>App\Form\SectionType</argument>
-        <argument>App\Form\TeamSectionType</argument>
+        <argument>App\Form\SectionForms\AssociationSectionType</argument>
+        <argument>App\Form\SectionForms\BeninSectionType</argument>
+        <argument>App\Form\SectionForms\ContactSectionType</argument>
+        <argument>App\Form\SectionForms\EulogySectionType</argument>
+        <argument>App\Form\SectionForms\FranceSectionType</argument>
+        <argument>App\Form\SectionForms\HomeSectionType</argument>
+        <argument>App\Form\SectionForms\ReportsSectionType</argument>
+        <argument>App\Form\SectionForms\ResourcesSectionType</argument>
+        <argument>App\Form\SectionForms\SectionType</argument>
+        <argument>App\Form\SectionForms\TeamSectionType</argument>
+        <argument>App\Form\SectionForms\TrainingSectionType</argument>
         <argument>App\Form\TeamType</argument>
-        <argument>App\Form\TrainingSectionType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -3951,7 +4000,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.2jJihj3"/>
+      <argument type="service" id=".service_locator.5t30sgv"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -4592,7 +4641,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.EYYrhyJ"/>
+      <argument type="service" id=".service_locator.qqaqIbc"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4702,20 +4751,23 @@
       <argument>%form.type_extension.csrf.field_attr%</argument>
       <argument type="collection">
         <argument key="App\Form\ActionType">submit</argument>
-        <argument key="App\Form\AssociationSectionType">submit</argument>
-        <argument key="App\Form\BeninSectionType">submit</argument>
         <argument key="App\Form\ContactInfoType">submit</argument>
-        <argument key="App\Form\ContactSectionType">submit</argument>
-        <argument key="App\Form\EulogySectionType">submit</argument>
-        <argument key="App\Form\FranceSectionType">submit</argument>
+        <argument key="App\Form\ContactType">submit</argument>
         <argument key="App\Form\HomeSectionPositionType">submit</argument>
-        <argument key="App\Form\HomeSectionType">submit</argument>
         <argument key="App\Form\ReportsType">submit</argument>
         <argument key="App\Form\RubricInfoType">submit</argument>
-        <argument key="App\Form\SectionType">submit</argument>
-        <argument key="App\Form\TeamSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\AssociationSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\BeninSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\ContactSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\EulogySectionType">submit</argument>
+        <argument key="App\Form\SectionForms\FranceSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\HomeSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\ReportsSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\ResourcesSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\SectionType">submit</argument>
+        <argument key="App\Form\SectionForms\TeamSectionType">submit</argument>
+        <argument key="App\Form\SectionForms\TrainingSectionType">submit</argument>
         <argument key="App\Form\TeamType">submit</argument>
-        <argument key="App\Form\TrainingSectionType">submit</argument>
       </argument>
     </service>
     <service id="validator.builder" class="Symfony\Component\Validator\ValidatorBuilder">
@@ -5089,9 +5141,6 @@
     </service>
     <service id="messenger.senders_locator" class="Symfony\Component\Messenger\Transport\Sender\SendersLocator">
       <argument type="collection">
-        <argument key="Symfony\Component\Mailer\Messenger\SendEmailMessage" type="collection">
-          <argument>async</argument>
-        </argument>
         <argument key="Symfony\Component\Notifier\Message\ChatMessage" type="collection">
           <argument>async</argument>
         </argument>
@@ -5972,7 +6021,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.3aloJKe"/>
+      <argument type="service" id=".service_locator.1KspfgY"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6791,6 +6840,14 @@
       <call method="addPath">
         <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/debug-bundle/Resources/views</argument>
         <argument>!Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/Benevolat/TAM/tam-symfo/templates/bundles/TwigBundle</argument>
+        <argument>Twig</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/html/Benevolat/TAM/tam-symfo/templates/bundles/TwigBundle</argument>
+        <argument>!Twig</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/html/Benevolat/TAM/tam-symfo/vendor/symfony/web-profiler-bundle/Resources/views</argument>
@@ -8488,100 +8545,112 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\Front\TrainingController.0.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Front\TrainingController" class="App\Controller\Front\TrainingController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\Action.0.App\Entity\Action" class="App\Entity\Action" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\Action" class="App\Entity\Action" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\AssociationSection.0.App\Entity\AssociationSection" class="App\Entity\AssociationSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\AssociationSection" class="App\Entity\AssociationSection" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\BeninSection.0.App\Entity\BeninSection" class="App\Entity\BeninSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\BeninSection" class="App\Entity\BeninSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\CarouselImage.0.App\Entity\CarouselImage" class="App\Entity\CarouselImage" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\CarouselImage" class="App\Entity\CarouselImage" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\ContactInfo.0.App\Entity\ContactInfo" class="App\Entity\ContactInfo" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\ContactInfo" class="App\Entity\ContactInfo" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\ContactSection.0.App\Entity\ContactSection" class="App\Entity\ContactSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\ContactSection" class="App\Entity\ContactSection" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\EulogySection.0.App\Entity\EulogySection" class="App\Entity\EulogySection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\EulogySection" class="App\Entity\EulogySection" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\FranceSection.0.App\Entity\FranceSection" class="App\Entity\FranceSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\FranceSection" class="App\Entity\FranceSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\GalleryImage.0.App\Entity\GalleryImage" class="App\Entity\GalleryImage" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\GalleryImage" class="App\Entity\GalleryImage" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\HomeSection.0.App\Entity\HomeSection" class="App\Entity\HomeSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\HomeSection" class="App\Entity\HomeSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Reports.0.App\Entity\Reports" class="App\Entity\Reports" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Reports" class="App\Entity\Reports" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\RubricInfo.0.App\Entity\RubricInfo" class="App\Entity\RubricInfo" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\RubricInfo" class="App\Entity\RubricInfo" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\Section.0..abstract.App\Entity\Section" class="App\Entity\Section" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof..abstract.App\Entity\Section" class="App\Entity\Section" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\AssociationSection.0.App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\BeninSection.0.App\Entity\Section\BeninSection" class="App\Entity\Section\BeninSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\BeninSection" class="App\Entity\Section\BeninSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\ContactSection.0.App\Entity\Section\ContactSection" class="App\Entity\Section\ContactSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\ContactSection" class="App\Entity\Section\ContactSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\EulogySection.0.App\Entity\Section\EulogySection" class="App\Entity\Section\EulogySection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\EulogySection" class="App\Entity\Section\EulogySection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\FranceSection.0.App\Entity\Section\FranceSection" class="App\Entity\Section\FranceSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\FranceSection" class="App\Entity\Section\FranceSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\HomeSection.0.App\Entity\Section\HomeSection" class="App\Entity\Section\HomeSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\HomeSection" class="App\Entity\Section\HomeSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\ReportsSection.0.App\Entity\Section\ReportsSection" class="App\Entity\Section\ReportsSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\ReportsSection" class="App\Entity\Section\ReportsSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\ResourcesSection.0.App\Entity\Section\ResourcesSection" class="App\Entity\Section\ResourcesSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\ResourcesSection" class="App\Entity\Section\ResourcesSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\Section.0..abstract.App\Entity\Section\Section" class="App\Entity\Section\Section" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof..abstract.App\Entity\Section\Section" class="App\Entity\Section\Section" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\TeamSection.0.App\Entity\Section\TeamSection" class="App\Entity\Section\TeamSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\TeamSection" class="App\Entity\Section\TeamSection" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\TrainingSection.0.App\Entity\Section\TrainingSection" class="App\Entity\Section\TrainingSection" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\TrainingSection" class="App\Entity\Section\TrainingSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Team.0.App\Entity\Team" class="App\Entity\Team" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Team" class="App\Entity\Team" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\TeamSection.0.App\Entity\TeamSection" class="App\Entity\TeamSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\TeamSection" class="App\Entity\TeamSection" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.App\Entity\TrainingSection.0.App\Entity\TrainingSection" class="App\Entity\TrainingSection" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Entity\TrainingSection" class="App\Entity\TrainingSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ActionType" class="App\Form\ActionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ActionType" class="App\Form\ActionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\AssociationSectionType" class="App\Form\AssociationSectionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\BeninSectionType" class="App\Form\BeninSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ContactInfoType" class="App\Form\ContactInfoType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\ContactSectionType" class="App\Form\ContactSectionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\EulogySectionType" class="App\Form\EulogySectionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\FranceSectionType" class="App\Form\FranceSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactType" class="App\Form\ContactType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\HomeSectionPositionType" class="App\Form\HomeSectionPositionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\HomeSectionType" class="App\Form\HomeSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ReportsType" class="App\Form\ReportsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RubricInfoType" class="App\Form\RubricInfoType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionType" class="App\Form\SectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\SectionType" class="App\Form\SectionType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\TeamSectionType" class="App\Form\TeamSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\AssociationSectionType" class="App\Form\SectionForms\AssociationSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\AssociationSectionType" class="App\Form\SectionForms\AssociationSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\BeninSectionType" class="App\Form\SectionForms\BeninSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\BeninSectionType" class="App\Form\SectionForms\BeninSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\ContactSectionType" class="App\Form\SectionForms\ContactSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\ContactSectionType" class="App\Form\SectionForms\ContactSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\EulogySectionType" class="App\Form\SectionForms\EulogySectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\EulogySectionType" class="App\Form\SectionForms\EulogySectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\FranceSectionType" class="App\Form\SectionForms\FranceSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\FranceSectionType" class="App\Form\SectionForms\FranceSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\HomeSectionType" class="App\Form\SectionForms\HomeSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\HomeSectionType" class="App\Form\SectionForms\HomeSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\ReportsSectionType" class="App\Form\SectionForms\ReportsSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\ReportsSectionType" class="App\Form\SectionForms\ReportsSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\ResourcesSectionType" class="App\Form\SectionForms\ResourcesSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\ResourcesSectionType" class="App\Form\SectionForms\ResourcesSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\SectionType" class="App\Form\SectionForms\SectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\SectionType" class="App\Form\SectionForms\SectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\TeamSectionType" class="App\Form\SectionForms\TeamSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\TeamSectionType" class="App\Form\SectionForms\TeamSectionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SectionForms\TrainingSectionType" class="App\Form\SectionForms\TrainingSectionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SectionForms\TrainingSectionType" class="App\Form\SectionForms\TrainingSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TeamType" class="App\Form\TeamType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\TrainingSectionType" class="App\Form\TrainingSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AssociationSectionRepository" class="App\Repository\AssociationSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\AssociationSectionRepository" class="App\Repository\AssociationSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BeninSectionRepository" class="App\Repository\BeninSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\BeninSectionRepository" class="App\Repository\BeninSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CarouselImageRepository" class="App\Repository\CarouselImageRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CarouselImageRepository" class="App\Repository\CarouselImageRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactInfoRepository" class="App\Repository\ContactInfoRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ContactInfoRepository" class="App\Repository\ContactInfoRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactSectionRepository" class="App\Repository\ContactSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\ContactSectionRepository" class="App\Repository\ContactSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EulogySectionRepository" class="App\Repository\EulogySectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\EulogySectionRepository" class="App\Repository\EulogySectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FranceSectionRepository" class="App\Repository\FranceSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\FranceSectionRepository" class="App\Repository\FranceSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\GalleryImageRepository" class="App\Repository\GalleryImageRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\GalleryImageRepository" class="App\Repository\GalleryImageRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\HomeSectionRepository" class="App\Repository\HomeSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\HomeSectionRepository" class="App\Repository\HomeSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReportsRepository" class="App\Repository\ReportsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReportsRepository" class="App\Repository\ReportsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RubricInfoRepository" class="App\Repository\RubricInfoRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\RubricInfoRepository" class="App\Repository\RubricInfoRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SectionRepository" class="App\Repository\SectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\SectionRepository" class="App\Repository\SectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\AssociationSectionRepository" class="App\Repository\Section\AssociationSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\AssociationSectionRepository" class="App\Repository\Section\AssociationSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\BeninSectionRepository" class="App\Repository\Section\BeninSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\BeninSectionRepository" class="App\Repository\Section\BeninSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\ContactSectionRepository" class="App\Repository\Section\ContactSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\ContactSectionRepository" class="App\Repository\Section\ContactSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\EulogySectionRepository" class="App\Repository\Section\EulogySectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\EulogySectionRepository" class="App\Repository\Section\EulogySectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\FranceSectionRepository" class="App\Repository\Section\FranceSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\FranceSectionRepository" class="App\Repository\Section\FranceSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\HomeSectionRepository" class="App\Repository\Section\HomeSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\HomeSectionRepository" class="App\Repository\Section\HomeSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\ReportsSectionRepository" class="App\Repository\Section\ReportsSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\ReportsSectionRepository" class="App\Repository\Section\ReportsSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\ResourcesSectionRepository" class="App\Repository\Section\ResourcesSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\ResourcesSectionRepository" class="App\Repository\Section\ResourcesSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\SectionRepository" class="App\Repository\Section\SectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\SectionRepository" class="App\Repository\Section\SectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\TeamSectionRepository" class="App\Repository\Section\TeamSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\TeamSectionRepository" class="App\Repository\Section\TeamSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\TrainingSectionRepository" class="App\Repository\Section\TrainingSectionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\TrainingSectionRepository" class="App\Repository\Section\TrainingSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TeamRepository" class="App\Repository\TeamRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\TeamRepository" class="App\Repository\TeamRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TeamSectionRepository" class="App\Repository\TeamSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\TeamSectionRepository" class="App\Repository\TeamSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TrainingSectionRepository" class="App\Repository\TrainingSectionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\TrainingSectionRepository" class="App\Repository\TrainingSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Twig\Extension\ExtensionInterface.0.App\Twig\AppGlobalExtension" class="App\Twig\AppGlobalExtension" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Twig\AppGlobalExtension" class="App\Twig\AppGlobalExtension" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.NeuralGlitch\GoogleFonts\Command\FontsImportCommand" class="NeuralGlitch\GoogleFonts\Command\FontsImportCommand" autowire="true" abstract="true"/>
@@ -9124,382 +9193,558 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.1vYpZ1B" method="withContext"/>
     </service>
-    <service id=".service_locator.11sYaYh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EI_zEQu" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\Section\AssociationSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
       </argument>
     </service>
-    <service id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EI_zEQu.App\Controller\Back\BackAssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::index()"/>
       <argument>App\Controller\Back\BackAssociationController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.11sYaYh" method="withContext"/>
+      <factory service=".service_locator.EI_zEQu" method="withContext"/>
     </service>
-    <service id=".value.lRo.PXe" class="mixed">
-      <argument type="collection">
-        <argument>/var/www/html/Benevolat/TAM/tam-symfo/assets/images/uploadedImages</argument>
-      </argument>
-      <factory function="current"/>
-    </service>
-    <service id=".service_locator.b1ZyAoQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iGXuiaN" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="slugger" type="service_closure" id="slugger"/>
-        <argument key="imagesDirectory" type="service_closure" id=".value.lRo.PXe"/>
-      </argument>
-    </service>
-    <service id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::handleRubricForm()"/>
-      <argument>App\Controller\Back\BackAssociationController::handleRubricForm()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.b1ZyAoQ" method="withContext"/>
-    </service>
-    <service id=".service_locator.rSL8OJU" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
-      </argument>
-    </service>
-    <service id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::handleSectionForm()"/>
-      <argument>App\Controller\Back\BackAssociationController::handleSectionForm()</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.rSL8OJU" method="withContext"/>
-    </service>
-    <service id=".service_locator.whyDmFb" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\AssociationSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::reorder()"/>
       <argument>App\Controller\Back\BackAssociationController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.whyDmFb" method="withContext"/>
+      <factory service=".service_locator.iGXuiaN" method="withContext"/>
     </service>
-    <service id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::deleteSection()"/>
       <argument>App\Controller\Back\BackAssociationController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.whyDmFb" method="withContext"/>
+      <factory service=".service_locator.iGXuiaN" method="withContext"/>
     </service>
-    <service id=".service_locator.NCf3AGv" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bmVmXZV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="associationSection" type="service_closure" id=".errored..service_locator.bmVmXZV.App\Entity\Section\AssociationSection"/>
       </argument>
     </service>
-    <service id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bmVmXZV.App\Controller\Back\BackAssociationController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackAssociationController::updateSection()"/>
+      <argument>App\Controller\Back\BackAssociationController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.bmVmXZV" method="withContext"/>
+    </service>
+    <service id=".service_locator.6vuyikC" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\Section\BeninSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.6vuyikC.App\Controller\Back\BackBeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::index()"/>
       <argument>App\Controller\Back\BackBeninController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.NCf3AGv" method="withContext"/>
+      <factory service=".service_locator.6vuyikC" method="withContext"/>
     </service>
-    <service id=".service_locator.6vnwkNC" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.YATitvB" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\BeninSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::reorder()"/>
       <argument>App\Controller\Back\BackBeninController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.6vnwkNC" method="withContext"/>
+      <factory service=".service_locator.YATitvB" method="withContext"/>
     </service>
-    <service id=".service_locator.qGyHLd4" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::deleteSection()"/>
       <argument>App\Controller\Back\BackBeninController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.qGyHLd4" method="withContext"/>
+      <factory service=".service_locator.YATitvB" method="withContext"/>
     </service>
-    <service id=".service_locator.1Bu5FyK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uZ4x_YA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="beninSection" type="service_closure" id=".errored..service_locator.uZ4x_YA.App\Entity\Section\BeninSection"/>
       </argument>
     </service>
-    <service id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uZ4x_YA.App\Controller\Back\BackBeninController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackBeninController::updateSection()"/>
+      <argument>App\Controller\Back\BackBeninController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.uZ4x_YA" method="withContext"/>
+    </service>
+    <service id=".service_locator.xEBjgFy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\Section\ContactSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.xEBjgFy.App\Controller\Back\BackContactController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::index()"/>
       <argument>App\Controller\Back\BackContactController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.1Bu5FyK" method="withContext"/>
+      <factory service=".service_locator.xEBjgFy" method="withContext"/>
     </service>
-    <service id=".service_locator.aUL2ydZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.T9.Dg1_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\ContactSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::reorder()"/>
       <argument>App\Controller\Back\BackContactController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.aUL2ydZ" method="withContext"/>
+      <factory service=".service_locator.T9.Dg1_" method="withContext"/>
     </service>
-    <service id=".service_locator.TuprJmk" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::deleteSection()"/>
       <argument>App\Controller\Back\BackContactController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TuprJmk" method="withContext"/>
+      <factory service=".service_locator.T9.Dg1_" method="withContext"/>
     </service>
-    <service id=".service_locator.R2kNMZw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.STfA._f" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="contactSection" type="service_closure" id=".errored..service_locator.STfA._f.App\Entity\Section\ContactSection"/>
       </argument>
     </service>
-    <service id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.STfA._f.App\Controller\Back\BackContactController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackContactController::updateSection()"/>
+      <argument>App\Controller\Back\BackContactController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.STfA._f" method="withContext"/>
+    </service>
+    <service id=".service_locator.1oE2OgZ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\Section\FranceSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.1oE2OgZ.App\Controller\Back\BackFranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::index()"/>
       <argument>App\Controller\Back\BackFranceController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.R2kNMZw" method="withContext"/>
+      <factory service=".service_locator.1oE2OgZ" method="withContext"/>
     </service>
-    <service id=".service_locator.Vqj5Gh2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.D84RG2s" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\FranceSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::reorder()"/>
       <argument>App\Controller\Back\BackFranceController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.Vqj5Gh2" method="withContext"/>
+      <factory service=".service_locator.D84RG2s" method="withContext"/>
     </service>
-    <service id=".service_locator.55uwPaS" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::deleteSection()"/>
       <argument>App\Controller\Back\BackFranceController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.55uwPaS" method="withContext"/>
+      <factory service=".service_locator.D84RG2s" method="withContext"/>
     </service>
-    <service id=".service_locator.wjUIYeS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.fo1fsoR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="franceSection" type="service_closure" id=".errored..service_locator.fo1fsoR.App\Entity\Section\FranceSection"/>
+      </argument>
+    </service>
+    <service id=".service_locator.fo1fsoR.App\Controller\Back\BackFranceController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackFranceController::updateSection()"/>
+      <argument>App\Controller\Back\BackFranceController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.fo1fsoR" method="withContext"/>
+    </service>
+    <service id=".service_locator.3TYMTGb" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="carouselImageRepository" type="service_closure" id="App\Repository\CarouselImageRepository"/>
-        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\Section\HomeSectionRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
       </argument>
     </service>
-    <service id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.3TYMTGb.App\Controller\Back\BackHomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::index()"/>
       <argument>App\Controller\Back\BackHomeController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.wjUIYeS" method="withContext"/>
+      <factory service=".service_locator.3TYMTGb" method="withContext"/>
     </service>
-    <service id=".service_locator.xev.s3F" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bBA7VZC" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\HomeSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.bBA7VZC.App\Controller\Back\BackHomeController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::reorder()"/>
       <argument>App\Controller\Back\BackHomeController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.xev.s3F" method="withContext"/>
+      <factory service=".service_locator.bBA7VZC" method="withContext"/>
     </service>
-    <service id=".service_locator.muIksVi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.hk1F7T2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
+        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\Section\HomeSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.hk1F7T2.App\Controller\Back\BackHomeController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::deleteSection()"/>
       <argument>App\Controller\Back\BackHomeController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.muIksVi" method="withContext"/>
+      <factory service=".service_locator.hk1F7T2" method="withContext"/>
     </service>
-    <service id=".service_locator.VZOaOeK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.odMH2p." class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="homeSection" type="service_closure" id=".errored..service_locator.odMH2p..App\Entity\Section\HomeSection"/>
       </argument>
     </service>
-    <service id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.odMH2p..App\Controller\Back\BackHomeController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackHomeController::updateSection()"/>
+      <argument>App\Controller\Back\BackHomeController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.odMH2p." method="withContext"/>
+    </service>
+    <service id=".service_locator.ycGv3vr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reportsSectionRepository" type="service_closure" id="App\Repository\Section\ReportsSectionRepository"/>
+        <argument key="reportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+        <argument key="submitReport" type="service_closure" id="App\Service\SubmitReport"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ycGv3vr.App\Controller\Back\BackReportsController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::index()"/>
       <argument>App\Controller\Back\BackReportsController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.VZOaOeK" method="withContext"/>
+      <factory service=".service_locator.ycGv3vr" method="withContext"/>
     </service>
-    <service id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.go9o6hW" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\Section\ReportsSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::reorderSections()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::reorderSections()"/>
+      <argument>App\Controller\Back\BackReportsController::reorderSections()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.go9o6hW" method="withContext"/>
+    </service>
+    <service id=".service_locator.kDll0D4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\ReportsRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::reorderReports()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::reorderReports()"/>
+      <argument>App\Controller\Back\BackReportsController::reorderReports()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.kDll0D4" method="withContext"/>
+    </service>
+    <service id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::deleteSection()"/>
+      <argument>App\Controller\Back\BackReportsController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.go9o6hW" method="withContext"/>
+    </service>
+    <service id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::deleteReports()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::deleteReports()"/>
+      <argument>App\Controller\Back\BackReportsController::deleteReports()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.kDll0D4" method="withContext"/>
+    </service>
+    <service id=".service_locator.qbX.9Ua" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="reportsSection" type="service_closure" id=".errored..service_locator.qbX.9Ua.App\Entity\Section\ReportsSection"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qbX.9Ua.App\Controller\Back\BackReportsController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::updateSection()"/>
+      <argument>App\Controller\Back\BackReportsController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.qbX.9Ua" method="withContext"/>
+    </service>
+    <service id=".service_locator.UgpELRB" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="report" type="service_closure" id=".errored..service_locator.UgpELRB.App\Entity\Reports"/>
+        <argument key="reportUploader" type="service_closure" id="App\Service\ReportUploader"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UgpELRB.App\Controller\Back\BackReportsController::updateReport()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackReportsController::updateReport()"/>
+      <argument>App\Controller\Back\BackReportsController::updateReport()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.UgpELRB" method="withContext"/>
+    </service>
+    <service id=".service_locator.VfSoo4g" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="resourcesSectionRepository" type="service_closure" id="App\Repository\Section\ResourcesSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.VfSoo4g.App\Controller\Back\BackResourcesController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController::index()"/>
       <argument>App\Controller\Back\BackResourcesController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.VZOaOeK" method="withContext"/>
+      <factory service=".service_locator.VfSoo4g" method="withContext"/>
     </service>
-    <service id=".service_locator.aTuUyIw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.SYBE0Wn" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\ResourcesSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController::reorder()"/>
+      <argument>App\Controller\Back\BackResourcesController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.SYBE0Wn" method="withContext"/>
+    </service>
+    <service id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController::deleteSection()"/>
+      <argument>App\Controller\Back\BackResourcesController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.SYBE0Wn" method="withContext"/>
+    </service>
+    <service id=".service_locator.2VwDEOe" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="resourcesSection" type="service_closure" id=".errored..service_locator.2VwDEOe.App\Entity\Section\ResourcesSection"/>
+      </argument>
+    </service>
+    <service id=".service_locator.2VwDEOe.App\Controller\Back\BackResourcesController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackResourcesController::updateSection()"/>
+      <argument>App\Controller\Back\BackResourcesController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.2VwDEOe" method="withContext"/>
+    </service>
+    <service id=".service_locator.ffZQjoL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\Section\TeamSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ffZQjoL.App\Controller\Back\BackTeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController::index()"/>
       <argument>App\Controller\Back\BackTeamController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.aTuUyIw" method="withContext"/>
+      <factory service=".service_locator.ffZQjoL" method="withContext"/>
     </service>
-    <service id=".service_locator.fbKuneD" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.wg2Ej9a" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
-        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\TeamSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController::reorder()"/>
+      <argument>App\Controller\Back\BackTeamController::reorder()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.wg2Ej9a" method="withContext"/>
+    </service>
+    <service id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController::deleteSection()"/>
+      <argument>App\Controller\Back\BackTeamController::deleteSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.wg2Ej9a" method="withContext"/>
+    </service>
+    <service id=".service_locator.OMdWYy3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="teamSection" type="service_closure" id=".errored..service_locator.OMdWYy3.App\Entity\Section\TeamSection"/>
+      </argument>
+    </service>
+    <service id=".service_locator.OMdWYy3.App\Controller\Back\BackTeamController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTeamController::updateSection()"/>
+      <argument>App\Controller\Back\BackTeamController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.OMdWYy3" method="withContext"/>
+    </service>
+    <service id=".service_locator.uK1NkMx" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\Section\TrainingSectionRepository"/>
+        <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="galleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
+        <argument key="submitSections" type="service_closure" id="App\Service\SubmitSections"/>
+        <argument key="submitRubricInfo" type="service_closure" id="App\Service\SubmitRubricInfo"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uK1NkMx.App\Controller\Back\BackTrainingController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::index()"/>
       <argument>App\Controller\Back\BackTrainingController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.fbKuneD" method="withContext"/>
+      <factory service=".service_locator.uK1NkMx" method="withContext"/>
     </service>
-    <service id=".service_locator.g0Filo0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9.k_.jH" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
+        <argument key="repository" type="service_closure" id="App\Repository\Section\TrainingSectionRepository"/>
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::reorder()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::reorder()"/>
       <argument>App\Controller\Back\BackTrainingController::reorder()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.g0Filo0" method="withContext"/>
+      <factory service=".service_locator.9.k_.jH" method="withContext"/>
     </service>
-    <service id=".service_locator.319A.rk" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
-    <service id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::deleteSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::deleteSection()"/>
       <argument>App\Controller\Back\BackTrainingController::deleteSection()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.319A.rk" method="withContext"/>
+      <factory service=".service_locator.9.k_.jH" method="withContext"/>
     </service>
-    <service id=".service_locator.TEfXQB1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Apg8RDI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="trainingSection" type="service_closure" id=".errored..service_locator.Apg8RDI.App\Entity\Section\TrainingSection"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Apg8RDI.App\Controller\Back\BackTrainingController::updateSection()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Back\BackTrainingController::updateSection()"/>
+      <argument>App\Controller\Back\BackTrainingController::updateSection()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.Apg8RDI" method="withContext"/>
+    </service>
+    <service id=".service_locator.sqOdzrj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="associationSectionRepository" type="service_closure" id="App\Repository\Section\AssociationSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.sqOdzrj.App\Controller\Front\AssociationController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\AssociationController::index()"/>
       <argument>App\Controller\Front\AssociationController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.TEfXQB1" method="withContext"/>
+      <factory service=".service_locator.sqOdzrj" method="withContext"/>
     </service>
-    <service id=".service_locator.YKtU2F0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EVE4Kg6" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
+        <argument key="beninSectionRepository" type="service_closure" id="App\Repository\Section\BeninSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EVE4Kg6.App\Controller\Front\BeninController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\BeninController::index()"/>
       <argument>App\Controller\Front\BeninController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.YKtU2F0" method="withContext"/>
+      <factory service=".service_locator.EVE4Kg6" method="withContext"/>
     </service>
-    <service id=".service_locator.8vsY0c0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uuE1BG2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
+        <argument key="contactSectionRepository" type="service_closure" id="App\Repository\Section\ContactSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
       </argument>
     </service>
-    <service id=".service_locator.8vsY0c0.App\Controller\Front\ContactController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.uuE1BG2.App\Controller\Front\ContactController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\ContactController::index()"/>
       <argument>App\Controller\Front\ContactController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.8vsY0c0" method="withContext"/>
+      <factory service=".service_locator.uuE1BG2" method="withContext"/>
     </service>
-    <service id=".service_locator.6nm.BDv" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.dl0GJRA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="eulogySectionRepository" type="service_closure" id="App\Repository\EulogySectionRepository"/>
+        <argument key="eulogySectionRepository" type="service_closure" id="App\Repository\Section\EulogySectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.6nm.BDv.App\Controller\Front\EulogyController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.dl0GJRA.App\Controller\Front\EulogyController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\EulogyController::index()"/>
       <argument>App\Controller\Front\EulogyController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.6nm.BDv" method="withContext"/>
+      <factory service=".service_locator.dl0GJRA" method="withContext"/>
     </service>
-    <service id=".service_locator.YwLLdgS" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.gZeYome" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
+        <argument key="franceSectionRepository" type="service_closure" id="App\Repository\Section\FranceSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="actionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\FranceController::index()"/>
       <argument>App\Controller\Front\FranceController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.YwLLdgS" method="withContext"/>
+      <factory service=".service_locator.gZeYome" method="withContext"/>
     </service>
-    <service id=".service_locator.im4p1JQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.NefUXrV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="carouselImageRepository" type="service_closure" id="App\Repository\CarouselImageRepository"/>
-        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
+        <argument key="homeSectionRepository" type="service_closure" id="App\Repository\Section\HomeSectionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.NefUXrV.App\Controller\Front\HomeController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\HomeController::index()"/>
       <argument>App\Controller\Front\HomeController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.im4p1JQ" method="withContext"/>
+      <factory service=".service_locator.NefUXrV" method="withContext"/>
     </service>
     <service id=".service_locator.8qDVmy4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9527,108 +9772,140 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.2jP_vBB" method="withContext"/>
     </service>
-    <service id=".service_locator.Oq5L5Qp" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.yNBWWB4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
+        <argument key="teamSectionRepository" type="service_closure" id="App\Repository\Section\TeamSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
         <argument key="teamRepository" type="service_closure" id="App\Repository\TeamRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.yNBWWB4.App\Controller\Front\TeamController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\TeamController::index()"/>
       <argument>App\Controller\Front\TeamController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.Oq5L5Qp" method="withContext"/>
+      <factory service=".service_locator.yNBWWB4" method="withContext"/>
     </service>
-    <service id=".service_locator.oFZcE36" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.QTEg3l6" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
+        <argument key="trainingSectionRepository" type="service_closure" id="App\Repository\Section\TrainingSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.oFZcE36.App\Controller\Front\TrainingController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.QTEg3l6.App\Controller\Front\TrainingController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\TrainingController::index()"/>
       <argument>App\Controller\Front\TrainingController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.oFZcE36" method="withContext"/>
+      <factory service=".service_locator.QTEg3l6" method="withContext"/>
     </service>
-    <service id=".service_locator.2jJihj3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.5t30sgv" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
-        <argument key="App\Controller\Back\BackAssociationController::index" type="service_closure" id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()"/>
-        <argument key="App\Controller\Back\BackAssociationController::handleRubricForm" type="service_closure" id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()"/>
-        <argument key="App\Controller\Back\BackAssociationController::handleSectionForm" type="service_closure" id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()"/>
-        <argument key="App\Controller\Back\BackAssociationController::reorder" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()"/>
-        <argument key="App\Controller\Back\BackAssociationController::deleteSection" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackBeninController::index" type="service_closure" id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()"/>
-        <argument key="App\Controller\Back\BackBeninController::reorder" type="service_closure" id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()"/>
-        <argument key="App\Controller\Back\BackBeninController::deleteSection" type="service_closure" id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackContactController::index" type="service_closure" id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()"/>
-        <argument key="App\Controller\Back\BackContactController::reorder" type="service_closure" id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()"/>
-        <argument key="App\Controller\Back\BackContactController::deleteSection" type="service_closure" id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackFranceController::index" type="service_closure" id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()"/>
-        <argument key="App\Controller\Back\BackFranceController::reorder" type="service_closure" id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()"/>
-        <argument key="App\Controller\Back\BackFranceController::deleteSection" type="service_closure" id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackHomeController::index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()"/>
-        <argument key="App\Controller\Back\BackHomeController::reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()"/>
-        <argument key="App\Controller\Back\BackHomeController::deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackReportsController::index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()"/>
-        <argument key="App\Controller\Back\BackResourcesController::index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()"/>
-        <argument key="App\Controller\Back\BackTeamController::index" type="service_closure" id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()"/>
-        <argument key="App\Controller\Back\BackTrainingController::index" type="service_closure" id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()"/>
-        <argument key="App\Controller\Back\BackTrainingController::reorder" type="service_closure" id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()"/>
-        <argument key="App\Controller\Back\BackTrainingController::deleteSection" type="service_closure" id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()"/>
-        <argument key="App\Controller\Front\AssociationController::index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()"/>
-        <argument key="App\Controller\Front\BeninController::index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()"/>
-        <argument key="App\Controller\Front\ContactController::index" type="service_closure" id=".service_locator.8vsY0c0.App\Controller\Front\ContactController::index()"/>
-        <argument key="App\Controller\Front\EulogyController::index" type="service_closure" id=".service_locator.6nm.BDv.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\FranceController::index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()"/>
-        <argument key="App\Controller\Front\HomeController::index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController::index" type="service_closure" id=".service_locator.EI_zEQu.App\Controller\Back\BackAssociationController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController::reorder" type="service_closure" id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::reorder()"/>
+        <argument key="App\Controller\Back\BackAssociationController::deleteSection" type="service_closure" id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackAssociationController::updateSection" type="service_closure" id=".service_locator.bmVmXZV.App\Controller\Back\BackAssociationController::updateSection()"/>
+        <argument key="App\Controller\Back\BackBeninController::index" type="service_closure" id=".service_locator.6vuyikC.App\Controller\Back\BackBeninController::index()"/>
+        <argument key="App\Controller\Back\BackBeninController::reorder" type="service_closure" id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::reorder()"/>
+        <argument key="App\Controller\Back\BackBeninController::deleteSection" type="service_closure" id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackBeninController::updateSection" type="service_closure" id=".service_locator.uZ4x_YA.App\Controller\Back\BackBeninController::updateSection()"/>
+        <argument key="App\Controller\Back\BackContactController::index" type="service_closure" id=".service_locator.xEBjgFy.App\Controller\Back\BackContactController::index()"/>
+        <argument key="App\Controller\Back\BackContactController::reorder" type="service_closure" id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::reorder()"/>
+        <argument key="App\Controller\Back\BackContactController::deleteSection" type="service_closure" id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackContactController::updateSection" type="service_closure" id=".service_locator.STfA._f.App\Controller\Back\BackContactController::updateSection()"/>
+        <argument key="App\Controller\Back\BackFranceController::index" type="service_closure" id=".service_locator.1oE2OgZ.App\Controller\Back\BackFranceController::index()"/>
+        <argument key="App\Controller\Back\BackFranceController::reorder" type="service_closure" id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::reorder()"/>
+        <argument key="App\Controller\Back\BackFranceController::deleteSection" type="service_closure" id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackFranceController::updateSection" type="service_closure" id=".service_locator.fo1fsoR.App\Controller\Back\BackFranceController::updateSection()"/>
+        <argument key="App\Controller\Back\BackHomeController::index" type="service_closure" id=".service_locator.3TYMTGb.App\Controller\Back\BackHomeController::index()"/>
+        <argument key="App\Controller\Back\BackHomeController::reorder" type="service_closure" id=".service_locator.bBA7VZC.App\Controller\Back\BackHomeController::reorder()"/>
+        <argument key="App\Controller\Back\BackHomeController::deleteSection" type="service_closure" id=".service_locator.hk1F7T2.App\Controller\Back\BackHomeController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackHomeController::updateSection" type="service_closure" id=".service_locator.odMH2p..App\Controller\Back\BackHomeController::updateSection()"/>
+        <argument key="App\Controller\Back\BackReportsController::index" type="service_closure" id=".service_locator.ycGv3vr.App\Controller\Back\BackReportsController::index()"/>
+        <argument key="App\Controller\Back\BackReportsController::reorderSections" type="service_closure" id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::reorderSections()"/>
+        <argument key="App\Controller\Back\BackReportsController::reorderReports" type="service_closure" id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::reorderReports()"/>
+        <argument key="App\Controller\Back\BackReportsController::deleteSection" type="service_closure" id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackReportsController::deleteReports" type="service_closure" id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::deleteReports()"/>
+        <argument key="App\Controller\Back\BackReportsController::updateSection" type="service_closure" id=".service_locator.qbX.9Ua.App\Controller\Back\BackReportsController::updateSection()"/>
+        <argument key="App\Controller\Back\BackReportsController::updateReport" type="service_closure" id=".service_locator.UgpELRB.App\Controller\Back\BackReportsController::updateReport()"/>
+        <argument key="App\Controller\Back\BackResourcesController::index" type="service_closure" id=".service_locator.VfSoo4g.App\Controller\Back\BackResourcesController::index()"/>
+        <argument key="App\Controller\Back\BackResourcesController::reorder" type="service_closure" id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::reorder()"/>
+        <argument key="App\Controller\Back\BackResourcesController::deleteSection" type="service_closure" id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackResourcesController::updateSection" type="service_closure" id=".service_locator.2VwDEOe.App\Controller\Back\BackResourcesController::updateSection()"/>
+        <argument key="App\Controller\Back\BackTeamController::index" type="service_closure" id=".service_locator.ffZQjoL.App\Controller\Back\BackTeamController::index()"/>
+        <argument key="App\Controller\Back\BackTeamController::reorder" type="service_closure" id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::reorder()"/>
+        <argument key="App\Controller\Back\BackTeamController::deleteSection" type="service_closure" id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackTeamController::updateSection" type="service_closure" id=".service_locator.OMdWYy3.App\Controller\Back\BackTeamController::updateSection()"/>
+        <argument key="App\Controller\Back\BackTrainingController::index" type="service_closure" id=".service_locator.uK1NkMx.App\Controller\Back\BackTrainingController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController::reorder" type="service_closure" id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::reorder()"/>
+        <argument key="App\Controller\Back\BackTrainingController::deleteSection" type="service_closure" id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackTrainingController::updateSection" type="service_closure" id=".service_locator.Apg8RDI.App\Controller\Back\BackTrainingController::updateSection()"/>
+        <argument key="App\Controller\Front\AssociationController::index" type="service_closure" id=".service_locator.sqOdzrj.App\Controller\Front\AssociationController::index()"/>
+        <argument key="App\Controller\Front\BeninController::index" type="service_closure" id=".service_locator.EVE4Kg6.App\Controller\Front\BeninController::index()"/>
+        <argument key="App\Controller\Front\ContactController::index" type="service_closure" id=".service_locator.uuE1BG2.App\Controller\Front\ContactController::index()"/>
+        <argument key="App\Controller\Front\EulogyController::index" type="service_closure" id=".service_locator.dl0GJRA.App\Controller\Front\EulogyController::index()"/>
+        <argument key="App\Controller\Front\FranceController::index" type="service_closure" id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\HomeController::index" type="service_closure" id=".service_locator.NefUXrV.App\Controller\Front\HomeController::index()"/>
         <argument key="App\Controller\Front\ReportsController::index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController::index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
-        <argument key="App\Controller\Front\TeamController::index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()"/>
-        <argument key="App\Controller\Front\TrainingController::index" type="service_closure" id=".service_locator.oFZcE36.App\Controller\Front\TrainingController::index()"/>
+        <argument key="App\Controller\Front\TeamController::index" type="service_closure" id=".service_locator.yNBWWB4.App\Controller\Front\TeamController::index()"/>
+        <argument key="App\Controller\Front\TrainingController::index" type="service_closure" id=".service_locator.QTEg3l6.App\Controller\Front\TrainingController::index()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
-        <argument key="App\Controller\Back\BackAssociationController:index" type="service_closure" id=".service_locator.11sYaYh.App\Controller\Back\BackAssociationController::index()"/>
-        <argument key="App\Controller\Back\BackAssociationController:handleRubricForm" type="service_closure" id=".service_locator.b1ZyAoQ.App\Controller\Back\BackAssociationController::handleRubricForm()"/>
-        <argument key="App\Controller\Back\BackAssociationController:handleSectionForm" type="service_closure" id=".service_locator.rSL8OJU.App\Controller\Back\BackAssociationController::handleSectionForm()"/>
-        <argument key="App\Controller\Back\BackAssociationController:reorder" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::reorder()"/>
-        <argument key="App\Controller\Back\BackAssociationController:deleteSection" type="service_closure" id=".service_locator.whyDmFb.App\Controller\Back\BackAssociationController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackBeninController:index" type="service_closure" id=".service_locator.NCf3AGv.App\Controller\Back\BackBeninController::index()"/>
-        <argument key="App\Controller\Back\BackBeninController:reorder" type="service_closure" id=".service_locator.6vnwkNC.App\Controller\Back\BackBeninController::reorder()"/>
-        <argument key="App\Controller\Back\BackBeninController:deleteSection" type="service_closure" id=".service_locator.qGyHLd4.App\Controller\Back\BackBeninController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackContactController:index" type="service_closure" id=".service_locator.1Bu5FyK.App\Controller\Back\BackContactController::index()"/>
-        <argument key="App\Controller\Back\BackContactController:reorder" type="service_closure" id=".service_locator.aUL2ydZ.App\Controller\Back\BackContactController::reorder()"/>
-        <argument key="App\Controller\Back\BackContactController:deleteSection" type="service_closure" id=".service_locator.TuprJmk.App\Controller\Back\BackContactController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackFranceController:index" type="service_closure" id=".service_locator.R2kNMZw.App\Controller\Back\BackFranceController::index()"/>
-        <argument key="App\Controller\Back\BackFranceController:reorder" type="service_closure" id=".service_locator.Vqj5Gh2.App\Controller\Back\BackFranceController::reorder()"/>
-        <argument key="App\Controller\Back\BackFranceController:deleteSection" type="service_closure" id=".service_locator.55uwPaS.App\Controller\Back\BackFranceController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackHomeController:index" type="service_closure" id=".service_locator.wjUIYeS.App\Controller\Back\BackHomeController::index()"/>
-        <argument key="App\Controller\Back\BackHomeController:reorder" type="service_closure" id=".service_locator.xev.s3F.App\Controller\Back\BackHomeController::reorder()"/>
-        <argument key="App\Controller\Back\BackHomeController:deleteSection" type="service_closure" id=".service_locator.muIksVi.App\Controller\Back\BackHomeController::deleteSection()"/>
-        <argument key="App\Controller\Back\BackReportsController:index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackReportsController::index()"/>
-        <argument key="App\Controller\Back\BackResourcesController:index" type="service_closure" id=".service_locator.VZOaOeK.App\Controller\Back\BackResourcesController::index()"/>
-        <argument key="App\Controller\Back\BackTeamController:index" type="service_closure" id=".service_locator.aTuUyIw.App\Controller\Back\BackTeamController::index()"/>
-        <argument key="App\Controller\Back\BackTrainingController:index" type="service_closure" id=".service_locator.fbKuneD.App\Controller\Back\BackTrainingController::index()"/>
-        <argument key="App\Controller\Back\BackTrainingController:reorder" type="service_closure" id=".service_locator.g0Filo0.App\Controller\Back\BackTrainingController::reorder()"/>
-        <argument key="App\Controller\Back\BackTrainingController:deleteSection" type="service_closure" id=".service_locator.319A.rk.App\Controller\Back\BackTrainingController::deleteSection()"/>
-        <argument key="App\Controller\Front\AssociationController:index" type="service_closure" id=".service_locator.TEfXQB1.App\Controller\Front\AssociationController::index()"/>
-        <argument key="App\Controller\Front\BeninController:index" type="service_closure" id=".service_locator.YKtU2F0.App\Controller\Front\BeninController::index()"/>
-        <argument key="App\Controller\Front\ContactController:index" type="service_closure" id=".service_locator.8vsY0c0.App\Controller\Front\ContactController::index()"/>
-        <argument key="App\Controller\Front\EulogyController:index" type="service_closure" id=".service_locator.6nm.BDv.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\FranceController:index" type="service_closure" id=".service_locator.YwLLdgS.App\Controller\Front\FranceController::index()"/>
-        <argument key="App\Controller\Front\HomeController:index" type="service_closure" id=".service_locator.im4p1JQ.App\Controller\Front\HomeController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController:index" type="service_closure" id=".service_locator.EI_zEQu.App\Controller\Back\BackAssociationController::index()"/>
+        <argument key="App\Controller\Back\BackAssociationController:reorder" type="service_closure" id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::reorder()"/>
+        <argument key="App\Controller\Back\BackAssociationController:deleteSection" type="service_closure" id=".service_locator.iGXuiaN.App\Controller\Back\BackAssociationController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackAssociationController:updateSection" type="service_closure" id=".service_locator.bmVmXZV.App\Controller\Back\BackAssociationController::updateSection()"/>
+        <argument key="App\Controller\Back\BackBeninController:index" type="service_closure" id=".service_locator.6vuyikC.App\Controller\Back\BackBeninController::index()"/>
+        <argument key="App\Controller\Back\BackBeninController:reorder" type="service_closure" id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::reorder()"/>
+        <argument key="App\Controller\Back\BackBeninController:deleteSection" type="service_closure" id=".service_locator.YATitvB.App\Controller\Back\BackBeninController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackBeninController:updateSection" type="service_closure" id=".service_locator.uZ4x_YA.App\Controller\Back\BackBeninController::updateSection()"/>
+        <argument key="App\Controller\Back\BackContactController:index" type="service_closure" id=".service_locator.xEBjgFy.App\Controller\Back\BackContactController::index()"/>
+        <argument key="App\Controller\Back\BackContactController:reorder" type="service_closure" id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::reorder()"/>
+        <argument key="App\Controller\Back\BackContactController:deleteSection" type="service_closure" id=".service_locator.T9.Dg1_.App\Controller\Back\BackContactController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackContactController:updateSection" type="service_closure" id=".service_locator.STfA._f.App\Controller\Back\BackContactController::updateSection()"/>
+        <argument key="App\Controller\Back\BackFranceController:index" type="service_closure" id=".service_locator.1oE2OgZ.App\Controller\Back\BackFranceController::index()"/>
+        <argument key="App\Controller\Back\BackFranceController:reorder" type="service_closure" id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::reorder()"/>
+        <argument key="App\Controller\Back\BackFranceController:deleteSection" type="service_closure" id=".service_locator.D84RG2s.App\Controller\Back\BackFranceController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackFranceController:updateSection" type="service_closure" id=".service_locator.fo1fsoR.App\Controller\Back\BackFranceController::updateSection()"/>
+        <argument key="App\Controller\Back\BackHomeController:index" type="service_closure" id=".service_locator.3TYMTGb.App\Controller\Back\BackHomeController::index()"/>
+        <argument key="App\Controller\Back\BackHomeController:reorder" type="service_closure" id=".service_locator.bBA7VZC.App\Controller\Back\BackHomeController::reorder()"/>
+        <argument key="App\Controller\Back\BackHomeController:deleteSection" type="service_closure" id=".service_locator.hk1F7T2.App\Controller\Back\BackHomeController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackHomeController:updateSection" type="service_closure" id=".service_locator.odMH2p..App\Controller\Back\BackHomeController::updateSection()"/>
+        <argument key="App\Controller\Back\BackReportsController:index" type="service_closure" id=".service_locator.ycGv3vr.App\Controller\Back\BackReportsController::index()"/>
+        <argument key="App\Controller\Back\BackReportsController:reorderSections" type="service_closure" id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::reorderSections()"/>
+        <argument key="App\Controller\Back\BackReportsController:reorderReports" type="service_closure" id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::reorderReports()"/>
+        <argument key="App\Controller\Back\BackReportsController:deleteSection" type="service_closure" id=".service_locator.go9o6hW.App\Controller\Back\BackReportsController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackReportsController:deleteReports" type="service_closure" id=".service_locator.kDll0D4.App\Controller\Back\BackReportsController::deleteReports()"/>
+        <argument key="App\Controller\Back\BackReportsController:updateSection" type="service_closure" id=".service_locator.qbX.9Ua.App\Controller\Back\BackReportsController::updateSection()"/>
+        <argument key="App\Controller\Back\BackReportsController:updateReport" type="service_closure" id=".service_locator.UgpELRB.App\Controller\Back\BackReportsController::updateReport()"/>
+        <argument key="App\Controller\Back\BackResourcesController:index" type="service_closure" id=".service_locator.VfSoo4g.App\Controller\Back\BackResourcesController::index()"/>
+        <argument key="App\Controller\Back\BackResourcesController:reorder" type="service_closure" id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::reorder()"/>
+        <argument key="App\Controller\Back\BackResourcesController:deleteSection" type="service_closure" id=".service_locator.SYBE0Wn.App\Controller\Back\BackResourcesController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackResourcesController:updateSection" type="service_closure" id=".service_locator.2VwDEOe.App\Controller\Back\BackResourcesController::updateSection()"/>
+        <argument key="App\Controller\Back\BackTeamController:index" type="service_closure" id=".service_locator.ffZQjoL.App\Controller\Back\BackTeamController::index()"/>
+        <argument key="App\Controller\Back\BackTeamController:reorder" type="service_closure" id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::reorder()"/>
+        <argument key="App\Controller\Back\BackTeamController:deleteSection" type="service_closure" id=".service_locator.wg2Ej9a.App\Controller\Back\BackTeamController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackTeamController:updateSection" type="service_closure" id=".service_locator.OMdWYy3.App\Controller\Back\BackTeamController::updateSection()"/>
+        <argument key="App\Controller\Back\BackTrainingController:index" type="service_closure" id=".service_locator.uK1NkMx.App\Controller\Back\BackTrainingController::index()"/>
+        <argument key="App\Controller\Back\BackTrainingController:reorder" type="service_closure" id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::reorder()"/>
+        <argument key="App\Controller\Back\BackTrainingController:deleteSection" type="service_closure" id=".service_locator.9.k_.jH.App\Controller\Back\BackTrainingController::deleteSection()"/>
+        <argument key="App\Controller\Back\BackTrainingController:updateSection" type="service_closure" id=".service_locator.Apg8RDI.App\Controller\Back\BackTrainingController::updateSection()"/>
+        <argument key="App\Controller\Front\AssociationController:index" type="service_closure" id=".service_locator.sqOdzrj.App\Controller\Front\AssociationController::index()"/>
+        <argument key="App\Controller\Front\BeninController:index" type="service_closure" id=".service_locator.EVE4Kg6.App\Controller\Front\BeninController::index()"/>
+        <argument key="App\Controller\Front\ContactController:index" type="service_closure" id=".service_locator.uuE1BG2.App\Controller\Front\ContactController::index()"/>
+        <argument key="App\Controller\Front\EulogyController:index" type="service_closure" id=".service_locator.dl0GJRA.App\Controller\Front\EulogyController::index()"/>
+        <argument key="App\Controller\Front\FranceController:index" type="service_closure" id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\HomeController:index" type="service_closure" id=".service_locator.NefUXrV.App\Controller\Front\HomeController::index()"/>
         <argument key="App\Controller\Front\ReportsController:index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController:index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
-        <argument key="App\Controller\Front\TeamController:index" type="service_closure" id=".service_locator.Oq5L5Qp.App\Controller\Front\TeamController::index()"/>
-        <argument key="App\Controller\Front\TrainingController:index" type="service_closure" id=".service_locator.oFZcE36.App\Controller\Front\TrainingController::index()"/>
+        <argument key="App\Controller\Front\TeamController:index" type="service_closure" id=".service_locator.yNBWWB4.App\Controller\Front\TeamController::index()"/>
+        <argument key="App\Controller\Front\TrainingController:index" type="service_closure" id=".service_locator.QTEg3l6.App\Controller\Front\TrainingController::index()"/>
       </argument>
     </service>
     <service id=".service_locator.S9tnIXR" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -9814,24 +10091,27 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.EYYrhyJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.qqaqIbc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ActionType" type="service_closure" id="App\Form\ActionType"/>
-        <argument key="App\Form\AssociationSectionType" type="service_closure" id="App\Form\AssociationSectionType"/>
-        <argument key="App\Form\BeninSectionType" type="service_closure" id="App\Form\BeninSectionType"/>
         <argument key="App\Form\ContactInfoType" type="service_closure" id="App\Form\ContactInfoType"/>
-        <argument key="App\Form\ContactSectionType" type="service_closure" id="App\Form\ContactSectionType"/>
-        <argument key="App\Form\EulogySectionType" type="service_closure" id="App\Form\EulogySectionType"/>
-        <argument key="App\Form\FranceSectionType" type="service_closure" id="App\Form\FranceSectionType"/>
+        <argument key="App\Form\ContactType" type="service_closure" id="App\Form\ContactType"/>
         <argument key="App\Form\HomeSectionPositionType" type="service_closure" id="App\Form\HomeSectionPositionType"/>
-        <argument key="App\Form\HomeSectionType" type="service_closure" id="App\Form\HomeSectionType"/>
         <argument key="App\Form\ReportsType" type="service_closure" id="App\Form\ReportsType"/>
         <argument key="App\Form\RubricInfoType" type="service_closure" id="App\Form\RubricInfoType"/>
-        <argument key="App\Form\SectionType" type="service_closure" id="App\Form\SectionType"/>
-        <argument key="App\Form\TeamSectionType" type="service_closure" id="App\Form\TeamSectionType"/>
+        <argument key="App\Form\SectionForms\AssociationSectionType" type="service_closure" id="App\Form\SectionForms\AssociationSectionType"/>
+        <argument key="App\Form\SectionForms\BeninSectionType" type="service_closure" id="App\Form\SectionForms\BeninSectionType"/>
+        <argument key="App\Form\SectionForms\ContactSectionType" type="service_closure" id="App\Form\SectionForms\ContactSectionType"/>
+        <argument key="App\Form\SectionForms\EulogySectionType" type="service_closure" id="App\Form\SectionForms\EulogySectionType"/>
+        <argument key="App\Form\SectionForms\FranceSectionType" type="service_closure" id="App\Form\SectionForms\FranceSectionType"/>
+        <argument key="App\Form\SectionForms\HomeSectionType" type="service_closure" id="App\Form\SectionForms\HomeSectionType"/>
+        <argument key="App\Form\SectionForms\ReportsSectionType" type="service_closure" id="App\Form\SectionForms\ReportsSectionType"/>
+        <argument key="App\Form\SectionForms\ResourcesSectionType" type="service_closure" id="App\Form\SectionForms\ResourcesSectionType"/>
+        <argument key="App\Form\SectionForms\SectionType" type="service_closure" id="App\Form\SectionForms\SectionType"/>
+        <argument key="App\Form\SectionForms\TeamSectionType" type="service_closure" id="App\Form\SectionForms\TeamSectionType"/>
+        <argument key="App\Form\SectionForms\TrainingSectionType" type="service_closure" id="App\Form\SectionForms\TrainingSectionType"/>
         <argument key="App\Form\TeamType" type="service_closure" id="App\Form\TeamType"/>
-        <argument key="App\Form\TrainingSectionType" type="service_closure" id="App\Form\TrainingSectionType"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service_closure" id="form.type.form"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -9981,25 +10261,27 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.3aloJKe" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.1KspfgY" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
-        <argument key="App\Repository\AssociationSectionRepository" type="service_closure" id="App\Repository\AssociationSectionRepository"/>
-        <argument key="App\Repository\BeninSectionRepository" type="service_closure" id="App\Repository\BeninSectionRepository"/>
         <argument key="App\Repository\CarouselImageRepository" type="service_closure" id="App\Repository\CarouselImageRepository"/>
         <argument key="App\Repository\ContactInfoRepository" type="service_closure" id="App\Repository\ContactInfoRepository"/>
-        <argument key="App\Repository\ContactSectionRepository" type="service_closure" id="App\Repository\ContactSectionRepository"/>
-        <argument key="App\Repository\EulogySectionRepository" type="service_closure" id="App\Repository\EulogySectionRepository"/>
-        <argument key="App\Repository\FranceSectionRepository" type="service_closure" id="App\Repository\FranceSectionRepository"/>
         <argument key="App\Repository\GalleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
-        <argument key="App\Repository\HomeSectionRepository" type="service_closure" id="App\Repository\HomeSectionRepository"/>
         <argument key="App\Repository\ReportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
         <argument key="App\Repository\RubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="App\Repository\SectionRepository" type="service_closure" id="App\Repository\SectionRepository"/>
+        <argument key="App\Repository\Section\AssociationSectionRepository" type="service_closure" id="App\Repository\Section\AssociationSectionRepository"/>
+        <argument key="App\Repository\Section\BeninSectionRepository" type="service_closure" id="App\Repository\Section\BeninSectionRepository"/>
+        <argument key="App\Repository\Section\ContactSectionRepository" type="service_closure" id="App\Repository\Section\ContactSectionRepository"/>
+        <argument key="App\Repository\Section\EulogySectionRepository" type="service_closure" id="App\Repository\Section\EulogySectionRepository"/>
+        <argument key="App\Repository\Section\FranceSectionRepository" type="service_closure" id="App\Repository\Section\FranceSectionRepository"/>
+        <argument key="App\Repository\Section\HomeSectionRepository" type="service_closure" id="App\Repository\Section\HomeSectionRepository"/>
+        <argument key="App\Repository\Section\ReportsSectionRepository" type="service_closure" id="App\Repository\Section\ReportsSectionRepository"/>
+        <argument key="App\Repository\Section\ResourcesSectionRepository" type="service_closure" id="App\Repository\Section\ResourcesSectionRepository"/>
+        <argument key="App\Repository\Section\SectionRepository" type="service_closure" id="App\Repository\Section\SectionRepository"/>
+        <argument key="App\Repository\Section\TeamSectionRepository" type="service_closure" id="App\Repository\Section\TeamSectionRepository"/>
+        <argument key="App\Repository\Section\TrainingSectionRepository" type="service_closure" id="App\Repository\Section\TrainingSectionRepository"/>
         <argument key="App\Repository\TeamRepository" type="service_closure" id="App\Repository\TeamRepository"/>
-        <argument key="App\Repository\TeamSectionRepository" type="service_closure" id="App\Repository\TeamSectionRepository"/>
-        <argument key="App\Repository\TrainingSectionRepository" type="service_closure" id="App\Repository\TrainingSectionRepository"/>
       </argument>
     </service>
     <service id=".service_locator.W55Po6X" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -10881,6 +11163,36 @@
     </service>
     <service id=".errored..service_locator.1vYpZ1B.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.1vYpZ1B&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.bmVmXZV.App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.bmVmXZV&quot;: it needs an instance of &quot;App\Entity\Section\AssociationSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.uZ4x_YA.App\Entity\Section\BeninSection" class="App\Entity\Section\BeninSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.uZ4x_YA&quot;: it needs an instance of &quot;App\Entity\Section\BeninSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.STfA._f.App\Entity\Section\ContactSection" class="App\Entity\Section\ContactSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.STfA._f&quot;: it needs an instance of &quot;App\Entity\Section\ContactSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.fo1fsoR.App\Entity\Section\FranceSection" class="App\Entity\Section\FranceSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.fo1fsoR&quot;: it needs an instance of &quot;App\Entity\Section\FranceSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.odMH2p..App\Entity\Section\HomeSection" class="App\Entity\Section\HomeSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.odMH2p.&quot;: it needs an instance of &quot;App\Entity\Section\HomeSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.qbX.9Ua.App\Entity\Section\ReportsSection" class="App\Entity\Section\ReportsSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.qbX.9Ua&quot;: it needs an instance of &quot;App\Entity\Section\ReportsSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.UgpELRB.App\Entity\Reports" class="App\Entity\Reports">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.UgpELRB&quot;: it needs an instance of &quot;App\Entity\Reports&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.2VwDEOe.App\Entity\Section\ResourcesSection" class="App\Entity\Section\ResourcesSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.2VwDEOe&quot;: it needs an instance of &quot;App\Entity\Section\ResourcesSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.OMdWYy3.App\Entity\Section\TeamSection" class="App\Entity\Section\TeamSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.OMdWYy3&quot;: it needs an instance of &quot;App\Entity\Section\TeamSection&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.Apg8RDI.App\Entity\Section\TrainingSection" class="App\Entity\Section\TrainingSection">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.Apg8RDI&quot;: it needs an instance of &quot;App\Entity\Section\TrainingSection&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
@@ -12192,7 +12504,7 @@
     <service id="Symfony\UX\TwigComponent\ComponentRendererInterface" alias="ux.twig_component.component_renderer"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.2jJihj3"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5t30sgv"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request.logger" alias="monolog.logger.request"/>
@@ -12252,37 +12564,46 @@
     <service id=".signing.messenger.default_serializer.inner" alias="messenger.transport.native_php_serializer"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.c0wzfI4" alias=".service_locator.1vYpZ1B"/>
-    <service id=".service_locator.WgdH5aC" alias=".service_locator.11sYaYh"/>
-    <service id=".service_locator.OmqTGrz" alias=".service_locator.b1ZyAoQ"/>
-    <service id=".service_locator.0hFmbPX" alias=".service_locator.rSL8OJU"/>
-    <service id=".service_locator.Yr45Vyn" alias=".service_locator.whyDmFb"/>
-    <service id=".service_locator.vBOQZzR" alias=".service_locator.NCf3AGv"/>
-    <service id=".service_locator.F3UiVlV" alias=".service_locator.6vnwkNC"/>
-    <service id=".service_locator.JCdY6SZ" alias=".service_locator.qGyHLd4"/>
-    <service id=".service_locator.gRuAPBE" alias=".service_locator.1Bu5FyK"/>
-    <service id=".service_locator.fHIoEO7" alias=".service_locator.aUL2ydZ"/>
-    <service id=".service_locator.Xw7Mq_C" alias=".service_locator.TuprJmk"/>
-    <service id=".service_locator.mVLteHc" alias=".service_locator.R2kNMZw"/>
-    <service id=".service_locator.169xr4Q" alias=".service_locator.Vqj5Gh2"/>
-    <service id=".service_locator.5noV6xF" alias=".service_locator.55uwPaS"/>
-    <service id=".service_locator.DP0v.69" alias=".service_locator.wjUIYeS"/>
-    <service id=".service_locator.H15i4hC" alias=".service_locator.xev.s3F"/>
-    <service id=".service_locator.dmKnHob" alias=".service_locator.muIksVi"/>
-    <service id=".service_locator.R8mjXpG" alias=".service_locator.VZOaOeK"/>
-    <service id=".service_locator.6NgXwz_" alias=".service_locator.aTuUyIw"/>
-    <service id=".service_locator.77m9IBT" alias=".service_locator.fbKuneD"/>
-    <service id=".service_locator.tEV46zB" alias=".service_locator.g0Filo0"/>
-    <service id=".service_locator.FOJuJDR" alias=".service_locator.319A.rk"/>
-    <service id=".service_locator.CGqN9ZF" alias=".service_locator.TEfXQB1"/>
-    <service id=".service_locator.06MnT8K" alias=".service_locator.YKtU2F0"/>
-    <service id=".service_locator.VeUUDFT" alias=".service_locator.8vsY0c0"/>
-    <service id=".service_locator.KcgBAt6" alias=".service_locator.6nm.BDv"/>
-    <service id=".service_locator.9TPHj78" alias=".service_locator.YwLLdgS"/>
-    <service id=".service_locator.85V_EkA" alias=".service_locator.im4p1JQ"/>
+    <service id=".service_locator..qN4_PM" alias=".service_locator.EI_zEQu"/>
+    <service id=".service_locator.uOrKZYy" alias=".service_locator.iGXuiaN"/>
+    <service id=".service_locator._SlvLgN" alias=".service_locator.bmVmXZV"/>
+    <service id=".service_locator.huphP3L" alias=".service_locator.6vuyikC"/>
+    <service id=".service_locator.9ebx0ct" alias=".service_locator.YATitvB"/>
+    <service id=".service_locator.vameihx" alias=".service_locator.uZ4x_YA"/>
+    <service id=".service_locator.T5NwBaZ" alias=".service_locator.xEBjgFy"/>
+    <service id=".service_locator.JKaH11u" alias=".service_locator.T9.Dg1_"/>
+    <service id=".service_locator.0zpHEWm" alias=".service_locator.STfA._f"/>
+    <service id=".service_locator.bknuU2I" alias=".service_locator.1oE2OgZ"/>
+    <service id=".service_locator.4YblcKq" alias=".service_locator.D84RG2s"/>
+    <service id=".service_locator.Q4hNslg" alias=".service_locator.fo1fsoR"/>
+    <service id=".service_locator.n9DhYIn" alias=".service_locator.3TYMTGb"/>
+    <service id=".service_locator.45AWSGg" alias=".service_locator.bBA7VZC"/>
+    <service id=".service_locator.kergLyV" alias=".service_locator.hk1F7T2"/>
+    <service id=".service_locator.WG35u2b" alias=".service_locator.odMH2p."/>
+    <service id=".service_locator.O7SqzlR" alias=".service_locator.ycGv3vr"/>
+    <service id=".service_locator.HGV2rWa" alias=".service_locator.go9o6hW"/>
+    <service id=".service_locator.19SymW1" alias=".service_locator.kDll0D4"/>
+    <service id=".service_locator.uQN9ZAK" alias=".service_locator.qbX.9Ua"/>
+    <service id=".service_locator.OLy13IN" alias=".service_locator.UgpELRB"/>
+    <service id=".service_locator.ZTjC2oB" alias=".service_locator.VfSoo4g"/>
+    <service id=".service_locator.jEfiZxE" alias=".service_locator.SYBE0Wn"/>
+    <service id=".service_locator.nPlRt3N" alias=".service_locator.2VwDEOe"/>
+    <service id=".service_locator.uxqxLS5" alias=".service_locator.ffZQjoL"/>
+    <service id=".service_locator.J11jcRJ" alias=".service_locator.wg2Ej9a"/>
+    <service id=".service_locator.n59Fo6F" alias=".service_locator.OMdWYy3"/>
+    <service id=".service_locator.1N2ujkO" alias=".service_locator.uK1NkMx"/>
+    <service id=".service_locator.3nyEZKC" alias=".service_locator.9.k_.jH"/>
+    <service id=".service_locator..vlhlhJ" alias=".service_locator.Apg8RDI"/>
+    <service id=".service_locator.X8Rq7Ga" alias=".service_locator.sqOdzrj"/>
+    <service id=".service_locator.VK63P2R" alias=".service_locator.EVE4Kg6"/>
+    <service id=".service_locator.qWZmEbF" alias=".service_locator.uuE1BG2"/>
+    <service id=".service_locator.O8H5riy" alias=".service_locator.dl0GJRA"/>
+    <service id=".service_locator.zmdhKSU" alias=".service_locator.gZeYome"/>
+    <service id=".service_locator.9W2L2hj" alias=".service_locator.NefUXrV"/>
     <service id=".service_locator.NMeYi2k" alias=".service_locator.8qDVmy4"/>
     <service id=".service_locator.8cc4KA." alias=".service_locator.2jP_vBB"/>
-    <service id=".service_locator.A0vZGnq" alias=".service_locator.Oq5L5Qp"/>
-    <service id=".service_locator.dM3.bR1" alias=".service_locator.oFZcE36"/>
+    <service id=".service_locator.q7a_GXB" alias=".service_locator.yNBWWB4"/>
+    <service id=".service_locator._oRducJ" alias=".service_locator.QTEg3l6"/>
     <service id=".service_locator.D6tJ4Px" alias=".service_locator.TJNRSaV"/>
   </services>
 </container>

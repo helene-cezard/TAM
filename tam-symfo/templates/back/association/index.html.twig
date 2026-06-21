@@ -13,12 +13,10 @@
                 {% endif %}
                 {{ rubricInfo.text|raw }}
             </section>
+            {% include "back/partials/_rubric_info_form.html.twig" %}
             <section class="form">
-            <h2 class="subsection__title">Modifier l'en-tête</h2>
-            {% for image in galleryImages  %}
-            {# <img class="get_asset_url" src="{{ asset(image.getPath) }}" alt=""> #}
-            {% endfor %}
-            {{ form(rubricInfoForm) }}
+                <h2 class="subsection__title">Sections</h2>
+                {{ form(rubricInfoForm) }}
             </section>
             {% include "back/partials/_sections.html.twig" %}
         </section>

@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ReportsController extends AbstractController
 {
-    #[Route('/rapports-d-activite', name: 'app_who_reports')]
+    #[Route('/rapports', name: 'app_who_reports')]
     public function index(RubricInfoRepository $rubricInfoRepository, ReportsRepository $reportsRepository): Response
     {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_reports']);
@@ -22,5 +22,3 @@ final class ReportsController extends AbstractController
         ]);
     }
 }
-
-// convert RA_AssociationTAM2020.pdf[0] RA_AssociationTAM2020-thumbnail.jpg

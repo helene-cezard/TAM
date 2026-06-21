@@ -3,7 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Repository\CarouselImageRepository;
-use App\Repository\HomeSectionRepository;
+use App\Repository\Section\HomeSectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

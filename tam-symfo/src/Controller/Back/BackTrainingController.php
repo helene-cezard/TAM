@@ -2,9 +2,14 @@
 
 namespace App\Controller\Back;
 
-use App\Form\TrainingSectionType;
-use App\Repository\TrainingSectionRepository;
+use App\Entity\Section\TrainingSection;
+use App\Form\RubricInfoType;
+use App\Form\SectionForms\TrainingSectionType;
+use App\Repository\GalleryImageRepository;
+use App\Repository\Section\TrainingSectionRepository;
 use App\Repository\RubricInfoRepository;
+use App\Service\SubmitRubricInfo;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,43 +19,48 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BackTrainingController extends AbstractController
 {
-    #[Route('/admin/training', name: 'admin_training')]
+    #[Route('/admin/formation', name: 'admin_training')]
     public function index(
         TrainingSectionRepository $trainingSectionRepository,
         RubricInfoRepository $rubricInfoRepository,
+        GalleryImageRepository $galleryImageRepository,
         Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-        $sectionForm = $this->createForm(TrainingSectionType::class);
-        $sectionForm->handleRequest($request);
+        SubmitSections $submitSections,
+        SubmitRubricInfo $submitRubricInfo
+        ): Response {
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'training']);
+        $galleryImages = $galleryImageRepository->findAll();
+        $trainingSections = $trainingSectionRepository->findBy([], ['position' => 'ASC']);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $trainingSection = $sectionForm->getData();
-            $trainingSection->setPosition(count($trainingSectionRepository->findAll()) + 1); // Positionner la nouvelle section à la fin
-
-            $entityManager->persist($trainingSection);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Section ajoutée avec succès !');
-
+        // Gestion du formulaire de mise à jour de la rubrique
+        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        if ($rubricIsSubmitted) {
+            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
             return $this->redirectToRoute('admin_training');
         }
 
-        $trainingSections = $trainingSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_training']);
+        // Gestion du formulaire d'ajout de section
+        $sectionForm = $this->createForm(TrainingSectionType::class);
+        $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $trainingSectionRepository);
+        if ($sectionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
+            return $this->redirectToRoute('admin_training');
+        }
+
         return $this->render('back/training/index.html.twig', [
-            'controller_name' => 'BackBeninController',
-            'trainingSections' => $trainingSections,
+            'sections' => $trainingSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm->createView(),
+            'sectionForm' => $sectionForm,
+            'rubricInfoForm' => $rubricInfoForm,
+            'galleryImages' => $galleryImages,
         ]);
     }
 
-    #[Route('/admin/training/section_reorder', name: 'training_sections_reorder', methods: ['POST'])]
+    #[Route('/admin/training/section_reorder', name: 'admin_training_sections_reorder', methods: ['POST'])]
     public function reorder(
         Request $request,
-        TrainingSectionRepository $trainingSectionRepository,
+        TrainingSectionRepository $repository,
         EntityManagerInterface $entityManager
     ): JsonResponse {
 
@@ -58,7 +68,7 @@ final class BackTrainingController extends AbstractController
 
         foreach ($ids as $position => $id) {
 
-            $section = $trainingSectionRepository->find($id);
+            $section = $repository->find($id);
 
             if ($section) {
                 $section->setPosition($position + 1);
@@ -74,7 +84,7 @@ final class BackTrainingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/training/section_delete/{id}', name: 'training_section_delete')]
+    #[Route('/admin/training/section_delete/{id}', name: 'admin_training_section_delete')]
     public function deleteSection(
         TrainingSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -92,5 +102,28 @@ final class BackTrainingController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_training');
+    }
+
+    #[Route('/admin/training/section_update/{id}', name: 'admin_training_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        TrainingSection $trainingSection
+    )
+    {
+        $sectionForm = $this->createForm(TrainingSectionType::class, $trainingSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_training');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

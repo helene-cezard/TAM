@@ -42,11 +42,11 @@
         aspect-ratio: 16 / 9;
         border: none;
         border-radius: .5rem;
+        width: 100%;
 
-        //! Media querie inversée (max-width au lieu de min-width) pour s'assurer que la vidéo
-        //! prenne toute la largeur sur mobile, mais fasse la largeur du iframe sur desktop
-        @media screen and (max-width: variables.$breakpoint) {
-            width: 100%;
+        @media screen and (min-width: variables.$breakpoint) {
+            width: 560px;
+            height: 315px;
         }
     }
 
@@ -445,11 +445,25 @@
 
     &__videos {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         justify-content: space-between;
 
         @media screen and (min-width: variables.$breakpoint) {
             flex-direction: row;
+        }
+
+        & iframe, video {
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: none;
+            border-radius: .5rem;
+            width: 100%;
+
+            @media screen and (min-width: variables.$breakpoint) {
+                width: 560px;
+                height: 315px;
+            }
         }
     }
 

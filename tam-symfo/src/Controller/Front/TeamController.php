@@ -4,7 +4,7 @@ namespace App\Controller\Front;
 
 use App\Repository\RubricInfoRepository;
 use App\Repository\TeamRepository;
-use App\Repository\TeamSectionRepository;
+use App\Repository\Section\TeamSectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

@@ -2,22 +2,20 @@
 
 namespace App\Controller\Back;
 
-use App\Entity\GalleryImage;
-use App\Form\AssociationSectionType;
+use App\Entity\Section\AssociationSection;
+use App\Form\SectionForms\AssociationSectionType;
 use App\Form\RubricInfoType;
-use App\Repository\AssociationSectionRepository;
+use App\Repository\Section\AssociationSectionRepository;
 use App\Repository\GalleryImageRepository;
 use App\Repository\RubricInfoRepository;
+use App\Service\SubmitRubricInfo;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
-use Dom\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class BackAssociationController extends AbstractController
 {
@@ -26,100 +24,38 @@ final class BackAssociationController extends AbstractController
     public function index(
         AssociationSectionRepository $associationSectionRepository,
         RubricInfoRepository $rubricInfoRepository,
-        GalleryImageRepository $galleryImageRepository
-    ): Response {
-        $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);
+        GalleryImageRepository $galleryImageRepository,
+        Request $request,
+        SubmitSections $submitSections,
+        SubmitRubricInfo $submitRubricInfo
+        ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_association']);
         $galleryImages = $galleryImageRepository->findAll();
+        $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);
 
+        // Gestion du formulaire de mise à jour de la rubrique
+        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        if ($rubricIsSubmitted) {
+            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            return $this->redirectToRoute('admin_association');
+        }
 
-        $sectionForm = $this->createForm(AssociationSectionType::class, null, [
-            'action' => $this->generateUrl('admin_association_section'), // URL de soumission pour le formulaire de section
-        ]);
-        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo, [
-            'action' => $this->generateUrl('admin_association_rubric'), // URL de soumission pour le formulaire de rubrique
-        ]);
+        // Gestion du formulaire d'ajout de section
+        $sectionForm = $this->createForm(AssociationSectionType::class);
+        $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $associationSectionRepository);
+        if ($sectionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
+            return $this->redirectToRoute('admin_association');
+        }
 
         return $this->render('back/association/index.html.twig', [
             'sections' => $associationSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm->createView(),
-            'rubricInfoForm' => $rubricInfoForm->createView(),
+            'sectionForm' => $sectionForm,
+            'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
         ]);
-    }
-
-    #[Route('/admin/association/rubric', name: 'admin_association_rubric', methods: ['POST'])]
-    public function handleRubricForm(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        RubricInfoRepository $rubricInfoRepository,
-        SluggerInterface $slugger,
-        #[Autowire('%kernel.project_dir%/assets/images/uploadedImages')] string $imagesDirectory
-    ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_association']);
-        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
-        $rubricInfoForm->handleRequest($request);
-
-        if ($rubricInfoForm->isSubmitted() && $rubricInfoForm->isValid()) {
-            $image = $rubricInfoForm->get('uploadedImage')->getData();
-
-            if($image) {
-
-                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
-
-                try {
-                    $image->move(
-                        $imagesDirectory,
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // Gérer l'exception en cas d'erreur de téléchargement
-                    $this->addFlash('error', 'Erreur lors du téléchargement de l\'image : ' . $e->getMessage());
-                    return $this->redirectToRoute('admin_association');
-                }
-
-                $galleryImage = new GalleryImage();
-                $galleryImage->setPath('/images/uploadedImages/' . $newFilename);
-                //!Changer la valeur alt en fonction du contexte d'utilisation de l'image
-                $galleryImage->setAlt('Image de la rubrique');
-                $galleryImage->setAppears(false);
-
-                // Associer la nouvelle image à RubricInfo
-                $rubricInfo->setGalleryImage($galleryImage);
-                $entityManager->persist($galleryImage);
-            }
-
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
-        }
-
-        return $this->redirectToRoute('admin_association');
-    }
-
-    #[Route('/admin/association/section', name: 'admin_association_section', methods: ['POST'])]
-    public function handleSectionForm(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        AssociationSectionRepository $associationSectionRepository
-    ): Response {
-        $sectionForm = $this->createForm(AssociationSectionType::class);
-        $sectionForm->handleRequest($request);
-
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $associationSection = $sectionForm->getData();
-            $associationSection->setPosition(count($associationSectionRepository->findAll()) + 1);
-
-            $entityManager->persist($associationSection);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Section ajoutée avec succès !');
-        }
-
-        return $this->redirectToRoute('admin_association');
     }
 
     #[Route('/admin/association/section_reorder', name: 'admin_association_sections_reorder', methods: ['POST'])]
@@ -167,5 +103,28 @@ final class BackAssociationController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_association');
+    }
+
+    #[Route('/admin/association/section_update/{id}', name: 'admin_association_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        AssociationSection $associationSection
+    )
+    {
+        $sectionForm = $this->createForm(AssociationSectionType::class, $associationSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_association');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

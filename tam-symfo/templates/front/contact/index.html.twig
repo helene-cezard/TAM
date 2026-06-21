@@ -14,7 +14,6 @@
                     {{ rubricInfo.text|raw }}
                 </section>
                 <section class="contact__info">
-                {% dump contactInfo %}
                     <div>
                         Mail : <a href="mailto:{{ contactInfo.getEMail }}">{{ contactInfo.getEMail }}</a><br>
                         Téléphone : <a href="tel:{{ contactInfo.getPhone }}">{{ contactInfo.getPhone }}</a><br>
@@ -49,21 +48,7 @@
                         <br>
                         N’hésitez pas à nous contacter via notre formulaire ou par mail.
                     </p>
-                    <form action="" method="POST">
-                        <label for="name">Nom complet :</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" name="_replyto" required>
-
-                        <label for="object">Objet :</label>
-                        <input type="text" id="object" name="object" required>
-
-                        <label for="message">Message :</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-
-                        <button type="submit">Envoyer</button>
-                    </form>
+                    {{ form(form) }}
                 </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}

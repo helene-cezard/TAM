@@ -13,6 +13,11 @@
                     {% endif %}
                     {{ rubricInfo.text|raw }}
                 </section>
+                 {% include "back/partials/_rubric_info_form.html.twig" %}
+                    <section class="form">
+                        <h2 class="subsection__title">Sections</h2>
+                        {{ form(rubricInfoForm) }}
+                    </section>
                 {% include "back/partials/_sections.html.twig" %}
             </section>
         {% include "partials/_right_banner.html.twig" %}

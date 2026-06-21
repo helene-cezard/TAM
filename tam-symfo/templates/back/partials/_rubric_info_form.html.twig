@@ -1,0 +1,47 @@
+<section class="form">
+    <h2 class="subsection__title">Modifier l'en-tête</h2>
+
+    {{ form_start(rubricInfoForm) }}
+    {{ form_errors(rubricInfoForm) }}
+
+    {{ form_row(rubricInfoForm.title) }}
+    {{ form_row(rubricInfoForm.text) }}
+
+    {{ form_errors(rubricInfoForm.GalleryImage) }}
+    {{ form_label(rubricInfoForm.GalleryImage) }}
+    <div id="rubric_info_GalleryImage">
+        {% for choice in rubricInfoForm.GalleryImage %}
+        {% if choice.vars.id === 'rubric_info_GalleryImage_placeholder' %}
+            {{ form_widget(choice) }}
+            <label for="{{ choice.vars.id }}">
+                <p>{{ choice.vars.label }}</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg" alt="">
+            </label>
+        {% else %}
+            {{ form_widget(choice) }}
+            <label for="{{ choice.vars.id }}">
+                <p>{{ choice.vars.label }}</p>
+                <img src="{{ asset(galleryImages[loop.index - 2].path) }}" alt="">
+            </label>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    {{ form_row(rubricInfoForm.uploadedImage) }}
+    {{ form_errors(rubricInfoForm.alt) }}
+    <div class="form-label-with-help">
+        {{ form_label(rubricInfoForm.alt) }}
+
+        <span
+            class="help-tooltip"
+            title="{{ rubricInfoForm.alt.vars.help }}"
+        >
+        ⓘ
+        </span>
+    </div>
+
+
+    {{ form_widget(rubricInfoForm.alt) }}
+    {{ form_row(rubricInfoForm.save) }}
+    {{ form_end(rubricInfoForm) }}
+</section>

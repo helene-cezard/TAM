@@ -3,7 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Repository\RubricInfoRepository;
-use App\Repository\TrainingSectionRepository;
+use App\Repository\Section\TrainingSectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

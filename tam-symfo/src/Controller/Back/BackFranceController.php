@@ -2,9 +2,14 @@
 
 namespace App\Controller\Back;
 
-use App\Form\FranceSectionType;
-use App\Repository\FranceSectionRepository;
+use App\Entity\Section\FranceSection;
+use App\Form\SectionForms\FranceSectionType;
+use App\Form\RubricInfoType;
+use App\Repository\Section\FranceSectionRepository;
+use App\Repository\GalleryImageRepository;
 use App\Repository\RubricInfoRepository;
+use App\Service\SubmitRubricInfo;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,39 +23,44 @@ final class BackFranceController extends AbstractController
     public function index(
         FranceSectionRepository $franceSectionRepository,
         RubricInfoRepository $rubricInfoRepository,
+        GalleryImageRepository $galleryImageRepository,
         Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-        $sectionForm = $this->createForm(FranceSectionType::class);
-        $sectionForm->handleRequest($request);
+        SubmitSections $submitSections,
+        SubmitRubricInfo $submitRubricInfo
+        ): Response {
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_france']);
+        $galleryImages = $galleryImageRepository->findAll();
+        $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $franceSection = $sectionForm->getData();
-            $franceSection->setPosition(count($franceSectionRepository->findAll()) + 1); // Positionner la nouvelle section à la fin
-
-            $entityManager->persist($franceSection);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Section ajoutée avec succès !');
-
+        // Gestion du formulaire de mise à jour de la rubrique
+        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        if ($rubricIsSubmitted) {
+            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
             return $this->redirectToRoute('admin_france');
         }
 
-        $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_france']);
+        // Gestion du formulaire d'ajout de section
+        $sectionForm = $this->createForm(FranceSectionType::class);
+        $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $franceSectionRepository);
+        if ($sectionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
+            return $this->redirectToRoute('admin_france');
+        }
+
         return $this->render('back/france/index.html.twig', [
-            'controller_name' => 'BackFranceController',
             'sections' => $franceSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm->createView(),
+            'sectionForm' => $sectionForm,
+            'rubricInfoForm' => $rubricInfoForm,
+            'galleryImages' => $galleryImages,
         ]);
     }
 
-    #[Route('/admin/france/section_reorder', name: 'france_sections_reorder', methods: ['POST'])]
+    #[Route('/admin/france/section_reorder', name: 'admin_france_sections_reorder', methods: ['POST'])]
     public function reorder(
         Request $request,
-        FranceSectionRepository $franceSectionRepository,
+        FranceSectionRepository $repository,
         EntityManagerInterface $entityManager
     ): JsonResponse {
 
@@ -58,7 +68,7 @@ final class BackFranceController extends AbstractController
 
         foreach ($ids as $position => $id) {
 
-            $section = $franceSectionRepository->find($id);
+            $section = $repository->find($id);
 
             if ($section) {
                 $section->setPosition($position + 1);
@@ -74,7 +84,7 @@ final class BackFranceController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/france/section_delete/{id}', name: 'france_section_delete')]
+    #[Route('/admin/france/section_delete/{id}', name: 'admin_france_section_delete')]
     public function deleteSection(
         FranceSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -92,5 +102,28 @@ final class BackFranceController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_france');
+    }
+
+    #[Route('/admin/france/section_update/{id}', name: 'admin_france_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FranceSection $franceSection
+    )
+    {
+        $sectionForm = $this->createForm(FranceSectionType::class, $franceSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_france');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

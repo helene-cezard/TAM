@@ -2,7 +2,7 @@
 
 namespace App\Controller\Front;
 
-use App\Repository\EulogySectionRepository;
+use App\Repository\Section\EulogySectionRepository;
 use App\Repository\RubricInfoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

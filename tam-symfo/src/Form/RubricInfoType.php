@@ -14,8 +14,11 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class RubricInfoType extends AbstractType
 {
@@ -23,11 +26,11 @@ class RubricInfoType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'Titre de la section',
+                'label' => 'Titre de l\'en-tête',
                 'required' => false,
             ])
             ->add('text', QuillType::class, [
-                'label' => 'Texte de la section',
+                'label' => 'Texte de l\'en-tête',
                 'required' => false,
                 'quill_options' => [
                 QuillGroup::build(
@@ -38,37 +41,63 @@ class RubricInfoType extends AbstractType
                 ),
                 ],
             ])
-            ->add('uploadedImage', FileType::class, [
-                'label' => 'Télécharger une image',
-                'mapped' => false, // Ne lie pas ce champ à l'entité
-                'required' => false,
-                // 'constraints' => [
-                //     new Assert\File(
-                //         maxSize: '1024k',
-                //         extensions: ['pdf'],
-                //         extensionsMessage: 'Please upload a valid PDF document',
-                //     )
-                // ],
-            ])
             ->add('GalleryImage', EntityType::class, [
                 'class' => GalleryImage::class,
                 'label' => 'Choisir une image dans la galerie',
                 'required' => false,
+                'placeholder' => 'Aucune image', // Affiche un placeholder lorsque aucune image n'est sélectionnée
                 'choice_label' => function ($galleryImage) {
                     return ' '; // Ne retourne rien pour masquer les ID
                 },
-                'choice_attr' => function ($galleryImage) {
-                    return [
-                        'data-image' => $galleryImage->getPath(), // Ajoute l'URL de l'image comme attribut HTML
-                    ];
-                },
                 'expanded' => true, // Affiche les options sous forme de boutons radio
                 'multiple' => false, // Permet de choisir une seule image
+            ])
+            ->add('uploadedImage', FileType::class, [
+                'label' => 'Ou envoyer une image',
+                'mapped' => false, // Ne lie pas ce champ à l'entité
+                'required' => false,
+                // 'constraints' => [
+                //     new Assert\File([
+                //         'maxSize' => '10k',
+                //         'mimeTypes' => [
+                //             'image/jpeg',
+                //             'image/png',
+                //         ],
+                //         'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
+                //     ]),
+                // ],
+            ])
+            ->add('alt', TypeTextType::class, [
+                'label' => 'Ajouter un texte alternatif à l\'image.',
+                'attr' => [
+                    'placeholder' => 'Ex : « Enfants qui peignent. »'
+                ],
+                'help' => 'Décrivez ce que montre l’image afin qu’une personne aveugle utilisant un lecteur d’écran puisse comprendre son contenu.',
+                'help_attr' => [
+                    'class' => 'help-alt-image',
+                ],
+                'required' => false,
+                'mapped' => false, // Ne lie pas ce champ à l'entité
+                'constraints' => [
+                    new Assert\Callback([$this, 'validateAlt']),
+                ],
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Modifier',
             ]);
         ;
+    }
+
+    public function validateAlt(?string $alt, ExecutionContextInterface $context): void
+    {
+        $form = $context->getRoot(); // Récupère le formulaire parent
+        $uploadedImage = $form->get('uploadedImage')->getData();
+
+        if ($uploadedImage && empty($alt)) {
+            $context->buildViolation('Vous devez fournir un texte alternatif à l\image.')
+                ->atPath('alt') // Associe la violation au champ "alt"
+                ->addViolation();
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void

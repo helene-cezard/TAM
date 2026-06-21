@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - L'benin{% endblock %}
+
+{% block body %}
+    <main>
+        {% include "partials/_left_banner.html.twig" %}
+            <section class="404 section">
+                <h1  class="section__title">404 - Page non trouvée</h1>
+                <p class="banner__text">Désolé, la page que vous recherchez n'existe pas ou a été déplacée.</p>
+                <a href="{{ path('app_home') }}" class="section__link">Retour à l'accueil</a>
+            </section>
+        {% include "partials/_right_banner.html.twig" %}
+    </main>
+{% endblock %}

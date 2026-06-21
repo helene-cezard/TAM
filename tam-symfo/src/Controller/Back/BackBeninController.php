@@ -2,9 +2,14 @@
 
 namespace App\Controller\Back;
 
-use App\Form\BeninSectionType;
-use App\Repository\BeninSectionRepository;
+use App\Entity\Section\BeninSection;
+use App\Form\SectionForms\BeninSectionType;
+use App\Form\RubricInfoType;
+use App\Repository\Section\BeninSectionRepository;
+use App\Repository\GalleryImageRepository;
 use App\Repository\RubricInfoRepository;
+use App\Service\SubmitRubricInfo;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,39 +23,44 @@ final class BackBeninController extends AbstractController
     public function index(
         BeninSectionRepository $beninSectionRepository,
         RubricInfoRepository $rubricInfoRepository,
+        GalleryImageRepository $galleryImageRepository,
         Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-        $sectionForm = $this->createForm(BeninSectionType::class);
-        $sectionForm->handleRequest($request);
+        SubmitSections $submitSections,
+        SubmitRubricInfo $submitRubricInfo
+        ): Response {
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_benin']);
+        $galleryImages = $galleryImageRepository->findAll();
+        $beninSections = $beninSectionRepository->findBy([], ['position' => 'ASC']);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $homeSection = $sectionForm->getData();
-            $homeSection->setPosition(count($beninSectionRepository->findAll()) + 1); // Positionner la nouvelle section à la fin
-
-            $entityManager->persist($homeSection);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Section ajoutée avec succès !');
-
+        // Gestion du formulaire de mise à jour de la rubrique
+        $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        if ($rubricIsSubmitted) {
+            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
             return $this->redirectToRoute('admin_benin');
         }
 
-        $beninSections = $beninSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_benin']);
+        // Gestion du formulaire d'ajout de section
+        $sectionForm = $this->createForm(BeninSectionType::class);
+        $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $beninSectionRepository);
+        if ($sectionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
+            return $this->redirectToRoute('admin_benin');
+        }
+
         return $this->render('back/benin/index.html.twig', [
-            'controller_name' => 'BackBeninController',
             'sections' => $beninSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm->createView(),
+            'sectionForm' => $sectionForm,
+            'rubricInfoForm' => $rubricInfoForm,
+            'galleryImages' => $galleryImages,
         ]);
     }
 
-    #[Route('/admin/benin/section_reorder', name: 'benin_sections_reorder', methods: ['POST'])]
+    #[Route('/admin/benin/section_reorder', name: 'admin_benin_sections_reorder', methods: ['POST'])]
     public function reorder(
         Request $request,
-        BeninSectionRepository $beninSectionRepository,
+        BeninSectionRepository $repository,
         EntityManagerInterface $entityManager
     ): JsonResponse {
 
@@ -58,7 +68,7 @@ final class BackBeninController extends AbstractController
 
         foreach ($ids as $position => $id) {
 
-            $section = $beninSectionRepository->find($id);
+            $section = $repository->find($id);
 
             if ($section) {
                 $section->setPosition($position + 1);
@@ -74,7 +84,7 @@ final class BackBeninController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/benin/section_delete/{id}', name: 'benin_section_delete')]
+    #[Route('/admin/benin/section_delete/{id}', name: 'admin_benin_section_delete')]
     public function deleteSection(
         BeninSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -92,5 +102,28 @@ final class BackBeninController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_benin');
+    }
+
+    #[Route('/admin/benin/section_update/{id}', name: 'admin_benin_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        BeninSection $beninSection
+    )
+    {
+        $sectionForm = $this->createForm(BeninSectionType::class, $beninSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_benin');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

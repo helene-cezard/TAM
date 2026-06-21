@@ -4,7 +4,7 @@ namespace App\Controller\Front;
 
 use App\Entity\FranceSection;
 use App\Repository\ActionRepository;
-use App\Repository\FranceSectionRepository;
+use App\Repository\Section\FranceSectionRepository;
 use App\Repository\RubricInfoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

@@ -2,9 +2,11 @@
 
 namespace App\Controller\Back;
 
-use App\Form\HomeSectionType;
+use App\Entity\Section\HomeSection;
+use App\Form\SectionForms\HomeSectionType;
 use App\Repository\CarouselImageRepository;
-use App\Repository\HomeSectionRepository;
+use App\Repository\Section\HomeSectionRepository;
+use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,22 +21,16 @@ final class BackHomeController extends AbstractController
         CarouselImageRepository $carouselImageRepository,
         HomeSectionRepository $homeSectionRepository,
         Request $request,
-        EntityManagerInterface $entityManager
+        SubmitSections $submitSections
     ): Response {
 
         $sectionForm = $this->createForm(HomeSectionType::class);
 
-        $sectionForm->handleRequest($request);
+        $isSubmitted = $submitSections->handle($sectionForm, $request, $homeSectionRepository);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $homeSection = $sectionForm->getData();
-            $homeSection->setPosition(count($homeSectionRepository->findAll()) + 1); // Positionner la nouvelle section à la fin
 
-            $entityManager->persist($homeSection);
-            $entityManager->flush();
-
+        if ($isSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-
             return $this->redirectToRoute('admin_home');
         }
 
@@ -45,7 +41,7 @@ final class BackHomeController extends AbstractController
             'controller_name' => 'BackHomeController',
             'carouselImages' => $carouselImages,
             'sections' => $homeSections,
-            'sectionForm' => $sectionForm->createView(),
+            'sectionForm' => $sectionForm,
         ]);
     }
 
@@ -94,5 +90,28 @@ final class BackHomeController extends AbstractController
         $this->addFlash('success', 'Section supprimée avec succès !');
 
         return $this->redirectToRoute('admin_home');
+    }
+
+    #[Route('/admin/home/section_update/{id}', name: 'admin_home_section_update')]
+    public function updateSection(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        HomeSection $homeSection
+    )
+    {
+        $sectionForm = $this->createForm(HomeSectionType::class, $homeSection);
+        $sectionForm->handleRequest($request);
+
+        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La section a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_home');
+        }
+
+        return $this->render('back/section/form.html.twig', [
+            'sectionForm' => $sectionForm,
+        ]);
     }
 }

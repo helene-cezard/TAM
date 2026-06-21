@@ -6,14 +6,47 @@
     <main>
         {% include "partials/_left_banner.html.twig" %}
             <section id="reportsSections" class="reports section">
-                {# <section>
+
+            {# En-tête #}
+                <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
                     {{ rubricInfo.text|raw }}
-                </section> #}
-                {# {% include "back/partials/_sections.html.twig" %} #}
+                </section>
+                {% include "back/partials/_rubric_info_form.html.twig" %}
+
+            {# Rapports d'activité #}
+                <section>
+                    <h2 class="subsection__title">Rapports d'activité</h2>
+                    <div id="reportsContainer" class="reports__list">
+                        {% for report in reports %}
+                        <div class="subsection-border" data-id="{{ report.id }}">
+                        <button class="position-button up">&uarr;</button>
+                        <button class="position-button down">&darr;</button>
+                            <div class="reports__list-text">
+                                <a href="{{ asset(report.path) }}">
+                                    <img src="{{ asset(report.image) }}" alt="">
+                                    </a>
+                                <p>{{ report.description }}</p>
+                            </div>
+                            <div class="modify__buttons">
+                                <a href="{{ path('admin_report_delete', {id:report.id}) }}" class="delete__button">Supprimer</a>
+                                <a href="{{ path('admin_reports_update', {id:report.id}) }}" class="update__button">Modifier</a>
+    </div>
+                        </div>
+                        {% endfor %}
+                        <button id="reports_reorder" class="reorder">Enregistrer l'ordre des rapports</button>
+                    </div>
+                </section>
+                <section class="form">
+                    {{ form(reportsForm) }}
+                </section>
+
+            {# Sections #}
+                {% include "back/partials/_sections.html.twig" %}
+
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

@@ -2,7 +2,7 @@
 
 namespace App\Controller\Front;
 
-use App\Repository\AssociationSectionRepository;
+use App\Repository\Section\AssociationSectionRepository;
 use App\Repository\RubricInfoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

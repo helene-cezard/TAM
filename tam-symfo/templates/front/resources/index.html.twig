@@ -43,13 +43,13 @@
                 <section>
                     <h2 class="subsection__title">Galeries photos</h2>
                     <div class="resources__gallery">
-
-                    {% for galleryImage in galleryImages %}
-
-                        <img src="{{ asset(galleryImage.path) }}" alt="{{ galleryImage.alt }}">
-
-                    {% endfor %}
-
+                        <h3 class="resources__gallery__title">Les lieux</h3>
+                        <div class="resources__images">
+                            {% for galleryImage in galleryImages %}
+                                <img src="{{ asset(galleryImage.path) }}" alt="{{ galleryImage.alt }}">
+                            {% endfor %}
+                        </div>
+                        <button>Étendre</button>
                     </div>
                 </section>
                 <section>

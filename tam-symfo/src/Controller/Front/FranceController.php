@@ -2,8 +2,8 @@
 
 namespace App\Controller\Front;
 
-use App\Entity\FranceSection;
-use App\Repository\ActionRepository;
+// use App\Entity\Section\FranceSection;
+use App\Repository\Section\ActionRepository;
 use App\Repository\Section\FranceSectionRepository;
 use App\Repository\RubricInfoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Section;
 
-use App\Repository\ActionRepository;
+use App\Repository\Section\ActionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ActionRepository::class)]

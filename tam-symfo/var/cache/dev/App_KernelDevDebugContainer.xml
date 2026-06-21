@@ -578,9 +578,6 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\Front\TrainingController"/>
       </call>
     </service>
-    <service id="App\Entity\Action" class="App\Entity\Action" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="Class &quot;App\Entity\Section&quot; not found while loading &quot;App\Entity\Action&quot;."/>
-    </service>
     <service id="App\Entity\CarouselImage" class="App\Entity\CarouselImage" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
@@ -598,6 +595,10 @@
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
     <service id="App\Entity\RubricInfo" class="App\Entity\RubricInfo" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\Section\Action" class="App\Entity\Section\Action" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
       <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
@@ -704,10 +705,6 @@
     <service id="App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true">
       <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
-    <service id="App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
     <service id="App\Repository\CarouselImageRepository" class="App\Repository\CarouselImageRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -725,6 +722,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\RubricInfoRepository" class="App\Repository\RubricInfoRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\Section\ActionRepository" class="App\Repository\Section\ActionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -827,7 +828,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.5t30sgv"/>
+      <argument type="service" id=".service_locator.PqVEi5C"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -4000,7 +4001,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.5t30sgv"/>
+      <argument type="service" id=".service_locator.PqVEi5C"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -6021,7 +6022,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.1KspfgY"/>
+      <argument type="service" id=".service_locator.PcWXjPJ"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -8555,6 +8556,8 @@
     <service id=".abstract.instanceof.App\Entity\Reports" class="App\Entity\Reports" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\RubricInfo.0.App\Entity\RubricInfo" class="App\Entity\RubricInfo" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\RubricInfo" class="App\Entity\RubricInfo" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Section\Action.0.App\Entity\Section\Action" class="App\Entity\Section\Action" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Section\Action" class="App\Entity\Section\Action" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Section\AssociationSection.0.App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Section\AssociationSection" class="App\Entity\Section\AssociationSection" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Section\BeninSection.0.App\Entity\Section\BeninSection" class="App\Entity\Section\BeninSection" autowire="true" abstract="true"/>
@@ -8615,8 +8618,6 @@
     <service id=".abstract.instanceof.App\Form\SectionForms\TrainingSectionType" class="App\Form\SectionForms\TrainingSectionType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\TeamType" class="App\Form\TeamType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\TeamType" class="App\Form\TeamType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\ActionRepository" class="App\Repository\ActionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CarouselImageRepository" class="App\Repository\CarouselImageRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CarouselImageRepository" class="App\Repository\CarouselImageRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactInfoRepository" class="App\Repository\ContactInfoRepository" autowire="true" abstract="true"/>
@@ -8627,6 +8628,8 @@
     <service id=".abstract.instanceof.App\Repository\ReportsRepository" class="App\Repository\ReportsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RubricInfoRepository" class="App\Repository\RubricInfoRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\RubricInfoRepository" class="App\Repository\RubricInfoRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\ActionRepository" class="App\Repository\Section\ActionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\Section\ActionRepository" class="App\Repository\Section\ActionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\AssociationSectionRepository" class="App\Repository\Section\AssociationSectionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\Section\AssociationSectionRepository" class="App\Repository\Section\AssociationSectionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\Section\BeninSectionRepository" class="App\Repository\Section\BeninSectionRepository" autowire="true" abstract="true"/>
@@ -9719,19 +9722,19 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.dl0GJRA" method="withContext"/>
     </service>
-    <service id=".service_locator.gZeYome" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iF7dtpQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="franceSectionRepository" type="service_closure" id="App\Repository\Section\FranceSectionRepository"/>
         <argument key="rubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
-        <argument key="actionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
+        <argument key="actionRepository" type="service_closure" id="App\Repository\Section\ActionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.iF7dtpQ.App\Controller\Front\FranceController::index()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Front\FranceController::index()"/>
       <argument>App\Controller\Front\FranceController::index()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.gZeYome" method="withContext"/>
+      <factory service=".service_locator.iF7dtpQ" method="withContext"/>
     </service>
     <service id=".service_locator.NefUXrV" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
@@ -9799,7 +9802,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.QTEg3l6" method="withContext"/>
     </service>
-    <service id=".service_locator.5t30sgv" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.PqVEi5C" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
@@ -9849,7 +9852,7 @@
         <argument key="App\Controller\Front\BeninController::index" type="service_closure" id=".service_locator.EVE4Kg6.App\Controller\Front\BeninController::index()"/>
         <argument key="App\Controller\Front\ContactController::index" type="service_closure" id=".service_locator.uuE1BG2.App\Controller\Front\ContactController::index()"/>
         <argument key="App\Controller\Front\EulogyController::index" type="service_closure" id=".service_locator.dl0GJRA.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\FranceController::index" type="service_closure" id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\FranceController::index" type="service_closure" id=".service_locator.iF7dtpQ.App\Controller\Front\FranceController::index()"/>
         <argument key="App\Controller\Front\HomeController::index" type="service_closure" id=".service_locator.NefUXrV.App\Controller\Front\HomeController::index()"/>
         <argument key="App\Controller\Front\ReportsController::index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController::index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
@@ -9900,7 +9903,7 @@
         <argument key="App\Controller\Front\BeninController:index" type="service_closure" id=".service_locator.EVE4Kg6.App\Controller\Front\BeninController::index()"/>
         <argument key="App\Controller\Front\ContactController:index" type="service_closure" id=".service_locator.uuE1BG2.App\Controller\Front\ContactController::index()"/>
         <argument key="App\Controller\Front\EulogyController:index" type="service_closure" id=".service_locator.dl0GJRA.App\Controller\Front\EulogyController::index()"/>
-        <argument key="App\Controller\Front\FranceController:index" type="service_closure" id=".service_locator.gZeYome.App\Controller\Front\FranceController::index()"/>
+        <argument key="App\Controller\Front\FranceController:index" type="service_closure" id=".service_locator.iF7dtpQ.App\Controller\Front\FranceController::index()"/>
         <argument key="App\Controller\Front\HomeController:index" type="service_closure" id=".service_locator.NefUXrV.App\Controller\Front\HomeController::index()"/>
         <argument key="App\Controller\Front\ReportsController:index" type="service_closure" id=".service_locator.8qDVmy4.App\Controller\Front\ReportsController::index()"/>
         <argument key="App\Controller\Front\ResourcesController:index" type="service_closure" id=".service_locator.2jP_vBB.App\Controller\Front\ResourcesController::index()"/>
@@ -10261,15 +10264,15 @@
         <argument key="turbo.doctrine.event_listener" type="service_closure" id="turbo.doctrine.event_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.1KspfgY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.PcWXjPJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Repository\ActionRepository" type="service_closure" id="App\Repository\ActionRepository"/>
         <argument key="App\Repository\CarouselImageRepository" type="service_closure" id="App\Repository\CarouselImageRepository"/>
         <argument key="App\Repository\ContactInfoRepository" type="service_closure" id="App\Repository\ContactInfoRepository"/>
         <argument key="App\Repository\GalleryImageRepository" type="service_closure" id="App\Repository\GalleryImageRepository"/>
         <argument key="App\Repository\ReportsRepository" type="service_closure" id="App\Repository\ReportsRepository"/>
         <argument key="App\Repository\RubricInfoRepository" type="service_closure" id="App\Repository\RubricInfoRepository"/>
+        <argument key="App\Repository\Section\ActionRepository" type="service_closure" id="App\Repository\Section\ActionRepository"/>
         <argument key="App\Repository\Section\AssociationSectionRepository" type="service_closure" id="App\Repository\Section\AssociationSectionRepository"/>
         <argument key="App\Repository\Section\BeninSectionRepository" type="service_closure" id="App\Repository\Section\BeninSectionRepository"/>
         <argument key="App\Repository\Section\ContactSectionRepository" type="service_closure" id="App\Repository\Section\ContactSectionRepository"/>
@@ -12504,7 +12507,7 @@
     <service id="Symfony\UX\TwigComponent\ComponentRendererInterface" alias="ux.twig_component.component_renderer"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.5t30sgv"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.PqVEi5C"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request.logger" alias="monolog.logger.request"/>
@@ -12598,7 +12601,7 @@
     <service id=".service_locator.VK63P2R" alias=".service_locator.EVE4Kg6"/>
     <service id=".service_locator.qWZmEbF" alias=".service_locator.uuE1BG2"/>
     <service id=".service_locator.O8H5riy" alias=".service_locator.dl0GJRA"/>
-    <service id=".service_locator.zmdhKSU" alias=".service_locator.gZeYome"/>
+    <service id=".service_locator.vHrsvf7" alias=".service_locator.iF7dtpQ"/>
     <service id=".service_locator.9W2L2hj" alias=".service_locator.NefUXrV"/>
     <service id=".service_locator.NMeYi2k" alias=".service_locator.8qDVmy4"/>
     <service id=".service_locator.8cc4KA." alias=".service_locator.2jP_vBB"/>

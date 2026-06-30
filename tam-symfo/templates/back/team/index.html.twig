@@ -14,6 +14,11 @@
                     {{ rubricInfo.text|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
+
+                {% include "partials/_team.html.twig" %}
+
+                <section class="form">{{ form(teamForm) }}</section>
+
                 {% include "back/partials/_sections.html.twig" %}
             </section>
         {% include "partials/_right_banner.html.twig" %}

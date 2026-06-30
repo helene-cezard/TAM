@@ -14,7 +14,48 @@
                     {{ rubricInfo.text|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
+
                 {% include "back/partials/_sections.html.twig" %}
+
+                <section>
+                    <h2 class="subsection__title">Vidéos</h2>
+                        <ul class="resources__videos">
+                            {% for video in videos %}
+                            <li>
+                                {% if video.type == 'local' %}
+                                <video width="320" height="240" controls>
+                                    <source src="{{ asset(video.path) }}" type="video/mp4">
+                                </video>
+                                {% elseif video.type == 'youtube' %}
+                                <iframe src="{{ video.path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                </section>
+                <section class="form">{{ form(videoForm) }}</section>
+
+                {% include "partials/_gallery.html.twig" %}
+                    <section class="form">
+                    {{ form_start(imageForm) }}
+                        {{ form_row(imageForm.uploadedImage) }}
+                            <div class="form-label-with-help">
+                                {{ form_label(imageForm.alt) }}
+
+                                <span
+                                    class="help-tooltip"
+                                    title="{{ imageForm.alt.vars.help }}"
+                                >
+                                ⓘ
+                                </span>
+                            </div>
+
+
+                        {{ form_widget(imageForm.alt) }}
+                        {{ form_row(imageForm.category) }}
+                        {{ form_row(imageForm.save) }}
+                    {{ form_end(imageForm) }}
+                    </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

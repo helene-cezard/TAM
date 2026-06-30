@@ -13,76 +13,9 @@
                     {% endif %}
                     {{ rubricInfo.text|raw }}
                 </section>
-                <section class="subsection team__container president">
-                    <h2 class="subsection__title">Président d'honneur</h2>
-                    <a class="team__card" href="{{ path('app_eulogy') }}">
-                        <img src="{{ asset('images/team/Président d\'honneur Moussa NB F.jpg') }}" alt="Dr Moussa Maman Bello">
-                        <div class="team__card__text">
-                            <h2 class="team__card__name">Dr Moussa Maman Bello</h2>
-                            <p>Ethno médecin <br> Thérapeute traditionnel</p>
-                        </div>
-                    </a>
-                </section>
-                <section class="subsection">
-                    <h2 class="subsection__title">Les membres du bureau</h2>
-                    <div class="team__container">
-                    {% for teamMember in teamMembers %}
-                    {% if teamMember.role === 'board' %}
-                        <div class="team__card">
-                        {% if teamMember.image %}
-                            <img src="{{ asset(teamMember.image) }}" alt="{{ teamMember.name }}">
-                        {% else %}
-                            <img src="{{ asset('images/team/default-user-picture.png') }}" alt="{{ teamMember.name }}">
-                        {% endif %}
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">{{ teamMember.name }}</h2>
-                                <p class="team__card__bio">{{ teamMember.presentation }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    </div>
-                </section>
-                <section class="subsection">
-                    <h2 class="subsection__title">Les intervenants</h2>
-                    <div class="team__container">
-                    {% for teamMember in teamMembers %}
-                    {% if teamMember.role === 'contributors' %}
-                        <div class="team__card">
-                            {% if teamMember.image %}
-                                <img src="{{ asset(teamMember.image) }}" alt="{{ teamMember.name }}">
-                            {% else %}
-                                <img src="{{ asset('images/team/default-user-picture.png') }}" alt="{{ teamMember.name }}">
-                            {% endif %}
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">{{ teamMember.name }}</h2>
-                                <p class="team__card__bio">{{ teamMember.presentation }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    </div>
-                </section>
-                <section class="subsection">
-                    <h2 class="subsection__title">Les experts</h2>
-                    <div class="team__container">
-                    {% for teamMember in teamMembers %}
-                    {% if teamMember.role === 'experts' %}
-                        <div class="team__card">
-                            {% if teamMember.image %}
-                                <img src="{{ asset(teamMember.image) }}" alt="{{ teamMember.name }}">
-                            {% else %}
-                                <img src="{{ asset('images/team/default-user-picture.png') }}" alt="{{ teamMember.name }}">
-                            {% endif %}
-                            <div class="team__card__text">
-                                <h2 class="team__card__name">{{ teamMember.name }}</h2>
-                                <p class="team__card__bio">{{ teamMember.presentation }}</p>
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    </div>
-                </section>
+
+                {% include "partials/_team.html.twig" %}
+
                 {% for teamSection in teamSections %}
 
                 <section class="subsection">

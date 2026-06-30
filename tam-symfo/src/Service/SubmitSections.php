@@ -14,15 +14,15 @@ class SubmitSections
     }
 
     public function handle(
-        FormInterface $sectionForm,
+        FormInterface $form,
         Request $request,
         $repository
         ): bool
     {
-        $sectionForm->handleRequest($request);
+        $form->handleRequest($request);
 
-        if ($sectionForm->isSubmitted() && $sectionForm->isValid()) {
-            $section = $sectionForm->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $section = $form->getData();
             $section->setPosition(count($repository->findAll()) + 1); // Positionner la nouvelle section à la fin
 
             $this->entityManager->persist($section);

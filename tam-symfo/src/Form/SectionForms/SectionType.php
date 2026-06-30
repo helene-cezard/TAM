@@ -2,6 +2,7 @@
 
 namespace App\Form\SectionForms;
 
+use Ehyiah\QuillJsBundle\DTO\Fields\BlockField\ListField;
 use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\BoldField;
 use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\ItalicField;
 use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\LinkField;
@@ -20,11 +21,11 @@ class SectionType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => 'Titre de la section',
+                'label' => 'Titre',
                 'required' => false,
             ])
             ->add('text', QuillType::class, [
-                'label' => 'Texte de la section',
+                'label' => 'Texte',
                 'required' => false,
                 'quill_options' => [
                 QuillGroup::build(
@@ -32,6 +33,7 @@ class SectionType extends AbstractType
                     new ItalicField(),
                     new LinkField(),
                     new UnderlineField(),
+                    new ListField(),
                     new VideoField(),
                 ),
                 ],

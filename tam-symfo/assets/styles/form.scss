@@ -49,18 +49,29 @@
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     padding-right: 5rem;
+}
+
+.element-to-move {
     position: relative;
 
-    &:nth-child(1 of .subsection-border) {
+    &:nth-child(1 of .element-to-move) {
 
         & .up {
             display: none;
         }
+
+        & .left {
+            display: none;
+        }
     }
 
-    &:nth-last-child(1 of .subsection-border) {
+    &:nth-last-child(1 of .element-to-move) {
 
         & .down {
+            display: none;
+        }
+
+        & .right {
             display: none;
         }
     }
@@ -84,11 +95,20 @@
     bottom: 1rem;
 }
 
+.left {
+    left: 1rem;
+}
+
+.right {
+    right: 1rem;
+}
+
 .delete__button, .update__button {
     @extend %button;
-    padding: 0.75rem;
+    padding: 0.5rem 1rem;
     width: fit-content;
     margin-top: 2rem;
+    font-size: 1rem;
 }
 
 .modify__buttons {
@@ -104,7 +124,7 @@
     margin: auto;
 }
 
-#rubric_info_GalleryImage {
+#galleryImage {
     display: flex;
     flex-wrap: wrap;
     width: 100%;

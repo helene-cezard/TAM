@@ -19,7 +19,9 @@ const app = {
 
         app.animateCounters();
         app.burgerMenu();
+        app.openGallery();
         app.showSubmenu();
+        app.showLightbox();
 
         const pages = ['home', 'association', 'team', 'reports', 'benin', 'france', 'training', 'resources', 'contact'];
 
@@ -30,6 +32,12 @@ const app = {
 
           app.movePosition('reportsContainer');
           app.updatePositions('reportsContainer', 'reports_reorder', currentRoute, 'reports');
+
+          app.movePosition('actionsContainer');
+          app.updatePositions('actionsContainer', 'action_reorder', currentRoute, 'france');
+
+          app.movePosition('carousel');
+          app.updatePositions('carousel', 'carousel_reorder', currentRoute, 'home');
     },
 
     burgerMenu: function () {
@@ -167,16 +175,103 @@ const app = {
         numbers.forEach(number => observer.observe(number));
     },
 
+    openGallery: function() {
+        // Sélectionne toutes les galeries
+        const galleries = document.querySelectorAll(".resources__gallery");
+
+        galleries.forEach((gallery) => {
+          // Ajoute la classe "collapsed" par défaut
+          gallery.classList.add("collapsed");
+          gallery.classList.remove("resources__gallery--expanded");
+
+          // Crée le bouton "Étendre"
+          const toggleButton = document.createElement("button");
+          toggleButton.classList.add("resources__gallery__toggle");
+          toggleButton.textContent = "Étendre";
+
+          // Ajoute le bouton à la galerie
+          gallery.appendChild(toggleButton);
+
+          // Ajoute un gestionnaire d'événement pour le bouton
+          toggleButton.addEventListener("click", () => {
+            if (gallery.classList.contains("collapsed")) {
+              gallery.classList.remove("collapsed");
+              gallery.classList.add("resources__gallery--expanded");
+              toggleButton.textContent = "Réduire";
+            } else {
+              gallery.classList.add("collapsed");
+              gallery.classList.remove("resources__gallery--expanded");
+              toggleButton.textContent = "Étendre";
+            }
+          });
+        });
+    },
+
+    showLightbox: function() {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        const closeButton = document.querySelector(".lightbox__close");
+
+        document.querySelectorAll(".resources__image").forEach((image) => {
+
+            image.addEventListener("click", () => {
+                console.log('coucou de image.addEventListener');
+
+                lightboxImage.src = image.dataset.src;
+                lightboxImage.alt = image.alt;
+
+                lightbox.classList.add("lightbox-active");
+            });
+
+        });
+
+        closeButton.addEventListener("click", () => {
+            lightbox.classList.remove("lightbox-active");
+        });
+
+        lightbox.addEventListener("click", (event) => {
+
+            if (event.target === lightbox) {
+                lightbox.classList.remove("lightbox-active");
+            }
+
+        });
+
+        document.addEventListener("keydown", (event) => {
+
+            if (event.key === "Escape") {
+                lightbox.classList.remove("lightbox-active");
+            }
+
+        });
+    },
+
     movePosition: function (containerId) {
         const container = document.getElementById(containerId);
 
+        const messages = {
+            Sections: 'sections',
+            reportsContainer: 'rapports',
+            actionsContainer: 'actions',
+            carousel: 'images',
+        };
+
+        let messageElement = '';
+
+        for (const [key, value] of Object.entries(messages)) {
+            if (containerId.includes(key)) {
+                messageElement = value;
+                break;
+            }
+        }
         if (container === null) {
             return;
         }
 
+
         container.addEventListener('click', (event) => {
 
-            const elementToMove = event.target.closest('.subsection-border');
+            const elementToMove = event.target.closest('.element-to-move');
 
             if (!elementToMove) {
                 return;
@@ -189,7 +284,7 @@ const app = {
 
                 if (previous) {
                     container.insertBefore(elementToMove, previous);
-                    app.createMessage('error', 'Vous avez modifié l\'ordre des sections, n\'oubliez pas d\'enregistrer pour valider les changements');
+                    app.createMessage('error', 'Vous avez modifié l\'ordre des ' + messageElement + ', n\'oubliez pas d\'enregistrer pour valider les changements');
                 }
             }
 
@@ -200,13 +295,14 @@ const app = {
 
                 if (next) {
                     container.insertBefore(next, elementToMove);
-                    app.createMessage('error', 'Vous avez modifié l\'ordre des sections, n\'oubliez pas d\'enregistrer pour valider les changements');
+                    app.createMessage('error', 'Vous avez modifié l\'ordre des ' + messageElement + ', n\'oubliez pas d\'enregistrer pour valider les changements');
                 }
             }
         });
     },
 
     updatePositions: function (containerId, route, currentRoute, element) {
+        console.log('containerId : ' + containerId);
         const container = document.getElementById(containerId);
 
         if (container === null) {
@@ -219,16 +315,21 @@ const app = {
         const reorderButton = document.getElementById(route);
         const reorderRoute = '/admin/' + element + '/' + route;
 
-        console.log('reorderRoute : ' + reorderRoute);
+        if(!reorderButton) {
+            return;
+        }
 
 
         reorderButton.addEventListener('click', function (event) {
-            const ids = [...container.querySelectorAll('.subsection-border')]
-                .map(element => element.dataset.id);
+            console.log('Bouton réorganiser actions cliqué');
+            const ids = [...container.querySelectorAll('.element-to-move')]
+                .map(subsection => subsection.dataset.id);
 
-            console.log('ids : ' + ids);
-
+            console.log('event.target.parentNod : ' + event.target.parentNod);
+            console.log('container : ' + container);
             if (event.target.parentNode === container) {
+
+                console.log('Juste avant le fetch');
 
                 fetch(reorderRoute, {
                         method: 'POST',
@@ -260,4 +361,4 @@ const app = {
 }
 
 
-document.addEventListener('DOMContentLoaded', app.init);
+document.addEventListener('turbo:load', app.init);

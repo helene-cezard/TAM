@@ -4,27 +4,74 @@
 
 {% block body %}
     <main>
-        <section class="hero hero--front">
-            <h1 class="hero__title">
-                Thérapies, Arts
-                <br class="line-break">
-                & Médiations
-                <br>
-                <span class="hero__title--small">T.A.M.</span>
-            </h1>
-            <p class="hero__text">
-                Accompagner par l’art, restaurer le lien, tisser les cultures
-            </p>
-
-                <div class="carousel__gallery">
+        <section class="hero">
+                <div id="carousel" class="carousel__gallery">
                     {% for carouselImage in carouselImages %}
-                        <div class="carousel__gallery__card">
-                            <img src="{{ carouselImage.getGalleryId.path }}" alt="{{ carouselImage.getGalleryId.alt }}">
+                        <div class="carousel__gallery__card element-to-move" data-id="{{ carouselImage.id }}">
+                            <button class="position-button left">&larr;</button>
+                            <button class="position-button right">&rarr;</button>
+                            <img src="{{ asset(carouselImage.getGalleryImage.path) }}" alt="{{ carouselImage.getGalleryImage.alt }}">
                             <div class="carousel__gallery__text">
-                                <p>{{ carouselImage.getGalleryId.alt }}</p>
+                                <p>{{ carouselImage.getGalleryImage.alt }}</p>
                             </div>
+                        <a href="{{ path('admin_home_carousel_delete', {id:carouselImage.id}) }}" class="delete__button">Supprimer</a>
                         </div>
                     {% endfor %}
+
+                    {% if carouselImages is not empty %}
+                    <button id="carousel_reorder" class="reorder">Enregistrer l'ordre des images</button>
+                    {% endif %}
+                </div>
+
+                <div class="form">
+                {{ form_start(carouselForm) }}
+                {{ form_errors(carouselForm) }}
+                {{ form_errors(carouselForm.galleryImage) }}
+                {{ form_label(carouselForm.galleryImage) }}
+                <div id="galleryImage">
+                {% dump(carouselGalleryIds) %}
+                    {% for choice in carouselForm.galleryImage %}
+                    {% if choice.vars.name === 'placeholder' %}
+                        {{ form_widget(choice) }}
+                        <label for="{{ choice.vars.id }}">
+                            {# <p>{{ choice.vars.label }}</p>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg" alt=""> #}
+                        </label>
+                    {% else %}
+                    {% dump(choice.vars.name) %}
+                        {{ form_widget(choice) }}
+                        <label for="{{ choice.vars.id }}">
+
+                        {# Si l'image n'est pas déjà dans le carrousel #}
+                        {% if choice.vars.name|number_format not in carouselGalleryIds %}
+
+                            <p>{{ choice.vars.label }}</p>
+                            <img src="{{ asset(galleryImages[loop.index - 2].path) }}" alt="">
+
+                        {% endif %}
+
+                        </label>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+                {{ form_row(carouselForm.uploadedImage) }}
+                {{ form_errors(carouselForm.alt) }}
+                <div class="form-label-with-help">
+                    {{ form_label(carouselForm.alt) }}
+
+                    <span
+                        class="help-tooltip"
+                        title="{{ carouselForm.alt.vars.help }}"
+                    >
+                    ⓘ
+                    </span>
+                </div>
+
+
+                {{ form_widget(carouselForm.alt) }}
+                {{ form_row(carouselForm.save) }}
+                {{ form_end(carouselForm) }}
                 </div>
         </section>
         {% include "partials/_left_banner.html.twig" %}

@@ -14,7 +14,7 @@
 
         {% for carouselImage in carouselImages %}
             <li class="carousel__slide" role="group" aria-label="1 of 6" aria-roledescription="slide">
-                <img src="{{ carouselImage.getGalleryId.path }}" alt="{{ carouselImage.getGalleryId.alt }}">
+                <img src="{{ asset(carouselImage.getGalleryImage.path) }}" alt="{{ carouselImage.getGalleryImage.alt }}">
             </li>
         {% endfor %}
 

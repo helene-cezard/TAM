@@ -19,8 +19,10 @@ class GalleryImage
     #[ORM\Column(length: 255)]
     private ?string $alt = null;
 
-    #[ORM\Column]
-    private ?bool $appears = null;
+    #[ORM\ManyToOne(
+        inversedBy: 'galleryImages'
+    )]
+    private ?ImageCategory $category = null;
 
     public function getId(): ?int
     {
@@ -51,14 +53,14 @@ class GalleryImage
         return $this;
     }
 
-    public function isAppears(): ?bool
+    public function getCategory(): ?ImageCategory
     {
-        return $this->appears;
+        return $this->category;
     }
 
-    public function setAppears(bool $appears): static
+    public function setCategory(?ImageCategory $category): static
     {
-        $this->appears = $appears;
+        $this->category = $category;
 
         return $this;
     }

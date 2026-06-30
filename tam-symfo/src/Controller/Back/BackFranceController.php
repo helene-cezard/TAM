@@ -2,12 +2,15 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Section\Action;
 use App\Entity\Section\FranceSection;
+use App\Form\SectionForms\ActionType;
 use App\Form\SectionForms\FranceSectionType;
 use App\Form\RubricInfoType;
 use App\Repository\Section\FranceSectionRepository;
 use App\Repository\GalleryImageRepository;
 use App\Repository\RubricInfoRepository;
+use App\Repository\Section\ActionRepository;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,17 +29,27 @@ final class BackFranceController extends AbstractController
         GalleryImageRepository $galleryImageRepository,
         Request $request,
         SubmitSections $submitSections,
-        SubmitRubricInfo $submitRubricInfo
+        SubmitRubricInfo $submitRubricInfo,
+        ActionRepository $actionRepository
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_france']);
         $galleryImages = $galleryImageRepository->findAll();
         $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
+        $actions = $actionRepository->findBy([], ['position' => 'ASC']);
 
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
-        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            return $this->redirectToRoute('admin_france');
+        }
+
+        // Gestion du formulaire d'ajout d'action
+        $actionForm = $this->createForm(ActionType::class);
+        $actionIsSubmitted = $submitSections->handle($actionForm, $request, $actionRepository);
+        if ($actionIsSubmitted) {
+            $this->addFlash('success', 'Section ajoutée avec succès !');
             return $this->redirectToRoute('admin_france');
         }
 
@@ -54,11 +67,13 @@ final class BackFranceController extends AbstractController
             'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
+            'actionForm' => $actionForm,
+            'actions' => $actions,
         ]);
     }
 
     #[Route('/admin/france/section_reorder', name: 'admin_france_sections_reorder', methods: ['POST'])]
-    public function reorder(
+    public function reorderSection(
         Request $request,
         FranceSectionRepository $repository,
         EntityManagerInterface $entityManager
@@ -124,6 +139,76 @@ final class BackFranceController extends AbstractController
 
         return $this->render('back/section/form.html.twig', [
             'sectionForm' => $sectionForm,
+        ]);
+    }
+
+    #[Route('/admin/france/action_reorder', name: 'admin_france_actions_reorder', methods: ['POST'])]
+    public function reorderAction(
+        Request $request,
+        ActionRepository $repository,
+        EntityManagerInterface $entityManager
+    ): JsonResponse {
+
+        $ids = json_decode($request->getContent(), true);
+
+        foreach ($ids as $position => $id) {
+
+            $action = $repository->find($id);
+
+            if ($action) {
+                $action->setPosition($position + 1);
+            }
+        }
+
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Ordre des actions enregistré avec succès !');
+
+        return new JsonResponse([
+            'redirect' => $this->generateUrl('admin_france')
+        ]);
+    }
+
+    #[Route('/admin/france/action_delete/{id}', name: 'admin_france_action_delete')]
+    public function deleteAction(
+        ActionRepository $repository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $franceAction = $repository->find($id);
+
+        if (!$franceAction) {
+            throw $this->createNotFoundException('Action non trouvée');
+        }
+
+        $entityManager->remove($franceAction);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Action supprimée avec succès !');
+
+        return $this->redirectToRoute('admin_france');
+    }
+
+    #[Route('/admin/france/action_update/{id}', name: 'admin_france_action_update')]
+    public function updateAction(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Action $action
+    )
+    {
+        $actionForm = $this->createForm(ActionType::class, $action);
+        $actionForm->handleRequest($request);
+
+        if ($actionForm->isSubmitted() && $actionForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'L\'action a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_france');
+        }
+
+        return $this->render('back/action/form.html.twig', [
+            'actionForm' => $actionForm,
         ]);
     }
 }

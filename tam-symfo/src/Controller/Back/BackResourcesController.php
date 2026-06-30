@@ -2,14 +2,21 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\GalleryImage;
 use App\Entity\Section\ResourcesSection;
+use App\Form\GalleryImageType;
 use App\Form\SectionForms\ResourcesSectionType;
 use App\Form\RubricInfoType;
+use App\Form\VideoType;
 use App\Repository\GalleryImageRepository;
+use App\Repository\ImageCategoryRepository;
 use App\Repository\Section\ResourcesSectionRepository;
 use App\Repository\RubricInfoRepository;
+use App\Repository\VideoRepository;
+use App\Service\SubmitImage;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
+use App\Service\SubmitVideo;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,17 +33,39 @@ final class BackResourcesController extends AbstractController
         GalleryImageRepository $galleryImageRepository,
         Request $request,
         SubmitSections $submitSections,
-        SubmitRubricInfo $submitRubricInfo
+        SubmitRubricInfo $submitRubricInfo,
+        ImageCategoryRepository $imageCategoryRepository,
+        SubmitImage $submitImage,
+        SubmitVideo $submitVideo,
+        VideoRepository $videoRepository
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'resources']);
         $galleryImages = $galleryImageRepository->findAll();
         $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
+        $categories = $imageCategoryRepository->findAll();
+        $videos = $videoRepository->findAll();
 
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
-        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            return $this->redirectToRoute('admin_resources');
+        }
+
+        //Gestion du formulaire d'ajout d'images
+        $imageForm = $this->createForm(GalleryImageType::class);
+        $imageIsSubmitted = $submitImage->handleImageForm($imageForm, $request);
+        if ($imageIsSubmitted) {
+            $this->addFlash('success', 'Image ajoutée avec succès !');
+            return $this->redirectToRoute('admin_resources');
+        }
+
+        //Gestion du formulaire d'ajout de vidéos
+        $videoForm = $this->createForm(VideoType::class);
+        $videoIsSubmitted = $submitVideo->handleVideoForm($videoForm, $request);
+        if ($videoIsSubmitted) {
+            $this->addFlash('success', 'Vidéo ajoutée avec succès !');
             return $this->redirectToRoute('admin_resources');
         }
 
@@ -54,6 +83,10 @@ final class BackResourcesController extends AbstractController
             'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
+            'categories' => $categories,
+            'imageForm' => $imageForm,
+            'videoForm' => $videoForm,
+            'videos' => $videos,
         ]);
     }
 
@@ -124,6 +157,50 @@ final class BackResourcesController extends AbstractController
 
         return $this->render('back/section/form.html.twig', [
             'sectionForm' => $sectionForm,
+        ]);
+    }
+
+    #[Route('/admin/resources/image_delete/{id}', name: 'admin_resources_image_delete')]
+    public function deleteImage(
+        GalleryImageRepository $repository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $galleryImage = $repository->find($id);
+
+        if (!$galleryImage) {
+            throw $this->createNotFoundException('Image non trouvée');
+        }
+
+        $entityManager->remove($galleryImage);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Image supprimée avec succès !');
+
+        return $this->redirectToRoute('admin_resources');
+    }
+
+    #[Route('/admin/resources/image_update/{id}', name: 'admin_resources_image_update')]
+    public function updateImage(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        GalleryImage $galleryImage
+    )
+    {
+        $imageForm = $this->createForm(GalleryImageType::class, $galleryImage);
+        $imageForm->handleRequest($request);
+
+        if ($imageForm->isSubmitted() && $imageForm->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'L\'image a bien été mise à jour.');
+
+            return $this->redirectToRoute('admin_resources');
+        }
+
+        return $this->render('back/gallery/form.html.twig', [
+            'imageForm' => $imageForm,
+            'galleryImage' => $galleryImage,
         ]);
     }
 }

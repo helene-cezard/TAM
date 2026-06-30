@@ -5,7 +5,7 @@
 {% block body %}
     <main>
         {% include "partials/_left_banner.html.twig" %}
-            <section id="franceSections" class="actions section">
+            <section class="actions section">
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
@@ -14,7 +14,46 @@
                     {{ rubricInfo.text|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
-                {% include "back/partials/_sections.html.twig" %}
+                <section id="actionsContainer">
+                    <div class="actions__list__header">
+                        <h2 class="subsection__title">Nos principaux dispositifs :</h2>
+                        <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
+                    </div>
+
+                        {% for action in actions %}
+                        <div {{ action.getHtmlId ? 'id=' : '' }}"{{ action.getHtmlId }}" class="actions__item subsection subsection-border element-to-move" data-id="{{ action.id }}">
+                            <button class="position-button up">&uarr;</button>
+                            <button class="position-button down">&darr;</button>
+                            {% if action.title is not empty %}
+                                <h3  class="actions__title {{ action.aside|default ? 'subsection__title-grid' : '' }}">
+                                    {{ action.title }}
+                                </h3>
+                            {% endif %}
+                            <div>
+                            {{ action.text|raw }}
+                            </div>
+                            {% if action.aside is not empty %}
+                                <aside class="subsection__quote {{ action.leftSide ? 'left' : '' }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
+                                    <blockquote>"{{ action.aside }}"</blockquote>
+                                </aside>
+                            {% endif %}
+                            <div class="modify__buttons">
+                                <a href="{{ path(app.current_route ~ '_action_delete', {id:action.id}) }}" class="delete__button">Supprimer</a>
+                                <a href="{{ path(app.current_route ~ '_action_update', {id:action.id}) }}" class="update__button">Modifier</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    {% if actions is not empty %}
+                    <button id="action_reorder" class="reorder">Enregistrer l'ordre des actions</button>
+                    {% endif %}
+                </section>
+                <section class="form">
+                    <h2 class="subsection__title">Ajouter une action</h2>
+                {{ form(actionForm) }}
+                </section>
+                <section id="franceSections">{% include "back/partials/_sections.html.twig" %}</section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

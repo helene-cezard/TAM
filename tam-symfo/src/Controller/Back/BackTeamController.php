@@ -2,14 +2,19 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Role;
 use App\Entity\Section\TeamSection;
 use App\Form\RubricInfoType;
 use App\Form\SectionForms\TeamSectionType;
+use App\Form\TeamType;
 use App\Repository\GalleryImageRepository;
+use App\Repository\RoleRepository;
 use App\Repository\Section\TeamSectionRepository;
 use App\Repository\RubricInfoRepository;
+use App\Repository\TeamRepository;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
+use App\Service\SubmitTeamMember;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,19 +31,31 @@ final class BackTeamController extends AbstractController
         GalleryImageRepository $galleryImageRepository,
         Request $request,
         SubmitSections $submitSections,
-        SubmitRubricInfo $submitRubricInfo
+        SubmitRubricInfo $submitRubricInfo,
+        SubmitTeamMember $submitTeamMember,
+        RoleRepository  $roleRepository
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_team']);
         $galleryImages = $galleryImageRepository->findAll();
         $teamSections = $teamSectionRepository->findBy([], ['position' => 'ASC']);
+        $roles = $roleRepository->findBy([], ['position' => 'ASC']);
 
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
-        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
             return $this->redirectToRoute('admin_team');
         }
+
+        //Gestion du formulaire d'ajout d'un membre de l'équipe
+        $teamForm = $this->createForm(TeamType::class);
+        $teamMemberIsSubmitted = $submitTeamMember->handleImageForm($teamForm, $request);
+        if ($teamMemberIsSubmitted) {
+            $this->addFlash('success', 'Membre de l\'équipe ajouté avec succès !');
+            return $this->redirectToRoute('admin_team');
+        }
+
 
         // Gestion du formulaire d'ajout de section
         $sectionForm = $this->createForm(TeamSectionType::class);
@@ -49,11 +66,13 @@ final class BackTeamController extends AbstractController
         }
 
         return $this->render('back/team/index.html.twig', [
-            'sections' => $teamSections,
             'rubricInfo' => $rubricInfo,
-            'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
+            'roles' => $roles,
+            'teamForm' => $teamForm,
+            'sections' => $teamSections,
+            'sectionForm' => $sectionForm,
         ]);
     }
 

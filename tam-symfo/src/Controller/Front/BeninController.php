@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BeninController extends AbstractController
 {
-    #[Route('/actions/benin', name: 'app_actions_benin')]
+    #[Route('/benin', name: 'app_actions_benin')]
     public function index(BeninSectionRepository $beninSectionRepository, RubricInfoRepository $rubricInfoRepository): Response
     {
         $beninSections = $beninSectionRepository->findBy([], ['position' => 'ASC']);

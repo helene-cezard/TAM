@@ -36,9 +36,8 @@ class SubmitRubricInfo
 
                 $galleryImage = new GalleryImage();
                 $galleryImage->setPath('/images/uploadedImages/' . $newFilename);
-                // $galleryImage->setAlt($rubricInfoForm->get('alt')->getData());
-                $galleryImage->setAlt('Image de la rubrique');
-                $galleryImage->setAppears(false);
+                $galleryImage->setAlt($rubricInfoForm->get('alt')->getData());
+                // $galleryImage->setAlt('Image de la rubrique');
 
                 // Associer la nouvelle image à RubricInfo
                 $rubricInfo->setGalleryImage($galleryImage);

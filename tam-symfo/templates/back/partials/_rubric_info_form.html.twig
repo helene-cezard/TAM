@@ -9,7 +9,7 @@
 
     {{ form_errors(rubricInfoForm.GalleryImage) }}
     {{ form_label(rubricInfoForm.GalleryImage) }}
-    <div id="rubric_info_GalleryImage">
+    <div id="galleryImages">
         {% for choice in rubricInfoForm.GalleryImage %}
         {% if choice.vars.id === 'rubric_info_GalleryImage_placeholder' %}
             {{ form_widget(choice) }}
@@ -21,6 +21,7 @@
             {{ form_widget(choice) }}
             <label for="{{ choice.vars.id }}">
                 <p>{{ choice.vars.label }}</p>
+                {% dump(loop.index - 2) %}
                 <img src="{{ asset(galleryImages[loop.index - 2].path) }}" alt="">
             </label>
         {% endif %}

@@ -23,8 +23,11 @@ class Team
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $presentation = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
+    #[ORM\ManyToOne(
+        inversedBy: 'members'
+    )]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Role $role = null;
 
     public function getId(): ?int
     {
@@ -67,12 +70,12 @@ class Team
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?Role
     {
         return $this->role;
     }
 
-    public function setRole(string $role): static
+    public function setRole(?Role $role): static
     {
         $this->role = $role;
 

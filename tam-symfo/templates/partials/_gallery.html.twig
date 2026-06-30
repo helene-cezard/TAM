@@ -1,0 +1,59 @@
+<section>
+    <h2 class="subsection__title">Galeries photos</h2>
+    <div class="resources__galleries">
+        {% for category in categories %}
+        {% if category.galleryImages|length > 0 %}
+        <div class="resources__gallery">
+            <h3 class="resources__gallery__title">{{ category.title }}</h3>
+            <div class="resources__images">
+                {% for galleryImage in galleryImages %}
+                {% if galleryImage.category == category %}
+                    {% if app.current_route == "admin_resources" %}
+                    <div class="modify_image_container">
+                        <img
+                            class="resources__image"
+                            src="{{ asset(galleryImage.path) }}"
+                            alt="{{ galleryImage.alt }}"
+                            data-src="{{ asset(galleryImage.path) }}"
+                        >
+                            <a href="{{ path('admin_resources_image_delete', {id:galleryImage.id}) }}" class="delete__button">Supprimer</a>
+                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                    </div>
+                    {% else %}
+                    <img
+                        class="resources__image"
+                        src="{{ asset(galleryImage.path) }}"
+                        alt="{{ galleryImage.alt }}"
+                        data-src="{{ asset(galleryImage.path) }}"
+                    >
+                    {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% if app.current_route === "admin_resources" %}
+        <div class="resources__gallery">
+            <h3 class="resources__gallery__title">Sans catégorie</h3>
+            <div class="resources__images">
+                {% for galleryImage in galleryImages %}
+                {% if galleryImage.category === null %}
+                    <div class="modify_image_container">
+                        <img
+                            class="resources__image"
+                            src="{{ asset(galleryImage.path) }}"
+                            alt="{{ galleryImage.alt }}"
+                            data-src="{{ asset(galleryImage.path) }}"
+                        >
+                            <a href="{{ path('admin_resources_image_delete', {id:galleryImage.id}) }}" class="delete__button">Supprimer</a>
+                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>

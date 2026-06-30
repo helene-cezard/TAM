@@ -15,11 +15,11 @@
                 </section>
                 <section class="contact__info">
                     <div>
-                        Mail : <a href="mailto:{{ contactInfo.getEMail }}">{{ contactInfo.getEMail }}</a><br>
-                        Téléphone : <a href="tel:{{ contactInfo.getPhone }}">{{ contactInfo.getPhone }}</a><br>
-                        Adresse : <a href="https://www.google.com/maps?q={{ contactInfo.getStreet }}, {{ contactInfo.getPostalCode}} {{ contactInfo.getCity }}" target="_blank">{{ contactInfo.getStreet }}, {{ contactInfo.getPostalCode }} {{ contactInfo.getCity }}</a>
+                        Mail : <a href="mailto:{{ contactInfo.getEMail ?? '' }}">{{ contactInfo.getEMail ?? '' }}</a><br>
+                        Téléphone : <a href="tel:{{ contactInfo.getPhone ?? '' }}">{{ contactInfo.getPhone ?? '' }}</a><br>
+                        Adresse : <a href="https://www.google.com/maps?q={{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? '' }} {{ contactInfo.getCity ?? '' }}" target="_blank">{{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? '' }} {{ contactInfo.getCity ?? '' }}</a>
                     </div>
-                    <iframe src="https://www.google.com/maps?q={{ contactInfo.getStreet }}, {{ contactInfo.getPostalCode}} {{ contactInfo.getCity }}&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps?q={{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? '' }} {{ contactInfo.getCity ?? '' }}&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </section>
                 {% for contactSection in contactSections %}
                     <section class="subsection">

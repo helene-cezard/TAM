@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -67,7 +67,7 @@ class RubricInfoType extends AbstractType
                 //     ]),
                 // ],
             ])
-            ->add('alt', TypeTextType::class, [
+            ->add('alt', TextType::class, [
                 'label' => 'Ajouter un texte alternatif à l\'image.',
                 'attr' => [
                     'placeholder' => 'Ex : « Enfants qui peignent. »'

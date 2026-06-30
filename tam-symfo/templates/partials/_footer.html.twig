@@ -14,9 +14,9 @@
             </div>
             <div class="footer__contact" aria-labelledby="footer__contact">
                 <h4 class="footer__header" id="footer__contact">Contact</h4>
-                <p>Email : <a href="mailto:{{ contactInfo.getEMail }}">{{ contactInfo.getEMail }}</a></p>
-                <p>Téléphone : <a href="tel:{{ contactInfo.getPhone }}">{{ contactInfo.getPhone }}</a></p>
-                <p>Adresse : <a href="https://www.google.com/maps?q={{ contactInfo.getStreet }}, {{ contactInfo.getPostalCode}} {{ contactInfo.getCity }}" target="_blank">{{ contactInfo.getStreet }}, {{ contactInfo.getPostalCode }} {{ contactInfo.getCity }}</a></p>
+                <p>Email : <a href="mailto:{{ contactInfo.getEMail ?? '' }}">{{ contactInfo.getEMail ?? '' }}</a></p>
+                <p>Téléphone : <a href="tel:{{ contactInfo.getPhone ?? '' }}">{{ contactInfo.getPhone ?? '' }}</a></p>
+                <p>Adresse : <a href="https://www.google.com/maps?q={{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? ''}} {{ contactInfo.getCity ?? '' }}" target="_blank">{{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? '' }} {{ contactInfo.getCity ?? '' }}</a></p>
             </div>
             <div class="footer__social" aria-labelledby="footer__social">
                 <h4 class="footer__header" id="footer__social">Suivez-nous</h4>

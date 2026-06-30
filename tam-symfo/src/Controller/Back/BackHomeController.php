@@ -2,10 +2,16 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\CarouselImage;
+use App\Entity\GalleryImage;
 use App\Entity\Section\HomeSection;
+use App\Form\CarouselImageType;
 use App\Form\SectionForms\HomeSectionType;
 use App\Repository\CarouselImageRepository;
+use App\Repository\GalleryImageRepository;
 use App\Repository\Section\HomeSectionRepository;
+use App\Service\ImageUploader;
+use App\Service\SubmitCarouselImage;
 use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,11 +27,27 @@ final class BackHomeController extends AbstractController
         CarouselImageRepository $carouselImageRepository,
         HomeSectionRepository $homeSectionRepository,
         Request $request,
-        SubmitSections $submitSections
+        SubmitSections $submitSections,
+        GalleryImageRepository $galleryImageRepository,
+        EntityManagerInterface $entityManager,
+        ImageUploader $imageUploader,
+        SubmitCarouselImage $submitCarouselImage,
     ): Response {
+        $galleryImages = $galleryImageRepository->findAll();
 
+        //Gestion de l'ajout d'images dans le caroussel
+        $carouselImage = new CarouselImage;
+        $carouselForm = $this->createForm(CarouselImageType::class, $carouselImage);
+
+        $imageIsSubmitted = $submitCarouselImage->handleCarouselForm($carouselForm, $request, $carouselImage);
+
+        if($imageIsSubmitted) {
+            $this->addFlash('success', 'Image ajoutée au carrousel.');
+            return $this->redirectToRoute('admin_home');
+        }
+
+        //Gestion du formulaire d'ajout de sections
         $sectionForm = $this->createForm(HomeSectionType::class);
-
         $isSubmitted = $submitSections->handle($sectionForm, $request, $homeSectionRepository);
 
 
@@ -37,16 +59,24 @@ final class BackHomeController extends AbstractController
         $carouselImages = $carouselImageRepository->findBy([], ['position' => 'ASC']);
         $homeSections = $homeSectionRepository->findBy([], ['position' => 'ASC']);
 
+        $carouselGalleryIds = array_map(
+            fn(CarouselImage $carouselImage) => $carouselImage->getGalleryImage()->getId(),
+            $carouselImages
+        );
+
         return $this->render('back/home/index.html.twig', [
             'controller_name' => 'BackHomeController',
             'carouselImages' => $carouselImages,
             'sections' => $homeSections,
             'sectionForm' => $sectionForm,
+            'carouselForm' => $carouselForm,
+            'galleryImages' => $galleryImages,
+            'carouselGalleryIds' => $carouselGalleryIds,
         ]);
     }
 
     #[Route('/admin/home/section_reorder', name: 'home_sections_reorder', methods: ['POST'])]
-    public function reorder(
+    public function reorderSections(
         Request $request,
         HomeSectionRepository $repository,
         EntityManagerInterface $entityManager
@@ -72,24 +102,31 @@ final class BackHomeController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/home/section_delete/{id}', name: 'admin_home_section_delete')]
-    public function deleteSection(
-        HomeSectionRepository $homeSectionRepository,
-        EntityManagerInterface $entityManager,
-        int $id
-    ): Response {
-        $homeSection = $homeSectionRepository->find($id);
+    #[Route('/admin/home/carousel_reorder', name: 'carousel_reorder', methods: ['POST'])]
+    public function reorderImages(
+        Request $request,
+        CarouselImageRepository $repository,
+        EntityManagerInterface $entityManager
+    ): JsonResponse {
 
-        if (!$homeSection) {
-            throw $this->createNotFoundException('Section non trouvée');
+        $ids = json_decode($request->getContent(), true);
+
+        foreach ($ids as $position => $id) {
+
+            $image = $repository->find($id);
+
+            if ($image) {
+                $image->setPosition($position + 1);
+            }
         }
 
-        $entityManager->remove($homeSection);
         $entityManager->flush();
 
-        $this->addFlash('success', 'Section supprimée avec succès !');
+        $this->addFlash('success', 'Ordre des images enregistré avec succès !');
 
-        return $this->redirectToRoute('admin_home');
+        return new JsonResponse([
+            'redirect' => $this->generateUrl('admin_home')
+        ]);
     }
 
     #[Route('/admin/home/section_update/{id}', name: 'admin_home_section_update')]
@@ -113,5 +150,45 @@ final class BackHomeController extends AbstractController
         return $this->render('back/section/form.html.twig', [
             'sectionForm' => $sectionForm,
         ]);
+    }
+
+    #[Route('/admin/home/section_delete/{id}', name: 'admin_home_section_delete')]
+    public function deleteSection(
+        HomeSectionRepository $homeSectionRepository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $homeSection = $homeSectionRepository->find($id);
+
+        if (!$homeSection) {
+            throw $this->createNotFoundException('Section non trouvée');
+        }
+
+        $entityManager->remove($homeSection);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Section supprimée avec succès !');
+
+        return $this->redirectToRoute('admin_home');
+    }
+
+    #[Route('/admin/home/carousel_delete/{id}', name: 'admin_home_carousel_delete')]
+    public function deleteCarousel(
+        CarouselImageRepository $carouselImageRepository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $carouselImage = $carouselImageRepository->find($id);
+
+        if (!$carouselImage) {
+            throw $this->createNotFoundException('Image non trouvée');
+        }
+
+        $entityManager->remove($carouselImage);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Image supprimée avec succès !');
+
+        return $this->redirectToRoute('admin_home');
     }
 }

@@ -1,5 +1,5 @@
 {% for section in sections %}
-<section class="subsection subsection-border" data-id="{{ section.id }}">
+<section class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
     <button class="position-button up">&uarr;</button>
     <button class="position-button down">&darr;</button>
     {% if section.title is not empty %}
@@ -25,6 +25,12 @@
 
 {% endfor %}
 
+{% if sections is not empty %}
 <button id="section_reorder" class="reorder">Enregistrer l'ordre des sections</button>
+{% endif %}
 
-<section class="form">{{ form(sectionForm) }}</section>
+
+<section class="form">
+    <h2 class="subsection__title">Ajouter une section</h2>
+    {{ form(sectionForm) }}
+</section>

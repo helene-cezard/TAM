@@ -12,5 +12,5 @@ tam-symfo/.phpunit.cache/
 
 tam-symfo/assets/vendor/
 
-tam-symfo/public/assets/images
-tam-symfo/public/assets/videos
+tam-symfo/assets/images
+tam-symfo/assets/videos

@@ -16,8 +16,11 @@
                             alt="{{ galleryImage.alt }}"
                             data-src="{{ asset(galleryImage.path) }}"
                         >
-                            <a href="{{ path('admin_resources_image_delete', {id:galleryImage.id}) }}" class="delete__button">Supprimer</a>
-                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
+                            <button class="delete__button">Supprimer</button>
+                        </form>
+                        <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
                     </div>
                     {% else %}
                     <img
@@ -47,8 +50,11 @@
                             alt="{{ galleryImage.alt }}"
                             data-src="{{ asset(galleryImage.path) }}"
                         >
-                            <a href="{{ path('admin_resources_image_delete', {id:galleryImage.id}) }}" class="delete__button">Supprimer</a>
-                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
+                            <button class="delete__button">Supprimer</button>
+                        </form>
+                        <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
                     </div>
                 {% endif %}
                 {% endfor %}

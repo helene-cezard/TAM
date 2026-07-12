@@ -3,20 +3,27 @@
 namespace App\Controller\Back;
 
 use App\Entity\GalleryImage;
+use App\Entity\RubricInfo;
 use App\Entity\Section\ResourcesSection;
+use App\Entity\Visual;
 use App\Form\GalleryImageType;
 use App\Form\SectionForms\ResourcesSectionType;
 use App\Form\RubricInfoType;
 use App\Form\VideoType;
+use App\Form\VisualType;
 use App\Repository\GalleryImageRepository;
 use App\Repository\ImageCategoryRepository;
 use App\Repository\Section\ResourcesSectionRepository;
 use App\Repository\RubricInfoRepository;
 use App\Repository\VideoRepository;
+use App\Repository\VisualRepository;
+use App\Service\DeleteFromServer;
+use App\Service\GalleryImageUsageChecker;
 use App\Service\SubmitImage;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
 use App\Service\SubmitVideo;
+use App\Service\SubmitVisual;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,20 +44,31 @@ final class BackResourcesController extends AbstractController
         ImageCategoryRepository $imageCategoryRepository,
         SubmitImage $submitImage,
         SubmitVideo $submitVideo,
-        VideoRepository $videoRepository
+        VideoRepository $videoRepository,
+        VisualRepository $visualRepository,
+        SubmitVisual $submitVisual
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'resources']);
         $galleryImages = $galleryImageRepository->findAll();
         $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
         $categories = $imageCategoryRepository->findAll();
         $videos = $videoRepository->findAll();
+        $visuals = $visualRepository->findBy([], ['position' => 'ASC']);
+
+        $rubrics = $rubricInfoRepository->findAll();
+        $rubricGalleryIds = array_map(
+            fn(RubricInfo $rubric) => $rubric->getGalleryImage()?->getId(),
+            $rubrics
+        );
 
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#rubricInfo'
+            );
         }
 
         //Gestion du formulaire d'ajout d'images
@@ -58,7 +76,9 @@ final class BackResourcesController extends AbstractController
         $imageIsSubmitted = $submitImage->handleImageForm($imageForm, $request);
         if ($imageIsSubmitted) {
             $this->addFlash('success', 'Image ajoutée avec succès !');
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#gallerie'
+            );
         }
 
         //Gestion du formulaire d'ajout de vidéos
@@ -66,7 +86,19 @@ final class BackResourcesController extends AbstractController
         $videoIsSubmitted = $submitVideo->handleVideoForm($videoForm, $request);
         if ($videoIsSubmitted) {
             $this->addFlash('success', 'Vidéo ajoutée avec succès !');
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#videos'
+            );
+        }
+
+        //Gestion du formulaire d'ajout de supports visuels
+        $visualForm = $this->createForm(VisualType::class);
+        $visualIsSubmitted = $submitVisual->handleVisualForm($visualForm, $request, $visualRepository);
+        if ($visualIsSubmitted) {
+            $this->addFlash('success', 'Support ajoutée avec succès !');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#visuals'
+            );
         }
 
         // Gestion du formulaire d'ajout de section
@@ -74,7 +106,9 @@ final class BackResourcesController extends AbstractController
         $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $resourcesSectionRepository);
         if ($sectionIsSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#resourcesSections'
+            );
         }
 
         return $this->render('back/resources/index.html.twig', [
@@ -87,6 +121,9 @@ final class BackResourcesController extends AbstractController
             'imageForm' => $imageForm,
             'videoForm' => $videoForm,
             'videos' => $videos,
+            'visuals' => $visuals,
+            'visualForm' => $visualForm,
+            'rubricGalleryIds' => $rubricGalleryIds
         ]);
     }
 
@@ -113,11 +150,11 @@ final class BackResourcesController extends AbstractController
         $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_resources')
+            'redirect' => $this->generateUrl('admin_resources') . '#resourcesSections'
         ]);
     }
 
-    #[Route('/admin/resources/section_delete/{id}', name: 'admin_resources_section_delete')]
+    #[Route('/admin/ressources/section_delete/{id}', name: 'admin_resources_section_delete', methods: ['POST'])]
     public function deleteSection(
         ResourcesSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -134,10 +171,12 @@ final class BackResourcesController extends AbstractController
 
         $this->addFlash('success', 'Section supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_resources');
+        return $this->redirect(
+            $this->generateUrl('admin_resources') . '#resourcesSections'
+        );
     }
 
-    #[Route('/admin/resources/section_update/{id}', name: 'admin_resources_section_update')]
+    #[Route('/admin/ressources/section_update/{id}', name: 'admin_resources_section_update')]
     public function updateSection(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -152,7 +191,9 @@ final class BackResourcesController extends AbstractController
 
             $this->addFlash('success', 'La section a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#resourcesSections'
+            );
         }
 
         return $this->render('back/section/form.html.twig', [
@@ -160,10 +201,12 @@ final class BackResourcesController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/resources/image_delete/{id}', name: 'admin_resources_image_delete')]
+    #[Route('/admin/ressources/image_delete/{id}', name: 'admin_resources_image_delete', methods: ['POST'])]
     public function deleteImage(
         GalleryImageRepository $repository,
         EntityManagerInterface $entityManager,
+        DeleteFromServer $deleteFromServer,
+        GalleryImageUsageChecker $usageChecker,
         int $id
     ): Response {
         $galleryImage = $repository->find($id);
@@ -172,22 +215,39 @@ final class BackResourcesController extends AbstractController
             throw $this->createNotFoundException('Image non trouvée');
         }
 
+        if ($usageChecker->isUsed($galleryImage)) {
+            $this->addFlash(
+                'error',
+                'Cette image est utilisée sur le site. Supprimez d\'abord toutes les références avant de la retirer de la galerie.'
+            );
+
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#image-error'
+            );
+        }
+
+        $deleteFromServer->delete($galleryImage->getPath());
+
         $entityManager->remove($galleryImage);
         $entityManager->flush();
 
         $this->addFlash('success', 'Image supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_resources');
+        return $this->redirect(
+            $this->generateUrl('admin_resources') . '#gallerie'
+        );
     }
 
-    #[Route('/admin/resources/image_update/{id}', name: 'admin_resources_image_update')]
+    #[Route('/admin/ressources/image_update/{id}', name: 'admin_resources_image_update')]
     public function updateImage(
         Request $request,
         EntityManagerInterface $entityManager,
         GalleryImage $galleryImage
     )
     {
-        $imageForm = $this->createForm(GalleryImageType::class, $galleryImage);
+        $imageForm = $this->createForm(GalleryImageType::class, $galleryImage, [
+            'upload_image' => false, // Désactive le champ d'upload d'image
+        ]);
         $imageForm->handleRequest($request);
 
         if ($imageForm->isSubmitted() && $imageForm->isValid()) {
@@ -195,12 +255,123 @@ final class BackResourcesController extends AbstractController
 
             $this->addFlash('success', 'L\'image a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_resources');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#gallerie'
+            );
         }
 
         return $this->render('back/gallery/form.html.twig', [
             'imageForm' => $imageForm,
             'galleryImage' => $galleryImage,
         ]);
+    }
+
+    #[Route('/admin/ressources/video_delete/{id}', name: 'admin_resources_video_delete', methods: ['POST'])]
+    public function deleteVideo(
+        VideoRepository $repository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $video = $repository->find($id);
+
+        if (!$video) {
+            throw $this->createNotFoundException('Vidéo non trouvée');
+        }
+
+        if ($video->getType() === 'local') {
+            $videoPath = $this->getParameter('kernel.project_dir') . '/assets/' . $video->getPath();
+            if (is_file($videoPath)) {
+                unlink($videoPath);
+            }
+        }
+
+        $entityManager->remove($video);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Vidéo supprimée avec succès !');
+
+        return $this->redirect(
+            $this->generateUrl('admin_resources') . '#videos'
+        );
+    }
+
+    #[Route('/admin/resources/visual_reorder', name: 'admin_resources_visual_reorder', methods: ['POST'])]
+    public function visualReorder(
+        Request $request,
+        VisualRepository $visualRepository,
+        EntityManagerInterface $entityManager
+    ): JsonResponse {
+        $ids = json_decode($request->getContent(), true);
+
+        foreach ($ids as $position => $id) {
+            $visual = $visualRepository->find($id);
+
+            if ($visual) {
+                $visual->setPosition($position + 1);
+            }
+        }
+
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Ordre des supports visuels enregistré avec succès !');
+
+        return new JsonResponse([
+            'redirect' => $this->generateUrl('admin_resources') . '#visuals'
+        ]);
+    }
+
+    #[Route('/admin/ressources/visual_update/{id}', name: 'admin_resources_visual_update')]
+    public function visualUpdate(
+        Request $request,
+        Visual $visual,
+        SubmitVisual $submitVisual,
+        VisualRepository $visualRepository,
+    ) {
+
+        $visualForm = $this->createForm(VisualType::class, $visual);
+
+        $visualIsSubmitted = $submitVisual->handleVisualForm($visualForm, $request, $visualRepository);
+        if ($visualIsSubmitted) {
+            $this->addFlash('success', 'Le support visuel a bien été mis à jour.');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#visuals'
+            );
+        }
+
+        return $this->render('back/visual/form.html.twig', [
+            'visualForm' => $visualForm,
+            'visual' => $visual,
+        ]);
+    }
+
+    #[Route('/admin/ressources/visual_delete/{id}', name: 'admin_resources_visual_delete', methods: ['POST'])]
+    public function visualDelete(
+        VisualRepository $visualRepository,
+        EntityManagerInterface $entityManager,
+        int $id
+    ): Response {
+        $visual = $visualRepository->find($id);
+
+        if (!$visual) {
+            throw $this->createNotFoundException('Support visuel non trouvé');
+        }
+
+        $visualPath = $this->getParameter('kernel.project_dir') . '/assets/' . $visual->getPath();
+        $visualImagePath = $this->getParameter('kernel.project_dir') . '/assets/' . $visual->getImage();
+        if (is_file($visualPath)) {
+            unlink($visualPath);
+        }
+        if (is_file($visualImagePath)) {
+            unlink($visualImagePath);
+        }
+
+        $entityManager->remove($visual);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Support visuel supprimé avec succès !');
+
+        return $this->redirect(
+            $this->generateUrl('admin_resources') . '#visuals'
+        );
     }
 }

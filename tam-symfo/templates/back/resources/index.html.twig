@@ -3,25 +3,26 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
-            <section id="resourcesSections" class="resources section">
+            <section class="resources section">
+                <p id="rubricInfo" class="admin-title">En-tête</p>
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
 
-                {% include "back/partials/_sections.html.twig" %}
+                <section id="resourcesSections">{% include "back/partials/_sections.html.twig" %}</section>
 
                 <section>
-                    <h2 class="subsection__title">Vidéos</h2>
+                    <p id="videos" class="admin-title">Vidéos</p>
                         <ul class="resources__videos">
                             {% for video in videos %}
-                            <li>
+                            <li class="video__item">
                                 {% if video.type == 'local' %}
                                 <video width="320" height="240" controls>
                                     <source src="{{ asset(video.path) }}" type="video/mp4">
@@ -29,33 +30,117 @@
                                 {% elseif video.type == 'youtube' %}
                                 <iframe src="{{ video.path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 {% endif %}
+                                <div class="modify__buttons">
+                                <form method="post" action="{{ path(app.current_route ~ '_video_delete', {id: video.id}) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ video.id) }}">
+                                    <button class="delete__button">Supprimer</button>
+                                </form>
+                                </div>
                             </li>
                             {% endfor %}
                         </ul>
                 </section>
-                <section class="form">{{ form(videoForm) }}</section>
-
-                {% include "partials/_gallery.html.twig" %}
+                <p class="admin-title">Ajouter des vidéos</p>
+                <div class="tabs-form">
+                    <div class="tabs-form__tabs">
+                        <button class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="video-url">Ajouter l'adresse d'une video</button>
+                        <button class="tabs-form__tab-button" data-tab="uploaded-video">Envoyer une vidéo</button>
+                    </div>
                     <section class="form">
+                        {{ form_start(videoForm) }}
+                        <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="video-url">{{ form_row(videoForm.path) }}</div>
+                        <div class="tabs-form__tab-content" data-tab="uploaded-video">{{ form_row(videoForm.uploadedVideo) }}</div>
+                        {{ form_row(videoForm.save) }}
+                        {{ form_end(videoForm) }}
+                    </section>
+                </div>
+
+                <section>
+                    <p id="gallerie" class="admin-title">Vidéos</p>
+                    {% include "partials/_gallery.html.twig" %}
+                </section>
+                <p id="image-error" class="admin-title">Ajouter des images</p>
+                <section class="form">
                     {{ form_start(imageForm) }}
+                        {{ form_errors(imageForm.uploadedImage) }}
                         {{ form_row(imageForm.uploadedImage) }}
-                            <div class="form-label-with-help">
-                                {{ form_label(imageForm.alt) }}
+                        {{ form_errors(imageForm.alt) }}
+                        <div class="form-label-with-help">
+                            {{ form_label(imageForm.alt) }}
 
-                                <span
-                                    class="help-tooltip"
-                                    title="{{ imageForm.alt.vars.help }}"
-                                >
-                                ⓘ
-                                </span>
-                            </div>
-
-
+                            <span
+                                class="help-tooltip"
+                                title="{{ imageForm.alt.vars.help }}"
+                            >
+                            ⓘ
+                            </span>
+                        </div>
                         {{ form_widget(imageForm.alt) }}
+                        {{ form_errors(imageForm.category) }}
                         {{ form_row(imageForm.category) }}
                         {{ form_row(imageForm.save) }}
                     {{ form_end(imageForm) }}
-                    </section>
+                </section>
+
+                <section>
+                <p class="admin-title">Supports visuels</p>
+                    <ul id="visuals">
+                        {% for visual in visuals %}
+                        <li class="resources__visuals subsection-border element-to-move" data-id="{{ visual.id }}">
+                            <button class="position-button up">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
+                                </svg>
+                            </button>
+                            <button class="position-button down">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                            </button>
+                            <div class="resources__visuals-content">
+                                <div class="resources__visual-name">{{ visual.name }} :</div>
+                                {% if visual.path is not empty %}
+                                <div class="resources__visuals-image">
+                                    <a href="{{ asset(visual.path) }}" target="_blank">
+                                        <img src="{{ asset(visual.image) }}" alt="{{ visual.name }} ">
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class="resources__visuals-image">
+                                    <img src="{{ asset(visual.image) }}" alt="{{ visual.name }} ">
+                                </div>
+                                {% endif %}
+                                <p class="resources__visuals-description">{{ visual.description }}</p>
+                            </div>
+                            <div class="modify__buttons">
+                                <form method="post" action="{{ path(app.current_route ~ '_visual_delete', {id: visual.id}) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ visual.id) }}">
+                                    <button class="delete__button">Supprimer</button>
+                                </form>
+                                <a href="{{ path(app.current_route ~ '_visual_update', {id:visual.id}) }}" class="delete__button">Modifier</a>
+                            </div>
+                        </li>
+                        {% endfor %}
+
+                        {% if visuals|length >= 2 %}
+                        <button id="visual_reorder" class="reorder">Enregistrer l'ordre des supports visuels</button>
+                        {% endif %}
+
+                    </ul>
+                </section>
+                <p class="admin-title">Ajouter des supports visuels</p>
+                <section class="form">
+                    {{ form_start(visualForm) }}
+                        {{ form_row(visualForm.name) }}
+                        {{ form_row(visualForm.description) }}
+                        {{ form_row(visualForm.uploadedVisual) }}
+                        {{ form_row(visualForm.save) }}
+                    {{ form_end(visualForm) }}
+                </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

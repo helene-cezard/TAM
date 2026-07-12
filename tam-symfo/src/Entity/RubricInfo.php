@@ -24,7 +24,7 @@ class RubricInfo
     private ?string $text = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?GalleryImage $GalleryImage = null;
+    private ?GalleryImage $galleryImage = null;
 
     public function getId(): ?int
     {
@@ -69,12 +69,12 @@ class RubricInfo
 
     public function getGalleryImage(): ?GalleryImage
     {
-        return $this->GalleryImage;
+        return $this->galleryImage;
     }
 
     public function setGalleryImage(?GalleryImage $GalleryImage): static
     {
-        $this->GalleryImage = $GalleryImage;
+        $this->galleryImage = $GalleryImage;
 
         return $this;
     }

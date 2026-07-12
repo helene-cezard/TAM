@@ -1,7 +1,20 @@
+<p class="admin-title">Sections</p>
 {% for section in sections %}
-<section class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
-    <button class="position-button up">&uarr;</button>
-    <button class="position-button down">&darr;</button>
+<section  id={{ section.htmlId }} class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
+    <button class="position-button up">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
+        </svg>
+    </button>
+    <button class="position-button down">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+        </svg>
+    </button>
     {% if section.title is not empty %}
         <h2
             class="subsection__title {{ section.aside|default ? 'subsection__title-grid' : '' }}">
@@ -9,7 +22,7 @@
         </h2>
     {% endif %}
     <div class="subsection__text">
-    {{ section.text|raw }}
+    {{ section.text|quill_html|raw }}
     </div>
     {% if section.aside is not empty %}
         <aside class="subsection__quote {{ section.leftSide ? 'left' : '' }}">
@@ -18,19 +31,29 @@
         </aside>
     {% endif %}
     <div class="modify__buttons">
-        <a href="{{ path(app.current_route ~ '_section_delete', {id:section.id}) }}" class="delete__button">Supprimer</a>
+        <form method="post" action="{{ path(app.current_route ~ '_section_delete', {id: section.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ section.id) }}">
+            <button class="delete__button">Supprimer</button>
+        </form>
         <a href="{{ path(app.current_route ~ '_section_update', {id:section.id}) }}" class="update__button">Modifier</a>
     </div>
 </section>
 
 {% endfor %}
 
-{% if sections is not empty %}
+{% if sections|length >= 2 %}
 <button id="section_reorder" class="reorder">Enregistrer l'ordre des sections</button>
 {% endif %}
 
 
 <section class="form">
-    <h2 class="subsection__title">Ajouter une section</h2>
-    {{ form(sectionForm) }}
+
+    <p class="admin-title">Ajouter une section</p>
+    {{ form_start(sectionForm) }}
+        {# {{ form_start(sectionForm, {
+        attr: {
+            'data-turbo': 'false'
+        }
+    }) }} #}
+    {{ form_end(sectionForm) }}
 </section>

@@ -16,6 +16,23 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
+    public function presidentExistsExcept(?int $memberId = null): bool
+    {
+        $qb = $this->createQueryBuilder('t')
+            ->join('t.role', 'r')
+            ->andWhere('r.name = :role')
+            ->setParameter('role', 'president');
+
+        if ($memberId !== null) {
+            $qb->andWhere('t.id != :id')
+            ->setParameter('id', $memberId);
+        }
+
+        return $qb->select('COUNT(t.id)')
+            ->getQuery()
+            ->getSingleScalarResult() > 0;
+    }
+
     //    /**
     //     * @return Team[] Returns an array of Team objects
     //     */

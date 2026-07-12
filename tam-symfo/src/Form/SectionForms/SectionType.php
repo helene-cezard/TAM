@@ -12,8 +12,10 @@ use Ehyiah\QuillJsBundle\DTO\QuillGroup;
 use Ehyiah\QuillJsBundle\Form\QuillType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SectionType extends AbstractType
 {
@@ -33,7 +35,7 @@ class SectionType extends AbstractType
                     new ItalicField(),
                     new LinkField(),
                     new UnderlineField(),
-                    new ListField(),
+                    new ListField(ListField::LIST_FIELD_OPTION_BULLET),
                     new VideoField(),
                 ),
                 ],
@@ -41,9 +43,27 @@ class SectionType extends AbstractType
             ->add('aside', null, [
                 'label' => 'Ajouter un bloc de citation',
                 'required' => false,
+                'empty_data' => null,
             ])
             ->add('left_side', null, [
                 'label' => 'Afficher le bloc de citation à gauche',
+            ])
+            ->add('htmlId', TextType::class, [
+                'label' => 'Identifiant HTML',
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'ex. : qui-sommes-nous',
+                ],
+                'help' => 'Permet de créer un lien direct vers cette section (ex. : ajouter #qui-sommes-nous à la fin de l\'url comme dans https://monsite.fr/page#qui-sommes-nous).',
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 50,
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^[a-z][a-z0-9_-]*$/',
+                        'message' => 'Utilisez uniquement des lettres minuscules, des chiffres, des tirets et des underscores. L’identifiant doit commencer par une lettre.',
+                    ]),
+                ],
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',

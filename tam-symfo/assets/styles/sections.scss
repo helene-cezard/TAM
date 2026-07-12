@@ -551,15 +551,31 @@
 
         display: flex;
         flex-direction: column;
+        margin: 2rem;
 
         & img {
             width: 100%;
         }
 
         @media screen and (min-width: variables.$breakpoint) {
-            gap: 1.5rem;
-            flex-direction: row;
-            width: 20rem;
+            &-content {
+                display: grid;
+                width: fit-content;
+                gap: 1.5rem;
+            }
+
+            &-name {
+                grid-column: span 2 / span 2;
+            }
+
+            &-image {
+                width: 20rem;
+                grid-row-start: 2;
+            }
+
+            &-description {
+                grid-row-start: 2;
+            }
         }
     }
 }

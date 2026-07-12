@@ -19,9 +19,7 @@ class GalleryImage
     #[ORM\Column(length: 255)]
     private ?string $alt = null;
 
-    #[ORM\ManyToOne(
-        inversedBy: 'galleryImages'
-    )]
+    #[ORM\ManyToOne( inversedBy: 'galleryImages' )]
     private ?ImageCategory $category = null;
 
     public function getId(): ?int

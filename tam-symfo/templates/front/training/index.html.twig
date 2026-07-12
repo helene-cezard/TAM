@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
 
                 {% for trainingSection in trainingSections %}
@@ -23,7 +23,7 @@
                         </h2>
                     {% endif %}
                     <div>
-                    {{ trainingSection.text|raw }}
+                    {{ trainingSection.text|quill_html|raw }}
                     </div>
                     {% if trainingSection.aside is not empty %}
                         <aside class="subsection__quote {{ trainingSection.left ? 'left' : '' }}">

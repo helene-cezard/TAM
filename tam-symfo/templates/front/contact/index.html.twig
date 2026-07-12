@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 <section class="contact__info">
                     <div>
@@ -30,7 +30,7 @@
                             </h2>
                         {% endif %}
                         <div>
-                        {{ contactSection.text|raw }}
+                        {{ contactSection.text|quill_html|raw }}
                         </div>
                         {% if contactSection.aside is not empty %}
                             <aside class="subsection__quote {{ contactSection.left ? 'left' : '' }}">
@@ -48,7 +48,11 @@
                         <br>
                         N’hésitez pas à nous contacter via notre formulaire ou par mail.
                     </p>
-                    {{ form(form) }}
+                    {{ form_start(form) }}
+                    <div class="honeypot" aria-hidden="true">
+                        {{ form_row(form.website) }}
+                    </div>
+                    {{ form_end(form) }}
                 </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}

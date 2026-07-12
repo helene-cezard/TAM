@@ -1,9 +1,10 @@
 @use "placeholders";
+@use "variables";
 
 .form {
 
     margin: auto;
-    width: 100%;
+    width: 90%;
 
     & form {
       display: flex;
@@ -11,9 +12,9 @@
       gap: 1rem;
       margin: 1rem auto 0 auto;
 
-      & label {
-        margin-right: 1rem;
-      }
+    //   & label {
+    //     margin-right: 1rem;
+    //   }
 
       & input,
       & textarea {
@@ -32,6 +33,7 @@
 
       & button[type='submit'] {
         padding: 0.75rem;
+        margin-bottom: 1rem;
 
         @extend %button;
         }
@@ -39,6 +41,14 @@
         & li {
             color: red;
             text-align: end;
+        }
+    }
+
+    .team__card {
+
+        @media screen and (min-width: variables.$breakpoint) {
+            width: 30%;
+            margin: auto;
         }
     }
 }
@@ -49,6 +59,10 @@
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     padding-right: 5rem;
+}
+
+.resources__visuals.subsection-border {
+    width: 100%;
 }
 
 .element-to-move {
@@ -78,11 +92,26 @@
 }
 
 .position-button {
-    width: fit-content;
-    height: fit-content;
-    font-size: 3rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
     position: absolute;
     right: 1rem;
+    top: 1rem;
 
     @extend %button;
 }
@@ -107,13 +136,22 @@
     @extend %button;
     padding: 0.5rem 1rem;
     width: fit-content;
-    margin-top: 2rem;
-    font-size: 1rem;
+    // margin-top: 2rem;
+    // font-size: 1rem;
+}
+
+.team__card__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
 }
 
 .modify__buttons {
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -128,9 +166,11 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    border: #ccc 1px solid;
+    // border: #ccc 1px solid;
     border-radius: 0.5rem;
     padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
 
     & input[type="radio"] {
         display: none; /* Masque les boutons radio */
@@ -142,7 +182,7 @@
     }
 
     & label p {
-        height: 32px;
+        height: 32px; /* Aligner les images avec le placeholder */
     }
 
     & label img {
@@ -186,4 +226,34 @@
 
 .pdf-thumbnail {
     width: 10rem;
+}
+
+.admin-title {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.admin-title::before {
+    content: "";
+    width: .35rem;
+    height: 1.5rem;
+    border-radius: 999px;
+    background: #d76942;
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.video__item {
+    margin-bottom: 1rem;
 }

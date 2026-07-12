@@ -3,23 +3,64 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
-            <section id="teamSections" class="actions section">
+            <section class="actions section">
+                <p id="rubricInfo" class="admin-title">En-tête</p>
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
 
-                {% include "partials/_team.html.twig" %}
+                <p id="teamMembers" class="admin-title">Membres de l'équipe</p>
 
-                <section class="form">{{ form(teamForm) }}</section>
+                <section class="team__board subsection">
+                    {% for role in roles %}
+                        <div class="{{role.name === 'president' ? 'president' : ''}}">
+                            <h2 class="subsection__title">{{ role.name }}</h2>
+                                <div class="{{role.name !== 'president' ? 'team__container' : ''}}">
+                                    {% for member in role.members %}
 
-                {% include "back/partials/_sections.html.twig" %}
+                                        {% set tag = role.name == 'president' ? 'a' : 'div' %}
+
+                                        <div class="team__card__container">
+                                            <{{ tag }}
+                                                class="team__card"
+                                                {% if tag == 'a' %}
+                                                    href="{{ path('app_eulogy') }}"
+                                                {% endif %}
+                                            >
+                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ member.name }}">
+                                                <div class="team__card__text">
+                                                    <h3 class="team__card__name">{{ member.name }}</h3>
+                                                    <p class="team__card__bio">{{ member.presentation }}</p>
+                                                </div>
+                                            </{{ tag }}>
+                                            <div class="modify__buttons">
+                                                <form method="post" action="{{ path(app.current_route ~ '_member_delete', {id: member.id}) }}">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ member.id) }}">
+                                                    <button class="delete__button">Supprimer</button>
+                                                </form>
+                                                <a href="{{ path(app.current_route ~  '_member_update', {id:member.id}) }}" class="update__button">Modifier</a>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+                        </div>
+                    {% endfor %}
+                </section>
+
+                <section class="form">
+                    <p class="admin-title">Ajouter un membre de l'équipe</p>
+                    {{ form(teamForm) }}
+                </section>
+
+                <section id="teamSections">{% include "back/partials/_sections.html.twig" %}</section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

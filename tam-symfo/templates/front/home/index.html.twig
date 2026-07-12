@@ -16,7 +16,7 @@
                             </h2>
                         {% endif %}
                         <div class="subsection__text">
-                        {{ homeSection.text|raw }}
+                        {{ homeSection.text|quill_html|raw }}
                         </div>
                         {% if homeSection.aside is not empty %}
                             <aside class="subsection__quote {{ homeSection.leftSide ? 'left' : '' }}">

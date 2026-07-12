@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% for beninSection in beninSections %}
                 <section class="subsection">
@@ -22,7 +22,7 @@
                             </h2>
                         {% endif %}
                         <div class="subsection__text">
-                        {{ beninSection.text|raw }}
+                        {{ beninSection.text|quill_html|raw }}
                         </div>
                         {% if beninSection.aside is not empty %}
                             <aside class="subsection__quote {{ beninSection.left ? 'left' : '' }}">

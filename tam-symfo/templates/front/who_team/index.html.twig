@@ -11,10 +11,38 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
 
-                {% include "partials/_team.html.twig" %}
+                <section class="team__board subsection">
+                    {% for role in roles %}
+                        <div class="{{role.name === 'president' ? 'president' : ''}}">
+                            <h2 class="subsection__title">{{ role.name }}</h2>
+                                <div class="{{role.name !== 'president' ? 'team__container' : ''}}">
+                                    {% for member in role.members %}
+
+                                        {% set tag = role.name == 'president' ? 'a' : 'div' %}
+
+                                            <{{ tag }}
+                                                class="team__card"
+                                                {% if tag == 'a' %}
+                                                    href="{{ path('app_eulogy') }}"
+                                                {% endif %}
+                                            >
+
+                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ member.name }}">
+                                                <div class="team__card__text">
+                                                    <h3 class="team__card__name">{{ member.name }}</h3>
+                                                    <p class="team__card__bio">{{ member.presentation }}</p>
+                                                </div>
+
+                                            </{{ tag }}>
+
+                                    {% endfor %}
+                                </div>
+                        </div>
+                    {% endfor %}
+                </section>
 
                 {% for teamSection in teamSections %}
 
@@ -26,7 +54,7 @@
                         </h2>
                     {% endif %}
                     <div>
-                    {{ teamSection.text|raw }}
+                    {{ teamSection.text|quill_html|raw }}
                     </div>
                     {% if teamSection.aside is not empty %}
                         <aside class="subsection__quote {{ teamSection.left ? 'left' : '' }}">
@@ -38,6 +66,6 @@
 
                 {% endfor %}
             </section>
-        {# {% include "partials/_left_banner.html.twig" %} #}
+        {% include "partials/_right_banner.html.twig" %}
     </main>
 {% endblock %}

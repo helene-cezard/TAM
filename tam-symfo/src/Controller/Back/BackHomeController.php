@@ -29,8 +29,6 @@ final class BackHomeController extends AbstractController
         Request $request,
         SubmitSections $submitSections,
         GalleryImageRepository $galleryImageRepository,
-        EntityManagerInterface $entityManager,
-        ImageUploader $imageUploader,
         SubmitCarouselImage $submitCarouselImage,
     ): Response {
         $galleryImages = $galleryImageRepository->findAll();
@@ -53,7 +51,9 @@ final class BackHomeController extends AbstractController
 
         if ($isSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_home');
+            return $this->redirect(
+                $this->generateUrl('admin_home') . '#homeSections'
+            );
         }
 
         $carouselImages = $carouselImageRepository->findBy([], ['position' => 'ASC']);
@@ -98,7 +98,7 @@ final class BackHomeController extends AbstractController
         $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_home')
+            'redirect' => $this->generateUrl('admin_home') . '#homeSections'
         ]);
     }
 
@@ -144,7 +144,9 @@ final class BackHomeController extends AbstractController
 
             $this->addFlash('success', 'La section a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_home');
+            return $this->redirect(
+                $this->generateUrl('admin_home') . '#homeSections'
+            );
         }
 
         return $this->render('back/section/form.html.twig', [
@@ -152,7 +154,7 @@ final class BackHomeController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/home/section_delete/{id}', name: 'admin_home_section_delete')]
+    #[Route('/admin/home/section_delete/{id}', name: 'admin_home_section_delete', methods: ['POST'])]
     public function deleteSection(
         HomeSectionRepository $homeSectionRepository,
         EntityManagerInterface $entityManager,
@@ -169,10 +171,12 @@ final class BackHomeController extends AbstractController
 
         $this->addFlash('success', 'Section supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_home');
+        return $this->redirect(
+            $this->generateUrl('admin_home') . '#homeSections'
+        );
     }
 
-    #[Route('/admin/home/carousel_delete/{id}', name: 'admin_home_carousel_delete')]
+    #[Route('/admin/home/carousel_delete/{id}', name: 'admin_home_carousel_delete', methods: ['POST'])]
     public function deleteCarousel(
         CarouselImageRepository $carouselImageRepository,
         EntityManagerInterface $entityManager,

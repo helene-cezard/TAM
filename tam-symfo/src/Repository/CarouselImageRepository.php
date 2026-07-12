@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\CarouselImage;
+use App\Entity\GalleryImage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,13 @@ class CarouselImageRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CarouselImage::class);
+    }
+
+    public function isUsed(GalleryImage $image): bool {
+
+        return $this->findOneBy([
+            'galleryImage' => $image,
+        ]) !== null;
     }
 
     //    /**

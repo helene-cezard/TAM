@@ -3,34 +3,48 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
             <section class="actions section">
+                <p id="rubricInfo" class="admin-title">En-tête</p>
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
                 <section id="actionsContainer">
                     <div class="actions__list__header">
+                        <p class="admin-title">Actions</p>
                         <h2 class="subsection__title">Nos principaux dispositifs :</h2>
                         <p>Découvrez nos différents accompagnements développés en partenariats avec les acteurs locaux.</p>
                     </div>
 
                         {% for action in actions %}
                         <div {{ action.getHtmlId ? 'id=' : '' }}"{{ action.getHtmlId }}" class="actions__item subsection subsection-border element-to-move" data-id="{{ action.id }}">
-                            <button class="position-button up">&uarr;</button>
-                            <button class="position-button down">&darr;</button>
+                            <button class="position-button up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
+                            </svg>
+                            </button>
+                            <button class="position-button down">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                                </svg>
+                            </button>
                             {% if action.title is not empty %}
                                 <h3  class="actions__title {{ action.aside|default ? 'subsection__title-grid' : '' }}">
                                     {{ action.title }}
                                 </h3>
                             {% endif %}
                             <div>
-                            {{ action.text|raw }}
+                            {{ action.text|quill_html|raw }}
                             </div>
                             {% if action.aside is not empty %}
                                 <aside class="subsection__quote {{ action.leftSide ? 'left' : '' }}">
@@ -39,7 +53,10 @@
                                 </aside>
                             {% endif %}
                             <div class="modify__buttons">
-                                <a href="{{ path(app.current_route ~ '_action_delete', {id:action.id}) }}" class="delete__button">Supprimer</a>
+                                <form method="post" action="{{ path(app.current_route ~ '_action_delete', {id: action.id}) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ action.id) }}">
+                                    <button class="delete__button">Supprimer</button>
+                                </form>
                                 <a href="{{ path(app.current_route ~ '_action_update', {id:action.id}) }}" class="update__button">Modifier</a>
                             </div>
                         </div>
@@ -50,7 +67,7 @@
                     {% endif %}
                 </section>
                 <section class="form">
-                    <h2 class="subsection__title">Ajouter une action</h2>
+                    <p class="admin-title">Ajouter une action</p>
                 {{ form(actionForm) }}
                 </section>
                 <section id="franceSections">{% include "back/partials/_sections.html.twig" %}</section>

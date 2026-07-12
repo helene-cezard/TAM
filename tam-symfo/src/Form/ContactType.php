@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,24 +19,48 @@ class ContactType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom',
-                // 'required' => true,
                 'constraints' => [
                     new Assert\NotBlank([
-                        'message' => 'Le nom est requis.',
+                        'message' => 'Veuillez indiquer votre nom.',
                     ]),
                     new Assert\Length([
-                        'min' => 3,
+                        'min' => 2,
+                        'max' => 100,
                         'minMessage' => 'Le nom doit comporter au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Le nom ne peut pas dépasser {{ limit }} caractères.',
                     ]),
                 ],
+                'attr' => [
+                    'autocomplete' => 'name',
+                ]
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email',
-                // 'required' => true,
+            ->add('e_mail', EmailType::class, [
+                'label' => 'Adresse e-mail',
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'Veuillez indiquer votre adresse e-mail.',
+                    ]),
+                    new Assert\Email([
+                        'message' => 'Veuillez saisir une adresse e-mail valide.',
+                    ]),
+                ],
+                'attr' => [
+                    'autocomplete' => 'email',
+                ]
             ])
             ->add('subject', TextType::class, [
                 'label' => 'Objet du message',
-                // 'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'Veuillez indiquer un sujet.',
+                    ]),
+                    new Assert\Length([
+                        'min' => 5,
+                        'max' => 150,
+                        'minMessage' => 'Le sujet est trop court.',
+                        'maxMessage' => 'Le sujet ne peut pas dépasser {{ limit }} caractères.',
+                    ]),
+        ],
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'Message',
@@ -45,11 +70,33 @@ class ContactType extends AbstractType
                         'message' => 'Le message ne peut pas être vide.',
                     ]),
                     new Assert\Length([
-                        'min' => 10,
-                        'minMessage' => 'Le message doit comporter au moins {{ limit }} caractères.',
+                        'min' => 20,
+                        'max' => 5000,
+                        'minMessage' => 'Votre message doit comporter au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre message ne peut pas dépasser {{ limit }} caractères.',
                     ]),
                 ],
                 // 'required' => true,
+            ])
+            // Honeypot
+            ->add('website', TextType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'tabindex' => '-1',
+                ],
+                'constraints' => [
+                    new Assert\Blank([
+                        'message' => 'Spam détecté.',
+                    ]),
+                ],
+            ])
+            // Champs caché pour détecter à quelle heure le formulaire a été généré (pour détecter les robots)
+            ->add('generatedAt', HiddenType::class, [
+                'mapped' => false,
+                'data' => time(),
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer',

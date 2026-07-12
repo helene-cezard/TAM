@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\RubricInfo;
 use App\Entity\Section\Action;
 use App\Entity\Section\FranceSection;
 use App\Form\SectionForms\ActionType;
@@ -37,12 +38,20 @@ final class BackFranceController extends AbstractController
         $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
         $actions = $actionRepository->findBy([], ['position' => 'ASC']);
 
+        $rubrics = $rubricInfoRepository->findAll();
+        $rubricGalleryIds = array_map(
+            fn(RubricInfo $rubric) => $rubric->getGalleryImage()?->getId(),
+            $rubrics
+        );
+
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
-            return $this->redirectToRoute('admin_france');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#rubricInfo'
+            );
         }
 
         // Gestion du formulaire d'ajout d'action
@@ -50,7 +59,9 @@ final class BackFranceController extends AbstractController
         $actionIsSubmitted = $submitSections->handle($actionForm, $request, $actionRepository);
         if ($actionIsSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_france');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#actionsContainer'
+            );
         }
 
         // Gestion du formulaire d'ajout de section
@@ -58,7 +69,9 @@ final class BackFranceController extends AbstractController
         $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $franceSectionRepository);
         if ($sectionIsSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_france');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#franceSections'
+            );
         }
 
         return $this->render('back/france/index.html.twig', [
@@ -69,6 +82,7 @@ final class BackFranceController extends AbstractController
             'galleryImages' => $galleryImages,
             'actionForm' => $actionForm,
             'actions' => $actions,
+            'rubricGalleryIds' => $rubricGalleryIds,
         ]);
     }
 
@@ -95,11 +109,11 @@ final class BackFranceController extends AbstractController
         $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_france')
+            'redirect' => $this->generateUrl('admin_france') . '#franceSections'
         ]);
     }
 
-    #[Route('/admin/france/section_delete/{id}', name: 'admin_france_section_delete')]
+    #[Route('/admin/france/section_delete/{id}', name: 'admin_france_section_delete', methods: ['POST'])]
     public function deleteSection(
         FranceSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -116,7 +130,9 @@ final class BackFranceController extends AbstractController
 
         $this->addFlash('success', 'Section supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_france');
+        return $this->redirect(
+            $this->generateUrl('admin_france') . '#franceSections'
+        );
     }
 
     #[Route('/admin/france/section_update/{id}', name: 'admin_france_section_update')]
@@ -134,7 +150,9 @@ final class BackFranceController extends AbstractController
 
             $this->addFlash('success', 'La section a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_france');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#franceSections'
+            );
         }
 
         return $this->render('back/section/form.html.twig', [
@@ -165,11 +183,11 @@ final class BackFranceController extends AbstractController
         $this->addFlash('success', 'Ordre des actions enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_france')
+            'redirect' => $this->generateUrl('admin_france') . '#actionsContainer'
         ]);
     }
 
-    #[Route('/admin/france/action_delete/{id}', name: 'admin_france_action_delete')]
+    #[Route('/admin/france/action_delete/{id}', name: 'admin_france_action_delete', methods: ['POST'])]
     public function deleteAction(
         ActionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -186,7 +204,9 @@ final class BackFranceController extends AbstractController
 
         $this->addFlash('success', 'Action supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_france');
+        return $this->redirect(
+            $this->generateUrl('admin_france') . '#actionsContainer'
+        );
     }
 
     #[Route('/admin/france/action_update/{id}', name: 'admin_france_action_update')]
@@ -204,7 +224,9 @@ final class BackFranceController extends AbstractController
 
             $this->addFlash('success', 'L\'action a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_france');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#actionsContainer'
+            );
         }
 
         return $this->render('back/action/form.html.twig', [

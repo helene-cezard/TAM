@@ -3,28 +3,41 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
-            <section id="reportsSections" class="reports section">
+            <section class="reports section">
+                <p id="rubricInfo" class="admin-title">En-tête</p>
 
-            {# En-tête #}
+                {# En-tête #}
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
 
-            {# Rapports d'activité #}
+                {# Rapports d'activité #}
                 <section>
-                    <h2 class="subsection__title">Rapports d'activité</h2>
+                    <p class="admin-title">Rapports d'activité</p>
                     <div id="reportsContainer" class="reports__list">
                         {% for report in reports %}
                         <div class="subsection-border element-to-move" data-id="{{ report.id }}">
-                        <button class="position-button up">&uarr;</button>
-                        <button class="position-button down">&darr;</button>
+                        <button class="position-button up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
+                            </svg>
+                        </button>
+                        <button class="position-button down">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </button>
                             <div class="reports__list-text">
                                 <a href="{{ asset(report.path) }}">
                                     <img src="{{ asset(report.image) }}" alt="">
@@ -32,7 +45,10 @@
                                 <p>{{ report.description }}</p>
                             </div>
                             <div class="modify__buttons">
-                                <a href="{{ path('admin_report_delete', {id:report.id}) }}" class="delete__button">Supprimer</a>
+                                <form method="post" action="{{ path(app.current_route ~ '_delete', {id: report.id}) }}">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ report.id) }}">
+                                    <button class="delete__button">Supprimer</button>
+                                </form>
                                 <a href="{{ path('admin_reports_update', {id:report.id}) }}" class="update__button">Modifier</a>
                             </div>
                         </div>
@@ -44,8 +60,8 @@
                     {{ form(reportsForm) }}
                 </section>
 
-            {# Sections #}
-                {% include "back/partials/_sections.html.twig" %}
+                {# Sections #}
+                <section id="reportsSections">{% include "back/partials/_sections.html.twig" %}</section>
 
             </section>
         {% include "partials/_right_banner.html.twig" %}

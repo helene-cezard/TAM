@@ -3,8 +3,8 @@ namespace App\Service;
 
 use App\Entity\GalleryImage;
 use App\Repository\GalleryImageRepository;
-use App\Service\ImageUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,13 +13,17 @@ class SubmitCarouselImage
 
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private ImageUploader $imageUploader,
-        private GalleryImageRepository $galleryImageRepository
+        private FileUploader $fileUploader,
+        private GalleryImageRepository $galleryImageRepository,
+
+        #[Autowire('%uploaded_images_directory%')]
+        private string $imagesDirectory,
         )
     {
         $this->entityManager = $entityManager;
-        $this->imageUploader = $imageUploader;
+        $this->fileUploader = $fileUploader;
         $this->galleryImageRepository = $galleryImageRepository;
+        $this->imagesDirectory = $imagesDirectory;
     }
 
     public function handleCarouselForm(
@@ -35,12 +39,14 @@ class SubmitCarouselImage
 
             if($image) {
 
-                $newFilename = $this->imageUploader->upload($image);
+                $newFilename = $this->fileUploader->upload(
+                    $image,
+                    $this->imagesDirectory
+                );
 
                 $galleryImage = new GalleryImage();
                 $galleryImage->setPath('/images/uploadedImages/' . $newFilename);
                 $galleryImage->setAlt($carouselForm->get('alt')->getData());
-                // $galleryImage->setAlt('Image de la rubrique');
 
                 // Associer la nouvelle image à RubricInfo
                 $carouselImage->setGalleryImage($galleryImage);

@@ -11,7 +11,7 @@
                 {% if rubricInfo.getGalleryImage is not empty %}
                 <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                 {% endif %}
-                {{ rubricInfo.text|raw }}
+                {{ rubricInfo.text|quill_html|raw }}
             </section>
 
             {% for eulogySection in eulogySections %}
@@ -24,7 +24,7 @@
                         </h2>
                     {% endif %}
                     <div>
-                    {{ eulogySection.text|raw }}
+                    {{ eulogySection.text|quill_html|raw }}
                     </div>
                     {% if eulogySection === eulogySections[0] %}
                         <img class="eulogy__image left" src="{{ asset('images/team/Président d\'honneur Moussa NB F.jpg') }}" alt="Dr Moussa Maman Bello">

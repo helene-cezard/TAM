@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+
+{% block body %}
+    <main data-turbo="false">
+        {% include "partials/_left_banner.html.twig" %}
+             <h2 class="section__title">Modifier le membre de l'équipe</h2>
+            <section class="form">
+                <div class="team__card">
+                    <img src="{{ teamMember.image ? asset(teamMember.image) : asset('images/team/default-user-picture.png') }}" alt="{{ teamMember.name }}">
+                    <div class="team__card__text">
+                        <h3 class="team__card__name">{{ teamMember.name }}</h3>
+                        <p class="team__card__bio">{{ teamMember.presentation }}</p>
+                    </div>
+                </div>
+                {{ form_start(teamForm) }}
+                {{ form_row(teamForm.name) }}
+                {{ form_row(teamForm.uploadedImage) }}
+                {{ form_row(teamForm.removeImage) }}
+                {{ form_row(teamForm.presentation) }}
+                {{ form_row(teamForm.role) }}
+                {{ form_row(teamForm.save) }}
+                {{ form_end(teamForm) }}
+            </section>
+        {% include "partials/_right_banner.html.twig" %}
+    </main>
+{% endblock %}

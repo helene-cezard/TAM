@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\RubricInfo;
 use App\Entity\Section\AssociationSection;
 use App\Form\SectionForms\AssociationSectionType;
 use App\Form\RubricInfoType;
@@ -33,12 +34,20 @@ final class BackAssociationController extends AbstractController
         $galleryImages = $galleryImageRepository->findAll();
         $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);
 
+        $rubrics = $rubricInfoRepository->findAll();
+        $rubricGalleryIds = array_map(
+            fn(RubricInfo $rubric) => $rubric->getGalleryImage()?->getId(),
+            $rubrics
+        );
+
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
-            return $this->redirectToRoute('admin_association');
+            return $this->redirect(
+                $this->generateUrl('admin_association') . '#rubricInfo'
+            );
         }
 
         // Gestion du formulaire d'ajout de section
@@ -46,7 +55,9 @@ final class BackAssociationController extends AbstractController
         $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $associationSectionRepository);
         if ($sectionIsSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_association');
+            return $this->redirect(
+                $this->generateUrl('admin_association') . '#associationSections'
+            );
         }
 
         return $this->render('back/association/index.html.twig', [
@@ -55,6 +66,7 @@ final class BackAssociationController extends AbstractController
             'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
+            'rubricGalleryIds' => $rubricGalleryIds
         ]);
     }
 
@@ -81,11 +93,11 @@ final class BackAssociationController extends AbstractController
         $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_association')
+            'redirect' => $this->generateUrl('admin_association') . '#associationSections'
         ]);
     }
 
-    #[Route('/admin/association/section_delete/{id}', name: 'admin_association_section_delete')]
+    #[Route('/admin/association/section_delete/{id}', name: 'admin_association_section_delete', methods: ['POST'])]
     public function deleteSection(
         AssociationSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -102,7 +114,9 @@ final class BackAssociationController extends AbstractController
 
         $this->addFlash('success', 'Section supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_association');
+        return $this->redirect(
+            $this->generateUrl('admin_association') . '#associationSections'
+        );
     }
 
     #[Route('/admin/association/section_update/{id}', name: 'admin_association_section_update')]
@@ -120,7 +134,9 @@ final class BackAssociationController extends AbstractController
 
             $this->addFlash('success', 'La section a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_association');
+            return $this->redirect(
+                $this->generateUrl('admin_association') . '#associationSections'
+            );
         }
 
         return $this->render('back/section/form.html.twig', [

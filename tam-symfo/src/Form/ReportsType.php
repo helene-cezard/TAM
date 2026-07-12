@@ -21,7 +21,8 @@ class ReportsType extends AbstractType
             'required' => false,
             ])
             ->add('description', TextType::class, [
-                'label' => 'Description du rapport'
+                'label' => 'Description du rapport',
+                'required' => false,
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',

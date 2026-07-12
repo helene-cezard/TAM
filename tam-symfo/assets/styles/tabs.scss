@@ -1,0 +1,63 @@
+@use "variables";
+
+.hero-admin {
+
+    padding: 1rem;
+
+    @media screen and (min-width: variables.$breakpoint) {
+        padding: 0 10rem 5rem 10rem;
+    }
+}
+
+.tabs-form {
+    background-color: #fbfaf8;
+    // margin: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+
+    @media screen and (min-width: variables.$breakpoint) {
+        width: 100%;
+    }
+
+    &__tabs {
+        background-color: #efefef;
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    &__tab-button {
+        -webkit-appearance: none;
+        border-radius: 5px 5px 0 0;
+        padding: 1rem 1.5rem;
+        font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+        border: 0;
+        width: 50%;
+
+        &--active {
+            background-color: #fbfaf8;
+        }
+    }
+
+    &__tab-content {
+        display: none;
+
+        &--active {
+            display: block;
+        }
+    }
+
+    &__upload-image {
+        padding: 2rem;
+    }
+
+    &__add {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.hide-image {
+    display: none;
+}

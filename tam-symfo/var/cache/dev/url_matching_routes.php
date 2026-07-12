@@ -32,6 +32,7 @@ return [
         '/admin/reports/reports_reorder' => [[['_route' => 'admin_reports_reorder', '_controller' => 'App\\Controller\\Back\\BackReportsController::reorderReports'], null, ['POST' => 0], null, false, false, null]],
         '/admin/ressources' => [[['_route' => 'admin_resources', '_controller' => 'App\\Controller\\Back\\BackResourcesController::index'], null, null, null, false, false, null]],
         '/admin/resources/section_reorder' => [[['_route' => 'admin_resources_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackResourcesController::reorder'], null, ['POST' => 0], null, false, false, null]],
+        '/admin/resources/visual_reorder' => [[['_route' => 'admin_resources_visual_reorder', '_controller' => 'App\\Controller\\Back\\BackResourcesController::visualReorder'], null, ['POST' => 0], null, false, false, null]],
         '/admin/equipe' => [[['_route' => 'admin_team', '_controller' => 'App\\Controller\\Back\\BackTeamController::index'], null, null, null, false, false, null]],
         '/admin/team/section_reorder' => [[['_route' => 'admin_team_sections_reorder', '_controller' => 'App\\Controller\\Back\\BackTeamController::reorder'], null, ['POST' => 0], null, false, false, null]],
         '/admin/formation' => [[['_route' => 'admin_training', '_controller' => 'App\\Controller\\Back\\BackTrainingController::index'], null, null, null, false, false, null]],
@@ -109,26 +110,37 @@ return [
                                 .'|update/([^/]++)(*:757)'
                             .')'
                         .')'
-                        .'|sources/(?'
+                        .'|ssources/(?'
                             .'|section_(?'
-                                .'|delete/([^/]++)(*:804)'
-                                .'|update/([^/]++)(*:827)'
+                                .'|delete/([^/]++)(*:805)'
+                                .'|update/([^/]++)(*:828)'
                             .')'
                             .'|image_(?'
-                                .'|delete/([^/]++)(*:860)'
-                                .'|update/([^/]++)(*:883)'
+                                .'|delete/([^/]++)(*:861)'
+                                .'|update/([^/]++)(*:884)'
+                            .')'
+                            .'|vi(?'
+                                .'|deo_delete/([^/]++)(*:917)'
+                                .'|sual_(?'
+                                    .'|update/([^/]++)(*:948)'
+                                    .'|delete/([^/]++)(*:971)'
+                                .')'
                             .')'
                         .')'
                     .')'
-                    .'|t(?'
-                        .'|eam/section_(?'
-                            .'|delete/([^/]++)(*:928)'
-                            .'|update/([^/]++)(*:951)'
+                    .'|equipe/(?'
+                        .'|section_(?'
+                            .'|delete/([^/]++)(*:1019)'
+                            .'|update/([^/]++)(*:1043)'
                         .')'
-                        .'|raining/section_(?'
-                            .'|delete/([^/]++)(*:994)'
-                            .'|update/([^/]++)(*:1017)'
+                        .'|member_(?'
+                            .'|delete/([^/]++)(*:1078)'
+                            .'|update/([^/]++)(*:1102)'
                         .')'
+                    .')'
+                    .'|training/section_(?'
+                        .'|delete/([^/]++)(*:1148)'
+                        .'|update/([^/]++)(*:1172)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -142,31 +154,36 @@ return [
         168 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        250 => [[['_route' => 'admin_association_section_delete', '_controller' => 'App\\Controller\\Back\\BackAssociationController::deleteSection'], ['id'], null, null, false, true, null]],
+        250 => [[['_route' => 'admin_association_section_delete', '_controller' => 'App\\Controller\\Back\\BackAssociationController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
         273 => [[['_route' => 'admin_association_section_update', '_controller' => 'App\\Controller\\Back\\BackAssociationController::updateSection'], ['id'], null, null, false, true, null]],
-        314 => [[['_route' => 'admin_benin_section_delete', '_controller' => 'App\\Controller\\Back\\BackBeninController::deleteSection'], ['id'], null, null, false, true, null]],
+        314 => [[['_route' => 'admin_benin_section_delete', '_controller' => 'App\\Controller\\Back\\BackBeninController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
         337 => [[['_route' => 'admin_benin_section_update', '_controller' => 'App\\Controller\\Back\\BackBeninController::updateSection'], ['id'], null, null, false, true, null]],
-        380 => [[['_route' => 'admin_contact_section_delete', '_controller' => 'App\\Controller\\Back\\BackContactController::deleteSection'], ['id'], null, null, false, true, null]],
+        380 => [[['_route' => 'admin_contact_section_delete', '_controller' => 'App\\Controller\\Back\\BackContactController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
         403 => [[['_route' => 'admin_contact_section_update', '_controller' => 'App\\Controller\\Back\\BackContactController::updateSection'], ['id'], null, null, false, true, null]],
-        448 => [[['_route' => 'admin_france_section_delete', '_controller' => 'App\\Controller\\Back\\BackFranceController::deleteSection'], ['id'], null, null, false, true, null]],
+        448 => [[['_route' => 'admin_france_section_delete', '_controller' => 'App\\Controller\\Back\\BackFranceController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
         471 => [[['_route' => 'admin_france_section_update', '_controller' => 'App\\Controller\\Back\\BackFranceController::updateSection'], ['id'], null, null, false, true, null]],
-        505 => [[['_route' => 'admin_france_action_delete', '_controller' => 'App\\Controller\\Back\\BackFranceController::deleteAction'], ['id'], null, null, false, true, null]],
+        505 => [[['_route' => 'admin_france_action_delete', '_controller' => 'App\\Controller\\Back\\BackFranceController::deleteAction'], ['id'], ['POST' => 0], null, false, true, null]],
         528 => [[['_route' => 'admin_france_action_update', '_controller' => 'App\\Controller\\Back\\BackFranceController::updateAction'], ['id'], null, null, false, true, null]],
         572 => [[['_route' => 'admin_home_section_update', '_controller' => 'App\\Controller\\Back\\BackHomeController::updateSection'], ['id'], null, null, false, true, null]],
-        595 => [[['_route' => 'admin_home_section_delete', '_controller' => 'App\\Controller\\Back\\BackHomeController::deleteSection'], ['id'], null, null, false, true, null]],
-        628 => [[['_route' => 'admin_home_carousel_delete', '_controller' => 'App\\Controller\\Back\\BackHomeController::deleteCarousel'], ['id'], null, null, false, true, null]],
-        677 => [[['_route' => 'admin_reports_section_delete', '_controller' => 'App\\Controller\\Back\\BackReportsController::deleteSection'], ['id'], null, null, false, true, null]],
+        595 => [[['_route' => 'admin_home_section_delete', '_controller' => 'App\\Controller\\Back\\BackHomeController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
+        628 => [[['_route' => 'admin_home_carousel_delete', '_controller' => 'App\\Controller\\Back\\BackHomeController::deleteCarousel'], ['id'], ['POST' => 0], null, false, true, null]],
+        677 => [[['_route' => 'admin_reports_section_delete', '_controller' => 'App\\Controller\\Back\\BackReportsController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
         700 => [[['_route' => 'admin_reports_section_update', '_controller' => 'App\\Controller\\Back\\BackReportsController::updateSection'], ['id'], null, null, false, true, null]],
-        734 => [[['_route' => 'admin_report_delete', '_controller' => 'App\\Controller\\Back\\BackReportsController::deleteReports'], ['id'], null, null, false, true, null]],
+        734 => [[['_route' => 'admin_reports_delete', '_controller' => 'App\\Controller\\Back\\BackReportsController::deleteReports'], ['id'], ['POST' => 0], null, false, true, null]],
         757 => [[['_route' => 'admin_reports_update', '_controller' => 'App\\Controller\\Back\\BackReportsController::updateReport'], ['id'], null, null, false, true, null]],
-        804 => [[['_route' => 'admin_resources_section_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::deleteSection'], ['id'], null, null, false, true, null]],
-        827 => [[['_route' => 'admin_resources_section_update', '_controller' => 'App\\Controller\\Back\\BackResourcesController::updateSection'], ['id'], null, null, false, true, null]],
-        860 => [[['_route' => 'admin_resources_image_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::deleteImage'], ['id'], null, null, false, true, null]],
-        883 => [[['_route' => 'admin_resources_image_update', '_controller' => 'App\\Controller\\Back\\BackResourcesController::updateImage'], ['id'], null, null, false, true, null]],
-        928 => [[['_route' => 'admin_team_section_delete', '_controller' => 'App\\Controller\\Back\\BackTeamController::deleteSection'], ['id'], null, null, false, true, null]],
-        951 => [[['_route' => 'admin_team_section_update', '_controller' => 'App\\Controller\\Back\\BackTeamController::updateSection'], ['id'], null, null, false, true, null]],
-        994 => [[['_route' => 'admin_training_section_delete', '_controller' => 'App\\Controller\\Back\\BackTrainingController::deleteSection'], ['id'], null, null, false, true, null]],
-        1017 => [
+        805 => [[['_route' => 'admin_resources_section_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
+        828 => [[['_route' => 'admin_resources_section_update', '_controller' => 'App\\Controller\\Back\\BackResourcesController::updateSection'], ['id'], null, null, false, true, null]],
+        861 => [[['_route' => 'admin_resources_image_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::deleteImage'], ['id'], ['POST' => 0], null, false, true, null]],
+        884 => [[['_route' => 'admin_resources_image_update', '_controller' => 'App\\Controller\\Back\\BackResourcesController::updateImage'], ['id'], null, null, false, true, null]],
+        917 => [[['_route' => 'admin_resources_video_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::deleteVideo'], ['id'], ['POST' => 0], null, false, true, null]],
+        948 => [[['_route' => 'admin_resources_visual_update', '_controller' => 'App\\Controller\\Back\\BackResourcesController::visualUpdate'], ['id'], null, null, false, true, null]],
+        971 => [[['_route' => 'admin_resources_visual_delete', '_controller' => 'App\\Controller\\Back\\BackResourcesController::visualDelete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1019 => [[['_route' => 'admin_team_section_delete', '_controller' => 'App\\Controller\\Back\\BackTeamController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
+        1043 => [[['_route' => 'admin_team_section_update', '_controller' => 'App\\Controller\\Back\\BackTeamController::updateSection'], ['id'], null, null, false, true, null]],
+        1078 => [[['_route' => 'admin_team_member_delete', '_controller' => 'App\\Controller\\Back\\BackTeamController::deleteMember'], ['id'], ['POST' => 0], null, false, true, null]],
+        1102 => [[['_route' => 'admin_team_member_update', '_controller' => 'App\\Controller\\Back\\BackTeamController::updateMember'], ['id'], null, null, false, true, null]],
+        1148 => [[['_route' => 'admin_training_section_delete', '_controller' => 'App\\Controller\\Back\\BackTrainingController::deleteSection'], ['id'], ['POST' => 0], null, false, true, null]],
+        1172 => [
             [['_route' => 'admin_training_section_update', '_controller' => 'App\\Controller\\Back\\BackTrainingController::updateSection'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

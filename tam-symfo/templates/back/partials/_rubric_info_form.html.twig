@@ -1,5 +1,5 @@
 <section class="form">
-    <h2 class="subsection__title">Modifier l'en-tête</h2>
+    <p class="admin-title">Modifier l'en-tête</p>
 
     {{ form_start(rubricInfoForm) }}
     {{ form_errors(rubricInfoForm) }}
@@ -7,42 +7,54 @@
     {{ form_row(rubricInfoForm.title) }}
     {{ form_row(rubricInfoForm.text) }}
 
-    {{ form_errors(rubricInfoForm.GalleryImage) }}
-    {{ form_label(rubricInfoForm.GalleryImage) }}
-    <div id="galleryImages">
-        {% for choice in rubricInfoForm.GalleryImage %}
-        {% if choice.vars.id === 'rubric_info_GalleryImage_placeholder' %}
-            {{ form_widget(choice) }}
-            <label for="{{ choice.vars.id }}">
-                <p>{{ choice.vars.label }}</p>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg" alt="">
-            </label>
-        {% else %}
-            {{ form_widget(choice) }}
-            <label for="{{ choice.vars.id }}">
-                <p>{{ choice.vars.label }}</p>
-                {% dump(loop.index - 2) %}
-                <img src="{{ asset(galleryImages[loop.index - 2].path) }}" alt="">
-            </label>
-        {% endif %}
-        {% endfor %}
+    <div class="tabs-form">
+        <div class="tabs-form__tabs">
+            <button type="button" class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="galerie-image">Ajouter une image de la galerie</button>
+            <button type="button" class="tabs-form__tab-button" data-tab="uploaded-image">Envoyer une image</button>
+        </div>
+        <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="galerie-image">
+            {{ form_errors(rubricInfoForm.GalleryImage) }}
+            {{ form_label(rubricInfoForm.GalleryImage) }}
+            <div id="galleryImage">
+                {% for choice in rubricInfoForm.GalleryImage %}
+                {% if choice.vars.id === 'rubric_info_GalleryImage_placeholder' %}
+                    <div>
+                        {{ form_widget(choice) }}
+                        <label for="{{ choice.vars.id }}">
+                            <p>{{ choice.vars.label }}</p>
+                            <img src="{{ asset('images/Placeholder_view_vector.svg') }}" alt="">
+                        </label>
+                    </div>
+                {% else %}
+                    <div class="{{ choice.vars.name|number_format in rubricGalleryIds ? 'hide-image' }}">
+                        {{ form_widget(choice) }}
+                        <label for="{{ choice.vars.id }}">
+                            <p>{{ choice.vars.label }}</p>
+                            <img src="{{ asset(galleryImages[loop.index - 2].path) }}" alt="">
+                        </label>
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="tabs-form__tab-content" data-tab="uploaded-image">
+            <div class="tabs-form__upload-image">
+                {{ form_row(rubricInfoForm.uploadedImage) }}
+                {{ form_errors(rubricInfoForm.alt) }}
+                <div class="form-label-with-help">
+                    {{ form_label(rubricInfoForm.alt) }}
+                    <span
+                        class="help-tooltip"
+                        title="{{ rubricInfoForm.alt.vars.help }}"
+                    >
+                    ⓘ
+                    </span>
+                </div>
+                {{ form_widget(rubricInfoForm.alt) }}
+            </div>
+        </div>
     </div>
 
-    {{ form_row(rubricInfoForm.uploadedImage) }}
-    {{ form_errors(rubricInfoForm.alt) }}
-    <div class="form-label-with-help">
-        {{ form_label(rubricInfoForm.alt) }}
-
-        <span
-            class="help-tooltip"
-            title="{{ rubricInfoForm.alt.vars.help }}"
-        >
-        ⓘ
-        </span>
-    </div>
-
-
-    {{ form_widget(rubricInfoForm.alt) }}
     {{ form_row(rubricInfoForm.save) }}
     {{ form_end(rubricInfoForm) }}
 </section>

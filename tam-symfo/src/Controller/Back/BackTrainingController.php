@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\RubricInfo;
 use App\Entity\Section\TrainingSection;
 use App\Form\RubricInfoType;
 use App\Form\SectionForms\TrainingSectionType;
@@ -32,12 +33,20 @@ final class BackTrainingController extends AbstractController
         $galleryImages = $galleryImageRepository->findAll();
         $trainingSections = $trainingSectionRepository->findBy([], ['position' => 'ASC']);
 
+        $rubrics = $rubricInfoRepository->findAll();
+        $rubricGalleryIds = array_map(
+            fn(RubricInfo $rubric) => $rubric->getGalleryImage()?->getId(),
+            $rubrics
+        );
+
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
-        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo, $galleryImages, $rubricInfoRepository);
+        $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
             $this->addFlash('success', 'Rubrique mise à jour avec succès !');
-            return $this->redirectToRoute('admin_training');
+            return $this->redirect(
+                $this->generateUrl('admin_training') . '#rubricInfo'
+            );
         }
 
         // Gestion du formulaire d'ajout de section
@@ -45,7 +54,9 @@ final class BackTrainingController extends AbstractController
         $sectionIsSubmitted = $submitSections->handle($sectionForm, $request, $trainingSectionRepository);
         if ($sectionIsSubmitted) {
             $this->addFlash('success', 'Section ajoutée avec succès !');
-            return $this->redirectToRoute('admin_training');
+            return $this->redirect(
+                $this->generateUrl('admin_training') . '#trainingSections'
+            );
         }
 
         return $this->render('back/training/index.html.twig', [
@@ -54,6 +65,7 @@ final class BackTrainingController extends AbstractController
             'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
+            'rubricGalleryIds' => $rubricGalleryIds,
         ]);
     }
 
@@ -80,11 +92,11 @@ final class BackTrainingController extends AbstractController
         $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
 
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_training')
+            'redirect' => $this->generateUrl('admin_training') . '#trainingSections'
         ]);
     }
 
-    #[Route('/admin/training/section_delete/{id}', name: 'admin_training_section_delete')]
+    #[Route('/admin/training/section_delete/{id}', name: 'admin_training_section_delete', methods: ['POST'])]
     public function deleteSection(
         TrainingSectionRepository $repository,
         EntityManagerInterface $entityManager,
@@ -101,7 +113,9 @@ final class BackTrainingController extends AbstractController
 
         $this->addFlash('success', 'Section supprimée avec succès !');
 
-        return $this->redirectToRoute('admin_training');
+        return $this->redirect(
+            $this->generateUrl('admin_training') . '#trainingSections'
+        );
     }
 
     #[Route('/admin/training/section_update/{id}', name: 'admin_training_section_update')]
@@ -119,7 +133,9 @@ final class BackTrainingController extends AbstractController
 
             $this->addFlash('success', 'La section a bien été mise à jour.');
 
-            return $this->redirectToRoute('admin_training');
+            return $this->redirect(
+                $this->generateUrl('admin_training') . '#trainingSections'
+            );
         }
 
         return $this->render('back/section/form.html.twig', [

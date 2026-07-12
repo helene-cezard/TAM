@@ -5,6 +5,8 @@ namespace App\Entity\Section;
 use App\Repository\Section\SectionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Validator\UniqueHtmlId;
+
 
 #[ORM\MappedSuperclass(repositoryClass: SectionRepository::class)]
 abstract class Section
@@ -28,6 +30,10 @@ abstract class Section
 
     #[ORM\Column]
     private ?bool $left_side = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    #[UniqueHtmlId]
+    private ?string $htmlId = null;
 
     public function getId(): ?int
     {
@@ -63,7 +69,7 @@ abstract class Section
         return $this->aside;
     }
 
-    public function setAside(string $aside): static
+    public function setAside(?string $aside): static
     {
         $this->aside = $aside;
 
@@ -90,6 +96,18 @@ abstract class Section
     public function setLeftSide(bool $appears): static
     {
         $this->left_side = $appears;
+
+        return $this;
+    }
+
+    public function getHtmlId(): ?string
+    {
+        return $this->htmlId;
+    }
+
+    public function setHtmlId(?string $htmlId): static
+    {
+        $this->htmlId = $htmlId;
 
         return $this;
     }

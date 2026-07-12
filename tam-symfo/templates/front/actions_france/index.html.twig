@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 <section class="actions__list">
                     <div class="actions__list__header">
@@ -27,7 +27,7 @@
                             </h3>
                         {% endif %}
                         <div>
-                        {{ action.text|raw }}
+                        {{ action.text|quill_html|raw }}
                         </div>
                         {% if action.aside is not empty %}
                             <aside class="subsection__quote {{ action.leftSide ? 'left' : '' }}">
@@ -94,7 +94,7 @@
                             </h2>
                         {% endif %}
                         <div>
-                        {{ franceSection.text|raw }}
+                        {{ franceSection.text|quill_html|raw }}
                         </div>
                         {% if franceSection.aside is not empty %}
                             <aside class="subsection__quote {{ franceSection.leftSide ? 'left' : '' }}">

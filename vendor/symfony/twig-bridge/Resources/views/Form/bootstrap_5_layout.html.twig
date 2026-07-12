@@ -309,7 +309,7 @@
             {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ parent_label_class)|replace({'checkbox-inline': '', 'radio-inline': ''})|trim}) -%}
         {%- endif -%}
 
-        {{ widget|raw }}
+        {{ widget|quill_html|raw }}
         <label{% with {attr: label_attr} %}{{ block('attributes') }}{% endwith %}>
             {%- if label is not same as(false) -%}
                 {{- block('form_label_content') -}}

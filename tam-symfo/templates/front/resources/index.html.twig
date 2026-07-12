@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 <section class="subsection">
                     <h2 class="subsection__title">Articles</h2>
@@ -24,17 +24,17 @@
                 <section>
                     <h2 class="subsection__title">Vidéos</h2>
                         <ul class="resources__videos">
+                            {% for video in videos %}
                             <li>
-                                <iframe src="https://www.youtube.com/embed/1vJBUHIuNjQ?si=j8CNEf4QdAYPyNvU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </li>
-                            <li>
-                                <iframe src="https://www.youtube.com/embed/4Za_l8DzJ3U?si=p7Sr8W9UOBZe-PX2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </li>
-                            <li>
+                                {% if video.type == 'local' %}
                                 <video width="320" height="240" controls>
-                                    <source src="{{ asset('videos/Atelier au Mac Val2024.MP4') }}" type="video/mp4">
+                                    <source src="{{ asset(video.path) }}" type="video/mp4">
                                 </video>
+                                {% elseif video.type == 'youtube' %}
+                                <iframe src="{{ video.path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                {% endif %}
                             </li>
+                            {% endfor %}
                         </ul>
                 </section>
                 <section>
@@ -48,15 +48,25 @@
                 <section>
                     <h2 class="subsection__title">Supports visuels</h2>
                     <ul>
+                        {% for visual in visuals %}
                         <li class="resources__visuals">
-                            Plaquette :
-                            <a href="../docs/PLAQUETTE_TAM 2023.pdf">
-                                <img src="../images/docs-thumbnails/PLAQUETTE_TAM 2023.jpg" alt="">
-                            </a>
+                            <div class="resources__visuals-content">
+                                <div class="resources__visual-name">{{ visual.name }} :</div>
+                                {% if visual.path is not empty %}
+                                <div class="resources__visuals-image">
+                                    <a href="{{ asset(visual.path) }}" target="_blank">
+                                        <img src="{{ asset(visual.image) }}" alt="{{ visual.name }} ">
+                                    </a>
+                                </div>
+                                {% else %}
+                                <div class="resources__visuals-image">
+                                    <img src="{{ asset(visual.image) }}" alt="{{ visual.name }} ">
+                                </div>
+                                {% endif %}
+                                <p class="resources__visuals-description">{{ visual.description }}</p>
+                            </div>
                         </li>
-                        <li>Mémoires d’histoire</li>
-                        <li>Brochure les 10 ans</li>
-                        <li>La recherche à l’ONG racines de Cotonou</li>
+                        {% endfor %}
                     </ul>
                 </section>
                 <section>

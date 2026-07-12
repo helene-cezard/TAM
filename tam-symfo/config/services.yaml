@@ -11,6 +11,7 @@ parameters:
     team_images_directory: '%kernel.project_dir%/assets/images/team'
     uploaded_reports_directory: '%kernel.project_dir%/assets/reports'
     uploaded_videos_directory: '%kernel.project_dir%/assets/videos'
+    uploaded_visuals_directory: '%kernel.project_dir%/assets/visuals'
 
 services:
     # default configuration for services in *this* file

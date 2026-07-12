@@ -3,18 +3,19 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
-            <section id="trainingSections" class="actions section">
+            <section class="actions section">
+                <p id="rubricInfo" class="admin-title">En-tête</p>
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|raw }}
+                    {{ rubricInfo.text|quill_html|raw }}
                 </section>
                 {% include "back/partials/_rubric_info_form.html.twig" %}
-                {% include "back/partials/_sections.html.twig" %}
+                <section id="trainingSections">{% include "back/partials/_sections.html.twig" %}</section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

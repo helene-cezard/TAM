@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\GalleryImage;
 use App\Entity\RubricInfo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -14,6 +15,31 @@ class RubricInfoRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, RubricInfo::class);
+    }
+
+    public function isUsed(GalleryImage $image): bool
+    {
+        return $this->findOneBy([
+            'galleryImage' => $image,
+        ]) !== null;
+    }
+
+    public function imageAlreadyUsed(
+        GalleryImage $image,
+        ?int $currentRubricId = null
+    ): bool {
+        $qb = $this->createQueryBuilder('r')
+            ->andWhere('r.GalleryImage = :image')
+            ->setParameter('image', $image);
+
+        if ($currentRubricId !== null) {
+            $qb->andWhere('r.id != :id')
+                ->setParameter('id', $currentRubricId);
+        }
+
+        return $qb->select('COUNT(r.id)')
+            ->getQuery()
+            ->getSingleScalarResult() > 0;
     }
 
     //    /**

@@ -3,7 +3,7 @@
 {% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
 
 {% block body %}
-    <main>
+    <main data-turbo="false">
         {% include "partials/_left_banner.html.twig" %}
              <h2 class="section__title">Modifier l'image</h2>
              <section class="form">
@@ -11,18 +11,19 @@
                     <img class="pdf-thumbnail" src="{{ asset(galleryImage.path) }}" alt="">
                 </div>
                 {{ form_start(imageForm) }}
-                    {{ form_row(imageForm.uploadedImage) }}
-                        <div class="form-label-with-help">
-                            {{ form_label(imageForm.alt) }}
+                    {{ form_errors(imageForm.alt) }}
+                    <div class="form-label-with-help">
+                        {{ form_label(imageForm.alt) }}
 
-                            <span
-                                class="help-tooltip"
-                                title="{{ imageForm.alt.vars.help }}"
-                            >
-                            ⓘ
-                            </span>
-                        </div>
+                        <span
+                            class="help-tooltip"
+                            title="{{ imageForm.alt.vars.help }}"
+                        >
+                        ⓘ
+                        </span>
+                    </div>
                     {{ form_widget(imageForm.alt) }}
+                    {{ form_errors(imageForm.category) }}
                     {{ form_row(imageForm.category) }}
                     {{ form_row(imageForm.save) }}
                 {{ form_end(imageForm) }}

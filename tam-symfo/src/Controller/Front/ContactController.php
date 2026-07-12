@@ -28,9 +28,17 @@ final class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handle form submission, e.g., send email or save data
 
-            $sentEmail = (new TemplatedEmail())
+            $generatedAt = (int) $form->get('generatedAt')->getData();
+
+            if (time() - $generatedAt < 3) {
+                // Spam probable
+                $this->addFlash('error', 'Le formulaire a été envoyé trop rapidement.');
+
+                return $this->redirectToRoute('app_contact');
+            }
+
+            $mailToAssociation = (new TemplatedEmail())
                 ->from("mail@mail.com")
                 ->to("mail@mail.com")
                 ->cc($form->get('email')->getData())
@@ -43,7 +51,19 @@ final class ContactController extends AbstractController
                     'message' => $form->get('message')->getData(),
                 ]);
 
-                $mailer->send($sentEmail);
+                $confirmationMail = (new TemplatedEmail())
+                //! Changer le from
+                    ->from('contact@tam-asso.fr')
+                    ->to($form->get('email')->getData())
+                    ->subject('Nous avons bien reçu votre message')
+                    ->htmlTemplate('emails/confirmation.html.twig')
+                    ->context([
+                        'name' => $form->get('name')->getData(),
+                        'subject' => $form->get('subject')->getData(),
+                    ]);
+
+                $mailer->send($mailToAssociation);
+                $mailer->send($confirmationMail);
 
             $this->addFlash('success', 'Votre message a été envoyé avec succès !');
             return $this->redirectToRoute('app_contact');

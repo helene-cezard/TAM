@@ -22,6 +22,7 @@ const app = {
         app.openGallery();
         app.showSubmenu();
         app.showLightbox();
+        app.initTabs();
 
         const pages = ['home', 'association', 'team', 'reports', 'benin', 'france', 'training', 'resources', 'contact'];
 
@@ -38,6 +39,9 @@ const app = {
 
           app.movePosition('carousel');
           app.updatePositions('carousel', 'carousel_reorder', currentRoute, 'home');
+
+          app.movePosition('visuals');
+          app.updatePositions('visuals', 'visual_reorder', currentRoute, 'resources');
     },
 
     burgerMenu: function () {
@@ -215,7 +219,6 @@ const app = {
         document.querySelectorAll(".resources__image").forEach((image) => {
 
             image.addEventListener("click", () => {
-                console.log('coucou de image.addEventListener');
 
                 lightboxImage.src = image.dataset.src;
                 lightboxImage.alt = image.alt;
@@ -243,6 +246,32 @@ const app = {
                 lightbox.classList.remove("lightbox-active");
             }
 
+        });
+    },
+
+    initTabs: function() {
+        const buttons = document.querySelectorAll('.tabs-form__tab-button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.openTab(button.dataset.tab);
+            });
+        });
+    },
+
+    openTab: function(tab) {
+        document.querySelectorAll('.tabs-form__tab-button').forEach(button => {
+            button.classList.toggle(
+                'tabs-form__tab-button--active',
+                button.dataset.tab === tab
+            );
+        });
+
+        document.querySelectorAll('.tabs-form__tab-content').forEach(content => {
+            content.classList.toggle(
+                'tabs-form__tab-content--active',
+                content.dataset.tab === tab
+            );
         });
     },
 
@@ -277,10 +306,15 @@ const app = {
                 return;
             }
 
-            if (event.target.classList.contains('up') || event.target.classList.contains('left')) {
+            const button = event.target.closest('.position-button');
+
+            if (!button) {
+                return;
+            }
+
+            if (button.classList.contains('up') || button.classList.contains('left')) {
 
                 const previous = elementToMove.previousElementSibling;
-
 
                 if (previous) {
                     container.insertBefore(elementToMove, previous);
@@ -288,10 +322,9 @@ const app = {
                 }
             }
 
-            if (event.target.classList.contains('down') || event.target.classList.contains('right')) {
+            if (button.classList.contains('down') || button.classList.contains('right')) {
 
                 const next = elementToMove.nextElementSibling;
-
 
                 if (next) {
                     container.insertBefore(next, elementToMove);
@@ -302,7 +335,6 @@ const app = {
     },
 
     updatePositions: function (containerId, route, currentRoute, element) {
-        console.log('containerId : ' + containerId);
         const container = document.getElementById(containerId);
 
         if (container === null) {
@@ -312,6 +344,7 @@ const app = {
         if (!currentRoute.includes(element)) {
             return;
         }
+
         const reorderButton = document.getElementById(route);
         const reorderRoute = '/admin/' + element + '/' + route;
 
@@ -321,15 +354,12 @@ const app = {
 
 
         reorderButton.addEventListener('click', function (event) {
-            console.log('Bouton réorganiser actions cliqué');
             const ids = [...container.querySelectorAll('.element-to-move')]
-                .map(subsection => subsection.dataset.id);
+            .map(subsection => subsection.dataset.id);
 
-            console.log('event.target.parentNod : ' + event.target.parentNod);
-            console.log('container : ' + container);
+            console.log('event.target.parentNode', event.target.parentNode, 'container', container);
+
             if (event.target.parentNode === container) {
-
-                console.log('Juste avant le fetch');
 
                 fetch(reorderRoute, {
                         method: 'POST',
@@ -340,7 +370,6 @@ const app = {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        // console.log(data);
                         window.location.href = data.redirect;
                     });
             }
@@ -360,5 +389,5 @@ const app = {
     },
 }
 
-
-document.addEventListener('turbo:load', app.init);
+document.addEventListener('DOMContentLoaded', app.init);
+// document.addEventListener('turbo:load', app.init);

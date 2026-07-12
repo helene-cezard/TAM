@@ -2,8 +2,9 @@
 namespace App\Service;
 
 use App\Entity\GalleryImage;
-use App\Service\ImageUploader;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,11 +13,15 @@ class SubmitRubricInfo
 
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private ImageUploader $imageUploader
+        private FileUploader $fileUploader,
+
+        #[Autowire('%uploaded_images_directory%')]
+        private string $imagesDirectory,
         )
     {
         $this->entityManager = $entityManager;
-        $this->imageUploader = $imageUploader;
+        $this->fileUploader = $fileUploader;
+        $this->imagesDirectory = $imagesDirectory;
     }
 
     public function handleRubricForm(
@@ -32,12 +37,14 @@ class SubmitRubricInfo
 
             if($image) {
 
-                $newFilename = $this->imageUploader->upload($image);
+                $newFilename = $this->fileUploader->upload(
+                    $image,
+                    $this->imagesDirectory
+                );
 
                 $galleryImage = new GalleryImage();
                 $galleryImage->setPath('/images/uploadedImages/' . $newFilename);
                 $galleryImage->setAlt($rubricInfoForm->get('alt')->getData());
-                // $galleryImage->setAlt('Image de la rubrique');
 
                 // Associer la nouvelle image à RubricInfo
                 $rubricInfo->setGalleryImage($galleryImage);

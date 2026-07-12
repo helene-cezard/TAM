@@ -18,7 +18,7 @@ class CarouselImage
 
     #[ORM\OneToOne(cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?GalleryImage $GalleryImage = null;
+    private ?GalleryImage $galleryImage = null;
 
     public function getId(): ?int
     {
@@ -39,12 +39,12 @@ class CarouselImage
 
     public function getGalleryImage(): ?GalleryImage
     {
-        return $this->GalleryImage;
+        return $this->galleryImage;
     }
 
     public function setGalleryImage(?GalleryImage $GalleryImage): static
     {
-        $this->GalleryImage = $GalleryImage;
+        $this->galleryImage = $GalleryImage;
 
         return $this;
     }

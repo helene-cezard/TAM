@@ -17,7 +17,6 @@
             <ul role="menubar" class="header__nav-links">
             {% if app.user %}
                 <li class="header__nav-links--blue parent__menu">
-                    <div class="shape spirale"></div>
                     <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="connected" class="submenu__button">👤 Connecté</button>
                     <ul role="menu" id="connected" class="submenu">
                         <li class="submenu__item">
@@ -56,24 +55,11 @@
                         </li>
                     </ul>
                 </li>
-                {# <li class="header__user">
-                    <a href="{{ path('admin_home') }}">Administration</a>
-                    <a href="{{ path('app_logout') }}"
-                        class="header__logout"
-                        aria-label="Se déconnecter"
-                        title="Se déconnecter"
-                        data-turbo="false">
-                        👤
-                        <span>Se déconnecter</span>
-                    </a>
-                </li> #}
             {% endif %}
                 <li class="header__nav-links--yellow">
-                    <div class="shape lines"></div>
                     <a {{ currentRoute == 'app_home' or currentRoute == 'admin_home' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path(adminInterface ? 'admin_home' : 'app_home') }}">Accueil</a>
                 </li>
                 <li class="header__nav-links--blue parent__menu">
-                    <div class="shape spirale"></div>
                     <button {{ 'app_who' in currentRoute or 'association' in currentRoute or 'team' in currentRoute or 'reports' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="who_submenu" class="submenu__button">Qui sommes-nous ?</button>
                     <ul role="menu" id="who_submenu" class="submenu">
                         <li class="submenu__item">
@@ -88,7 +74,6 @@
                     </ul>
                 </li>
                 <li class="header__nav-links--green parent__menu">
-                    <div class="shape spirale"></div>
                     <button {{ 'app_actions' in currentRoute or 'france' in currentRoute or 'benin' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
                     <ul role="menu" id="actions_submenu" class="submenu">
                         <li class="submenu__item">
@@ -100,15 +85,12 @@
                     </ul>
                 </li>
                 <li class="header__nav-links--orange">
-                    <div class="shape spirale"></div>
                     <a {{ currentRoute == 'app_training' or currentRoute == 'admin_training' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_training' : 'app_training') }}">Formation</a>
                 </li>
                 <li class="header__nav-links--turquoise">
-                    <div class="shape spirale"></div>
                     <a {{ currentRoute == 'app_resources' or currentRoute == 'admin_resources' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_resources' : 'app_resources') }}">Ressources</a>
                 </li>
                 <li class="header__nav-links--light-blue">
-                    <div class="shape spirale"></div>
                     <a {{ currentRoute == 'app_contact' or currentRoute == 'admin_contact' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_contact' : 'app_contact') }}">Contact</a>
                 </li>
             </ul>

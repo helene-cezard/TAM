@@ -166,7 +166,7 @@
                 {%- if separator_html is not defined or separator_html is same as(false) -%}
                     <option disabled="disabled">{{ separator }}</option>
                 {% else %}
-                    {{ separator|quill_html|raw }}
+                    {{ separator|raw }}
                 {% endif %}
             {%- endif %}
         {%- endif -%}
@@ -272,7 +272,7 @@
         {%- endif -%}
     {% endif %}
     <label{% with {attr: label_attr} %}{{ block('attributes') }}{% endwith %}>
-        {{ widget|quill_html|raw }}
+        {{ widget|raw }}
         {%- if label is not same as(false) -%}
             {{- block('form_label_content') -}}
         {%- endif -%}

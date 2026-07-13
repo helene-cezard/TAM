@@ -1,16 +1,30 @@
 
-tam-symfo/.env.local
-tam-symfo/.env.local.php
-tam-symfo/.env.*.local
-tam-symfo/config/secrets/prod/prod.decrypt.private.php
-tam-symfo/public/bundles/
-tam-symfo/var/
-tam-symfo/vendor/
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
 
-tam-symfo/phpunit.xml
-tam-symfo/.phpunit.cache/
+###> phpunit/phpunit ###
+/phpunit.xml
+/.phpunit.cache/
+###< phpunit/phpunit ###
 
-tam-symfo/assets/vendor/
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
 
-tam-symfo/assets/images
-tam-symfo/assets/videos
+###> symfonycasts/sass-bundle ###
+/public/assets/
+###< symfonycasts/sass-bundle ###
+
+/assets/images/uploadedImages
+/assets/images/team
+/assets/videos
+/assets/visuals
+/assets/reports

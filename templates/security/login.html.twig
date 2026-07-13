@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+ <main data-turbo="false">
+    {% include "partials/_left_banner.html.twig" %}
+    <section class="form section">
+        <form method="post">
+            <h1 class="section__title">Veuillez vous authentifier</h1>
+            {% if error %}
+                <div class="error-message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <label for="inputEmail">E-mail</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+            <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+            <div>
+                <label>
+                    <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                </label>
+            </div>
+            <button type="submit">
+                Envoyer
+            </button>
+        </form>
+        </section>
+    {% include "partials/_right_banner.html.twig" %}
+    </main>
+{% endblock %}

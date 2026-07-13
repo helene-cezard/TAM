@@ -71,7 +71,7 @@
                 {%- if separator_html is not defined or separator_html is same as(false) -%}
                     <option disabled="disabled">{{ separator }}</option>
                 {% else %}
-                    {{ separator|quill_html|raw }}
+                    {{ separator|raw }}
                 {% endif %}
             {%- endif -%}
         {%- endif -%}

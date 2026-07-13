@@ -31,13 +31,13 @@
                                             <{{ tag }}
                                                 class="team__card"
                                                 {% if tag == 'a' %}
-                                                    href="{{ path('app_eulogy') }}"
+                                                    href="{{ path('admin_eulogy') }}"
                                                 {% endif %}
                                             >
-                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ member.name }}">
+                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [member.firstname, member.lastname]|join }}">
                                                 <div class="team__card__text">
-                                                    <h3 class="team__card__name">{{ member.name }}</h3>
-                                                    <p class="team__card__bio">{{ member.presentation }}</p>
+                                                    <h3 class="team__card__name">{{ member.firstname }} {{ member.lastname }}</h3>
+                                                    <p class="team__card__bio">{{ member.presentation|raw }}</p>
                                                 </div>
                                             </{{ tag }}>
                                             <div class="modify__buttons">

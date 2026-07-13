@@ -15,7 +15,7 @@ class Team
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -29,19 +29,22 @@ class Team
     #[ORM\JoinColumn(nullable: false)]
     private ?Role $role = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $firstname = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getLastname(): ?string
     {
-        return $this->name;
+        return $this->lastname;
     }
 
-    public function setName(string $name): static
+    public function setLastname(string $name): static
     {
-        $this->name = $name;
+        $this->lastname = $name;
 
         return $this;
     }
@@ -78,6 +81,18 @@ class Team
     public function setRole(?Role $role): static
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): static
+    {
+        $this->firstname = $firstname;
 
         return $this;
     }

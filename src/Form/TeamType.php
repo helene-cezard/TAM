@@ -4,6 +4,11 @@ namespace App\Form;
 
 use App\Entity\Role;
 use App\Entity\Team;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\BoldField;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\ItalicField;
+use Ehyiah\QuillJsBundle\DTO\Fields\InlineField\UnderlineField;
+use Ehyiah\QuillJsBundle\DTO\QuillGroup;
+use Ehyiah\QuillJsBundle\Form\QuillType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -25,8 +30,12 @@ class TeamType extends AbstractType
             ]);
         }
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'Nom complet',
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'required' => false,
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
                 'required' => true,
             ])
             ->add('uploadedImage', FileType::class, [
@@ -49,9 +58,16 @@ class TeamType extends AbstractType
             //     'mapped' => false,
             //     'required' => false,
             // ])
-            ->add('presentation', TextType::class, [
+            ->add('presentation', QuillType::class, [
                 'label' => 'Présentation',
                 'required' => false,
+                'quill_options' => [
+                QuillGroup::build(
+                    new BoldField(),
+                    new ItalicField(),
+                    new UnderlineField(),
+                ),
+                ],
             ])
             ->add('role', EntityType::class, [
                 'class' => Role::class,

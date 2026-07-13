@@ -30,10 +30,10 @@
                                                 {% endif %}
                                             >
 
-                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ member.name }}">
+                                                <img src="{{ member.image ? asset(member.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [member.firstname, member.lastname]|join }}">
                                                 <div class="team__card__text">
-                                                    <h3 class="team__card__name">{{ member.name }}</h3>
-                                                    <p class="team__card__bio">{{ member.presentation }}</p>
+                                                    <h3 class="team__card__name">{{ member.firstname }} {{ member.lastname }}</h3>
+                                                    <p class="team__card__bio">{{ member.presentation|raw }}</p>
                                                 </div>
 
                                             </{{ tag }}>

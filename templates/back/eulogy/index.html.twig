@@ -6,6 +6,7 @@
     <main>
         {% include "partials/_left_banner.html.twig" %}
             <section class="eulogy section">
+            <p id="rubricInfo" class="admin-title">En-tête</p>
             <section>
                 <h1 class="section__title">{{ rubricInfo.title }}</h1>
                 {% if rubricInfo.getGalleryImage is not empty %}
@@ -13,23 +14,27 @@
                 {% endif %}
                 {{ rubricInfo.text|quill_html|raw }}
             </section>
+            {% include "back/partials/_rubric_info_form.html.twig" %}
 
-            {% for eulogySection in eulogySections %}
+            {# {% for eulogySection in eulogySections %}
 
                 <section class="subsection">
                     {% if eulogySection.title is not empty %}
                         <h2
-                            class="subsection__title {{ eulogySection === eulogySections[0] ? 'subsection__title-grid' : '' }}">
+                            class="subsection__title {{ eulogySection.aside|default ? 'subsection__title-grid' : '' }}">
                             {{ eulogySection.title }}
                         </h2>
                     {% endif %}
+                    <div>
+                    {{ eulogySection.text|quill_html|raw }}
+                    </div>
                     {% if eulogySection === eulogySections[0] %}
                         <img class="eulogy__image left" src="{{ president.image ? asset(president.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [president.firstname, president.lastname]|join }}">
                     {% endif %}
-                    <div>{{ eulogySection.text|quill_html|raw }}</div>
                 </section>
 
-                {% endfor %}
+                {% endfor %} #}
+                <section id="eulogySections">{% include "back/partials/_sections.html.twig" %}</section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

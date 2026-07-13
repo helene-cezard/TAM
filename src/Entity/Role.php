@@ -25,6 +25,7 @@ class Role
         mappedBy: 'role',
         targetEntity: Team::class
     )]
+    #[ORM\OrderBy(['lastname' => 'ASC'])]
     private Collection $members;
 
     public function __construct()

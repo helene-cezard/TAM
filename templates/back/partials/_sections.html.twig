@@ -1,6 +1,6 @@
 <p class="admin-title">Sections</p>
 {% for section in sections %}
-<section  id={{ section.htmlId }} class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
+<section  id="{{ section.htmlId }}" class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
     <button class="position-button up">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             fill="currentColor" viewBox="0 0 16 16">
@@ -47,13 +47,6 @@
 
 
 <section class="form">
-
     <p class="admin-title">Ajouter une section</p>
-    {{ form_start(sectionForm) }}
-        {# {{ form_start(sectionForm, {
-        attr: {
-            'data-turbo': 'false'
-        }
-    }) }} #}
-    {{ form_end(sectionForm) }}
+    {{ form(sectionForm) }}
 </section>

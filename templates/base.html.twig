@@ -22,7 +22,7 @@
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
     </head>
-    <body>
+    <body data-turbo="false">
     {% set adminInterface = false %}
         {% if app.request.get('_route') starts with 'admin_' %}
             {% set adminInterface = true %}

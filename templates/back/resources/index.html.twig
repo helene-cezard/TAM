@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+{% block title %}Admin TAM : Ressources{% endblock %}
 
 {% block body %}
     <main>
@@ -40,7 +40,7 @@
                             {% endfor %}
                         </ul>
                 </section>
-                <p class="admin-title">Ajouter des vidéos</p>
+                <p id="video-error" class="admin-title">Ajouter des vidéos</p>
                 <div class="tabs-form">
                     <div class="tabs-form__tabs">
                         <button class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="video-url">Ajouter l'adresse d'une video</button>
@@ -56,10 +56,10 @@
                 </div>
 
                 <section>
-                    <p id="gallerie" class="admin-title">Vidéos</p>
+                    <p id="gallerie" class="admin-title">Photos</p>
                     {% include "partials/_gallery.html.twig" %}
                 </section>
-                <p id="image-error" class="admin-title">Ajouter des images</p>
+                <p id="image-error" class="admin-title">Ajouter une image</p>
                 <section class="form">
                     {{ form_start(imageForm) }}
                         {{ form_errors(imageForm.uploadedImage) }}
@@ -82,19 +82,67 @@
                     {{ form_end(imageForm) }}
                 </section>
 
+                <section class="form">
+                    <p id="imageCategories" class="admin-title">Ajouter ou supprimer une catégorie dans la galerie</p>
+                    {% if categoryForm.vars.submitted and not categoryForm.vars.valid %}
+                        data-scroll-to="#imageCategories"
+                    {% endif %}
+                    {{ form(categoryForm) }}
+
+                    <p>Seules les catégories qui ne sont pas en cours d'utilisation peuvent être supprimées</p>
+                    <div id="galleryCategories" class="gallery-categories">
+                        {% for category in categories %}
+                            <div class="gallery-category--position-buttons element-to-move" data-id="{{ category.id }}">
+                                <div class="gallery-category">
+                                    <span>{{ category.title }}</span>
+                                {% if category.id not in usedCategoryIds %}
+                                    <form
+                                        method="post"
+                                        action="{{ path(app.current_route ~ '_category_delete', {id: category.id}) }}"
+                                        class="gallery-category__delete"
+                                        onclick="return confirm('Supprimer la catégorie « {{ category.title }} » ?')"
+                                        aria-label="Supprimer la catégorie {{ category.title }}"
+                                    >
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+                                        <button class="gallery-category__delete-button">×</button>
+                                    </form>
+                                {% endif %}
+                                </div>
+                                <button class="position-button leftButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                                    </svg>
+                                </button>
+                                <button class="position-button rightButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4.646 1.646a.5.5 0 0 0 0 .708L10.293 8l-5.647 5.646a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708l-6-6a.5.5 0 0 0-.708 0"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if categories|length >= 2 %}
+                    <button id="categories_reorder" class="reorder">Enregistrer l'ordre des categories</button>
+                    {% endif %}
+                </section>
+
                 <section>
                 <p class="admin-title">Supports visuels</p>
                     <ul id="visuals">
                         {% for visual in visuals %}
                         <li class="resources__visuals subsection-border element-to-move" data-id="{{ visual.id }}">
-                            <button class="position-button up">
+                            <button class="position-button upButton">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
                                 </svg>
                             </button>
-                            <button class="position-button down">
+                            <button class="position-button downButton">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -132,7 +180,7 @@
 
                     </ul>
                 </section>
-                <p class="admin-title">Ajouter des supports visuels</p>
+                <p id="visual-error" class="admin-title">Ajouter des supports visuels</p>
                 <section class="form">
                     {{ form_start(visualForm) }}
                         {{ form_row(visualForm.name) }}

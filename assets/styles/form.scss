@@ -9,7 +9,6 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      margin: 1rem auto 0 auto;
 
       & input,
       & textarea {
@@ -65,22 +64,22 @@
 
     &:nth-child(1 of .element-to-move) {
 
-        & .up {
+        & .upButton {
             display: none;
         }
 
-        & .left {
+        & .leftButton {
             display: none;
         }
     }
 
     &:nth-last-child(1 of .element-to-move) {
 
-        & .down {
+        & .downButton {
             display: none;
         }
 
-        & .right {
+        & .rightButton {
             display: none;
         }
     }
@@ -106,24 +105,23 @@
     }
     position: absolute;
     right: 1rem;
-    top: 1rem;
 
     @extend %button;
 }
 
-.up {
+.upButton {
     top: 1rem;
 }
 
-.down {
+.downButton {
     bottom: 1rem;
 }
 
-.left {
+.leftButton {
     left: 1rem;
 }
 
-.right {
+.rightButton {
     right: 1rem;
 }
 
@@ -255,4 +253,82 @@
 
 .video__item {
     margin-bottom: 1rem;
+}
+
+#gallery_image_category {
+    padding: 0.5rem;
+    font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+    font-family: "Calibri", "Source Sans 3", sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    margin-left: 1rem;
+}
+
+.gallery-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin: 1rem 0;
+}
+
+.gallery-category {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .8rem;
+    border-radius: 9999px;
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    font-weight: 500;
+
+    &--position-buttons {
+        padding-bottom: 4rem;
+
+        & .position-button {
+            top: auto;
+            margin-top: .5rem;
+        }
+    }
+
+    &__delete {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 1.3rem;
+        height: 1.3rem;
+
+        border-radius: 50%;
+
+        text-decoration: none;
+        color: #666;
+        line-height: 1;
+
+        &-button {
+            border-radius: 50%;
+            transition: background .2s, color .2s;
+
+            &:hover, &:focus {
+                background: #d32f2f;
+                color: white;
+            }
+        }
+    }
+}
+
+#team-error,
+#rubricInfo-error,
+#section-error,
+#contact,
+#action-error,
+#carousel-error,
+#reports,
+#image-error,
+#imageCategories,
+#video-error,
+#visual-error,
+#team-error
+{
+    scroll-margin-top: 6rem;
 }

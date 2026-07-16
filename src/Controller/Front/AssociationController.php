@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AssociationController extends AbstractController
 {
-    #[Route('/association', name: 'app_who_association')]
+    #[Route('/association', name: 'app_association')]
     public function index(AssociationSectionRepository $associationSectionRepository, RubricInfoRepository $rubricInfoRepository): Response
     {
         $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);

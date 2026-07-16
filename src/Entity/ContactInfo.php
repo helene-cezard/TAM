@@ -19,13 +19,13 @@ class ContactInfo
     #[ORM\Column(length: 255)]
     private ?string $postal_code = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 100)]
     private ?string $city = null;
 
     #[ORM\Column(length: 255)]
     private ?string $e_mail = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 30, nullable: true)]
     private ?string $phone = null;
 
     public function getId(): ?int
@@ -86,7 +86,7 @@ class ContactInfo
         return $this->phone;
     }
 
-    public function setPhone(string $phone): static
+    public function setPhone(?string $phone): static
     {
         $this->phone = $phone;
 

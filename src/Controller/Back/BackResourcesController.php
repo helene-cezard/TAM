@@ -7,6 +7,7 @@ use App\Entity\RubricInfo;
 use App\Entity\Section\ResourcesSection;
 use App\Entity\Visual;
 use App\Form\GalleryImageType;
+use App\Form\ImageCategoryType;
 use App\Form\SectionForms\ResourcesSectionType;
 use App\Form\RubricInfoType;
 use App\Form\VideoType;
@@ -46,12 +47,13 @@ final class BackResourcesController extends AbstractController
         SubmitVideo $submitVideo,
         VideoRepository $videoRepository,
         VisualRepository $visualRepository,
-        SubmitVisual $submitVisual
+        SubmitVisual $submitVisual,
+        EntityManagerInterface $entityManager
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'resources']);
         $galleryImages = $galleryImageRepository->findAll();
         $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
-        $categories = $imageCategoryRepository->findAll();
+        $categories = $imageCategoryRepository->findBy([], ['position' => 'ASC']);
         $videos = $videoRepository->findAll();
         $visuals = $visualRepository->findBy([], ['position' => 'ASC']);
 
@@ -61,11 +63,16 @@ final class BackResourcesController extends AbstractController
             $rubrics
         );
 
+        $usedCategoryIds = array_map(
+            fn(GalleryImage $galleryImage) => $galleryImage->getCategory()?->getId(),
+            $galleryImages
+        );
+
         // Gestion du formulaire de mise à jour de la rubrique
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            $this->addFlash('success', 'En-tête de rubrique mis à jour avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_resources') . '#rubricInfo'
             );
@@ -78,6 +85,22 @@ final class BackResourcesController extends AbstractController
             $this->addFlash('success', 'Image ajoutée avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_resources') . '#gallerie'
+            );
+        }
+
+        //Gestion du formulaire d'ajout de catégories de la galerie
+        $categoryForm = $this->createForm(ImageCategoryType::class);
+        $categoryForm->handleRequest($request);
+        if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
+
+            $category = $categoryForm->getData();
+            $category->setPosition(count($imageCategoryRepository->findAll()) + 1);
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Catégorie ajoutée avec succès !');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#imageCategories'
             );
         }
 
@@ -111,6 +134,16 @@ final class BackResourcesController extends AbstractController
             );
         }
 
+        $scrollTo = match (true) {
+            $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
+            $imageForm->isSubmitted() && !$imageForm->isValid() => 'image-error',
+            $categoryForm->isSubmitted() && !$categoryForm->isValid() => 'imageCategories',
+            $videoForm->isSubmitted() && !$videoForm->isValid() => 'video-error',
+            $visualForm->isSubmitted() && !$visualForm->isValid() => 'visual-error',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
         return $this->render('back/resources/index.html.twig', [
             'sections' => $resourcesSections,
             'rubricInfo' => $rubricInfo,
@@ -123,7 +156,10 @@ final class BackResourcesController extends AbstractController
             'videos' => $videos,
             'visuals' => $visuals,
             'visualForm' => $visualForm,
-            'rubricGalleryIds' => $rubricGalleryIds
+            'rubricGalleryIds' => $rubricGalleryIds,
+            'categoryForm' => $categoryForm,
+            'usedCategoryIds' => $usedCategoryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 
@@ -372,6 +408,55 @@ final class BackResourcesController extends AbstractController
 
         return $this->redirect(
             $this->generateUrl('admin_resources') . '#visuals'
+        );
+    }
+
+    #[Route('/admin/resources/categories_reorder', name: 'admin_resources_categories_reorder', methods: ['POST'])]
+    public function categoriesReorder(
+        Request $request,
+        ImageCategoryRepository $categoryRepository,
+        EntityManagerInterface $entityManager
+    ): JsonResponse {
+        $ids = json_decode($request->getContent(), true);
+
+        foreach ($ids as $position => $id) {
+            $category = $categoryRepository->find($id);
+
+            if ($category) {
+                $category->setPosition($position + 1);
+            }
+        }
+
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Ordre des catégories enregistré avec succès !');
+
+        return new JsonResponse([
+            'ids' => $ids,
+            'redirect' => $this->generateUrl('admin_resources') . '#imageCategories'
+        ]);
+    }
+
+    #[Route('/admin/ressources/category_delete/{id}', name: 'admin_resources_category_delete', methods: ['POST'])]
+    public function deleteCategory(
+        ImageCategoryRepository $repository,
+        EntityManagerInterface  $entityManager,
+        int $id,
+    )
+    {
+        $category = $repository->find($id);
+
+        if (!$category) {
+            throw $this->createNotFoundException('Catégorie non trouvée');
+        }
+
+        $entityManager->remove($category);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Catégorie supprimée avec succès !');
+
+        return $this->redirect(
+            $this->generateUrl('admin_resources') . '#imageCategories'
         );
     }
 }

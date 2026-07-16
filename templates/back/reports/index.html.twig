@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+{% block title %}Admin TAM : Rapports d'activité{% endblock %}
 
 {% block body %}
     <main>
@@ -24,14 +24,14 @@
                     <div id="reportsContainer" class="reports__list">
                         {% for report in reports %}
                         <div class="subsection-border element-to-move" data-id="{{ report.id }}">
-                        <button class="position-button up">
+                        <button class="position-button upButton">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
                             </svg>
                         </button>
-                        <button class="position-button down">
+                        <button class="position-button downButton">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class FranceController extends AbstractController
 {
-    #[Route('/france', name: 'app_actions_france')]
+    #[Route('/france', name: 'app_france')]
     public function index(
         FranceSectionRepository $franceSectionRepository,
         RubricInfoRepository $rubricInfoRepository,

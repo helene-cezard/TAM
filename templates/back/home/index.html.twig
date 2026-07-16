@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association TAM : Thérapies, Arts & Médiations - Accueil{% endblock %}
+{% block title %}Admin TAM : Accueil{% endblock %}
 
 {% block body %}
     <main>
@@ -9,14 +9,14 @@
                 <div id="carousel" class="carousel__gallery">
                     {% for carouselImage in carouselImages %}
                         <div class="carousel__gallery__card element-to-move" data-id="{{ carouselImage.id }}">
-                            <button class="position-button left">
+                            <button class="position-button leftButton">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
                                 </svg>
                             </button>
-                            <button class="position-button right">
+                            <button class="position-button rightButton">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     fill="currentColor" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
@@ -31,22 +31,24 @@
                         </div>
                     {% endfor %}
 
-                    {% if carouselImages is not empty %}
-                    <button id="carousel_reorder" class="reorder">Enregistrer l'ordre des images</button>
-                    {% endif %}
                 </div>
+                {% if carouselImages is not empty %}
+                <button id="carousel_reorder" class="reorder">Enregistrer l'ordre des images</button>
+                {% endif %}
 
-                <div class="tabs-form">
+                <div id="carousel-error" class="tabs-form">
                     <div class="tabs-form__tabs">
                         <button class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="galerie-image">Ajouter une image de la galerie</button>
                         <button class="tabs-form__tab-button" data-tab="uploaded-image">Envoyer une image</button>
                     </div>
                     <div class="form">
                         {{ form_start(carouselForm) }}
+                        {{ form_errors(carouselForm) }}
+                        {{ form_errors(carouselForm.galleryImage) }}
+                        {{ form_errors(carouselForm.uploadedImage) }}
+                        {{ form_errors(carouselForm.alt) }}
                         <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="galerie-image">
                             <div id="galleryImage">
-                                {{ form_errors(carouselForm.galleryImage) }}
-                                {# {{ form_label(carouselForm.galleryImage) }} #}
                                 {% for choice in carouselForm.galleryImage %}
                                 {% if choice.vars.name === 'placeholder' %}
                                     <div class="hide-image">
@@ -71,8 +73,7 @@
                         </div>
                         <div class="tabs-form__tab-content" data-tab="uploaded-image">
                             <div class="tabs-form__upload-image">
-                                {{ form_row(carouselForm.uploadedImage) }}
-                                {{ form_errors(carouselForm.alt) }}
+                                {{ form_widget(carouselForm.uploadedImage) }}
                                 <div class="form-label-with-help">
                                     {{ form_label(carouselForm.alt) }}
                                     <span

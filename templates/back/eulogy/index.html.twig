@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association TAM : Thérapies, Arts & Médiations - Hommage au Dr Maman Bello{% endblock %}
+{% block title %}Admin TAM : Hommage au Dr Maman Bello{% endblock %}
 
 {% block body %}
     <main>
@@ -16,25 +16,7 @@
             </section>
             {% include "back/partials/_rubric_info_form.html.twig" %}
 
-            {# {% for eulogySection in eulogySections %}
-
-                <section class="subsection">
-                    {% if eulogySection.title is not empty %}
-                        <h2
-                            class="subsection__title {{ eulogySection.aside|default ? 'subsection__title-grid' : '' }}">
-                            {{ eulogySection.title }}
-                        </h2>
-                    {% endif %}
-                    <div>
-                    {{ eulogySection.text|quill_html|raw }}
-                    </div>
-                    {% if eulogySection === eulogySections[0] %}
-                        <img class="eulogy__image left" src="{{ president.image ? asset(president.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [president.firstname, president.lastname]|join }}">
-                    {% endif %}
-                </section>
-
-                {% endfor %} #}
-                <section id="eulogySections">{% include "back/partials/_sections.html.twig" %}</section>
+            <section id="eulogySections">{% include "back/partials/_sections.html.twig" %}</section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

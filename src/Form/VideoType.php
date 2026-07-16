@@ -20,12 +20,26 @@ class VideoType extends AbstractType
             ->add('path', TextType::class, [
                 'label' => 'Entrer l\'adresse d\'une vidéo',
                 'required' => false,
+                'constraints' => [
+                    new Assert\Url([
+                        'message' => 'Veuillez saisir une URL valide.',
+                    ]),
+                ],
             ])
             ->add('uploadedVideo', FileType::class, [
                 'label' => 'Envoyer une vidéo',
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
                 'constraints' => [
+                    new Assert\File([
+                        'maxSize' => '100M',
+                        'mimeTypes' => [
+                            'video/mp4',
+                            'video/webm',
+                            'video/ogg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez envoyer une vidéo au format MP4, WebM ou OGG.',
+                    ]),
                     new Assert\Callback([$this, 'validateVideo']),
                 ],
             ])

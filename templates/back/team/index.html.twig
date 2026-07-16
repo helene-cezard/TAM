@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association TAM : Thérapies, Arts & Médiations - Actions au Bénin{% endblock %}
+{% block title %}Admin TAM : L'équipe{% endblock %}
 
 {% block body %}
     <main>
@@ -56,7 +56,7 @@
                 </section>
 
                 <section class="form">
-                    <p class="admin-title">Ajouter un membre de l'équipe</p>
+                    <p id="team-error" class="admin-title">Ajouter un membre de l'équipe</p>
                     {{ form(teamForm) }}
                 </section>
 

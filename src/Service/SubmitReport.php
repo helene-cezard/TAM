@@ -49,6 +49,11 @@ class SubmitReport
 
             $report = $reportsForm->getData();
 
+            // Si aucun rapport n'est uploadé et qu'il n'y en a pas non plus en BDD
+            if (!$reportFile && $report->getPath() === null) {
+                return false;
+            }
+
             // Si un nouveau fichier est téléchargé, le traiter
             if ($reportFile) {
                 $newFilename = $this->fileUploader->upload(

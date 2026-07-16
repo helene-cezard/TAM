@@ -49,7 +49,7 @@ final class BackContactController extends AbstractController
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            $this->addFlash('success', 'En-tête de rubrique mis à jour avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_contact') . '#rubricInfo'
             );
@@ -85,6 +85,13 @@ final class BackContactController extends AbstractController
             );
         }
 
+        $scrollTo = match (true) {
+            $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
+            $contactInfoForm->isSubmitted() && !$contactInfoForm->isValid() => 'contact',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
         return $this->render('back/contact/index.html.twig', [
             'sections' => $contactSections,
             'rubricInfo' => $rubricInfo,
@@ -92,7 +99,8 @@ final class BackContactController extends AbstractController
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
             'contactInfoForm' => $contactInfoForm,
-            'rubricGalleryIds' => $rubricGalleryIds
+            'rubricGalleryIds' => $rubricGalleryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 

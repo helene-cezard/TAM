@@ -64,6 +64,12 @@ final class BackHomeController extends AbstractController
             $carouselImages
         );
 
+        $scrollTo = match (true) {
+            $carouselForm->isSubmitted() && !$carouselForm->isValid() => 'carousel-error',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
         return $this->render('back/home/index.html.twig', [
             'controller_name' => 'BackHomeController',
             'carouselImages' => $carouselImages,
@@ -72,6 +78,7 @@ final class BackHomeController extends AbstractController
             'carouselForm' => $carouselForm,
             'galleryImages' => $galleryImages,
             'carouselGalleryIds' => $carouselGalleryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 

@@ -31,8 +31,6 @@ class ContactInfoType extends AbstractType
                     new Assert\Length([
                         'min' => 3,
                         'max' => 255,
-                        'minMessage' => 'L’adresse est trop courte.',
-                        'maxMessage' => 'L’adresse ne peut pas dépasser {{ limit }} caractères.',
                     ]),
                 ],
             ])
@@ -69,6 +67,7 @@ class ContactInfoType extends AbstractType
                         'message' => 'Veuillez renseigner une ville.',
                     ]),
                     new Assert\Length([
+                        'min' => 2,
                         'max' => 100,
                     ]),
                 ],

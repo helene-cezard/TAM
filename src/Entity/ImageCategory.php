@@ -5,8 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Repository\ImageCategoryRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
+#[UniqueEntity(
+    fields: ['title'],
+    message: 'Une catégorie portant ce nom existe déjà.'
+)]
 #[ORM\Entity(repositoryClass: ImageCategoryRepository::class)]
 class ImageCategory
 {
@@ -14,9 +19,6 @@ class ImageCategory
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -27,6 +29,9 @@ class ImageCategory
     )]
     private Collection $galleryImages;
 
+    #[ORM\Column]
+    private ?int $position = null;
+
     public function __construct()
     {
         $this->galleryImages = new ArrayCollection();
@@ -35,18 +40,6 @@ class ImageCategory
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getTitle(): ?string
@@ -64,5 +57,17 @@ class ImageCategory
     public function getGalleryImages(): Collection
     {
         return $this->galleryImages;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
+
+        return $this;
     }
 }

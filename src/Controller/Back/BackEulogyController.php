@@ -55,7 +55,7 @@ final class BackEulogyController extends AbstractController
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            $this->addFlash('success', 'En-tête de rubrique mis à jour avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_eulogy') . '#rubricInfo'
             );
@@ -70,6 +70,13 @@ final class BackEulogyController extends AbstractController
                 $this->generateUrl('admin_eulogy') . '#eulogySections'
             );
         }
+
+        $scrollTo = match (true) {
+            $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
          return $this->render('back/eulogy/index.html.twig', [
             'sections' => $eulogySections,
             'eulogySections' => $eulogySections,
@@ -79,6 +86,7 @@ final class BackEulogyController extends AbstractController
             'galleryImages' => $galleryImages,
             'sectionForm' => $sectionForm,
             'rubricGalleryIds' => $rubricGalleryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 

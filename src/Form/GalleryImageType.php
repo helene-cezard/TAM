@@ -28,11 +28,13 @@ class GalleryImageType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new Assert\File([
+                        'maxSize' => '5M',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            'image/webp',
                         ],
-                        'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
+                        'mimeTypesMessage' => 'Veuillez télécharger une image JPG, PNG ou WebP.',
                     ]),
                 ],
             ]);
@@ -48,13 +50,12 @@ class GalleryImageType extends AbstractType
                     'class' => 'help-alt-image',
                 ],
                 'required' => false,
-                // 'mapped' => false, // Ne lie pas ce champ à l'entité
             ])
             ->add('category', EntityType::class, [
                 'class' => ImageCategory::class,
-                'label' => 'Choisir une catégorie. Laisser vide si vous voulez ajouter une image sur le serveur sans qu\'elle ne s\'affiche dans la gallerie.',
+                'label' => 'Choisir une catégorie. Laisser vide si vous voulez ajouter une image sur le serveur sans qu\'elle ne s\'affiche dans la galerie.',
                 'placeholder' => 'Aucune catégorie',
-                'choice_label' => 'name',
+                'choice_label' => 'title',
                 'required' => false,
             ])
             ->add('save', SubmitType::class, [
@@ -69,9 +70,6 @@ class GalleryImageType extends AbstractType
                 : null;
 
             $galleryImage = $event->getData();
-
-            dump($uploadedImage);
-            dump($galleryImage->getAlt());
 
             if ($uploadedImage && empty($galleryImage->getAlt())) {
                 $form->get('alt')->addError(

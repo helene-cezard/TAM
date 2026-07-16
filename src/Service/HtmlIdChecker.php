@@ -54,6 +54,15 @@ class HtmlIdChecker
         'footer__contact',
         'footer__social',
         'lightbox-image',
+        'rubricInfo-error',
+        'imageCategories',
+        'video-error',
+        'visual-error',
+        'section-error',
+        'action-error',
+        'carousel-error',
+        'reports',
+        'team-error',
     ];
 
     public function __construct(

@@ -26,8 +26,6 @@ class ContactType extends AbstractType
                     new Assert\Length([
                         'min' => 2,
                         'max' => 100,
-                        'minMessage' => 'Le nom doit comporter au moins {{ limit }} caractères.',
-                        'maxMessage' => 'Le nom ne peut pas dépasser {{ limit }} caractères.',
                     ]),
                 ],
                 'attr' => [
@@ -57,8 +55,6 @@ class ContactType extends AbstractType
                     new Assert\Length([
                         'min' => 5,
                         'max' => 150,
-                        'minMessage' => 'Le sujet est trop court.',
-                        'maxMessage' => 'Le sujet ne peut pas dépasser {{ limit }} caractères.',
                     ]),
         ],
             ])
@@ -72,11 +68,9 @@ class ContactType extends AbstractType
                     new Assert\Length([
                         'min' => 20,
                         'max' => 5000,
-                        'minMessage' => 'Votre message doit comporter au moins {{ limit }} caractères.',
-                        'maxMessage' => 'Votre message ne peut pas dépasser {{ limit }} caractères.',
                     ]),
                 ],
-                // 'required' => true,
+                'required' => true,
             ])
             // Honeypot
             ->add('website', TextType::class, [

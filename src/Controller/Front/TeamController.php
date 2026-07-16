@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class TeamController extends AbstractController
 {
-    #[Route('/equipe', name: 'app_who_team')]
+    #[Route('/equipe', name: 'app_team')]
     public function index(
         TeamSectionRepository $teamSectionRepository,
         RubricInfoRepository $rubricInfoRepository,

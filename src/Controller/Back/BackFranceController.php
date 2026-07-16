@@ -48,7 +48,7 @@ final class BackFranceController extends AbstractController
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            $this->addFlash('success', 'En-tête de rubrique mis à jour avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_france') . '#rubricInfo'
             );
@@ -74,6 +74,13 @@ final class BackFranceController extends AbstractController
             );
         }
 
+        $scrollTo = match (true) {
+            $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
+            $actionForm->isSubmitted() && !$actionForm->isValid() => 'action-error',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
         return $this->render('back/france/index.html.twig', [
             'sections' => $franceSections,
             'rubricInfo' => $rubricInfo,
@@ -83,6 +90,7 @@ final class BackFranceController extends AbstractController
             'actionForm' => $actionForm,
             'actions' => $actions,
             'rubricGalleryIds' => $rubricGalleryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 

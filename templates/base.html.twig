@@ -23,6 +23,11 @@
         {% endif %}
     </head>
     <body data-turbo="false">
+    {% if scrollTo|default(null) %}
+        <script>
+            window.location.hash = '{{ scrollTo }}';
+        </script>
+    {% endif %}
     {% set adminInterface = false %}
         {% if app.request.get('_route') starts with 'admin_' %}
             {% set adminInterface = true %}

@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TeamType extends AbstractType
 {
@@ -33,31 +34,37 @@ class TeamType extends AbstractType
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
                 'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 255,
+                    ]),
+                ],
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Nom',
                 'required' => true,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 255,
+                    ]),
+                ],
             ])
             ->add('uploadedImage', FileType::class, [
                 'label' => 'Envoyer une image',
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
-                // 'constraints' => [
-                //     new Assert\File([
-                //         'maxSize' => '10k',
-                //         'mimeTypes' => [
-                //             'image/jpeg',
-                //             'image/png',
-                //         ],
-                //         'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
-                //     ]),
-                // ],
+                'constraints' => [
+                    new Assert\File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
+                    ]),
+                ],
             ])
-            // ->add('removeImage', CheckboxType::class, [
-            //     'label' => 'Retirer l’image actuelle (elle sera remplacée par l’image par défaut)',
-            //     'mapped' => false,
-            //     'required' => false,
-            // ])
             ->add('presentation', QuillType::class, [
                 'label' => 'Présentation',
                 'required' => false,

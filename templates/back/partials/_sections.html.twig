@@ -1,35 +1,41 @@
 <p class="admin-title">Sections</p>
 {% for section in sections %}
-<section  id="{{ section.htmlId }}" class="subsection subsection-border element-to-move" data-id="{{ section.id }}">
-    <button class="position-button up">
+<section  id="{{ section.htmlId }}" class="subsection-border element-to-move" data-id="{{ section.id }}">
+    <button class="position-button upButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
                 d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
         </svg>
     </button>
-    <button class="position-button down">
+    <button class="position-button downButton">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
                 d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
         </svg>
     </button>
-    {% if section.title is not empty %}
-        <h2
-            class="subsection__title {{ section.aside|default ? 'subsection__title-grid' : '' }}">
-            {{ section.title }}
-        </h2>
-    {% endif %}
-    <div class="subsection__text">
-    {{ section.text|quill_html|raw }}
+    <div class="subsection">
+        {% if section.title is not empty %}
+            <h2
+                class="subsection__title {{ section.aside|default or president is defined ? 'subsection__title-grid' : '' }}">
+                {{ section.title }}
+            </h2>
+        {% endif %}
+        <div class="subsection__text">
+        {{ section.text|quill_html|raw }}
+        </div>
+        {% if section.aside is not empty %}
+            <aside class="subsection__quote {{ section.leftSide ? 'left' : '' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
+                <blockquote>"{{ section.aside }}"</blockquote>
+            </aside>
+        {% endif %}
+        {% if president is defined and section == sections[0]  %}
+            <img class="eulogy__image left" src="{{ president.image ? asset(president.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [president.firstname, president.lastname]|join }}">
+        {% endif %}
     </div>
-    {% if section.aside is not empty %}
-        <aside class="subsection__quote {{ section.leftSide ? 'left' : '' }}">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
-            <blockquote>"{{ section.aside }}"</blockquote>
-        </aside>
-    {% endif %}
+
     <div class="modify__buttons">
         <form method="post" action="{{ path(app.current_route ~ '_section_delete', {id: section.id}) }}">
             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ section.id) }}">
@@ -47,6 +53,6 @@
 
 
 <section class="form">
-    <p class="admin-title">Ajouter une section</p>
+    <p id="section-error" class="admin-title">Ajouter une section</p>
     {{ form(sectionForm) }}
 </section>

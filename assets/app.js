@@ -24,24 +24,29 @@ const app = {
         app.showLightbox();
         app.initTabs();
 
-        const pages = ['home', 'association', 'team', 'reports', 'benin', 'france', 'training', 'resources', 'contact'];
+        const pages = ['home', 'association', 'team', 'reports', 'benin', 'france', 'training', 'resources', 'contact', 'eulogy'];
 
         pages.forEach(element => {
             app.movePosition(element + 'Sections');
             app.updatePositions(element + 'Sections', 'section_reorder', currentRoute, element);
         });
 
-          app.movePosition('reportsContainer');
-          app.updatePositions('reportsContainer', 'reports_reorder', currentRoute, 'reports');
+        app.movePosition('reportsContainer');
+        app.updatePositions('reportsContainer', 'reports_reorder', currentRoute, 'reports');
 
-          app.movePosition('actionsContainer');
-          app.updatePositions('actionsContainer', 'action_reorder', currentRoute, 'france');
+        app.movePosition('actionsContainer');
+        app.updatePositions('actionsContainer', 'action_reorder', currentRoute, 'france');
 
-          app.movePosition('carousel');
-          app.updatePositions('carousel', 'carousel_reorder', currentRoute, 'home');
+        app.movePosition('carousel');
+        app.updatePositions('carousel', 'carousel_reorder', currentRoute, 'home');
 
-          app.movePosition('visuals');
-          app.updatePositions('visuals', 'visual_reorder', currentRoute, 'resources');
+        app.movePosition('visuals');
+        app.updatePositions('visuals', 'visual_reorder', currentRoute, 'resources');
+
+        app.movePosition('galleryCategories');
+        app.updatePositions('galleryCategories', 'categories_reorder', currentRoute, 'resources');
+
+        // app.formErrorsRedirect();
     },
 
     burgerMenu: function () {
@@ -146,6 +151,23 @@ const app = {
     pause: function (itv) {
         clearInterval(itv);
     },
+
+    // formErrorsRedirect: function () {
+    //     const source = document.querySelector('[data-scroll-to]');
+
+    //     console.log('coucou');
+    //     if (source) {
+    //         const selector = source.dataset.scrollTo;
+    //         const target = document.querySelector(selector);
+
+    //         if (target) {
+    //             target.scrollIntoView({
+    //                 behavior: 'smooth',
+    //                 block: 'start'
+    //             });
+    //         }
+    //     }
+    // },
 
     animateCounters: function () {
         const numbers = document.querySelectorAll('.home__counter__number');
@@ -283,6 +305,8 @@ const app = {
             reportsContainer: 'rapports',
             actionsContainer: 'actions',
             carousel: 'images',
+            visuals: 'supports visuels',
+            galleryCategories: 'catégories',
         };
 
         let messageElement = '';
@@ -297,9 +321,7 @@ const app = {
             return;
         }
 
-
         container.addEventListener('click', (event) => {
-
             const elementToMove = event.target.closest('.element-to-move');
 
             if (!elementToMove) {
@@ -312,7 +334,7 @@ const app = {
                 return;
             }
 
-            if (button.classList.contains('up') || button.classList.contains('left')) {
+            if (button.classList.contains('upButton') || button.classList.contains('leftButton')) {
 
                 const previous = elementToMove.previousElementSibling;
 
@@ -322,7 +344,7 @@ const app = {
                 }
             }
 
-            if (button.classList.contains('down') || button.classList.contains('right')) {
+            if (button.classList.contains('downButton') || button.classList.contains('rightButton')) {
 
                 const next = elementToMove.nextElementSibling;
 
@@ -357,9 +379,11 @@ const app = {
             const ids = [...container.querySelectorAll('.element-to-move')]
             .map(subsection => subsection.dataset.id);
 
-            console.log('event.target.parentNode', event.target.parentNode, 'container', container);
+            // console.dir(event.target.parentNode);
+            // console.dir(container);
+            // console.log(event.target.parentNode.hasChildNodes(container));
 
-            if (event.target.parentNode === container) {
+            if (event.target.parentNode.hasChildNodes(container)) {
 
                 fetch(reorderRoute, {
                         method: 'POST',

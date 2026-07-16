@@ -16,13 +16,14 @@
         <nav id="nav" role="navigation" class="header__navbar">
             <ul role="menubar" class="header__nav-links">
             {% if app.user %}
+            {% set routeEnd = currentRoute|split('_')[1] %}
                 <li class="header__nav-links--blue parent__menu">
                     <button type="button" aria-haspopup="true" aria-expanded="false" aria-controls="connected" class="submenu__button">👤 Connecté</button>
                     <ul role="menu" id="connected" class="submenu">
                         <li class="submenu__item">
 
                             {% if adminInterface %}
-                            <a href="{{ path('app_home') }}"
+                            <a href="{{ path(['app_', routeEnd]|join) }}"
                             role="menuitem"
                             aria-label="Retour au site"
                             title="Retour au site"
@@ -31,7 +32,7 @@
                             </a>
 
                             {% else %}
-                            <a href="{{ path('admin_home') }}"
+                            <a href="{{ path(['admin_', routeEnd]|join) }}"
                             role="menuitem"
                             aria-label="Espace administration"
                             title="Espace administration">
@@ -60,13 +61,13 @@
                     <button {{ 'app_who' in currentRoute or 'association' in currentRoute or 'team' in currentRoute or 'reports' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="who_submenu" class="submenu__button">Qui sommes-nous ?</button>
                     <ul role="menu" id="who_submenu" class="submenu">
                         <li class="submenu__item">
-                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_association' : 'app_who_association') }}">L'association</a>
+                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_association' : 'app_association') }}">L'association</a>
                         </li>
                         <li class="submenu__item">
-                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_team' : 'app_who_team') }}">L'équipe</a>
+                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_team' : 'app_team') }}">L'équipe</a>
                         </li>
                         <li class="submenu__item">
-                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_reports' : 'app_who_reports') }}">Rapports d'activité</a>
+                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_reports' : 'app_reports') }}">Rapports d'activité</a>
                         </li>
                     </ul>
                 </li>
@@ -74,10 +75,10 @@
                     <button {{ 'app_actions' in currentRoute or 'france' in currentRoute or 'benin' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
                     <ul role="menu" id="actions_submenu" class="submenu">
                         <li class="submenu__item">
-                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_france' : 'app_actions_france') }}">En France</a>
+                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_france' : 'app_france') }}">En France</a>
                         </li>
                         <li class="submenu__item">
-                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_benin' : 'app_actions_benin') }}">Au Bénin</a>
+                            <a role="menuitem" href="{{ path(adminInterface ? 'admin_benin' : 'app_benin') }}">Au Bénin</a>
                         </li>
                     </ul>
                 </li>

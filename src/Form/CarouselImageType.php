@@ -13,6 +13,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class CarouselImageType extends AbstractType
 {
@@ -23,10 +26,7 @@ class CarouselImageType extends AbstractType
                 'class' => GalleryImage::class,
                 'label' => 'Ajouter une image de la galerie',
                 'required' => false,
-                // 'placeholder' => 'Aucune image', // Affiche un placeholder lorsque aucune image n'est sélectionnée
-                'choice_label' => function ($galleryImage) {
-                    return; // Ne retourne rien pour masquer les ID
-                },
+                'choice_label' => fn () => '',
                 'expanded' => true, // Affiche les options sous forme de boutons radio
                 'multiple' => false, // Permet de choisir une seule image
             ])
@@ -34,16 +34,21 @@ class CarouselImageType extends AbstractType
                 'label' => 'Ou envoyer une image',
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
-                // 'constraints' => [
-                //     new Assert\File([
-                //         'maxSize' => '10k',
-                //         'mimeTypes' => [
-                //             'image/jpeg',
-                //             'image/png',
-                //         ],
-                //         'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
-                //     ]),
-                // ],
+                'constraints' => [
+                    new Assert\File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image JPG, PNG ou WebP.',
+                    ]),
+                    new Assert\Image([
+                        'minWidth' => 1200,
+                        'minHeight' => 600,
+                    ])
+                ],
             ])
             ->add('alt', TextType::class, [
                 'label' => 'Ajouter un texte alternatif à l\'image.',
@@ -64,6 +69,22 @@ class CarouselImageType extends AbstractType
                 'label' => 'Ajouter',
             ]);
         ;
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+            $form = $event->getForm();
+
+            /** @var CarouselImage $carouselImage */
+            $carouselImage = $event->getData();
+
+            $uploadedImage = $form->get('uploadedImage')->getData();
+
+            if (!$uploadedImage && !$carouselImage->getGalleryImage()) {
+                $form->addError(
+                    new FormError(
+                        'Veuillez sélectionner une image de la galerie ou envoyer une image.'
+                    )
+                );
+            }
+        });
     }
 
     public function validateAlt(?string $alt, ExecutionContextInterface $context): void

@@ -28,6 +28,11 @@ class RubricInfoType extends AbstractType
             ->add('title', null, [
                 'label' => 'Titre de l\'en-tête',
                 'required' => false,
+                'constraints' => [
+                    new Assert\Length([
+                        'max' => 255,
+                    ]),
+                ],
             ])
             ->add('text', QuillType::class, [
                 'label' => 'Texte de l\'en-tête',
@@ -46,9 +51,7 @@ class RubricInfoType extends AbstractType
                 'label' => 'Choisir une image dans la galerie',
                 'required' => false,
                 'placeholder' => 'Aucune image', // Affiche un placeholder lorsque aucune image n'est sélectionnée
-                'choice_label' => function ($galleryImage) {
-                    return ' '; // Ne retourne rien pour masquer les ID
-                },
+                'choice_label' => fn () => '',
                 'expanded' => true, // Affiche les options sous forme de boutons radio
                 'multiple' => false, // Permet de choisir une seule image
             ])
@@ -56,16 +59,16 @@ class RubricInfoType extends AbstractType
                 'label' => 'Ou envoyer une image',
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
-                // 'constraints' => [
-                //     new Assert\File([
-                //         'maxSize' => '10k',
-                //         'mimeTypes' => [
-                //             'image/jpeg',
-                //             'image/png',
-                //         ],
-                //         'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
-                //     ]),
-                // ],
+                'constraints' => [
+                    new Assert\File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG ou PNG).',
+                    ]),
+                ],
             ])
             ->add('alt', TextType::class, [
                 'label' => 'Ajouter un texte alternatif à l\'image.',

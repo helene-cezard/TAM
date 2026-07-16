@@ -44,7 +44,7 @@ final class BackAssociationController extends AbstractController
         $rubricInfoForm = $this->createForm(RubricInfoType::class, $rubricInfo);
         $rubricIsSubmitted = $submitRubricInfo->handleRubricForm($rubricInfoForm, $request, $rubricInfo);
         if ($rubricIsSubmitted) {
-            $this->addFlash('success', 'Rubrique mise à jour avec succès !');
+            $this->addFlash('success', 'En-tête de rubrique mis à jour avec succès !');
             return $this->redirect(
                 $this->generateUrl('admin_association') . '#rubricInfo'
             );
@@ -60,13 +60,20 @@ final class BackAssociationController extends AbstractController
             );
         }
 
+        $scrollTo = match (true) {
+            $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
+            $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            default => null,
+        };
+
         return $this->render('back/association/index.html.twig', [
             'sections' => $associationSections,
             'rubricInfo' => $rubricInfo,
             'sectionForm' => $sectionForm,
             'rubricInfoForm' => $rubricInfoForm,
             'galleryImages' => $galleryImages,
-            'rubricGalleryIds' => $rubricGalleryIds
+            'rubricGalleryIds' => $rubricGalleryIds,
+            'scrollTo' => $scrollTo,
         ]);
     }
 

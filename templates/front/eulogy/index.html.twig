@@ -6,13 +6,15 @@
     <main>
         {% include "partials/_left_banner.html.twig" %}
             <section class="eulogy section">
-            <section>
-                <h1 class="section__title">{{ rubricInfo.title }}</h1>
-                {% if rubricInfo.getGalleryImage is not empty %}
-                <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                {% if rubricInfo.title is not empty or rubricInfo.getGalleryImage.path is defined or rubricInfo.text is empty %}
+                <section>
+                    <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                    {% endif %}
+                    {{ rubricInfo.text|quill_html|raw }}
+                </section>
                 {% endif %}
-                {{ rubricInfo.text|quill_html|raw }}
-            </section>
 
             {% for eulogySection in eulogySections %}
 

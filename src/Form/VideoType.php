@@ -18,7 +18,11 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('path', TextType::class, [
-                'label' => 'Entrer l\'adresse d\'une vidéo',
+                'label' => 'Adresse de la vidéo',
+                'label_attr' => ['class' => 'sr-only'],
+                'attr' => [
+                    'placeholder' => 'Ex : https://www.youtube.com/watch?v=1vJBUHIuNjQ »'
+                ],
                 'required' => false,
                 'constraints' => [
                     new Assert\Url([
@@ -27,7 +31,8 @@ class VideoType extends AbstractType
                 ],
             ])
             ->add('uploadedVideo', FileType::class, [
-                'label' => 'Envoyer une vidéo',
+                'label' => 'Choisissez un fichier vidéo',
+                'label_attr' => ['class' => 'sr-only'],
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
                 'constraints' => [

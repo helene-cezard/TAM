@@ -120,7 +120,7 @@ final class BackResourcesController extends AbstractController
         if ($visualIsSubmitted) {
             $this->addFlash('success', 'Support ajoutée avec succès !');
             return $this->redirect(
-                $this->generateUrl('admin_resources') . '#visuals'
+                $this->generateUrl('admin_resources') . '#visuals-anchor'
             );
         }
 
@@ -183,9 +183,8 @@ final class BackResourcesController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_resources') . '#resourcesSections'
         ]);
     }
@@ -349,10 +348,9 @@ final class BackResourcesController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des supports visuels enregistré avec succès !');
-
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_resources') . '#visuals'
+            'success' => 'Ordre des supports visuels enregistré avec succès !',
+            'redirect' => $this->generateUrl('admin_resources') . '#visuals-anchor'
         ]);
     }
 
@@ -370,7 +368,7 @@ final class BackResourcesController extends AbstractController
         if ($visualIsSubmitted) {
             $this->addFlash('success', 'Le support visuel a bien été mis à jour.');
             return $this->redirect(
-                $this->generateUrl('admin_resources') . '#visuals'
+                $this->generateUrl('admin_resources') . '#visuals-anchor'
             );
         }
 
@@ -407,7 +405,7 @@ final class BackResourcesController extends AbstractController
         $this->addFlash('success', 'Support visuel supprimé avec succès !');
 
         return $this->redirect(
-            $this->generateUrl('admin_resources') . '#visuals'
+            $this->generateUrl('admin_resources') . '#visuals-anchor'
         );
     }
 
@@ -429,10 +427,8 @@ final class BackResourcesController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des catégories enregistré avec succès !');
-
         return new JsonResponse([
-            'ids' => $ids,
+            'success' => 'Ordre des catégories enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_resources') . '#imageCategories'
         ]);
     }

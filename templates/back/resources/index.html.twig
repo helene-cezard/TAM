@@ -24,7 +24,7 @@
                             {% for video in videos %}
                             <li class="video__item">
                                 {% if video.type == 'local' %}
-                                <video width="320" height="240" controls>
+                                <video width="320" height="240" controls preload="metadata">
                                     <source src="{{ asset(video.path) }}" type="video/mp4">
                                 </video>
                                 {% elseif video.type == 'youtube' %}
@@ -42,14 +42,33 @@
                 </section>
                 <p id="video-error" class="admin-title">Ajouter des vidéos</p>
                 <div class="tabs-form">
-                    <div class="tabs-form__tabs">
-                        <button class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="video-url">Ajouter l'adresse d'une video</button>
-                        <button class="tabs-form__tab-button" data-tab="uploaded-video">Envoyer une vidéo</button>
+                    <div id="video-tabs" class="tabs-form__tabs">
+                        <button
+                            type="button"
+                            class="tabs-form__tab-button tabs-form__tab-button--active"
+                            data-tab="video-url">
+                            Ajouter l'adresse d'une video
+                        </button>
+                        <button
+                            type="button"
+                            class="tabs-form__tab-button"
+                            data-tab="uploaded-video">
+                            Envoyer une vidéo
+                        </button>
                     </div>
                     <section class="form">
                         {{ form_start(videoForm) }}
-                        <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="video-url">{{ form_row(videoForm.path) }}</div>
-                        <div class="tabs-form__tab-content" data-tab="uploaded-video">{{ form_row(videoForm.uploadedVideo) }}</div>
+                        {{ form_errors(videoForm) }}
+                        {{ form_errors(videoForm.path) }}
+                        {{ form_errors(videoForm.uploadedVideo) }}
+                        <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="video-url">
+                            {{ form_label(videoForm.path) }}
+                            {{ form_widget(videoForm.path) }}
+                        </div>
+                        <div class="tabs-form__tab-content" data-tab="uploaded-video">
+                            {{ form_label(videoForm.uploadedVideo) }}
+                            {{ form_widget(videoForm.uploadedVideo) }}
+                        </div>
                         {{ form_row(videoForm.save) }}
                         {{ form_end(videoForm) }}
                     </section>
@@ -131,7 +150,7 @@
                 </section>
 
                 <section>
-                <p class="admin-title">Supports visuels</p>
+                <p id="visuals-anchor" class="admin-title">Supports visuels</p>
                     <ul id="visuals">
                         {% for visual in visuals %}
                         <li class="resources__visuals subsection-border element-to-move" data-id="{{ visual.id }}">

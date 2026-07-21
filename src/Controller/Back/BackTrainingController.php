@@ -96,9 +96,8 @@ final class BackTrainingController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_training') . '#trainingSections'
         ]);
     }

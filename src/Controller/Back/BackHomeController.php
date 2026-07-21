@@ -3,14 +3,12 @@
 namespace App\Controller\Back;
 
 use App\Entity\CarouselImage;
-use App\Entity\GalleryImage;
 use App\Entity\Section\HomeSection;
 use App\Form\CarouselImageType;
 use App\Form\SectionForms\HomeSectionType;
 use App\Repository\CarouselImageRepository;
 use App\Repository\GalleryImageRepository;
 use App\Repository\Section\HomeSectionRepository;
-use App\Service\ImageUploader;
 use App\Service\SubmitCarouselImage;
 use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
@@ -102,9 +100,8 @@ final class BackHomeController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_home') . '#homeSections'
         ]);
     }
@@ -129,9 +126,8 @@ final class BackHomeController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des images enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des images enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_home')
         ]);
     }

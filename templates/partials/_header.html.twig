@@ -22,7 +22,7 @@
                     <ul role="menu" id="connected" class="submenu">
                         <li class="submenu__item">
 
-                            {% if adminInterface %}
+                            {% if adminInterface and currentRoute != 'admin_user_update' %}
                             <a href="{{ path(['app_', routeEnd]|join) }}"
                             role="menuitem"
                             aria-label="Retour au site"
@@ -30,8 +30,7 @@
                             class="header__logout">
                             Retour au site
                             </a>
-
-                            {% else %}
+                            {% elseif currentRoute != 'admin_user_update' %}
                             <a href="{{ path(['admin_', routeEnd]|join) }}"
                             role="menuitem"
                             aria-label="Espace administration"
@@ -41,6 +40,17 @@
                             {% endif %}
 
 
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_user_update', {
+                                id:app.user.id,
+                                rreturnRoute: app.request.requestUri
+                            }) }}"
+                                role="menuitem"
+                                aria-label="Espace administration"
+                                title="Espace administration">
+                                Modifier l'administrateur
+                            </a>
                         </li>
                         <li class="submenu__item">
                             <a href="{{ path('app_logout') }}"
@@ -55,10 +65,18 @@
                 </li>
             {% endif %}
                 <li class="header__nav-links--yellow">
-                    <a {{ currentRoute == 'app_home' or currentRoute == 'admin_home' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path(adminInterface ? 'admin_home' : 'app_home') }}">Accueil</a>
+                    <a {{ currentRoute == 'app_home' or currentRoute == 'admin_home' ? 'class="menu-color-active" aria-current="page"':'' }} role="menuitem" href="{{ path(adminInterface ? 'admin_home' : 'app_home') }}">Accueil</a>
                 </li>
                 <li class="header__nav-links--blue parent__menu">
-                    <button {{ 'app_who' in currentRoute or 'association' in currentRoute or 'team' in currentRoute or 'reports' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="who_submenu" class="submenu__button">Qui sommes-nous ?</button>
+                    <button
+                        {{ 'app_who' in currentRoute or 'association' in currentRoute or 'team' in currentRoute or 'reports' in currentRoute ? 'class="menu-color-active submenu__button" aria-current="page"':'' }}
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="who_submenu"
+                        class="submenu__button">
+                            Qui sommes-nous ?
+                    </button>
                     <ul role="menu" id="who_submenu" class="submenu">
                         <li class="submenu__item">
                             <a role="menuitem" href="{{ path(adminInterface ? 'admin_association' : 'app_association') }}">L'association</a>
@@ -72,7 +90,15 @@
                     </ul>
                 </li>
                 <li class="header__nav-links--green parent__menu">
-                    <button {{ 'app_actions' in currentRoute or 'france' in currentRoute or 'benin' in currentRoute ? 'class="active" aria-current="page"':'' }} type="button" aria-haspopup="true" aria-expanded="false" aria-controls="actions_submenu" class="submenu__button">Actions</button>
+                    <button
+                        {{ 'app_actions' in currentRoute or 'france' in currentRoute or 'benin' in currentRoute ? 'class="menu-color-active submenu__button" aria-current="page"':'' }}
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="actions_submenu"
+                        class="submenu__button">
+                            Actions
+                    </button>
                     <ul role="menu" id="actions_submenu" class="submenu">
                         <li class="submenu__item">
                             <a role="menuitem" href="{{ path(adminInterface ? 'admin_france' : 'app_france') }}">En France</a>
@@ -83,13 +109,13 @@
                     </ul>
                 </li>
                 <li class="header__nav-links--orange">
-                    <a {{ currentRoute == 'app_training' or currentRoute == 'admin_training' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_training' : 'app_training') }}">Formation</a>
+                    <a {{ currentRoute == 'app_training' or currentRoute == 'admin_training' ? 'class="menu-color-active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_training' : 'app_training') }}">Formation</a>
                 </li>
                 <li class="header__nav-links--turquoise">
-                    <a {{ currentRoute == 'app_resources' or currentRoute == 'admin_resources' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_resources' : 'app_resources') }}">Ressources</a>
+                    <a {{ currentRoute == 'app_resources' or currentRoute == 'admin_resources' ? 'class="menu-color-active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_resources' : 'app_resources') }}">Ressources</a>
                 </li>
                 <li class="header__nav-links--light-blue">
-                    <a {{ currentRoute == 'app_contact' or currentRoute == 'admin_contact' ? 'class="active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_contact' : 'app_contact') }}">Contact</a>
+                    <a {{ currentRoute == 'app_contact' or currentRoute == 'admin_contact' ? 'class="menu-color-active" aria-current="page"':'' }} role="menuitem" href="{{ path( adminInterface ? 'admin_contact' : 'app_contact') }}">Contact</a>
                 </li>
             </ul>
         </nav>

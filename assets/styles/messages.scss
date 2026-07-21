@@ -19,3 +19,13 @@
     z-index: 1;
     text-align: center;
 }
+
+#messages-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    z-index: 10000;
+}

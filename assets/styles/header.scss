@@ -120,7 +120,7 @@
     }
 
     @mixin link-color($color) {
-      & > a:hover, & > button:hover, .active {
+      & > a:hover, & > button:hover, .menu-color-active {
         color: white;
         box-shadow: inset 0 -40px 0 -1px $color;
         text-shadow: 0 0 10px color.adjust($color, $saturation: +15%, $lightness: -25%);

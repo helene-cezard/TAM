@@ -6,33 +6,36 @@
     width: 90%;
 
     & form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
 
-      & input,
-      & textarea {
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 0.5rem;
-        font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
-        margin-bottom: 1rem;
-        width: 100%;
+        & input,
+        & textarea {
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
+            margin-bottom: 1rem;
+            width: 100%;
 
-        &[type='checkbox'] {
-          width: auto;
-          margin-bottom: 2rem;
-        }
-      }
-
-      & button[type='submit'] {
-        padding: 0.75rem;
-        margin-bottom: 1rem;
-
-        @extend %button;
+            &[type='checkbox'] {
+                width: auto;
+                margin-bottom: 2rem;
+            }
         }
 
-        & li, & .error-message{
+        & button[type='submit'] {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+
+            @extend %button;
+        }
+
+        & li[id^='_error'],
+        li[id*='_error'],
+        .error-message {
             color: red;
             text-align: end;
         }
@@ -57,6 +60,12 @@
 
 .resources__visuals.subsection-border {
     width: 100%;
+}
+
+.resources__images__buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .element-to-move {
@@ -103,6 +112,7 @@
         width: 1.25rem;
         height: 1.25rem;
     }
+
     position: absolute;
     right: 1rem;
 
@@ -125,12 +135,11 @@
     right: 1rem;
 }
 
-.delete__button, .update__button {
+.delete__button,
+.update__button {
     @extend %button;
     padding: 0.5rem 1rem;
     width: fit-content;
-    // margin-top: 2rem;
-    // font-size: 1rem;
 }
 
 .team__card__container {
@@ -166,7 +175,8 @@
     gap: 1rem;
 
     & input[type="radio"] {
-        display: none; /* Masque les boutons radio */
+        display: none;
+        /* Masque les boutons radio */
     }
 
     & label {
@@ -175,23 +185,27 @@
     }
 
     & label p {
-        height: 32px; /* Aligner les images avec le placeholder */
+        height: 32px;
+        /* Aligner les images avec le placeholder */
     }
 
     & label img {
-        cursor: pointer; /* Ajoute un curseur pour indiquer que l'image est cliquable */
+        cursor: pointer;
+        /* Ajoute un curseur pour indiquer que l'image est cliquable */
         border: 2px solid transparent;
         transition: border-color 0.3s ease;
         max-width: 200px;
     }
 
     & label img:hover {
-        border: 3px solid #d76942; /* Ajoute un effet au survol */
+        border: 3px solid #d76942;
+        /* Ajoute un effet au survol */
         padding: 2px;
     }
 
-    & input[type="radio"]:checked + label img {
-        border: 3px solid #d76942; /* Ajoute une bordure pour l'image sélectionnée */
+    & input[type="radio"]:checked+label img {
+        border: 3px solid #d76942;
+        /* Ajoute une bordure pour l'image sélectionnée */
         padding: 2px;
     }
 }
@@ -255,7 +269,8 @@
     margin-bottom: 1rem;
 }
 
-#gallery_image_category {
+#gallery_image_category,
+#team_role {
     padding: 0.5rem;
     font-size: clamp(0.9rem, 0.925rem + 0.375vw, 1.375rem);
     font-family: "Calibri", "Source Sans 3", sans-serif;
@@ -309,7 +324,8 @@
             border-radius: 50%;
             transition: background .2s, color .2s;
 
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 background: #d32f2f;
                 color: white;
             }
@@ -328,7 +344,12 @@
 #imageCategories,
 #video-error,
 #visual-error,
-#team-error
-{
+#team-error,
+#erreurs,
+#visuals-anchor,
+#homeSections,
+#reports-anchor,
+#resourcesSections,
+#legalSections {
     scroll-margin-top: 6rem;
 }

@@ -48,7 +48,8 @@ class RubricInfoType extends AbstractType
             ])
             ->add('GalleryImage', EntityType::class, [
                 'class' => GalleryImage::class,
-                'label' => 'Choisir une image dans la galerie',
+                'label' => 'Choisir une image',
+                'label_attr' => ['class' => 'sr-only'],
                 'required' => false,
                 'placeholder' => 'Aucune image', // Affiche un placeholder lorsque aucune image n'est sélectionnée
                 'choice_label' => fn () => '',
@@ -56,7 +57,8 @@ class RubricInfoType extends AbstractType
                 'multiple' => false, // Permet de choisir une seule image
             ])
             ->add('uploadedImage', FileType::class, [
-                'label' => 'Ou envoyer une image',
+                'label' => 'Envoyer une image',
+                'label_attr' => ['class' => 'sr-only'],
                 'mapped' => false, // Ne lie pas ce champ à l'entité
                 'required' => false,
                 'constraints' => [

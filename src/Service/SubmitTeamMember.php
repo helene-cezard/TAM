@@ -15,6 +15,7 @@ class SubmitTeamMember
         private FileUploader $fileUploader,
         private DeleteFromServer $deleteFromServer,
         private TeamRepository $teamRepository,
+        private ImageResizer $imageResizer,
 
         #[Autowire('%team_images_directory%')]
         private string $teamImagesDirectory,
@@ -24,6 +25,7 @@ class SubmitTeamMember
         $this->fileUploader = $fileUploader;
         $this->deleteFromServer = $deleteFromServer;
         $this->teamRepository = $teamRepository;
+        $this->imageResizer = $imageResizer;
     }
 
     public function handleImageForm(
@@ -61,6 +63,11 @@ class SubmitTeamMember
                 $newFilename = $this->fileUploader->upload(
                     $image,
                     $this->teamImagesDirectory
+                );
+
+                $this->imageResizer->resize(
+                    $this->teamImagesDirectory.'/'.$newFilename,
+                    600
                 );
                 $teamMember->setImage('/images/team/' . $newFilename);
             }

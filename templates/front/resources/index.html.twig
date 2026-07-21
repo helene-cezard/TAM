@@ -6,6 +6,7 @@
     <main>
         {% include "partials/_left_banner.html.twig" %}
             <section class="resources section">
+                {% if rubricInfo.title is not empty or rubricInfo.getGalleryImage.path is defined or rubricInfo.text is empty %}
                 <section>
                     <h1 class="section__title">{{ rubricInfo.title }}</h1>
                     {% if rubricInfo.getGalleryImage is not empty %}
@@ -13,6 +14,7 @@
                     {% endif %}
                     {{ rubricInfo.text|quill_html|raw }}
                 </section>
+                {% endif %}
                 <section class="subsection">
                     <h2 class="subsection__title">Articles</h2>
                     <ul class="section__list">
@@ -23,19 +25,41 @@
                 </section>
                 <section>
                     <h2 class="subsection__title">Vidéos</h2>
-                        <ul class="resources__videos">
-                            {% for video in videos %}
-                            <li>
-                                {% if video.type == 'local' %}
-                                <video width="320" height="240" controls>
-                                    <source src="{{ asset(video.path) }}" type="video/mp4">
-                                </video>
-                                {% elseif video.type == 'youtube' %}
-                                <iframe src="{{ video.path }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                {% endif %}
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <p id="youtube-notice" class="youtube-placeholder__notice">
+                        En cliquant sur le bouton de lecture
+                        &nbsp;
+                        <svg viewBox="0 0 68 48" width="34" height="24" aria-hidden="true">
+                            <path fill="#f00" d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.1.8 34 .8 34 .8S11.9.8 7.12 2.08A8 8 0 0 0 1.48 7.74 83.4 83.4 0 0 0 0 24a83.4 83.4 0 0 0 1.48 16.26 8 8 0 0 0 5.64 5.66C11.9 47.2 34 47.2 34 47.2s22.1 0 26.88-1.28a8 8 0 0 0 5.64-5.66A83.4 83.4 0 0 0 68 24a83.4 83.4 0 0 0-1.48-16.26z"/>
+                            <path fill="#fff" d="M45 24 27 14v20"/>
+                        </svg>
+                        , vous acceptez le chargement de YouTube,
+                        susceptible de déposer des cookies.
+                    </p>
+                    <ul class="resources__videos">
+                        {% for video in videos %}
+                        <li>
+                            {% if video.type == 'local' %}
+                            <video width="320" height="240" controls>
+                                <source src="{{ asset(video.path) }}" type="video/mp4">
+                            </video>
+                            {% elseif video.type == 'youtube' %}
+                            <div class="youtube-placeholder"
+                                data-src="{{ video.path }}">
+                                <img
+                                    src="https://i.ytimg.com/vi/{{ video.youtubeId }}/mqdefault.jpg"
+                                    alt="">
+
+                                <button type="button" class="youtube-placeholder__play" aria-label="Lire la vidéo" aria-describedby="youtube-notice">
+                                    <svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
+                                        <path fill="#f00" d="M66.52 7.74a8 8 0 0 0-5.64-5.66C56.1.8 34 .8 34 .8S11.9.8 7.12 2.08A8 8 0 0 0 1.48 7.74 83.4 83.4 0 0 0 0 24a83.4 83.4 0 0 0 1.48 16.26 8 8 0 0 0 5.64 5.66C11.9 47.2 34 47.2 34 47.2s22.1 0 26.88-1.28a8 8 0 0 0 5.64-5.66A83.4 83.4 0 0 0 68 24a83.4 83.4 0 0 0-1.48-16.26z"/>
+                                        <path fill="#fff" d="M45 24 27 14v20"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </section>
                 {% include "partials/_gallery.html.twig" %}
                 <section>

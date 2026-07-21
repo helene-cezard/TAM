@@ -13,7 +13,7 @@ class Visual
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $path = null;
 
     #[ORM\Column(length: 255)]

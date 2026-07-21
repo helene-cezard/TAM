@@ -19,6 +19,20 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
+    public function isYoutube(): bool
+    {
+        return str_contains($this->path, 'youtube') || str_contains($this->path, 'youtu.be');;
+    }
+
+    public function getYoutubeId(): ?string
+    {
+        if (!$this->isYoutube()) {
+            return null;
+        }
+
+        return basename(parse_url($this->path, PHP_URL_PATH));
+    }
+
     public function getId(): ?int
     {
         return $this->id;

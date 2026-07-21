@@ -140,6 +140,10 @@ class ComposerStaticInit75e7f8d848176580e9902a32f6f14640
             'Monolog\\' => 8,
             'Masterminds\\' => 12,
         ),
+        'I' =>
+        array (
+            'Imagine\\' => 8,
+        ),
         'E' =>
         array (
             'Ehyiah\\QuillJsBundle\\' => 21,
@@ -535,6 +539,10 @@ class ComposerStaticInit75e7f8d848176580e9902a32f6f14640
         'Masterminds\\' =>
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'Imagine\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/imagine/imagine/src',
         ),
         'Ehyiah\\QuillJsBundle\\' =>
         array (

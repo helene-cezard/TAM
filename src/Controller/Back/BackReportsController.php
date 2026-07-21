@@ -13,13 +13,11 @@ use App\Repository\ReportsRepository;
 use App\Repository\Section\ReportsSectionRepository;
 use App\Repository\RubricInfoRepository;
 use App\Service\DeleteFromServer;
-use App\Service\ReportUploader;
 use App\Service\SubmitReport;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,7 +63,7 @@ final class BackReportsController extends AbstractController
         if ($reportIsSubmited) {
             $this->addFlash('success', 'Rapport ajouté avec succès !');
             return $this->redirect(
-                $this->generateUrl('admin_reports') . '#reportsContainer'
+                $this->generateUrl('admin_reports') . '#reports-anchor'
             );
         }
 
@@ -119,9 +117,8 @@ final class BackReportsController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_reports') . '#reportsSections'
         ]);
     }
@@ -147,10 +144,9 @@ final class BackReportsController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des rapports enregistré avec succès !');
-
         return new JsonResponse([
-            'redirect' => $this->generateUrl('admin_reports') . '#reportsContainer'
+            'success' => 'Ordre des rapports enregistré avec succès !',
+            'redirect' => $this->generateUrl('admin_reports') . '#reports-anchor'
         ]);
     }
 
@@ -197,7 +193,7 @@ final class BackReportsController extends AbstractController
         $this->addFlash('success', 'Rapport supprimé avec succès !');
 
         return $this->redirect(
-            $this->generateUrl('admin_reports') . '#reportsContainer'
+            $this->generateUrl('admin_reports') . '#reports-anchor'
         );
     }
 
@@ -240,7 +236,7 @@ final class BackReportsController extends AbstractController
         if ($reportIsSubmited) {
             $this->addFlash('success', 'Le rapport a bien été mise à jour.');
             return $this->redirect(
-                $this->generateUrl('admin_reports') . '#reportsContainer'
+                $this->generateUrl('admin_reports') . '#reports-anchor'
             );
         }
 

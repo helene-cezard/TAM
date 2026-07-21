@@ -16,11 +16,13 @@
                             alt="{{ galleryImage.alt }}"
                             data-src="{{ asset(galleryImage.path) }}"
                         >
-                        <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
-                            <button class="delete__button">Supprimer</button>
-                        </form>
-                        <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        <div class="resources__images__buttons">
+                            <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
+                                <button class="delete__button">Supprimer</button>
+                            </form>
+                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        </div>
                     </div>
                     {% else %}
                     <img
@@ -50,11 +52,13 @@
                             alt="{{ galleryImage.alt }}"
                             data-src="{{ asset(galleryImage.path) }}"
                         >
-                        <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
-                            <button class="delete__button">Supprimer</button>
-                        </form>
-                        <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        <div class="resources__images__buttons">
+                            <form method="post" action="{{ path(app.current_route ~ '_image_delete', {id: galleryImage.id}) }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ galleryImage.id) }}">
+                                <button class="delete__button">Supprimer</button>
+                            </form>
+                            <a href="{{ path('admin_resources_image_update', {id:galleryImage.id}) }}" class="update__button">Modifier</a>
+                        </div>
                     </div>
                 {% endif %}
                 {% endfor %}

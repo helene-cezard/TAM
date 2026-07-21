@@ -37,6 +37,35 @@ class QuillExtension extends AbstractExtension
         $span->parentNode->removeChild($span);
     }
 
+    // Remplace les iframe vidéo MP4 par des balises <video>
+    foreach ($xpath->query('//iframe[contains(@class, "ql-video")]') as $iframe) {
+
+        if (!$iframe instanceof \DOMElement) {
+            continue;
+        }
+
+        $src = $iframe->getAttribute('src');
+
+        // Seulement les fichiers mp4
+        if (!preg_match('/\.mp4($|\?)/i', $src)) {
+            continue;
+        }
+
+        $video = $dom->createElement('video');
+        $video->setAttribute('width', '320');
+        $video->setAttribute('height', '240');
+        $video->setAttribute('controls', '');
+        $video->setAttribute('preload', 'metadata');
+
+        $source = $dom->createElement('source');
+        $source->setAttribute('src', $src);
+        $source->setAttribute('type', 'video/mp4');
+
+        $video->appendChild($source);
+
+        $iframe->parentNode->replaceChild($video, $iframe);
+    }
+
     // Remplace les <ol> de Quill par des <ul>
     foreach (iterator_to_array($dom->getElementsByTagName('ol')) as $ol) {
 

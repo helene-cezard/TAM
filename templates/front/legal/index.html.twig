@@ -5,9 +5,36 @@
 {% block body %}
     <main>
         {% include "partials/_left_banner.html.twig" %}
-            <section class="section">
-              <h2 class="section__title">Mentions légales</h2>
-              <p>Des trucs juridiques</p>
+             <section class="who section">
+                {% if rubricInfo.title is not empty or rubricInfo.getGalleryImage.path is defined or rubricInfo.text is empty %}
+                <section>
+                    <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                    {% if rubricInfo.getGalleryImage is not empty %}
+                    <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                    {% endif %}
+                    {{ rubricInfo.text|quill_html|raw }}
+                </section>
+                {% endif %}
+                {% for legalSection in legalSections %}
+                <section class="subsection">
+                    {% if legalSection.title is not empty %}
+                        <h2
+                            class="section__title {{ legalSection.aside|default ? 'subsection__title-grid' : '' }}">
+                            {{ legalSection.title }}
+                        </h2>
+                    {% endif %}
+                    <div>
+                    {{ legalSection.text|quill_html|raw }}
+                    </div>
+                    {% if legalSection.aside is not empty %}
+                        <aside class="subsection__quote {{ legalSection.leftSide ? 'left' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
+                            <blockquote>"{{ legalSection.aside }}"</blockquote>
+                        </aside>
+                    {% endif %}
+                </section>
+
+                {% endfor %}
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

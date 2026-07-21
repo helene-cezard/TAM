@@ -56,6 +56,10 @@
         display: flex;
         justify-content: center;
     }
+
+    & form {
+        padding-top: 1rem;
+    }
 }
 
 .hide-image {

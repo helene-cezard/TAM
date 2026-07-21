@@ -69,6 +69,11 @@ final class ContactController extends AbstractController
             return $this->redirectToRoute('app_contact');
         }
 
+        $scrollTo = match (true) {
+            $form->isSubmitted() && !$form->isValid() => 'erreurs',
+            default => null,
+        };
+
         $contactSections = $contactSectionRepository->findBy([], ['position' => 'ASC']);
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'contact']);
         return $this->render('front/contact/index.html.twig', [
@@ -76,6 +81,7 @@ final class ContactController extends AbstractController
             'contactSections' => $contactSections,
             'rubricInfo' => $rubricInfo,
             'form' => $form,
+            'scrollTo' => $scrollTo,
         ]);
     }
 }

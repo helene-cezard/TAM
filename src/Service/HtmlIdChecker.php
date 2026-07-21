@@ -63,6 +63,10 @@ class HtmlIdChecker
         'carousel-error',
         'reports',
         'team-error',
+        'erreurs',
+        'visuals-anchor',
+        'reports-anchor',
+        'legalSections',
     ];
 
     public function __construct(

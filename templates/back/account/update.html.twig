@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin TAM : Modification de l'administrateur{% endblock %}
+
+{% block body %}
+<main>
+    {% include "partials/_left_banner.html.twig" %}
+        <section class="form section">
+            {{ form(form) }}
+        </section>
+    {% include "partials/_right_banner.html.twig" %}
+</main>
+{% endblock %}

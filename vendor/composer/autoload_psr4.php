@@ -96,6 +96,7 @@ return array(
     'NeuralGlitch\\GoogleFonts\\' => array($vendorDir . '/neuralglitch/google-fonts/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
+    'Imagine\\' => array($vendorDir . '/imagine/imagine/src'),
     'Ehyiah\\QuillJsBundle\\' => array($vendorDir . '/ehyiah/ux-quill/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/src'),
     'Doctrine\\SqlFormatter\\' => array($vendorDir . '/doctrine/sql-formatter/src'),

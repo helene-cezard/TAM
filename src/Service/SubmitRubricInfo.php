@@ -14,6 +14,7 @@ class SubmitRubricInfo
     public function __construct(
         private EntityManagerInterface $entityManager,
         private FileUploader $fileUploader,
+        private ImageResizer $imageResizer,
 
         #[Autowire('%uploaded_images_directory%')]
         private string $imagesDirectory,
@@ -22,6 +23,7 @@ class SubmitRubricInfo
         $this->entityManager = $entityManager;
         $this->fileUploader = $fileUploader;
         $this->imagesDirectory = $imagesDirectory;
+        $this->imageResizer = $imageResizer;
     }
 
     public function handleRubricForm(
@@ -40,6 +42,11 @@ class SubmitRubricInfo
                 $newFilename = $this->fileUploader->upload(
                     $image,
                     $this->imagesDirectory
+                );
+
+                $this->imageResizer->resize(
+                    $this->imagesDirectory.'/'.$newFilename,
+                    1600
                 );
 
                 $galleryImage = new GalleryImage();

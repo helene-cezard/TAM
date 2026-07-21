@@ -44,7 +44,7 @@ class ReportsType extends AbstractType
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',
-            ]);
+            ])
         ;
         $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
             $form = $event->getForm();

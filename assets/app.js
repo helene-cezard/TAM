@@ -17,12 +17,15 @@ const app = {
             app.itv = app.play(app.itv);
         }
 
+        app.initMessages();
         app.animateCounters();
         app.burgerMenu();
         app.openGallery();
         app.showSubmenu();
         app.showLightbox();
         app.initTabs();
+        app.initResizableQuill();
+        app.handleYTvideos();
 
         const pages = ['home', 'association', 'team', 'reports', 'benin', 'france', 'training', 'resources', 'contact', 'eulogy'];
 
@@ -45,8 +48,6 @@ const app = {
 
         app.movePosition('galleryCategories');
         app.updatePositions('galleryCategories', 'categories_reorder', currentRoute, 'resources');
-
-        // app.formErrorsRedirect();
     },
 
     burgerMenu: function () {
@@ -152,23 +153,6 @@ const app = {
         clearInterval(itv);
     },
 
-    // formErrorsRedirect: function () {
-    //     const source = document.querySelector('[data-scroll-to]');
-
-    //     console.log('coucou');
-    //     if (source) {
-    //         const selector = source.dataset.scrollTo;
-    //         const target = document.querySelector(selector);
-
-    //         if (target) {
-    //             target.scrollIntoView({
-    //                 behavior: 'smooth',
-    //                 block: 'start'
-    //             });
-    //         }
-    //     }
-    // },
-
     animateCounters: function () {
         const numbers = document.querySelectorAll('.home__counter__number');
 
@@ -208,7 +192,6 @@ const app = {
         galleries.forEach((gallery) => {
           // Ajoute la classe "collapsed" par défaut
           gallery.classList.add("collapsed");
-          gallery.classList.remove("resources__gallery--expanded");
 
           // Crée le bouton "Étendre"
           const toggleButton = document.createElement("button");
@@ -222,11 +205,9 @@ const app = {
           toggleButton.addEventListener("click", () => {
             if (gallery.classList.contains("collapsed")) {
               gallery.classList.remove("collapsed");
-              gallery.classList.add("resources__gallery--expanded");
               toggleButton.textContent = "Réduire";
             } else {
               gallery.classList.add("collapsed");
-              gallery.classList.remove("resources__gallery--expanded");
               toggleButton.textContent = "Étendre";
             }
           });
@@ -271,25 +252,30 @@ const app = {
         });
     },
 
-    initTabs: function() {
-        const buttons = document.querySelectorAll('.tabs-form__tab-button');
+    initTabs: function () {
+        document.querySelectorAll('.tabs-form').forEach(container => {
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                this.openTab(button.dataset.tab);
+            container.querySelectorAll('.tabs-form__tab-button').forEach(button => {
+
+                button.addEventListener('click', () => {
+                    this.openTab(container, button.dataset.tab);
+                });
+
             });
+
         });
     },
 
-    openTab: function(tab) {
-        document.querySelectorAll('.tabs-form__tab-button').forEach(button => {
+    openTab: function(container, tab) {
+
+        container.querySelectorAll('.tabs-form__tab-button').forEach(button => {
             button.classList.toggle(
                 'tabs-form__tab-button--active',
                 button.dataset.tab === tab
             );
         });
 
-        document.querySelectorAll('.tabs-form__tab-content').forEach(content => {
+        container.querySelectorAll('.tabs-form__tab-content').forEach(content => {
             content.classList.toggle(
                 'tabs-form__tab-content--active',
                 content.dataset.tab === tab
@@ -379,10 +365,6 @@ const app = {
             const ids = [...container.querySelectorAll('.element-to-move')]
             .map(subsection => subsection.dataset.id);
 
-            // console.dir(event.target.parentNode);
-            // console.dir(container);
-            // console.log(event.target.parentNode.hasChildNodes(container));
-
             if (event.target.parentNode.hasChildNodes(container)) {
 
                 fetch(reorderRoute, {
@@ -394,6 +376,7 @@ const app = {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        app.createMessage('success', data.success);
                         window.location.href = data.redirect;
                     });
             }
@@ -401,16 +384,114 @@ const app = {
     },
 
     createMessage: function (type, text) {
+        const container = app.getMessagesContainer();
+
         const message = document.createElement('div');
         message.classList.add(`message__${type}`);
         message.textContent = text;
 
-        document.body.insertBefore(message, document.body.lastChild);
+        container.appendChild(message);
 
         setTimeout(() => {
             message.remove();
+
+            if (!container.hasChildNodes()) {
+                container.remove();
+            }
         }, 5000);
     },
+
+    initMessages: function () {
+        const messages = document.querySelectorAll('#messages-container > div');
+
+        messages.forEach(message => {
+            setTimeout(() => {
+                message.remove();
+
+                const container = document.getElementById('messages-container');
+                if (!container.hasChildNodes()) {
+                    container.remove();
+                }
+            }, 5000);
+        });
+    },
+
+    getMessagesContainer: function () {
+        let container = document.getElementById('messages-container');
+
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'messages-container';
+            document.body.appendChild(container);
+        }
+
+        return container;
+    },
+
+    initResizableQuill: function () {
+
+        document.querySelectorAll('.quill-resizable').forEach(container => {
+
+            const handle = container.querySelector('.quill-resizable__handle');
+            const editor = container.querySelector('.ql-container');
+
+            if (!handle || !editor) {
+                return;
+            }
+
+            let startY;
+            let startHeight;
+
+            handle.addEventListener('mousedown', e => {
+
+                e.preventDefault();
+
+                startY = e.clientY;
+                startHeight = editor.offsetHeight;
+
+                function resize(e) {
+
+                    const height = startHeight + (e.clientY - startY);
+
+                    editor.style.height = Math.max(150, height) + 'px';
+
+                }
+
+                function stopResize() {
+
+                    document.removeEventListener('mousemove', resize);
+                    document.removeEventListener('mouseup', stopResize);
+
+                }
+
+                document.addEventListener('mousemove', resize);
+                document.addEventListener('mouseup', stopResize);
+
+            });
+
+        });
+
+    },
+
+    handleYTvideos: function () {
+        document.querySelectorAll('.youtube-placeholder__play').forEach(button => {
+            button.addEventListener('click', () => {
+
+                const placeholder = button.closest('.youtube-placeholder');
+
+                const iframe = document.createElement('iframe');
+                iframe.src = placeholder.dataset.src;
+                iframe.title = 'YouTube video player';
+                iframe.frameBorder = '0';
+                iframe.allow =
+                    'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.allowFullscreen = true;
+
+                placeholder.replaceWith(iframe);
+            });
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', app.init);

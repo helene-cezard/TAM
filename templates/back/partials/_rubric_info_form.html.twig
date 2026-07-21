@@ -6,12 +6,27 @@
     {{ form_errors(rubricInfoForm.title) }}
     {{ form_row(rubricInfoForm.title) }}
     {{ form_errors(rubricInfoForm.text) }}
-    {{ form_row(rubricInfoForm.text) }}
 
-    <div class="tabs-form">
+    {{ form_label(rubricInfoForm.text) }}
+    <div class="quill-resizable">
+        {{ form_widget(rubricInfoForm.text) }}
+        <div class="quill-resizable__handle"></div>
+    </div>
+
+    <div id="rubricInfo-tabs" class="tabs-form">
         <div class="tabs-form__tabs">
-            <button type="button" class="tabs-form__tab-button tabs-form__tab-button--active" data-tab="galerie-image">Ajouter une image de la galerie</button>
-            <button type="button" class="tabs-form__tab-button" data-tab="uploaded-image">Envoyer une image</button>
+            <button
+                type="button"
+                class="tabs-form__tab-button tabs-form__tab-button--active"
+                data-tab="galerie-image">
+                Ajouter une image de la galerie
+            </button>
+            <button
+                type="button"
+                class="tabs-form__tab-button"
+                data-tab="uploaded-image">
+                Envoyer une image
+            </button>
         </div>
         <div class="tabs-form__tab-content tabs-form__tab-content--active" data-tab="galerie-image">
         {{ form_errors(rubricInfoForm) }}
@@ -19,6 +34,7 @@
         {{ form_errors(rubricInfoForm.uploadedImage) }}
         {{ form_errors(rubricInfoForm.alt) }}
             <div id="galleryImage">
+                {{ form_label(rubricInfoForm.GalleryImage) }}
                 {% for choice in rubricInfoForm.GalleryImage %}
                 {% if choice.vars.id === 'rubric_info_GalleryImage_placeholder' %}
                     <div>
@@ -41,8 +57,9 @@
             </div>
         </div>
         <div class="tabs-form__tab-content" data-tab="uploaded-image">
+            {{ form_label(rubricInfoForm.uploadedImage) }}
             <div class="tabs-form__upload-image">
-                {{ form_row(rubricInfoForm.uploadedImage) }}
+                {{ form_widget(rubricInfoForm.uploadedImage) }}
                 <div class="form-label-with-help">
                     {{ form_label(rubricInfoForm.alt) }}
                     <span

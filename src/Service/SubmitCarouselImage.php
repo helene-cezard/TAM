@@ -15,6 +15,7 @@ class SubmitCarouselImage
         private EntityManagerInterface $entityManager,
         private FileUploader $fileUploader,
         private GalleryImageRepository $galleryImageRepository,
+        private ImageResizer $imageResizer,
 
         #[Autowire('%uploaded_images_directory%')]
         private string $imagesDirectory,
@@ -24,6 +25,7 @@ class SubmitCarouselImage
         $this->fileUploader = $fileUploader;
         $this->galleryImageRepository = $galleryImageRepository;
         $this->imagesDirectory = $imagesDirectory;
+        $this->imageResizer = $imageResizer;
     }
 
     public function handleCarouselForm(
@@ -42,6 +44,11 @@ class SubmitCarouselImage
                 $newFilename = $this->fileUploader->upload(
                     $image,
                     $this->imagesDirectory
+                );
+
+                $this->imageResizer->resize(
+                    $this->imagesDirectory.'/'.$newFilename,
+                    1600
                 );
 
                 $galleryImage = new GalleryImage();

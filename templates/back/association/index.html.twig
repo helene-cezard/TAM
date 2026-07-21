@@ -7,6 +7,7 @@
     {% include "partials/_left_banner.html.twig" %}
         <section class="who section">
             <p id="rubricInfo" class="admin-title">En-tête</p>
+            {% if rubricInfo.title is not empty or rubricInfo.getGalleryImage.path is defined or rubricInfo.text is empty %}
             <section>
                 <h1 class="section__title">{{ rubricInfo.title }}</h1>
                 {% if rubricInfo.getGalleryImage is not empty %}
@@ -14,6 +15,7 @@
                 {% endif %}
                 {{ rubricInfo.text|quill_html|raw }}
             </section>
+            {% endif %}
             {% include "back/partials/_rubric_info_form.html.twig" %}
             <section id="associationSections">{% include "back/partials/_sections.html.twig" %}</section>
         </section>

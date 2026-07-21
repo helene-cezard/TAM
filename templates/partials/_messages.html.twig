@@ -1,4 +1,4 @@
-{# display every flash message available #}
+<div id="messages-container">
 {% for label, messages in app.flashes %}
     {% for message in messages %}
         <div class="message__{{ label }}">
@@ -6,3 +6,4 @@
         </div>
     {% endfor %}
 {% endfor %}
+</div>

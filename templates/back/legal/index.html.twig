@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin TAM : Mentions légales{% endblock %}
+
+{% block body %}
+<main>
+    {% include "partials/_left_banner.html.twig" %}
+        <section class="who section">
+            <p id="rubricInfo" class="admin-title">En-tête</p>
+            {% if rubricInfo.title is not empty or rubricInfo.getGalleryImage.path is defined or rubricInfo.text is empty %}
+            <section>
+                <h1 class="section__title">{{ rubricInfo.title }}</h1>
+                {% if rubricInfo.getGalleryImage is not empty %}
+                <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
+                {% endif %}
+                {{ rubricInfo.text|quill_html|raw }}
+            </section>
+            {% endif %}
+            {% include "back/partials/_rubric_info_form.html.twig" %}
+            <section id="legalSections">{% include "back/partials/_sections.html.twig" %}</section>
+        </section>
+    {% include "partials/_right_banner.html.twig" %}
+</main>
+{% endblock %}

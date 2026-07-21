@@ -81,13 +81,21 @@ class SubmitVideo
             parse_str($parts['query'] ?? '', $query);
 
             if (!empty($query['v'])) {
-                return 'https://www.youtube.com/embed/' . $query['v'];
+                return 'https://www.youtube-nocookie.com/embed/' . $query['v'];
             }
         }
 
         // youtu.be/...
         if (str_contains($parts['host'], 'youtu.be')) {
-            return 'https://www.youtube.com/embed/' . ltrim($parts['path'], '/');
+            return 'https://www.youtube-nocookie.com/embed/' . ltrim($parts['path'], '/');
+        }
+
+        // youtube.com/embed/...
+        if (
+            str_contains($parts['host'], 'youtube.com')
+            && str_starts_with($parts['path'] ?? '', '/embed/')
+        ) {
+            return 'https://www.youtube-nocookie.com' . $parts['path'];
         }
 
         return null;

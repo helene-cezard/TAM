@@ -16,6 +16,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\FormError;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class SectionType extends AbstractType
 {
@@ -54,7 +57,7 @@ class SectionType extends AbstractType
                 'attr' => [
                     'placeholder' => 'ex. : qui-sommes-nous',
                 ],
-                'help' => 'Permet de créer un lien direct vers cette section (ex. : ajouter #qui-sommes-nous à la fin de l\'url comme dans https://monsite.fr/page#qui-sommes-nous).',
+                'help' => 'Permet de créer un lien direct vers cette section (ex. : ajouter #qui-sommes-nous à la fin de l\'url comme dans https://monsite.fr/page#qui-sommes-nous). Les liens "Soin psychique", "Création artistique" et "Transculturalité" en page d\'accueil renvoient respectivement aux identifiants #soin-psychique, #creation-artistique et #transculturalite.',
                 'constraints' => [
                     new Assert\Length([
                         'max' => 50,
@@ -68,12 +71,28 @@ class SectionType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',
             ]);
+            $builder->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event) {
+                $form = $event->getForm();
+
+                $title = $form->get('title')->getData();
+                $text = $form->get('text')->getData();
+                $aside = $form->get('aside')->getData();
+
+
+                if (!$title && !$text && !$aside) {
+                    $form->addError(
+                        new FormError(
+                            'Veuillez sélectionner entrer au moins un titre, un texte ou un bloc de citation.'
+                        )
+                    );
+                }
+            });
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'inherit_data' => true,
+            'data_class' => null,
         ]);
     }
 }

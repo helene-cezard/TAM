@@ -79,7 +79,6 @@ final class BackEulogyController extends AbstractController
 
          return $this->render('back/eulogy/index.html.twig', [
             'sections' => $eulogySections,
-            'eulogySections' => $eulogySections,
             'rubricInfo' => $rubricInfo,
             'president' => $president,
             'rubricInfoForm' => $rubricInfoForm,
@@ -110,9 +109,8 @@ final class BackEulogyController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_eulogy') . '#eulogySections'
         ]);
     }

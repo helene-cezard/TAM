@@ -114,9 +114,8 @@ final class BackFranceController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des sections enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des sections enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_france') . '#franceSections'
         ]);
     }
@@ -188,9 +187,8 @@ final class BackFranceController extends AbstractController
 
         $entityManager->flush();
 
-        $this->addFlash('success', 'Ordre des actions enregistré avec succès !');
-
         return new JsonResponse([
+            'success' => 'Ordre des actions enregistré avec succès !',
             'redirect' => $this->generateUrl('admin_france') . '#actionsContainer'
         ]);
     }

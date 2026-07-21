@@ -18,3 +18,32 @@
 .ql-container {
     border-radius: 0 0 0.5rem 0.5rem;
 }
+
+// Redimensionner l'éditeur Quill
+.quill-resizable {
+    position: relative;
+}
+
+.quill-resizable .ql-container {
+    height: 300px;
+}
+
+.quill-resizable .ql-editor {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.quill-resizable__handle {
+    position: absolute;
+    right: 0;
+    bottom: 1rem;
+    width: 16px;
+    height: 16px;
+    cursor: ns-resize;
+    z-index: 10;
+
+    background:
+        linear-gradient(135deg, transparent 45%, #999 45%, #999 55%, transparent 55%),
+        linear-gradient(135deg, transparent 60%, #999 60%, #999 70%, transparent 70%),
+        linear-gradient(135deg, transparent 75%, #999 75%, #999 85%, transparent 85%);
+}

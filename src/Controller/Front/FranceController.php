@@ -20,7 +20,7 @@ final class FranceController extends AbstractController
         ): Response
     {
         $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_france']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'france']);
         $actions = $actionRepository->findBy([], ['position' => 'ASC']);
 
         return $this->render('front/actions_france/index.html.twig', [

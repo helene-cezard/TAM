@@ -30,7 +30,7 @@ final class BackAssociationController extends AbstractController
         SubmitSections $submitSections,
         SubmitRubricInfo $submitRubricInfo
         ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_association']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'association']);
         $galleryImages = $galleryImageRepository->findAll();
         $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);
 

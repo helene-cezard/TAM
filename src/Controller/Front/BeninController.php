@@ -14,7 +14,7 @@ final class BeninController extends AbstractController
     public function index(BeninSectionRepository $beninSectionRepository, RubricInfoRepository $rubricInfoRepository): Response
     {
         $beninSections = $beninSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_benin']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'benin']);
          return $this->render('front/actions_benin/index.html.twig', [
             'controller_name' => 'BeninController',
             'beninSections' => $beninSections,

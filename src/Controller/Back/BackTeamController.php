@@ -38,7 +38,7 @@ final class BackTeamController extends AbstractController
         SubmitTeamMember $submitTeamMember,
         RoleRepository  $roleRepository
         ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_team']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'team']);
         $galleryImages = $galleryImageRepository->findAll();
         $teamSections = $teamSectionRepository->findBy([], ['position' => 'ASC']);
         $roles = $roleRepository->findBy([], ['position' => 'ASC']);

@@ -33,7 +33,7 @@ final class BackFranceController extends AbstractController
         SubmitRubricInfo $submitRubricInfo,
         ActionRepository $actionRepository
         ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_france']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'france']);
         $galleryImages = $galleryImageRepository->findAll();
         $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
         $actions = $actionRepository->findBy([], ['position' => 'ASC']);

@@ -14,7 +14,7 @@ final class AssociationController extends AbstractController
     public function index(AssociationSectionRepository $associationSectionRepository, RubricInfoRepository $rubricInfoRepository): Response
     {
         $associationSections = $associationSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_association']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'association']);
         return $this->render('front/who_association/index.html.twig', [
             'controller_name' => 'AssociationController',
             'associationSections' => $associationSections,

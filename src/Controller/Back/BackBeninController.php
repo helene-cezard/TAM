@@ -29,7 +29,7 @@ final class BackBeninController extends AbstractController
         SubmitSections $submitSections,
         SubmitRubricInfo $submitRubricInfo
         ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'actions_benin']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'benin']);
         $galleryImages = $galleryImageRepository->findAll();
         $beninSections = $beninSectionRepository->findBy([], ['position' => 'ASC']);
 

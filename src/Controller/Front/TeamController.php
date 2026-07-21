@@ -20,7 +20,7 @@ final class TeamController extends AbstractController
         ): Response
     {
         $teamSections = $teamSectionRepository->findBy([], ['position' => 'ASC']);
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_team']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'team']);
         $roles = $roleRepository->findBy([], ['position' => 'ASC']);
         return $this->render('front/who_team/index.html.twig', [
             'controller_name' => 'TeamController',

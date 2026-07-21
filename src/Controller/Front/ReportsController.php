@@ -13,7 +13,7 @@ final class ReportsController extends AbstractController
     #[Route('/rapports', name: 'app_reports')]
     public function index(RubricInfoRepository $rubricInfoRepository, ReportsRepository $reportsRepository): Response
     {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_reports']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'reports']);
         $reports = $reportsRepository->findBy([], ['position' => 'ASC']);
         return $this->render('front/who_reports/index.html.twig', [
             'controller_name' => 'ReportsController',

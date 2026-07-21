@@ -36,7 +36,7 @@ final class BackReportsController extends AbstractController
         SubmitRubricInfo $submitRubricInfo,
         SubmitReport $submitReport
         ): Response {
-        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'who_reports']);
+        $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'reports']);
         $galleryImages = $galleryImageRepository->findAll();
         $reportsSections = $reportsSectionRepository->findBy([], ['position' => 'ASC']);
         $reports = $reportsRepository->findBy([], ['position' => 'ASC']);

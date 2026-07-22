@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Config\Definition;
 
+use Symfony\Component\Config\Definition\Builder\ExprBuilder;
 use Symfony\Component\Config\Loader\ParamConfigurator;
 
 /**
@@ -48,7 +49,7 @@ final class ArrayShapeGenerator
 
         if ($node instanceof PrototypedArrayNode) {
             $isHashmap = (bool) $node->getKeyAttribute();
-            $arrayShape = ($isHashmap ? 'array<string, ' : 'list<').self::doGeneratePhpDoc($node->getPrototype(), 1 + $nestingLevel).'>';
+            $arrayShape = ($isHashmap ? 'array<string, ' : 'list<').self::doGeneratePhpDoc($node->getPrototype(), $nestingLevel).'>';
 
             return implode('|', [...self::getNormalizedTypes($node, ['array', 'any']), $arrayShape]);
         }
@@ -62,19 +63,13 @@ final class ArrayShapeGenerator
         foreach ($children as $child) {
             $arrayShape .= str_repeat('    ', $nestingLevel).self::dumpNodeKey($child, $node).': ';
 
-            if ($child instanceof PrototypedArrayNode) {
-                $isHashmap = (bool) $child->getKeyAttribute();
-                $childArrayType = ($isHashmap ? 'array<string, ' : 'list<').self::doGeneratePhpDoc($child->getPrototype(), 1 + $nestingLevel).'>';
-                $arrayShape .= $child->hasDefaultValue() && null === $child->getDefaultValue() ? $childArrayType.'|null' : $childArrayType;
-            } else {
-                $arrayShape .= self::doGeneratePhpDoc($child, 1 + $nestingLevel);
-            }
+            $arrayShape .= self::doGeneratePhpDoc($child, 1 + $nestingLevel);
 
             $arrayShape .= \sprintf(",%s\n", !$child instanceof ArrayNode ? self::generateInlinePhpDocForNode($child) : '');
         }
 
         if ($node->shouldIgnoreExtraKeys()) {
-            $arrayShape .= str_repeat('    ', $nestingLevel)."...<mixed>\n";
+            $arrayShape .= str_repeat('    ', $nestingLevel)."...<string, mixed>\n";
         }
 
         $arrayShape = $arrayShape.str_repeat('    ', $nestingLevel - 1).'}';
@@ -144,6 +139,9 @@ final class ArrayShapeGenerator
         }
 
         $types = array_unique($types);
+        if (false !== $backedEnumIndex = array_search(ExprBuilder::TYPE_BACKED_ENUM, $types, true)) {
+            $types[$backedEnumIndex] = '\BackedEnum';
+        }
 
         sort($types);
 

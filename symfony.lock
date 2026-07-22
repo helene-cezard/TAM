@@ -38,9 +38,6 @@
     "ehyiah/ux-quill": {
         "version": "3.7.0"
     },
-    "neuralglitch/google-fonts": {
-        "version": "0.2.0"
-    },
     "phpunit/phpunit": {
         "version": "13.0",
         "recipe": {
@@ -55,6 +52,9 @@
             "tests/bootstrap.php",
             "bin/phpunit"
         ]
+    },
+    "symfinity/font-manager": {
+        "version": "v0.2.6"
     },
     "symfony/asset-mapper": {
         "version": "7.4",

@@ -14,7 +14,7 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Symfonycasts\SassBundle\SymfonycastsSassBundle::class => ['all' => true],
-    NeuralGlitch\GoogleFonts\GoogleFontsBundle::class => ['all' => true],
     Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
     Ehyiah\QuillJsBundle\QuillJsBundle::class => ['all' => true],
+    Symfinity\FontManager\FontManagerBundle::class => ['all' => true],
 ];

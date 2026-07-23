@@ -11,7 +11,7 @@
                     {% if rubricInfo.getGalleryImage is not empty %}
                     <img  class="section__image" src="{{ asset(rubricInfo.getGalleryImage.path) }}" alt="{{ rubricInfo.getGalleryImage.alt }}">
                     {% endif %}
-                    {{ rubricInfo.text|quill_html|raw }}
+                    <div class="subsection__text">{{ rubricInfo.text|quill_html|raw }}</div>
                 </section>
                 <section class="contact__info">
                     <div>
@@ -29,7 +29,7 @@
                                 {{ contactSection.title }}
                             </h2>
                         {% endif %}
-                        <div>
+                        <div class="subsection__text">
                         {{ contactSection.text|quill_html|raw }}
                         </div>
                         {% if contactSection.aside is not empty %}

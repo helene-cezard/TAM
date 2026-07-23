@@ -23,9 +23,7 @@
             </h2>
         {% endif %}
 
-        <div class="subsection__text">
-            {{ section.text|quill_html|raw }}
-        </div>
+        <div class="subsection__text">{{ section.text|quill_html|raw }}</div>
 
         {% if section.aside is not empty %}
             <aside class="subsection__quote {{ section.leftSide ? 'left' : '' }}">

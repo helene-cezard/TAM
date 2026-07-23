@@ -5,6 +5,7 @@ namespace App\Controller\Front;
 use App\Repository\GalleryImageRepository;
 use App\Repository\ImageCategoryRepository;
 use App\Repository\RubricInfoRepository;
+use App\Repository\Section\ResourcesSectionRepository;
 use App\Repository\VideoRepository;
 use App\Repository\VisualRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,8 @@ final class ResourcesController extends AbstractController
         RubricInfoRepository $rubricInfoRepository,
         ImageCategoryRepository $imageCategoryRepository,
         VideoRepository $videoRepository,
-        VisualRepository $visualRepository
+        VisualRepository $visualRepository,
+        ResourcesSectionRepository $resourcesSectionRepository
         ): Response
     {
         $categories = $imageCategoryRepository->findAll();
@@ -27,6 +29,7 @@ final class ResourcesController extends AbstractController
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'resources']);
         $videos = $videoRepository->findAll();
         $visuals = $visualRepository->findAll();
+        $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
 
         return $this->render('front/resources/index.html.twig', [
             'controller_name' => 'ResourcesController',
@@ -34,7 +37,8 @@ final class ResourcesController extends AbstractController
             'rubricInfo' => $rubricInfo,
             'categories' => $categories,
             'videos' => $videos,
-            'visuals' => $visuals
+            'visuals' => $visuals,
+            'resourcesSections' => $resourcesSections
         ]);
     }
 }

@@ -28,7 +28,7 @@
                     {% if eulogySection === eulogySections[0] %}
                         <img class="eulogy__image left" src="{{ president.image ? asset(president.image) : asset('images/team/default-user-picture.png') }}" alt="{{ [president.firstname, president.lastname]|join }}">
                     {% endif %}
-                    <div>{{ eulogySection.text|quill_html|raw }}</div>
+                    <div class="subsection__text">{{ eulogySection.text|quill_html|raw }}</div>
                 </section>
 
                 {% endfor %}

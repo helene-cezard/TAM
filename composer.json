@@ -10,7 +10,7 @@
         "doctrine/doctrine-bundle": "^2.18.4",
         "doctrine/doctrine-migrations-bundle": "^3.7",
         "doctrine/orm": "^3.6.7",
-        "ehyiah/ux-quill": "^3.9.3",
+        "ehyiah/ux-quill": "3.9.2",
         "imagine/imagine": "^1.5.4",
         "phpdocumentor/reflection-docblock": "^6.0.3",
         "phpstan/phpdoc-parser": "^2.3.3",

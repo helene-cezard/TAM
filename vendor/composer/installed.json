@@ -1308,17 +1308,17 @@
         },
         {
             "name": "ehyiah/ux-quill",
-            "version": "3.9.3",
-            "version_normalized": "3.9.3.0",
+            "version": "3.9.2",
+            "version_normalized": "3.9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ehyiah/ux-quill.git",
-                "reference": "4b5d8e911feb518dd353676d806573bd27b8791c"
+                "reference": "50a72a88be76077e994e16c05567552fe50dd8a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ehyiah/ux-quill/zipball/4b5d8e911feb518dd353676d806573bd27b8791c",
-                "reference": "4b5d8e911feb518dd353676d806573bd27b8791c",
+                "url": "https://api.github.com/repos/Ehyiah/ux-quill/zipball/50a72a88be76077e994e16c05567552fe50dd8a6",
+                "reference": "50a72a88be76077e994e16c05567552fe50dd8a6",
                 "shasum": ""
             },
             "require": {
@@ -1341,7 +1341,7 @@
                 "symfony/browser-kit": "^6.1|^7.0|^8.0",
                 "symfony/framework-bundle": "^6.1|^7.0|^8.0"
             },
-            "time": "2026-07-13T14:21:03+00:00",
+            "time": "2026-07-02T18:09:44+00:00",
             "type": "symfony-bundle",
             "extra": {
                 "thanks": {

@@ -51,7 +51,7 @@ return [
         'version' => '4.5.0',
     ],
     'axios' => [
-        'version' => '1.16.1',
+        'version' => '1.18.1',
     ],
     'highlight.js' => [
         'version' => '11.11.1',
@@ -113,5 +113,8 @@ return [
     'quill-html-edit-button/src/styles.css' => [
         'version' => '3.0.0',
         'type' => 'css',
+    ],
+    '@ehyiah/ux-quill' => [
+        'version' => '3.9.3',
     ],
 ];

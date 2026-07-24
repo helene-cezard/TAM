@@ -39,8 +39,8 @@ final class ContactController extends AbstractController
             }
 
             $mailToAssociation = (new TemplatedEmail())
-                ->from("mail@mail.com")
-                ->to("mail@mail.com")
+                ->from("noreply@asso-tam.com")
+                ->to("association.tam94@gmail.com")
                 ->cc($form->get('email')->getData())
                 ->subject($form->get('subject')->getData())
                 ->htmlTemplate('emails/contact.html.twig')
@@ -52,8 +52,7 @@ final class ContactController extends AbstractController
                 ]);
 
                 $confirmationMail = (new TemplatedEmail())
-                //! Changer le from
-                    ->from('contact@tam-asso.fr')
+                    ->from('noreply@asso-tam.com')
                     ->to($form->get('email')->getData())
                     ->subject('Nous avons bien reçu votre message')
                     ->htmlTemplate('emails/confirmation.html.twig')

@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Process\Process;
 
 class SubmitVisual
 {
@@ -18,10 +17,6 @@ class SubmitVisual
         #[Autowire('%uploaded_visuals_directory%')]
         private string $visualsDirectory,
     ) {
-        $this->entityManager = $entityManager;
-        $this->fileUploader = $fileUploader;
-        $this->visualsDirectory = $visualsDirectory;
-        $this->deleteFromServer = $deleteFromServer;
     }
 
     public function handleVisualForm(
@@ -30,69 +25,87 @@ class SubmitVisual
         $repository
     ): bool
     {
-        // L'ancien fichier existe s'il s'agit d'une mise à jour
         $oldFilePath = $visualForm->getData()?->getPath();
         $oldImagePath = $visualForm->getData()?->getImage();
+
         $visualForm->handleRequest($request);
 
-        if ($visualForm->isSubmitted() && $visualForm->isValid()) {
-            $visualFile = $visualForm->get('uploadedVisual')->getData();
+        if (!$visualForm->isSubmitted() || !$visualForm->isValid()) {
+            return false;
+        }
 
-            // Supprimer l'ancien fichier si un nouveau fichier est téléchargé
-            if ($oldFilePath && $visualFile) {
+        $visual = $visualForm->getData();
+        $visualFile = $visualForm->get('uploadedVisual')->getData();
+
+        if ($visualFile) {
+
+            if ($oldFilePath) {
                 $this->deleteFromServer->delete($oldFilePath);
             }
-            if ($oldImagePath && $visualFile) {
+
+            if ($oldImagePath) {
                 $this->deleteFromServer->delete($oldImagePath);
             }
 
-            $visual = $visualForm->getData();
+            $mimeType = $visualFile->getMimeType();
 
-            if ($visualFile) {
-                $mimeType = $visualFile->getMimeType();
+            $newFilename = $this->fileUploader->upload(
+                $visualFile,
+                $this->visualsDirectory
+            );
 
-                $newFilename = $this->fileUploader->upload(
-                    $visualFile,
-                    $this->visualsDirectory
+            $visual->setPosition(count($repository->findAll()) + 1);
+
+            if ($mimeType === 'application/pdf') {
+
+                $pdfPath = $this->visualsDirectory.'/'.$newFilename;
+
+                $thumbnailFilename = pathinfo(
+                    $newFilename,
+                    PATHINFO_FILENAME
+                ).'-thumbnail.jpg';
+
+                $thumbnailPath = $this->visualsDirectory.'/'.$thumbnailFilename;
+
+                $imagick = new \Imagick();
+
+                // Résolution avant lecture du PDF
+                $imagick->setResolution(150, 150);
+
+                // Première page uniquement
+                $imagick->readImage($pdfPath.'[0]');
+
+                // Fond blanc
+                $imagick->setImageBackgroundColor('white');
+                $imagick = $imagick->mergeImageLayers(
+                    \Imagick::LAYERMETHOD_FLATTEN
                 );
 
-                $visual->setPosition(count($repository->findAll()) + 1); // Positionner le nouveau visuel à la fin
-                $visual->setImage('/visuals/' . $newFilename);
+                // Format JPEG
+                $imagick->setImageFormat('jpeg');
 
-                if ($mimeType === 'application/pdf') {
+                // Taille de la miniature
+                $imagick->thumbnailImage(600, 0);
 
-                    $pdfPath = $this->visualsDirectory.'/'.$newFilename;
+                $imagick->writeImage($thumbnailPath);
 
-                    $thumbnailFilename = str_replace(
-                        '.pdf',
-                        '-thumbnail',
-                        $newFilename
-                    );
+                $imagick->clear();
+                $imagick->destroy();
 
-                    $thumbnailBasePath = $this->visualsDirectory.'/'.$thumbnailFilename;
+                $visual->setPath('/visuals/'.$newFilename);
+                $visual->setImage('/visuals/'.$thumbnailFilename);
 
-                    $process = new Process([
-                        'pdftoppm',
-                        '-jpeg',
-                        '-f', '1',
-                        '-singlefile',
-                        $pdfPath,
-                        $thumbnailBasePath,
-                    ]);
+            } else {
 
-                    $process->mustRun();
-                    $visual->setPath('/visuals/' . $newFilename);
-                    $visual->setImage('/visuals/' . $thumbnailFilename . '.jpg');
-                }
+                $visual->setPath('/visuals/'.$newFilename);
+                $visual->setImage('/visuals/'.$newFilename);
+
             }
-
-            $this->entityManager->persist($visual);
-            $this->entityManager->flush();
-
-            return true;
         }
 
-        return false;
-    }
+        $this->entityManager->persist($visual);
+        $this->entityManager->flush();
 
+        return true;
+    }
 }

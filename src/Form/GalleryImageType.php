@@ -28,7 +28,7 @@ class GalleryImageType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new Assert\File([
-                        'maxSize' => '5M',
+                        'maxSize' => '10M',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',

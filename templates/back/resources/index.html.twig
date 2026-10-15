@@ -148,7 +148,19 @@
                     <button id="categories_reorder" class="reorder">Enregistrer l'ordre des categories</button>
                     {% endif %}
                 </section>
-
+                <section>
+                    <h2 class="subsection__title">Podcasts</h2>
+                    <div id="audio">
+                        {% for audio in audios %}
+                        <figure class="resources__audio">
+                            <figcaption>{{ audio.title }}</figcaption>
+                            <audio controls src="{{ asset(audio.path) }}"></audio>
+                        </figure>
+                        {% endfor %}
+                    </div>
+                </section>
+                <p id="audio-error" class="admin-title">Ajouter des supports audio</p>
+                <section class="form">{{ form(audioForm) }}</section>
                 <section>
                 <p id="visuals-anchor" class="admin-title">Supports visuels</p>
                     <ul id="visuals">

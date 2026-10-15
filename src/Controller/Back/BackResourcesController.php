@@ -6,12 +6,14 @@ use App\Entity\GalleryImage;
 use App\Entity\RubricInfo;
 use App\Entity\Section\ResourcesSection;
 use App\Entity\Visual;
+use App\Form\AudioType;
 use App\Form\GalleryImageType;
 use App\Form\ImageCategoryType;
 use App\Form\SectionForms\ResourcesSectionType;
 use App\Form\RubricInfoType;
 use App\Form\VideoType;
 use App\Form\VisualType;
+use App\Repository\AudioRepository;
 use App\Repository\GalleryImageRepository;
 use App\Repository\ImageCategoryRepository;
 use App\Repository\Section\ResourcesSectionRepository;
@@ -20,6 +22,7 @@ use App\Repository\VideoRepository;
 use App\Repository\VisualRepository;
 use App\Service\DeleteFromServer;
 use App\Service\GalleryImageUsageChecker;
+use App\Service\SubmitAudio;
 use App\Service\SubmitImage;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
@@ -47,15 +50,19 @@ final class BackResourcesController extends AbstractController
         SubmitVideo $submitVideo,
         VideoRepository $videoRepository,
         VisualRepository $visualRepository,
+        AudioRepository $audioRepository,
         SubmitVisual $submitVisual,
+        SubmitAudio $submitAudio,
         EntityManagerInterface $entityManager
         ): Response {
+
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'resources']);
         $galleryImages = $galleryImageRepository->findAll();
         $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
         $categories = $imageCategoryRepository->findBy([], ['position' => 'ASC']);
         $videos = $videoRepository->findAll();
         $visuals = $visualRepository->findBy([], ['position' => 'ASC']);
+        $audios = $audioRepository->findAll();
 
         $rubrics = $rubricInfoRepository->findAll();
         $rubricGalleryIds = array_map(
@@ -114,6 +121,17 @@ final class BackResourcesController extends AbstractController
             );
         }
 
+        //Gestion du formulaire d'ajout de supports audio
+        $audioForm = $this->createForm(AudioType::class);
+        $audioIsSubmitted = $submitAudio->handleAudioForm($audioForm, $request);
+        if ($audioIsSubmitted) {
+            $this->addFlash('success', 'Fichier audio ajouté avec succès !');
+            return $this->redirect(
+                $this->generateUrl('admin_resources') . '#audio'
+            );
+        }
+
+
         //Gestion du formulaire d'ajout de supports visuels
         $visualForm = $this->createForm(VisualType::class);
         $visualIsSubmitted = $submitVisual->handleVisualForm($visualForm, $request, $visualRepository);
@@ -141,8 +159,20 @@ final class BackResourcesController extends AbstractController
             $videoForm->isSubmitted() && !$videoForm->isValid() => 'video-error',
             $visualForm->isSubmitted() && !$visualForm->isValid() => 'visual-error',
             $sectionForm->isSubmitted() && !$sectionForm->isValid() => 'section-error',
+            $audioForm->isSubmitted() && !$audioForm->isValid() => 'audio-error',
             default => null,
         };
+
+        dump(ini_get('upload_max_filesize'));
+        dump(ini_get('post_max_size'));
+        dump($_FILES);
+
+        // dd(
+        //     PHP_BINARY,
+        //     php_ini_loaded_file(),
+        //     ini_get('upload_max_filesize'),
+        //     ini_get('post_max_size')
+        // );
 
         return $this->render('back/resources/index.html.twig', [
             'sections' => $resourcesSections,
@@ -160,6 +190,8 @@ final class BackResourcesController extends AbstractController
             'categoryForm' => $categoryForm,
             'usedCategoryIds' => $usedCategoryIds,
             'scrollTo' => $scrollTo,
+            'audios' => $audios,
+            'audioForm' => $audioForm
         ]);
     }
 

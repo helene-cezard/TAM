@@ -21,6 +21,7 @@ class SubmitSections
     {
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $section = $form->getData();
             $section->setPosition(count($repository->findAll()) + 1); // Positionner la nouvelle section à la fin

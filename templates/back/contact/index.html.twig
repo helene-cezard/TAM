@@ -19,7 +19,6 @@
                 {% include "back/partials/_rubric_info_form.html.twig" %}
                 <section class="form">
                     <p id="contact" class="admin-title">Modifier les informations de contact du site</p>
-                    <iframe src="https://www.google.com/maps?q={{ contactInfo.getStreet ?? '' }}, {{ contactInfo.getPostalCode ?? '' }} {{ contactInfo.getCity ?? '' }}&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 {{ form(contactInfoForm) }}
                 </section>
                 <section id="contactSections">{% include "back/partials/_sections.html.twig" %}</section>

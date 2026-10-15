@@ -23,8 +23,8 @@
 /public/assets/
 ###< symfonycasts/sass-bundle ###
 
-/assets/images/uploadedImages
-/assets/images/team
-/assets/videos
-/assets/visuals
-/assets/reports
+/public/images/uploadedImages
+/public/images/team
+/public/videos
+/public/visuals
+/public/reports

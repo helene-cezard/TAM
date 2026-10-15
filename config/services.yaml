@@ -12,6 +12,7 @@ parameters:
     uploaded_reports_directory: '%kernel.project_dir%/public/reports'
     uploaded_videos_directory: '%kernel.project_dir%/public/videos'
     uploaded_visuals_directory: '%kernel.project_dir%/public/visuals'
+    uploaded_audio_directory: '%kernel.project_dir%/public/audio'
 
 services:
     # default configuration for services in *this* file

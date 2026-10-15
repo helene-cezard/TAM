@@ -41,19 +41,19 @@ final class ContactController extends AbstractController
             $mailToAssociation = (new TemplatedEmail())
                 ->from("noreply@asso-tam.com")
                 ->to("association.tam94@gmail.com")
-                ->cc($form->get('email')->getData())
+                ->cc($form->get('e_mail')->getData())
                 ->subject($form->get('subject')->getData())
                 ->htmlTemplate('emails/contact.html.twig')
                 ->context([
                     'name' => $form->get('name')->getData(),
-                    'userEmail' => $form->get('email')->getData(),
+                    'userEmail' => $form->get('e_mail')->getData(),
                     'subject' => $form->get('subject')->getData(),
                     'message' => $form->get('message')->getData(),
                 ]);
 
                 $confirmationMail = (new TemplatedEmail())
                     ->from('noreply@asso-tam.com')
-                    ->to($form->get('email')->getData())
+                    ->to($form->get('e_mail')->getData())
                     ->subject('Nous avons bien reçu votre message')
                     ->htmlTemplate('emails/confirmation.html.twig')
                     ->context([

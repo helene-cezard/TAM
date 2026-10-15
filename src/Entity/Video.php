@@ -19,6 +19,9 @@ class Video
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
+    #[ORM\Column]
+    private ?int $position = null;
+
     public function isYoutube(): bool
     {
         return str_contains($this->path, 'youtube') || str_contains($this->path, 'youtu.be');;
@@ -58,6 +61,18 @@ class Video
     public function setType(string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }

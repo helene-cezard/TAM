@@ -75,6 +75,17 @@
                 </section>
                 {% include "partials/_gallery.html.twig" %}
                 <section>
+                    <h2 class="subsection__title">Podcasts</h2>
+                    <div>
+                        {% for audio in audios %}
+                        <figure class="resources__audio">
+                            <figcaption>{{ audio.title }}</figcaption>
+                            <audio controls src="{{ asset(audio.path) }}"></audio>
+                        </figure>
+                        {% endfor %}
+                    </div>
+                </section>
+                <section>
                     <h2 class="subsection__title">Supports visuels</h2>
                     <ul>
                         {% for visual in visuals %}

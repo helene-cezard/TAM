@@ -1,0 +1,24 @@
+@use "variables";
+
+.partner-logos {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        padding: 10px;
+        flex-basis: 100%;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media screen and (min-width: 600px) {
+            flex-basis: 50%;
+        }
+
+        @media screen and (min-width: variables.$breakpoint) {
+            flex-basis: 20%;
+        }
+    }
+}

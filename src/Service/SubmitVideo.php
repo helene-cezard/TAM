@@ -25,7 +25,8 @@ class SubmitVideo
 
     public function handleVideoForm(
         FormInterface $videoForm,
-        Request $request
+        Request $request,
+        $repository
         ): bool
     {
         $videoForm->handleRequest($request);
@@ -60,6 +61,10 @@ class SubmitVideo
 
             $video->setPath($embedUrl);
             $video->setType('youtube');
+        }
+
+        if ($video->getId() === null) {
+            $video->setPosition(count($repository->findAll()) + 1);
         }
 
         $this->entityManager->persist($video);

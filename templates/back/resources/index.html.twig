@@ -22,7 +22,21 @@
                     <p id="videos" class="admin-title">Vidéos</p>
                         <ul class="resources__videos">
                             {% for video in videos %}
-                            <li class="video__item">
+                            <li class="video__item subsection-border element-to-move" data-id="{{ video.id }}">
+                                <button class="position-button upButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 11.354a.5.5 0 0 0 .708 0L8 5.707l5.646 5.647a.5.5 0 0 0 .708-.708l-6-6a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 0 .708"/>
+                                    </svg>
+                                </button>
+                                <button class="position-button downButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                                    </svg>
+                                </button>
                                 {% if video.type == 'local' %}
                                 <video width="320" height="240" controls preload="metadata">
                                     <source src="{{ asset(video.path) }}" type="video/mp4">

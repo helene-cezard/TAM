@@ -24,6 +24,7 @@
 ###< symfonycasts/sass-bundle ###
 
 /public/images/uploadedImages
+/public/images/partnerLogos/
 /public/images/team
 /public/videos
 /public/visuals

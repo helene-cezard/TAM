@@ -38,25 +38,90 @@
                     {% endfor %}
                 </section>
 
-                    {% for franceSection in franceSections %}
-                    <section class="subsection">
-                        {% if franceSection.title is not empty %}
-                            <h2
-                                class="subsection__title {{ franceSection.aside|default ? 'subsection__title-grid' : '' }}">
-                                {{ franceSection.title }}
-                            </h2>
-                        {% endif %}
-                        <div class="subsection__text">
-                        <div class="subsection__text">{{ franceSection.text|quill_html|raw }}</div>
+                {% for franceSection in franceSections %}
+                <section class="subsection">
+                    {% if franceSection.title is not empty %}
+                        <h2
+                            class="subsection__title {{ franceSection.aside|default ? 'subsection__title-grid' : '' }}">
+                            {{ franceSection.title }}
+                        </h2>
+                    {% endif %}
+                    <div class="subsection__text">
+                    <div class="subsection__text">{{ franceSection.text|quill_html|raw }}</div>
+                    </div>
+                    {% if franceSection.aside is not empty %}
+                        <aside class="subsection__quote {{ franceSection.leftSide ? 'left' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
+                            <blockquote>"{{ franceSection.aside }}"</blockquote>
+                        </aside>
+                    {% endif %}
+                </section>
+                {% endfor %}
+                <section class="subsection">
+                    <h2 class="subsection__title">Logos</h2>
+                    <div class="partner-logos">
+                        {# {% for partner in partners %} #}
+                            <div class="partner-logos__item">
+                                {# <img src="{{ asset(partner.getLogo.path) }}" alt="{{ partner.getLogo.alt }}"> #}
+                                <img src="{{ asset('/images/partnerLogos/77AB9ED2084A4022BA0CD4A52F0C9D4A.jpg') }}" alt="Logo partenaire">
+                            </div>
+                        {# {% endfor %} #}
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/900px-Logo_Val_Marne.svg.png') }}" alt="Logo partenaire">
                         </div>
-                        {% if franceSection.aside is not empty %}
-                            <aside class="subsection__quote {{ franceSection.leftSide ? 'left' : '' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960" width="24px" fill="currentColor"><path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm457-560 21-89-71-59 94-8 36-84 36 84 94 8-71 59 21 89-80-47-80 47ZM480-481Z"/></svg>
-                                <blockquote>"{{ franceSection.aside }}"</blockquote>
-                            </aside>
-                        {% endif %}
-                    </section>
-                    {% endfor %}
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/ARS_idf_124_71.gif') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/Capturer.JPG') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/Capturer2.JPG') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/cg-sd.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/cg-vd.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/grand orly.jpg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/index.jpeg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo Assos en fête 2021 B.jpg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/LOGO DDCS.jpg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo droit des femmes.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/Logo Ivry 4.jpg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo-region-ile-de-france.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/LOGO_DDCS94.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo_quartier_ete+MCV_2021.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo-adef.png') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/logo-choisy x2.jpg') }}" alt="Logo partenaire">
+                        </div>
+                        <div class="partner-logos__item">
+                            <img src="{{ asset('/images/partnerLogos/gateau anniv.jpg') }}" alt="Logo partenaire">
+                        </div>
+                    </div>
+                </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

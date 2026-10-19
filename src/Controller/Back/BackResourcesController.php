@@ -60,7 +60,7 @@ final class BackResourcesController extends AbstractController
         $galleryImages = $galleryImageRepository->findAll();
         $resourcesSections = $resourcesSectionRepository->findBy([], ['position' => 'ASC']);
         $categories = $imageCategoryRepository->findBy([], ['position' => 'ASC']);
-        $videos = $videoRepository->findAll();
+        $videos = $videoRepository->findBy([], ['position' => 'ASC']);
         $visuals = $visualRepository->findBy([], ['position' => 'ASC']);
         $audios = $audioRepository->findAll();
 
@@ -113,7 +113,7 @@ final class BackResourcesController extends AbstractController
 
         //Gestion du formulaire d'ajout de vidéos
         $videoForm = $this->createForm(VideoType::class);
-        $videoIsSubmitted = $submitVideo->handleVideoForm($videoForm, $request);
+        $videoIsSubmitted = $submitVideo->handleVideoForm($videoForm, $request, $videoRepository);
         if ($videoIsSubmitted) {
             $this->addFlash('success', 'Vidéo ajoutée avec succès !');
             return $this->redirect(
@@ -162,17 +162,6 @@ final class BackResourcesController extends AbstractController
             $audioForm->isSubmitted() && !$audioForm->isValid() => 'audio-error',
             default => null,
         };
-
-        dump(ini_get('upload_max_filesize'));
-        dump(ini_get('post_max_size'));
-        dump($_FILES);
-
-        // dd(
-        //     PHP_BINARY,
-        //     php_ini_loaded_file(),
-        //     ini_get('upload_max_filesize'),
-        //     ini_get('post_max_size')
-        // );
 
         return $this->render('back/resources/index.html.twig', [
             'sections' => $resourcesSections,

@@ -335,7 +335,7 @@ final class BackResourcesController extends AbstractController
         }
 
         if ($video->getType() === 'local') {
-            $videoPath = $this->getParameter('kernel.project_dir') . '/assets/' . $video->getPath();
+            $videoPath = $this->getParameter('kernel.project_dir') . '/public/' . $video->getPath();
             if (is_file($videoPath)) {
                 unlink($videoPath);
             }
@@ -411,8 +411,8 @@ final class BackResourcesController extends AbstractController
             throw $this->createNotFoundException('Support visuel non trouvé');
         }
 
-        $visualPath = $this->getParameter('kernel.project_dir') . '/assets/' . $visual->getPath();
-        $visualImagePath = $this->getParameter('kernel.project_dir') . '/assets/' . $visual->getImage();
+        $visualPath = $this->getParameter('kernel.project_dir') . '/public/' . $visual->getPath();
+        $visualImagePath = $this->getParameter('kernel.project_dir') . '/public/' . $visual->getImage();
         if (is_file($visualPath)) {
             unlink($visualPath);
         }

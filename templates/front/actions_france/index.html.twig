@@ -60,21 +60,11 @@
                 <section class="subsection">
                     <h2 class="subsection__title">Logos</h2>
                     <div class="partner-logos">
-                        {# {% for partner in partners %} #}
+                        {% for partner in partners %}
                             <div class="partner-logos__item">
-                                {# <img src="{{ asset(partner.getLogo.path) }}" alt="{{ partner.getLogo.alt }}"> #}
-                                <img src="{{ asset('/images/partnerLogos/77AB9ED2084A4022BA0CD4A52F0C9D4A.jpg') }}" alt="Logo partenaire">
+                                <img src="{{ asset(partner.getImage) }}" alt="Logo de {{ partner.getName }}">
                             </div>
-                        {# {% endfor %} #}
-                        <div class="partner-logos__item">
-                            <img src="{{ asset('/images/partnerLogos/900px-Logo_Val_Marne.svg.png') }}" alt="Logo partenaire">
-                        </div>
-                        <div class="partner-logos__item">
-                            <img src="{{ asset('/images/partnerLogos/ARS_idf_124_71.gif') }}" alt="Logo partenaire">
-                        </div>
-                        <div class="partner-logos__item">
-                            <img src="{{ asset('/images/partnerLogos/Capturer.JPG') }}" alt="Logo partenaire">
-                        </div>
+                        {% endfor %}
                         <div class="partner-logos__item">
                             <img src="{{ asset('/images/partnerLogos/Capturer2.JPG') }}" alt="Logo partenaire">
                         </div>

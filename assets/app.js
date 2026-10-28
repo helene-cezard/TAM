@@ -48,6 +48,9 @@ const app = {
 
         app.movePosition('galleryCategories');
         app.updatePositions('galleryCategories', 'categories_reorder', currentRoute, 'resources');
+
+        app.movePosition('logos');
+        app.updatePositions('logos', 'partner_reorder', currentRoute, 'france');
     },
 
     burgerMenu: function () {
@@ -293,6 +296,7 @@ const app = {
             carousel: 'images',
             visuals: 'supports visuels',
             galleryCategories: 'catégories',
+            logos: 'logos'
         };
 
         let messageElement = '';

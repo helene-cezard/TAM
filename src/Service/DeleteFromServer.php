@@ -15,13 +15,13 @@ class DeleteFromServer {
         string $relativeImagePath = '',
         ): void
     {
-        $file = $this->params->get('kernel.project_dir') . '/assets' . $relativePath;
+        $file = $this->params->get('kernel.project_dir') . '/public' . $relativePath;
         if (is_file($file)) {
             unlink($file);
         }
 
         if (!empty($relativeImagePath)) {
-            $thumbnail = $this->params->get('kernel.project_dir') . '/assets' . $relativeImagePath;
+            $thumbnail = $this->params->get('kernel.project_dir') . '/public' . $relativeImagePath;
             if (is_file($thumbnail)) {
                 unlink($thumbnail);
             }

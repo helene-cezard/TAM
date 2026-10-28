@@ -71,6 +71,46 @@
                 {{ form(actionForm) }}
                 </section>
                 <section id="franceSections">{% include "back/partials/_sections.html.twig" %}</section>
+                <section class="subsection" id="partnersContainer">
+                    <h2 class="subsection__title">Logos</h2>
+                    <div class="partner-logos" id="logos">
+                        {% for partner in partners %}
+                            <div class="partner-logos__item subsection-border element-to-move" data-id="{{ partner.id }}">
+                                <button class="position-button leftButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                                    </svg>
+                                </button>
+                                <button class="position-button rightButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        fill="currentColor" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M4.646 1.646a.5.5 0 0 0 0 .708L10.293 8l-5.647 5.646a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708l-6-6a.5.5 0 0 0-.708 0"/>
+                                    </svg>
+                                </button>
+
+                                <img src="{{ asset(partner.getImage) }}" alt="Logo de {{ partner.getName }}">
+
+                                <div class="modify__buttons">
+                                    <form method="post" action="{{ path(app.current_route ~ '_partner_delete', {id: partner.id}) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                                        <button class="delete__button">Supprimer</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if partners|length >= 2 %}
+                    <button id="partner_reorder" class="reorder">Enregistrer l'ordre des logos</button>
+                    {% endif %}
+                </section>
+                <section class="form">
+                    <p id="partner-error" class="admin-title">Ajouter un logo partenaire</p>
+                {{ form(partnerForm) }}
+                </section>
             </section>
         {% include "partials/_right_banner.html.twig" %}
     </main>

@@ -5,13 +5,17 @@ namespace App\Controller\Back;
 use App\Entity\RubricInfo;
 use App\Entity\Section\Action;
 use App\Entity\Section\FranceSection;
+use App\Form\PartnerType;
 use App\Form\SectionForms\ActionType;
 use App\Form\SectionForms\FranceSectionType;
 use App\Form\RubricInfoType;
 use App\Repository\Section\FranceSectionRepository;
 use App\Repository\GalleryImageRepository;
+use App\Repository\PartnerRepository;
 use App\Repository\RubricInfoRepository;
 use App\Repository\Section\ActionRepository;
+use App\Service\DeleteFromServer;
+use App\Service\SubmitPartner;
 use App\Service\SubmitRubricInfo;
 use App\Service\SubmitSections;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,13 +34,16 @@ final class BackFranceController extends AbstractController
         GalleryImageRepository $galleryImageRepository,
         Request $request,
         SubmitSections $submitSections,
+        SubmitPartner $submitPartner,
         SubmitRubricInfo $submitRubricInfo,
-        ActionRepository $actionRepository
+        ActionRepository $actionRepository,
+        PartnerRepository $partnerRepository
         ): Response {
         $rubricInfo = $rubricInfoRepository->findOneBy(['name' => 'france']);
         $galleryImages = $galleryImageRepository->findAll();
         $franceSections = $franceSectionRepository->findBy([], ['position' => 'ASC']);
         $actions = $actionRepository->findBy([], ['position' => 'ASC']);
+        $partners = $partnerRepository->findBy([], ['position' => 'ASC']);
 
         $rubrics = $rubricInfoRepository->findAll();
         $rubricGalleryIds = array_map(
@@ -74,6 +81,16 @@ final class BackFranceController extends AbstractController
             );
         }
 
+        // Gestion du formulaire d'ajout de logos partenaires
+        $partnerForm = $this->createForm(PartnerType::class);
+        $partnerIsSubmitted = $submitPartner->handle($partnerForm, $request);
+        if ($partnerIsSubmitted) {
+            $this->addFlash('success', 'Logo partenaire ajouté avec succès !');
+            return $this->redirect(
+                $this->generateUrl('admin_france') . '#partnersContainer'
+            );
+        }
+
         $scrollTo = match (true) {
             $rubricInfoForm->isSubmitted() && !$rubricInfoForm->isValid() => 'rubricInfo-error',
             $actionForm->isSubmitted() && !$actionForm->isValid() => 'action-error',
@@ -91,6 +108,8 @@ final class BackFranceController extends AbstractController
             'actions' => $actions,
             'rubricGalleryIds' => $rubricGalleryIds,
             'scrollTo' => $scrollTo,
+            'partners' => $partners,
+            'partnerForm' => $partnerForm,
         ]);
     }
 
@@ -238,5 +257,56 @@ final class BackFranceController extends AbstractController
         return $this->render('back/action/form.html.twig', [
             'actionForm' => $actionForm,
         ]);
+    }
+
+    #[Route('/admin/france/partner_reorder', name: 'admin_france_partners_reorder', methods: ['POST'])]
+    public function reorderPartner(
+        Request $request,
+        PartnerRepository $repository,
+        EntityManagerInterface $entityManager
+    ): JsonResponse {
+
+        $ids = json_decode($request->getContent(), true);
+
+        foreach ($ids as $position => $id) {
+
+            $partner = $repository->find($id);
+
+            if ($partner) {
+                $partner->setPosition($position + 1);
+            }
+        }
+
+        $entityManager->flush();
+
+        return new JsonResponse([
+            'success' => 'Ordre des partenaires enregistré avec succès !',
+            'redirect' => $this->generateUrl('admin_france') . '#partnersContainer'
+        ]);
+    }
+
+    #[Route('/admin/france/partner_delete/{id}', name: 'admin_france_partner_delete', methods: ['POST'])]
+    public function deletePartner(
+        PartnerRepository $repository,
+        EntityManagerInterface $entityManager,
+        DeleteFromServer $deleteFromServer,
+        int $id
+    ): Response {
+        $partner = $repository->find($id);
+
+        if (!$partner) {
+            throw $this->createNotFoundException('Partenaire non trouvé');
+        }
+
+        $deleteFromServer->delete($partner->getImage());
+
+        $entityManager->remove($partner);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Logo partenaire supprimé avec succès !');
+
+        return $this->redirect(
+            $this->generateUrl('admin_france') . '#partnersContainer'
+        );
     }
 }

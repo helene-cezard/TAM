@@ -26,7 +26,8 @@ class SubmitPartner
 
     public function handle(
         FormInterface $partnerForm,
-        Request $request
+        Request $request,
+        $repository
         ): bool
     {
         $partnerForm->handleRequest($request);
@@ -42,11 +43,12 @@ class SubmitPartner
 
             $this->imageResizer->resize(
                 $this->logosDirectory.'/'.$newFilename,
-                1600
+                400
             );
 
 
             $partner->setImage('/images/partnerLogos/' . $newFilename);
+            $partner->setPosition(count(($repository->findAll())) + 1);
 
             $this->entityManager->persist($partner);
             $this->entityManager->flush();

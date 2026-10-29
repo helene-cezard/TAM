@@ -83,7 +83,7 @@ final class BackFranceController extends AbstractController
 
         // Gestion du formulaire d'ajout de logos partenaires
         $partnerForm = $this->createForm(PartnerType::class);
-        $partnerIsSubmitted = $submitPartner->handle($partnerForm, $request);
+        $partnerIsSubmitted = $submitPartner->handle($partnerForm, $request, $partnerRepository);
         if ($partnerIsSubmitted) {
             $this->addFlash('success', 'Logo partenaire ajouté avec succès !');
             return $this->redirect(
